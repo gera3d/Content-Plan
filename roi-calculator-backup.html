@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Software ROI Calculator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .calculator-container {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 900px;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .calculator-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .calculator-header h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .calculator-header p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        .calculator-body {
+            padding: 40px;
+        }
+
+        .input-section {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .input-section h2 {
+            font-size: 20px;
+            color: #333;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .input-section h2::before {
+            content: '📊';
+            font-size: 24px;
+            margin-right: 10px;
+        }
+
+        .input-group {
+            margin-bottom: 25px;
+        }
+
+        .input-group:last-child {
+            margin-bottom: 0;
+        }
+
+        label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: #555;
+            margin-bottom: 8px;
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        .input-prefix {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #888;
+            font-weight: 600;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 12px 15px 12px 35px;
+            font-size: 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            transition: border-color 0.3s;
+        }
+
+        input[type="number"]:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .calculate-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 16px;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin-top: 10px;
+        }
+
+        .calculate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .calculate-btn:active {
+            transform: translateY(0);
+        }
+
+        .results-section {
+            display: none;
+            margin-top: 30px;
+        }
+
+        .results-section.show {
+            display: block;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .result-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-left: 4px solid #667eea;
+        }
+
+        .result-card h3 {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .result-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .result-row:last-child {
+            border-bottom: none;
+        }
+
+        .result-label {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .result-value {
+            font-size: 18px;
+            font-weight: 700;
+            color: #333;
+        }
+
+        .result-value.positive {
+            color: #28a745;
+        }
+
+        .result-value.negative {
+            color: #dc3545;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .highlight-box h2 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .highlight-box p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        .highlight-box .big-number {
+            font-size: 48px;
+            font-weight: 700;
+            margin: 20px 0;
+        }
+
+        .chart-container {
+            margin-top: 30px;
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            border: 2px solid #e9ecef;
+        }
+
+        .chart-container h3 {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .bar-chart {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-around;
+            height: 250px;
+            margin-top: 20px;
+        }
+
+        .bar {
+            flex: 1;
+            margin: 0 10px;
+            text-align: center;
+        }
+
+        .bar-fill {
+            background: linear-gradient(to top, #667eea 0%, #764ba2 100%);
+            border-radius: 8px 8px 0 0;
+            transition: height 0.5s ease-out;
+            position: relative;
+        }
+
+        .bar-label {
+            margin-top: 10px;
+            font-size: 12px;
+            font-weight: 600;
+            color: #666;
+        }
+
+        .bar-value {
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 12px;
+            font-weight: 700;
+            color: #333;
+            white-space: nowrap;
+        }
+
+        .recommendation {
+            background: #e7f5ff;
+            border-left: 4px solid #1971c2;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .recommendation h4 {
+            color: #1971c2;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .recommendation p {
+            color: #495057;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .calculator-header {
+                padding: 30px 20px;
+            }
+
+            .calculator-header h1 {
+                font-size: 24px;
+            }
+
+            .calculator-body {
+                padding: 20px;
+            }
+
+            .input-section {
+                padding: 20px;
+            }
+
+            .bar-chart {
+                height: 200px;
+            }
+
+            .highlight-box .big-number {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator-container">
+        <div class="calculator-header">
+            <h1>🧮 Custom Software ROI Calculator</h1>
+            <p>See if custom software makes financial sense for your business</p>
+        </div>
+
+        <div class="calculator-body">
+            <div class="input-section">
+                <h2>Current Software Costs</h2>
+                
+                <div class="input-group">
+                    <label for="currentCosts">Annual Software Subscription Costs</label>
+                    <div class="input-wrapper">
+                        <span class="input-prefix">$</span>
+                        <input type="number" id="currentCosts" placeholder="24000" value="24000" min="0" step="1000">
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="numEmployees">Number of Employees</label>
+                    <div class="input-wrapper">
+                        <span class="input-prefix">#</span>
+                        <input type="number" id="numEmployees" placeholder="10" value="10" min="1" step="1">
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="workaroundHours">Hours/Week Spent on Workarounds</label>
+                    <div class="input-wrapper">
+                        <span class="input-prefix">⏱</span>
+                        <input type="number" id="workaroundHours" placeholder="20" value="20" min="0" step="1">
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="hourlyRate">Average Hourly Rate ($)</label>
+                    <div class="input-wrapper">
+                        <span class="input-prefix">$</span>
+                        <input type="number" id="hourlyRate" placeholder="50" value="50" min="0" step="5">
+                    </div>
+                </div>
+            </div>
+
+            <div class="input-section">
+                <h2>Custom Software Investment</h2>
+                
+                <div class="input-group">
+                    <label for="customCost">Estimated Development Cost</label>
+                    <div class="input-wrapper">
+                        <span class="input-prefix">$</span>
+                        <input type="number" id="customCost" placeholder="75000" value="75000" min="0" step="5000">
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="annualMaintenance">Annual Hosting + Maintenance</label>
+                    <div class="input-wrapper">
+                        <span class="input-prefix">$</span>
+                        <input type="number" id="annualMaintenance" placeholder="3000" value="3000" min="0" step="500">
+                    </div>
+                </div>
+            </div>
+
+            <button class="calculate-btn" onclick="calculateROI()">Calculate ROI</button>
+
+            <div class="results-section" id="results">
+                <div class="highlight-box">
+                    <h2>5-Year Total Savings</h2>
+                    <div class="big-number" id="totalSavings">$0</div>
+                    <p id="savingsMessage"></p>
+                </div>
+
+                <div class="result-card">
+                    <h3>💰 Cost Breakdown (5 Years)</h3>
+                    <div class="result-row">
+                        <span class="result-label">Off-the-Shelf Total</span>
+                        <span class="result-value" id="saasTotal">$0</span>
+                    </div>
+                    <div class="result-row">
+                        <span class="result-label">Custom Software Total</span>
+                        <span class="result-value" id="customTotal">$0</span>
+                    </div>
+                    <div class="result-row">
+                        <span class="result-label">Workaround Cost (Hidden)</span>
+                        <span class="result-value" id="workaroundCost">$0</span>
+                    </div>
+                </div>
+
+                <div class="result-card">
+                    <h3>📊 Key Metrics</h3>
+                    <div class="result-row">
+                        <span class="result-label">Break-Even Point</span>
+                        <span class="result-value" id="breakEven">0 months</span>
+                    </div>
+                    <div class="result-row">
+                        <span class="result-label">ROI Percentage (5 Years)</span>
+                        <span class="result-value positive" id="roiPercent">0%</span>
+                    </div>
+                    <div class="result-row">
+                        <span class="result-label">Annual Savings (After Break-Even)</span>
+                        <span class="result-value positive" id="annualSavings">$0</span>
+                    </div>
+                </div>
+
+                <div class="chart-container">
+                    <h3>📈 5-Year Cost Comparison</h3>
+                    <div class="bar-chart" id="barChart"></div>
+                </div>
+
+                <div class="recommendation" id="recommendation"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function formatCurrency(amount) {
+            return new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'USD',
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0
+            }).format(amount);
+        }
+
+        function calculateROI() {
+            // Get input values
+            const currentCosts = parseFloat(document.getElementById('currentCosts').value) || 0;
+            const numEmployees = parseFloat(document.getElementById('numEmployees').value) || 0;
+            const workaroundHours = parseFloat(document.getElementById('workaroundHours').value) || 0;
+            const hourlyRate = parseFloat(document.getElementById('hourlyRate').value) || 0;
+            const customCost = parseFloat(document.getElementById('customCost').value) || 0;
+            const annualMaintenance = parseFloat(document.getElementById('annualMaintenance').value) || 0;
+
+            // Calculate workaround costs
+            const weeklyWorkaroundCost = workaroundHours * hourlyRate;
+            const annualWorkaroundCost = weeklyWorkaroundCost * 52;
+
+            // Calculate total annual off-the-shelf costs (including hidden workaround costs)
+            const totalAnnualSaaS = currentCosts + annualWorkaroundCost;
+
+            // Assume 10% annual increase in SaaS costs
+            const saasIncreaseRate = 1.10;
+
+            // Calculate 5-year costs for both options
+            let saasCosts = [];
+            let customCosts = [];
+            
+            for (let year = 1; year <= 5; year++) {
+                if (year === 1) {
+                    saasCosts.push(totalAnnualSaaS);
+                    customCosts.push(customCost + annualMaintenance);
+                } else {
+                    saasCosts.push(saasCosts[year - 2] * saasIncreaseRate);
+                    customCosts.push(annualMaintenance);
+                }
+            }
+
+            const totalSaaS = saasCosts.reduce((a, b) => a + b, 0);
+            const totalCustom = customCosts.reduce((a, b) => a + b, 0);
+            const totalSavings = totalSaaS - totalCustom;
+            const roiPercent = ((totalSavings / totalCustom) * 100).toFixed(0);
+
+            // Calculate break-even point
+            let cumulativeSaaS = 0;
+            let cumulativeCustom = 0;
+            let breakEvenMonths = 0;
+
+            for (let month = 1; month <= 60; month++) {
+                const yearIndex = Math.floor((month - 1) / 12);
+                cumulativeSaaS += saasCosts[yearIndex] / 12;
+                cumulativeCustom += customCosts[yearIndex] / 12;
+
+                if (cumulativeCustom <= cumulativeSaaS && breakEvenMonths === 0) {
+                    breakEvenMonths = month;
+                }
+            }
+
+            const annualSavingsAfterBreakEven = totalAnnualSaaS - annualMaintenance;
+
+            // Update DOM
+            document.getElementById('totalSavings').textContent = formatCurrency(totalSavings);
+            document.getElementById('totalSavings').className = 'big-number ' + (totalSavings > 0 ? 'positive' : 'negative');
+            
+            document.getElementById('saasTotal').textContent = formatCurrency(totalSaaS);
+            document.getElementById('customTotal').textContent = formatCurrency(totalCustom);
+            document.getElementById('workaroundCost').textContent = formatCurrency(annualWorkaroundCost * 5);
+            
+            document.getElementById('breakEven').textContent = `${breakEvenMonths} months`;
+            document.getElementById('roiPercent').textContent = `${roiPercent}%`;
+            document.getElementById('annualSavings').textContent = formatCurrency(annualSavingsAfterBreakEven);
+
+            // Savings message
+            let savingsMessage = '';
+            if (totalSavings > 0) {
+                savingsMessage = `Custom software saves you ${formatCurrency(totalSavings)} over 5 years`;
+            } else if (totalSavings < 0) {
+                savingsMessage = `Off-the-shelf is ${formatCurrency(Math.abs(totalSavings))} cheaper over 5 years`;
+            } else {
+                savingsMessage = 'Both options cost the same over 5 years';
+            }
+            document.getElementById('savingsMessage').textContent = savingsMessage;
+
+            // Generate bar chart
+            generateBarChart(saasCosts, customCosts);
+
+            // Generate recommendation
+            generateRecommendation(totalSavings, breakEvenMonths, roiPercent, currentCosts);
+
+            // Show results
+            document.getElementById('results').classList.add('show');
+            document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        function generateBarChart(saasCosts, customCosts) {
+            const maxCost = Math.max(...saasCosts, ...customCosts);
+            const chartHTML = saasCosts.map((saasCost, index) => {
+                const year = index + 1;
+                const customCost = customCosts[index];
+                const saasHeight = (saasCost / maxCost) * 100;
+                const customHeight = (customCost / maxCost) * 100;
+
+                return `
+                    <div class="bar">
+                        <div style="display: flex; justify-content: space-around; align-items: flex-end; height: 100%;">
+                            <div style="flex: 1; margin: 0 5px;">
+                                <div class="bar-fill" style="height: ${saasHeight}%; background: linear-gradient(to top, #dc3545 0%, #c82333 100%);">
+                                    <div class="bar-value">${formatCurrency(saasCost)}</div>
+                                </div>
+                            </div>
+                            <div style="flex: 1; margin: 0 5px;">
+                                <div class="bar-fill" style="height: ${customHeight}%;">
+                                    <div class="bar-value">${formatCurrency(customCost)}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bar-label">Year ${year}</div>
+                        <div style="font-size: 10px; color: #999; margin-top: 5px;">
+                            <span style="color: #dc3545;">■</span> SaaS 
+                            <span style="color: #667eea; margin-left: 5px;">■</span> Custom
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            document.getElementById('barChart').innerHTML = chartHTML;
+        }
+
+        function generateRecommendation(totalSavings, breakEvenMonths, roiPercent, currentCosts) {
+            let recommendation = '';
+
+            if (totalSavings > 50000) {
+                recommendation = `
+                    <h4>✅ Strong Recommendation: Custom Software</h4>
+                    <p>The numbers are clear - custom software will save you significant money over the next 5 years. 
+                    With a break-even point at ${breakEvenMonths} months and ${roiPercent}% ROI, this is a solid investment. 
+                    Plus, you'll own the platform and can customize it as your business grows.</p>
+                `;
+            } else if (totalSavings > 20000) {
+                recommendation = `
+                    <h4>✅ Good Case for Custom Software</h4>
+                    <p>Custom software makes financial sense for your situation. You'll break even in ${breakEvenMonths} months 
+                    and save ${formatCurrency(totalSavings)} over 5 years. Consider the additional benefits of ownership, 
+                    customization, and competitive advantage.</p>
+                `;
+            } else if (totalSavings > 0) {
+                recommendation = `
+                    <h4>⚠️ Marginal Case</h4>
+                    <p>The financial case for custom software is positive but modest. Consider non-financial factors: 
+                    Do you need unique features? Is integration critical? Will you outgrow SaaS pricing? 
+                    If yes, custom might still be the right choice.</p>
+                `;
+            } else if (totalSavings > -20000) {
+                recommendation = `
+                    <h4>⚠️ Consider Off-the-Shelf</h4>
+                    <p>Based on pure cost, off-the-shelf software is slightly cheaper. However, consider the hidden costs: 
+                    time spent on workarounds, limitations in features, and lack of customization. 
+                    If those factors are significant, custom might still make sense.</p>
+                `;
+            } else {
+                recommendation = `
+                    <h4>❌ Stick with Off-the-Shelf</h4>
+                    <p>For your current situation, off-the-shelf software is the more cost-effective option. 
+                    You might reconsider custom software when: you're spending $${(currentCosts * 2).toLocaleString()}+/year on software, 
+                    you need extensive integration, or your processes are truly unique.</p>
+                `;
+            }
+
+            document.getElementById('recommendation').innerHTML = recommendation;
+        }
+
+        // Calculate on page load with default values
+        window.addEventListener('load', function() {
+            calculateROI();
+        });
+
+        // Allow Enter key to calculate
+        document.querySelectorAll('input').forEach(input => {
+            input.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    calculateROI();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

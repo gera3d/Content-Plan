@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Software Cost Breakdown</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #f5f7fa;
+            padding: 40px 20px;
+        }
+
+        .infographic-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .cost-tier {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-left: 6px solid #667eea;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cost-tier::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            border-radius: 0 0 0 100%;
+        }
+
+        .tier-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .tier-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #333;
+        }
+
+        .tier-price {
+            font-size: 32px;
+            font-weight: 700;
+            color: #667eea;
+        }
+
+        .tier-timeline {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        .tier-features {
+            margin: 20px 0;
+        }
+
+        .tier-features h4 {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .tier-features ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .tier-features li {
+            padding: 8px 0;
+            padding-left: 28px;
+            position: relative;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .tier-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #28a745;
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .tier-examples {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        .tier-examples h4 {
+            font-size: 14px;
+            color: #667eea;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .tier-examples p {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .tier-best-for {
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(102, 126, 234, 0.1);
+            border-radius: 8px;
+            border: 2px dashed #667eea;
+        }
+
+        .tier-best-for strong {
+            color: #667eea;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .tier-best-for span {
+            color: #555;
+            font-size: 14px;
+        }
+
+        .comparison-table {
+            margin-top: 40px;
+            overflow-x: auto;
+        }
+
+        .comparison-table h2 {
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        thead {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        th {
+            padding: 18px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        td {
+            padding: 18px;
+            border-bottom: 1px solid #e9ecef;
+            color: #555;
+        }
+
+        tbody tr:hover {
+            background: #f8f9fa;
+        }
+
+        tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .factor-name {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .cost-impact {
+            font-weight: 600;
+        }
+
+        .cost-impact.high {
+            color: #dc3545;
+        }
+
+        .cost-impact.medium {
+            color: #ffc107;
+        }
+
+        .cost-impact.low {
+            color: #28a745;
+        }
+
+        .hidden-costs {
+            background: #fff3cd;
+            border-left: 6px solid #ffc107;
+            padding: 30px;
+            border-radius: 12px;
+            margin-top: 40px;
+        }
+
+        .hidden-costs h2 {
+            font-size: 24px;
+            color: #856404;
+            margin-bottom: 20px;
+        }
+
+        .hidden-costs ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .hidden-costs li {
+            padding: 12px 0;
+            padding-left: 32px;
+            position: relative;
+            color: #856404;
+            line-height: 1.6;
+        }
+
+        .hidden-costs li::before {
+            content: '⚠️';
+            position: absolute;
+            left: 0;
+            font-size: 18px;
+        }
+
+        .budget-rule {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .budget-rule h2 {
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        .budget-rule p {
+            font-size: 18px;
+            line-height: 1.8;
+            opacity: 0.95;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 28px;
+            }
+
+            .content {
+                padding: 20px;
+            }
+
+            .tier-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .tier-price {
+                font-size: 24px;
+                margin-top: 10px;
+            }
+
+            table {
+                font-size: 14px;
+            }
+
+            th, td {
+                padding: 12px 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="infographic-container">
+        <div class="header">
+            <h1>💰 Custom Software Cost Breakdown</h1>
+            <p>Understanding the real investment - 2025 market rates</p>
+        </div>
+
+        <div class="content">
+            <!-- Simple Applications -->
+            <div class="cost-tier">
+                <div class="tier-header">
+                    <div>
+                        <div class="tier-title">Simple Applications</div>
+                        <div class="tier-timeline">⏱ 2-3 months</div>
+                    </div>
+                    <div class="tier-price">$15K - $50K</div>
+                </div>
+
+                <div class="tier-features">
+                    <h4>What You Get:</h4>
+                    <ul>
+                        <li>Basic CRUD functionality (Create, Read, Update, Delete)</li>
+                        <li>3-5 core features</li>
+                        <li>Simple user interface</li>
+                        <li>Basic reporting</li>
+                        <li>Mobile-responsive web app</li>
+                    </ul>
+                </div>
+
+                <div class="tier-examples">
+                    <h4>Examples</h4>
+                    <p>Basic CRM for small team • Simple inventory tracker • Customer portal • Lead management system • Internal workflow tool</p>
+                </div>
+
+                <div class="tier-best-for">
+                    <strong>Best For:</strong>
+                    <span>Small businesses with straightforward needs and clear requirements</span>
+                </div>
+            </div>
+
+            <!-- Medium Complexity -->
+            <div class="cost-tier" style="border-left-color: #764ba2;">
+                <div class="tier-header">
+                    <div>
+                        <div class="tier-title">Medium Complexity</div>
+                        <div class="tier-timeline" style="background: #764ba2;">⏱ 3-6 months</div>
+                    </div>
+                    <div class="tier-price" style="color: #764ba2;">$50K - $150K</div>
+                </div>
+
+                <div class="tier-features">
+                    <h4>What You Get:</h4>
+                    <ul>
+                        <li>10-20 features</li>
+                        <li>Multiple user roles and permissions</li>
+                        <li>Integration with 2-5 external systems</li>
+                        <li>Custom reporting and dashboards</li>
+                        <li>API for future extensions</li>
+                        <li>Mobile app (iOS or Android)</li>
+                    </ul>
+                </div>
+
+                <div class="tier-examples">
+                    <h4>Examples</h4>
+                    <p>Integrated CRM with marketing automation • Custom business intelligence platform • Field service management • Multi-location inventory • Review management with reputation monitoring</p>
+                </div>
+
+                <div class="tier-best-for">
+                    <strong>Best For:</strong>
+                    <span>Growing businesses with specific requirements and need for integration</span>
+                </div>
+            </div>
+
+            <!-- Complex Systems -->
+            <div class="cost-tier" style="border-left-color: #dc3545;">
+                <div class="tier-header">
+                    <div>
+                        <div class="tier-title">Complex Systems</div>
+                        <div class="tier-timeline" style="background: #dc3545;">⏱ 6-12+ months</div>
+                    </div>
+                    <div class="tier-price" style="color: #dc3545;">$150K - $500K+</div>
+                </div>
+
+                <div class="tier-features">
+                    <h4>What You Get:</h4>
+                    <ul>
+                        <li>Comprehensive feature set</li>
+                        <li>Complex business logic</li>
+                        <li>Multiple integrations (5+ systems)</li>
+                        <li>Advanced analytics and AI/ML</li>
+                        <li>Native mobile apps (iOS + Android)</li>
+                        <li>High-scale infrastructure</li>
+                        <li>Compliance requirements (HIPAA, SOC2)</li>
+                    </ul>
+                </div>
+
+                <div class="tier-examples">
+                    <h4>Examples</h4>
+                    <p>Enterprise resource planning (ERP) • Healthcare practice management • E-commerce platform with custom workflows • Multi-tenant SaaS application • Manufacturing execution system</p>
+                </div>
+
+                <div class="tier-best-for">
+                    <strong>Best For:</strong>
+                    <span>Established businesses with complex operations and regulatory requirements</span>
+                </div>
+            </div>
+
+            <!-- Cost Factors Table -->
+            <div class="comparison-table">
+                <h2>💡 What Affects the Cost?</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Factor</th>
+                            <th>Impact</th>
+                            <th>Cost Range</th>
+                            <th>Details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="factor-name">Feature Complexity</td>
+                            <td><span class="cost-impact high">High</span></td>
+                            <td>$2K - $10K per feature</td>
+                            <td>Simple forms vs. AI/ML capabilities</td>
+                        </tr>
+                        <tr>
+                            <td class="factor-name">Number of Integrations</td>
+                            <td><span class="cost-impact high">High</span></td>
+                            <td>+$5K - $50K</td>
+                            <td>30-40% of project cost; highest ROI</td>
+                        </tr>
+                        <tr>
+                            <td class="factor-name">Custom UI/UX Design</td>
+                            <td><span class="cost-impact medium">Medium</span></td>
+                            <td>+$10K - $75K</td>
+                            <td>Basic to advanced branded experience</td>
+                        </tr>
+                        <tr>
+                            <td class="factor-name">Mobile Requirements</td>
+                            <td><span class="cost-impact medium">Medium</span></td>
+                            <td>+$5K - $100K</td>
+                            <td>Responsive web to native iOS + Android</td>
+                        </tr>
+                        <tr>
+                            <td class="factor-name">Timeline Acceleration</td>
+                            <td><span class="cost-impact medium">Medium</span></td>
+                            <td>+25% - 40%</td>
+                            <td>Rushing increases cost and risk</td>
+                        </tr>
+                        <tr>
+                            <td class="factor-name">Security & Compliance</td>
+                            <td><span class="cost-impact high">High</span></td>
+                            <td>+$15K - $100K</td>
+                            <td>HIPAA, SOC2, PCI-DSS requirements</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Hidden Costs -->
+            <div class="hidden-costs">
+                <h2>⚠️ Hidden Costs People Forget</h2>
+                <ul>
+                    <li><strong>Ongoing Hosting:</strong> $50-$500/month depending on scale and traffic</li>
+                    <li><strong>Maintenance:</strong> $200-$2,000/month for updates, bug fixes, and support</li>
+                    <li><strong>SSL Certificates & Domains:</strong> $100-$500/year for security and hosting</li>
+                    <li><strong>Third-Party Services:</strong> Email services, SMS, payment processing fees add up</li>
+                    <li><strong>Training Time:</strong> Your team needs time to learn the new system</li>
+                    <li><strong>Data Migration:</strong> Moving data from old systems can take significant time</li>
+                </ul>
+            </div>
+
+            <!-- Budget Rule -->
+            <div class="budget-rule">
+                <h2>📊 Budget Rule of Thumb</h2>
+                <p>Plan for <strong>15-20% of development cost annually</strong> for ongoing maintenance, hosting, and updates.</p>
+                <p style="margin-top: 15px; font-size: 16px;">Example: $75K project = $11K-15K/year ongoing costs</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

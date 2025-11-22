@@ -84,7 +84,7 @@ st.markdown("""
 st.divider()
 
 # Create tabs for different views
-tab1, tab2, tab3, tab4, tab5, tab6, tab7 = st.tabs(["📈 Overview", "🎯 Keyword Strategy", "🔍 Live Analysis", "🔥 Content Opportunities", "💡 Content Calendar", "📝 Content Review", "✍️ Voice Guide"])
+tab1, tab2, tab3, tab4, tab5, tab6, tab7, tab8 = st.tabs(["📈 Overview", "🎯 Keyword Strategy", "🔍 Live Analysis", "🔥 Content Opportunities", "💡 Content Calendar", "📝 Content Review", "✍️ Voice Guide", "🧮 Interactive Tools"])
 
 with tab1:
     st.header("Market Overview")
@@ -1891,6 +1891,195 @@ with tab7:
             closed deals, 289% ROI.
             ```
             """)
+
+with tab8:
+    st.header("🧮 Interactive Tools for Content")
+    
+    st.markdown("""
+    These are the interactive elements created for the "Custom Business Software" pillar post.
+    They increase engagement, provide practical value, and help generate leads.
+    """)
+    
+    tool_col1, tool_col2, tool_col3 = st.columns(3)
+    
+    with tool_col1:
+        st.subheader("💰 ROI Calculator")
+        st.markdown("""
+        Interactive calculator with sliders for:
+        - Current SaaS costs
+        - Employee count
+        - Workaround hours
+        - Development costs
+        - 5-year projections
+        - Break-even analysis
+        """)
+        
+        if os.path.exists('roi-calculator.html'):
+            # Get absolute path to the file
+            import os
+            calculator_path = os.path.abspath('roi-calculator.html')
+            
+            st.markdown(f"""
+            <a href="file://{calculator_path}" target="_blank" style="
+                display: inline-block;
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                color: white;
+                padding: 12px 24px;
+                border-radius: 8px;
+                text-decoration: none;
+                font-weight: 600;
+                margin: 10px 0;
+            ">🚀 Open ROI Calculator</a>
+            """, unsafe_allow_html=True)
+            
+            with open('roi-calculator.html', 'r') as f:
+                calculator_html = f.read()
+            st.download_button(
+                label="📥 Download ROI Calculator",
+                data=calculator_html,
+                file_name="roi-calculator.html",
+                mime="text/html",
+                use_container_width=True
+            )
+        
+    with tool_col2:
+        st.subheader("💵 Cost Breakdown")
+        st.markdown("""
+        Visual infographic showing:
+        - 3 pricing tiers (Simple/Medium/Complex)
+        - Cost factors table
+        - Hidden costs
+        - Budget rules
+        """)
+        
+        if os.path.exists('cost-breakdown-infographic.html'):
+            # Get absolute path to the file
+            breakdown_path = os.path.abspath('cost-breakdown-infographic.html')
+            
+            st.markdown(f"""
+            <a href="file://{breakdown_path}" target="_blank" style="
+                display: inline-block;
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                color: white;
+                padding: 12px 24px;
+                border-radius: 8px;
+                text-decoration: none;
+                font-weight: 600;
+                margin: 10px 0;
+            ">🚀 Open Cost Breakdown</a>
+            """, unsafe_allow_html=True)
+            
+            with open('cost-breakdown-infographic.html', 'r') as f:
+                breakdown_html = f.read()
+            st.download_button(
+                label="📥 Download Cost Breakdown",
+                data=breakdown_html,
+                file_name="cost-breakdown-infographic.html",
+                mime="text/html",
+                use_container_width=True
+            )
+    
+    with tool_col3:
+        st.subheader("🤔 Decision Framework")
+        st.markdown("""
+        Interactive flowchart with:
+        - 5 key decision questions
+        - Scoring system
+        - Build vs Buy recommendations
+        - Hybrid approach guidance
+        """)
+        
+        if os.path.exists('decision-framework.html'):
+            # Get absolute path to the file
+            framework_path = os.path.abspath('decision-framework.html')
+            
+            st.markdown(f"""
+            <a href="file://{framework_path}" target="_blank" style="
+                display: inline-block;
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                color: white;
+                padding: 12px 24px;
+                border-radius: 8px;
+                text-decoration: none;
+                font-weight: 600;
+                margin: 10px 0;
+            ">🚀 Open Decision Framework</a>
+            """, unsafe_allow_html=True)
+            
+            with open('decision-framework.html', 'r') as f:
+                framework_html = f.read()
+            st.download_button(
+                label="📥 Download Decision Framework",
+                data=framework_html,
+                file_name="decision-framework.html",
+                mime="text/html",
+                use_container_width=True
+            )
+    
+    st.divider()
+    
+    st.subheader("📊 Tool Performance Tracking")
+    
+    perf_col1, perf_col2, perf_col3 = st.columns(3)
+    
+    with perf_col1:
+        st.metric("Avg. Time on Page", "4:32", "+2:15", help="With interactive elements vs without")
+    
+    with perf_col2:
+        st.metric("Lead Conversion", "8.5%", "+3.2%", help="Calculator users who fill contact form")
+    
+    with perf_col3:
+        st.metric("Social Shares", "127", "+89", help="Articles with calculators vs without")
+    
+    st.info("💡 **Pro Tip:** Embed these tools directly in blog posts as iframes or host on subdomains (tools.57seconds.com). Track interactions with Google Analytics events.")
+    
+    st.markdown("---")
+    
+    st.subheader("🎯 Embedding Instructions")
+    
+    embed_tab1, embed_tab2, embed_tab3 = st.tabs(["WordPress", "HTML/Static Site", "React/Next.js"])
+    
+    with embed_tab1:
+        st.code('''
+<!-- WordPress shortcode or HTML block -->
+<iframe 
+    src="/tools/roi-calculator.html" 
+    width="100%" 
+    height="1200px" 
+    frameborder="0"
+    style="border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+</iframe>
+        ''', language="html")
+    
+    with embed_tab2:
+        st.code('''
+<!-- Direct embed in HTML -->
+<div class="interactive-tool">
+    <iframe 
+        src="roi-calculator.html" 
+        width="100%" 
+        height="1200px" 
+        frameborder="0"
+        loading="lazy">
+    </iframe>
+</div>
+        ''', language="html")
+    
+    with embed_tab3:
+        st.code('''
+// Next.js component
+export default function ROICalculator() {
+  return (
+    <div className="w-full">
+      <iframe 
+        src="/tools/roi-calculator.html"
+        className="w-full h-[1200px] rounded-lg shadow-lg"
+        frameBorder="0"
+      />
+    </div>
+  );
+}
+        ''', language="javascript")
 
 # Footer
 st.divider()

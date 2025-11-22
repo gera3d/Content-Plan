@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Build vs Buy Decision Framework</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 40px 20px;
+        }
+
+        .flowchart-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+        }
+
+        .flowchart-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .flowchart-header h1 {
+            font-size: 36px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .flowchart-header p {
+            font-size: 18px;
+            color: #666;
+        }
+
+        .flow-node {
+            margin: 30px 0;
+            position: relative;
+        }
+
+        .start-node {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 20px;
+            font-weight: 600;
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .question-node {
+            background: white;
+            border: 3px solid #667eea;
+            border-radius: 16px;
+            padding: 25px;
+            position: relative;
+        }
+
+        .question-node h3 {
+            color: #667eea;
+            font-size: 18px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .question-node h3::before {
+            content: '❓';
+            font-size: 24px;
+            margin-right: 10px;
+        }
+
+        .question-text {
+            font-size: 16px;
+            color: #333;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .option {
+            padding: 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid #e9ecef;
+        }
+
+        .option:hover {
+            border-color: #667eea;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+        }
+
+        .option-yes {
+            background: linear-gradient(135deg, #e7f5ff 0%, #d0ebff 100%);
+        }
+
+        .option-no {
+            background: linear-gradient(135deg, #fff5f5 0%, #ffe3e3 100%);
+        }
+
+        .option strong {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+
+        .option span {
+            font-size: 13px;
+            color: #666;
+        }
+
+        .arrow {
+            text-align: center;
+            padding: 15px 0;
+            color: #667eea;
+            font-size: 24px;
+        }
+
+        .decision-node {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 8px 20px rgba(40, 167, 69, 0.3);
+        }
+
+        .decision-node.negative {
+            background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+            box-shadow: 0 8px 20px rgba(220, 53, 69, 0.3);
+        }
+
+        .decision-node.warning {
+            background: linear-gradient(135deg, #ffc107 0%, #ff9800 100%);
+            box-shadow: 0 8px 20px rgba(255, 193, 7, 0.3);
+        }
+
+        .decision-node h2 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .decision-node h2::before {
+            font-size: 32px;
+            margin-right: 12px;
+        }
+
+        .decision-node.positive h2::before {
+            content: '✅';
+        }
+
+        .decision-node.negative h2::before {
+            content: '❌';
+        }
+
+        .decision-node.warning h2::before {
+            content: '⚠️';
+        }
+
+        .decision-node p {
+            line-height: 1.8;
+            opacity: 0.95;
+        }
+
+        .decision-node ul {
+            margin-top: 15px;
+            padding-left: 20px;
+        }
+
+        .decision-node li {
+            margin: 8px 0;
+            line-height: 1.6;
+        }
+
+        .info-box {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .info-box h4 {
+            color: #667eea;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .info-box p {
+            color: #555;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        .scoring-guide {
+            background: white;
+            border: 2px solid #e9ecef;
+            border-radius: 12px;
+            padding: 30px;
+            margin-top: 40px;
+        }
+
+        .scoring-guide h2 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .score-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            margin: 10px 0;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .score-item .score-label {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .score-item .score-points {
+            font-size: 20px;
+            font-weight: 700;
+            color: #667eea;
+        }
+
+        .score-total {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .score-total h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .score-total .total {
+            font-size: 36px;
+            font-weight: 700;
+        }
+
+        @media (max-width: 768px) {
+            .flowchart-container {
+                padding: 20px;
+            }
+
+            .flowchart-header h1 {
+                font-size: 28px;
+            }
+
+            .options {
+                grid-template-columns: 1fr;
+            }
+
+            .decision-node h2 {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="flowchart-container">
+        <div class="flowchart-header">
+            <h1>🤔 Build vs Buy Decision Framework</h1>
+            <p>Answer these questions to determine if custom software is right for you</p>
+        </div>
+
+        <!-- Start -->
+        <div class="flow-node">
+            <div class="start-node">
+                START: Evaluating Software Options
+            </div>
+        </div>
+
+        <div class="arrow">↓</div>
+
+        <!-- Question 1 -->
+        <div class="flow-node">
+            <div class="question-node">
+                <h3>Question 1</h3>
+                <div class="question-text">Is your workflow unique or is it a competitive advantage?</div>
+                <div class="info-box">
+                    <h4>What this means:</h4>
+                    <p>Do you do things differently than your competitors? Is your process what makes you successful? Can you find off-the-shelf software that does it exactly your way?</p>
+                </div>
+                <div class="options">
+                    <div class="option option-yes">
+                        <strong>✅ Yes</strong>
+                        <span>Our process is unique and valuable</span>
+                    </div>
+                    <div class="option option-no">
+                        <strong>❌ No</strong>
+                        <span>We work like most businesses in our industry</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="arrow">↓</div>
+
+        <!-- Question 2 -->
+        <div class="flow-node">
+            <div class="question-node">
+                <h3>Question 2</h3>
+                <div class="question-text">Are you spending $20,000+/year on software subscriptions?</div>
+                <div class="info-box">
+                    <h4>Calculate your total:</h4>
+                    <p>Add up all SaaS subscriptions, per-user costs, integration tools (Zapier/Make), and don't forget training costs and workaround time.</p>
+                </div>
+                <div class="options">
+                    <div class="option option-yes">
+                        <strong>✅ Yes</strong>
+                        <span>$20K+ annually on software</span>
+                    </div>
+                    <div class="option option-no">
+                        <strong>❌ No</strong>
+                        <span>Less than $20K/year</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="arrow">↓</div>
+
+        <!-- Question 3 -->
+        <div class="flow-node">
+            <div class="question-node">
+                <h3>Question 3</h3>
+                <div class="question-text">Do you need to integrate 5+ systems or have integration nightmares?</div>
+                <div class="info-box">
+                    <h4>Integration red flags:</h4>
+                    <p>Data in silos, manual data entry between systems, reports require pulling from multiple sources, data sync issues, "which system has the right data?"</p>
+                </div>
+                <div class="options">
+                    <div class="option option-yes">
+                        <strong>✅ Yes</strong>
+                        <span>Integration is critical or painful</span>
+                    </div>
+                    <div class="option option-no">
+                        <strong>❌ No</strong>
+                        <span>Basic integration needs or none</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="arrow">↓</div>
+
+        <!-- Question 4 -->
+        <div class="flow-node">
+            <div class="question-node">
+                <h3>Question 4</h3>
+                <div class="question-text">Are you planning to scale significantly (2x-5x) in the next 2-3 years?</div>
+                <div class="info-box">
+                    <h4>Growth indicators:</h4>
+                    <p>Doubling team size, expanding to new locations, adding new product lines, entering new markets, rapid revenue growth expected.</p>
+                </div>
+                <div class="options">
+                    <div class="option option-yes">
+                        <strong>✅ Yes</strong>
+                        <span>Significant growth planned</span>
+                    </div>
+                    <div class="option option-no">
+                        <strong>❌ No</strong>
+                        <span>Stable or modest growth</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="arrow">↓</div>
+
+        <!-- Question 5 -->
+        <div class="flow-node">
+            <div class="question-node">
+                <h3>Question 5</h3>
+                <div class="question-text">Does off-the-shelf software cover less than 80% of your needs?</div>
+                <div class="info-box">
+                    <h4>Workaround warning signs:</h4>
+                    <p>Using 5+ tools for one workflow, exporting/importing between systems, "we do it this way because the software makes us," most valuable employees spending hours on admin work.</p>
+                </div>
+                <div class="options">
+                    <div class="option option-yes">
+                        <strong>✅ Yes</strong>
+                        <span>Lots of workarounds needed</span>
+                    </div>
+                    <div class="option option-no">
+                        <strong>❌ No</strong>
+                        <span>Software fits 80%+ of needs</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="arrow">↓</div>
+
+        <!-- Scoring Guide -->
+        <div class="scoring-guide">
+            <h2>📊 Your Score</h2>
+            <p style="text-align: center; color: #666; margin-bottom: 20px;">Count how many questions you answered "Yes" to</p>
+
+            <div class="score-item">
+                <span class="score-label">0-1 Yes Answers</span>
+                <span class="score-points" style="color: #dc3545;">❌ Stick with Off-the-Shelf</span>
+            </div>
+
+            <div class="score-item">
+                <span class="score-label">2 Yes Answers</span>
+                <span class="score-points" style="color: #ffc107;">⚠️ Consider Custom (Borderline)</span>
+            </div>
+
+            <div class="score-item">
+                <span class="score-label">3 Yes Answers</span>
+                <span class="score-points" style="color: #28a745;">✅ Good Case for Custom</span>
+            </div>
+
+            <div class="score-item">
+                <span class="score-label">4-5 Yes Answers</span>
+                <span class="score-points" style="color: #28a745;">✅✅ Strong Case for Custom</span>
+            </div>
+        </div>
+
+        <div class="arrow" style="margin-top: 40px;">↓</div>
+
+        <!-- Decision: 0-1 Yes -->
+        <div class="flow-node">
+            <div class="decision-node negative">
+                <h2>Stick with Off-the-Shelf</h2>
+                <p>For your current situation, off-the-shelf software makes more sense. You might reconsider custom when:</p>
+                <ul>
+                    <li>Your software costs exceed $20K/year</li>
+                    <li>You develop unique processes that differentiate you</li>
+                    <li>Integration becomes mission-critical</li>
+                    <li>You're ready to scale significantly</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="arrow">OR</div>
+
+        <!-- Decision: 2 Yes -->
+        <div class="flow-node">
+            <div class="decision-node warning">
+                <h2>Borderline Case - Consider These Factors</h2>
+                <p>Custom software could work, but evaluate non-financial factors:</p>
+                <ul>
+                    <li><strong>Competitive advantage:</strong> Will custom software give you an edge?</li>
+                    <li><strong>Future growth:</strong> Will you outgrow SaaS pricing soon?</li>
+                    <li><strong>Team capacity:</strong> Can you dedicate time to the project?</li>
+                    <li><strong>Risk tolerance:</strong> Comfortable with upfront investment?</li>
+                </ul>
+                <p style="margin-top: 15px;">If most of these are "yes," lean toward custom. If "no," stick with off-the-shelf for now.</p>
+            </div>
+        </div>
+
+        <div class="arrow">OR</div>
+
+        <!-- Decision: 3+ Yes -->
+        <div class="flow-node">
+            <div class="decision-node positive">
+                <h2>Strong Case for Custom Software</h2>
+                <p>The numbers and your situation point to custom software. Here's why:</p>
+                <ul>
+                    <li><strong>Financial sense:</strong> ROI timeline is favorable</li>
+                    <li><strong>Competitive edge:</strong> Proprietary platform creates moat</li>
+                    <li><strong>Ownership:</strong> You control the roadmap and costs</li>
+                    <li><strong>Scalability:</strong> Grows with you, not against you</li>
+                    <li><strong>Integration:</strong> Everything works together seamlessly</li>
+                </ul>
+                <p style="margin-top: 15px; font-weight: 600;">Next step: Calculate your ROI and schedule a consultation.</p>
+            </div>
+        </div>
+
+        <!-- Hybrid Approach -->
+        <div class="info-box" style="margin-top: 40px; border-left-color: #28a745;">
+            <h4>💡 Pro Tip: The Hybrid Approach</h4>
+            <p>Often the best answer is BOTH. Use off-the-shelf for commodity functions (email, accounting, communication) and custom for your core competitive advantages (unique workflows, proprietary processes, integration layer). This gives you the best of both worlds.</p>
+        </div>
+    </div>
+</body>
+</html>
