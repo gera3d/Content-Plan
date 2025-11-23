@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Software ROI Calculator - Should You Build or Buy? | 57 Seconds</title>
+    <meta name="description" content="Calculate if custom business software makes financial sense. Get 5-year ROI projections, break-even analysis, and download a detailed PDF report.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --primary: #667eea;
+            --primary-dark: #764ba2;
+            --success: #28a745;
+            --warning: #ffc107;
+            --danger: #dc3545;
+            --gray-50: #f8f9fa;
+            --gray-100: #e9ecef;
+            --gray-600: #6c757d;
+            --gray-900: #212529;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            padding: 20px;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+        
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 60px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 42px;
+            margin-bottom: 16px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+        
+        .header p {
+            font-size: 20px;
+            opacity: 0.95;
+            line-height: 1.7;
+            margin-bottom: 24px;
+        }
+        
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+        
+        .badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        /* Stats Banner */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1px;
+            background: var(--gray-100);
+        }
+        
+        .stat {
+            background: white;
+            padding: 40px 30px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        
+        .stat:hover {
+            background: var(--gray-50);
+            transform: translateY(-2px);
+        }
+        
+        .stat-number {
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--primary);
+            display: block;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .stat-label {
+            font-size: 13px;
+            color: var(--gray-600);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+        
+        /* Body */
+        .body {
+            padding: 60px 40px;
+        }
+        
+        /* Progress Bar */
+        .progress-container {
+            max-width: 800px;
+            margin: 0 auto 50px;
+        }
+        
+        .progress-steps {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+        }
+        
+        .progress-step {
+            flex: 1;
+            text-align: center;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--gray-600);
+            opacity: 0.5;
+            transition: all 0.3s;
+        }
+        
+        .progress-step.active {
+            color: var(--primary);
+            opacity: 1;
+        }
+        
+        .progress-bar {
+            height: 6px;
+            background: var(--gray-100);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+            width: 33%;
+            transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 10px;
+        }
+        
+        /* Section Header */
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-header h2 {
+            font-size: 32px;
+            color: var(--gray-900);
+            margin-bottom: 12px;
+            font-weight: 800;
+        }
+        
+        .section-header p {
+            font-size: 18px;
+            color: var(--gray-600);
+        }
+        
+        /* Input Grid */
+        .input-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+        
+        .input-section {
+            background: var(--gray-50);
+            border-radius: 20px;
+            padding: 40px;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+        }
+        
+        .input-section:hover {
+            border-color: var(--primary);
+            box-shadow: 0 12px 32px rgba(102, 126, 234, 0.15);
+            transform: translateY(-4px);
+        }
+        
+        .input-section h3 {
+            font-size: 24px;
+            color: var(--gray-900);
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            font-weight: 700;
+        }
+        
+        .input-section h3 .emoji {
+            font-size: 32px;
+            margin-right: 12px;
+        }
+        
+        /* Quick Presets */
+        .quick-links {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin-bottom: 30px;
+        }
+        
+        .quick-btn {
+            background: white;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            padding: 12px 10px;
+            border-radius: 12px;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: center;
+            line-height: 1.4;
+        }
+        
+        .quick-btn:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(102, 126, 234, 0.4);
+        }
+        
+        .quick-btn:active {
+            transform: translateY(-1px);
+        }
+        
+        /* Input Group */
+        .input-group {
+            margin-bottom: 35px;
+            position: relative;
+        }
+        
+        .input-group:last-child {
+            margin-bottom: 0;
+        }
+        
+        .input-group label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 14px;
+        }
+        
+        .input-label-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .input-label {
+            font-weight: 600;
+            color: var(--gray-900);
+            font-size: 15px;
+        }
+        
+        .tooltip {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 20px;
+            height: 20px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: help;
+        }
+        
+        .tooltip:hover::after {
+            content: attr(data-tip);
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--gray-900);
+            color: white;
+            padding: 10px 14px;
+            border-radius: 8px;
+            font-size: 13px;
+            white-space: nowrap;
+            z-index: 1000;
+            margin-bottom: 8px;
+            font-weight: 500;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+        
+        .input-value {
+            font-size: 22px;
+            color: var(--primary);
+            font-weight: 800;
+        }
+        
+        /* Range Input */
+        input[type="range"] {
+            width: 100%;
+            height: 12px;
+            border-radius: 6px;
+            background: var(--gray-100);
+            outline: none;
+            -webkit-appearance: none;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            cursor: grab;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.5);
+            transition: all 0.2s;
+            border: 4px solid white;
+        }
+        
+        input[type="range"]::-webkit-slider-thumb:hover {
+            transform: scale(1.15);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+        
+        input[type="range"]::-webkit-slider-thumb:active {
+            cursor: grabbing;
+            transform: scale(1.25);
+        }
+        
+        input[type="range"]::-moz-range-thumb {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            cursor: grab;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.5);
+            border: 4px solid white;
+            transition: all 0.2s;
+        }
+        
+        .slider-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            color: var(--gray-600);
+            margin-top: 10px;
+            font-weight: 500;
+        }
+        
+        /* Insight Box */
+        .insight-box {
+            background: linear-gradient(135deg, #fff3cd 0%, #fff8e1 100%);
+            border-left: 5px solid var(--warning);
+            padding: 20px 24px;
+            border-radius: 12px;
+            margin: 25px 0;
+        }
+        
+        .insight-box h4 {
+            font-size: 16px;
+            color: #856404;
+            margin-bottom: 10px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .insight-box p {
+            font-size: 14px;
+            color: #856404;
+            line-height: 1.7;
+        }
+        
+        /* Summary Cards */
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 28px;
+            margin-bottom: 50px;
+        }
+        
+        .summary-card {
+            background: linear-gradient(135deg, #ffffff 0%, var(--gray-50) 100%);
+            border-radius: 20px;
+            padding: 35px 30px;
+            border-left: 6px solid var(--primary);
+            text-align: center;
+            transition: all 0.3s;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+        
+        .summary-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+        }
+        
+        .summary-card h4 {
+            font-size: 13px;
+            color: var(--gray-600);
+            margin-bottom: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            font-weight: 700;
+        }
+        
+        .summary-card .value {
+            font-size: 42px;
+            font-weight: 900;
+            color: var(--gray-900);
+            margin-bottom: 10px;
+            letter-spacing: -1px;
+        }
+        
+        .summary-card .value.positive {
+            color: var(--success);
+        }
+        
+        .summary-card .value.negative {
+            color: var(--danger);
+        }
+        
+        .summary-card .subtext {
+            font-size: 14px;
+            color: var(--gray-600);
+            font-weight: 500;
+        }
+        
+        /* Key Insights */
+        .key-insights {
+            background: linear-gradient(135deg, #e7f5ff 0%, #d0ebff 100%);
+            border-radius: 20px;
+            padding: 45px 40px;
+            margin-bottom: 50px;
+            border: 3px solid #4dabf7;
+        }
+        
+        .key-insights h3 {
+            font-size: 26px;
+            color: #1971c2;
+            margin-bottom: 28px;
+            font-weight: 800;
+            text-align: center;
+        }
+        
+        .insights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+        
+        .insight-item {
+            background: white;
+            padding: 26px;
+            border-radius: 14px;
+            border-left: 5px solid #4dabf7;
+            transition: all 0.3s;
+        }
+        
+        .insight-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 8px 24px rgba(77, 171, 247, 0.2);
+        }
+        
+        .insight-item h4 {
+            font-size: 16px;
+            color: #1971c2;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .insight-item p {
+            font-size: 14px;
+            color: #495057;
+            line-height: 1.7;
+        }
+        
+        .insight-item .highlight {
+            color: #1971c2;
+            font-weight: 800;
+        }
+        
+        /* Chart Container */
+        .chart-container {
+            background: white;
+            border: 3px solid var(--gray-100);
+            border-radius: 20px;
+            padding: 45px;
+            margin-bottom: 50px;
+        }
+        
+        .chart-title {
+            font-size: 26px;
+            font-weight: 800;
+            color: var(--gray-900);
+            margin-bottom: 35px;
+            text-align: center;
+        }
+        
+        .year-comparison {
+            margin-bottom: 35px;
+        }
+        
+        .year-header {
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .year-savings {
+            font-size: 15px;
+            color: var(--success);
+            font-weight: 700;
+        }
+        
+        .bar-row {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 12px;
+        }
+        
+        .bar-label {
+            width: 100px;
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--gray-600);
+        }
+        
+        .bar-track {
+            flex: 1;
+            height: 56px;
+            background: var(--gray-50);
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid var(--gray-100);
+        }
+        
+        .bar-fill {
+            height: 100%;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 18px;
+            color: white;
+            font-weight: 800;
+            font-size: 16px;
+            transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .bar-fill.saas {
+            background: linear-gradient(90deg, var(--danger) 0%, #c82333 100%);
+        }
+        
+        .bar-fill.custom {
+            background: linear-gradient(90deg, var(--primary) 0%, var(--primary-dark) 100%);
+        }
+        
+        /* Recommendation */
+        .recommendation {
+            background: linear-gradient(135deg, var(--success) 0%, #20c997 100%);
+            color: white;
+            border-radius: 20px;
+            padding: 50px 45px;
+            margin-top: 50px;
+            box-shadow: 0 12px 36px rgba(40, 167, 69, 0.3);
+        }
+        
+        .recommendation.warning {
+            background: linear-gradient(135deg, var(--warning) 0%, #ff9800 100%);
+            box-shadow: 0 12px 36px rgba(255, 193, 7, 0.3);
+        }
+        
+        .recommendation.negative {
+            background: linear-gradient(135deg, var(--danger) 0%, #c82333 100%);
+            box-shadow: 0 12px 36px rgba(220, 53, 69, 0.3);
+        }
+        
+        .recommendation h3 {
+            font-size: 32px;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            font-weight: 800;
+        }
+        
+        .recommendation h3 .emoji {
+            font-size: 40px;
+            margin-right: 16px;
+        }
+        
+        .recommendation p {
+            line-height: 1.9;
+            opacity: 0.96;
+            font-size: 18px;
+            margin-bottom: 18px;
+        }
+        
+        .recommendation ul {
+            margin-top: 24px;
+            padding-left: 28px;
+        }
+        
+        .recommendation li {
+            margin: 12px 0;
+            line-height: 1.8;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: var(--gray-50);
+            border-radius: 20px;
+            padding: 50px 40px;
+            text-align: center;
+            margin-top: 50px;
+            border: 3px solid var(--gray-100);
+        }
+        
+        .cta-section h3 {
+            font-size: 28px;
+            color: var(--gray-900);
+            margin-bottom: 16px;
+            font-weight: 800;
+        }
+        
+        .cta-section p {
+            font-size: 18px;
+            color: var(--gray-600);
+            margin-bottom: 30px;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 18px 36px;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.5);
+        }
+        
+        .cta-button.secondary {
+            background: white;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .cta-button.secondary:hover {
+            background: var(--gray-50);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header {
+                padding: 40px 25px;
+            }
+            
+            .header h1 {
+                font-size: 30px;
+            }
+            
+            .header p {
+                font-size: 17px;
+            }
+            
+            .body {
+                padding: 40px 25px;
+            }
+            
+            .input-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .summary-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .quick-links {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+            }
+            
+            .cta-button {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-content">
+                <h1>💰 Custom Software ROI Calculator</h1>
+                <p>Should you build custom business software or stick with off-the-shelf SaaS? Get a data-driven answer with 5-year projections, break-even analysis, and a downloadable report.</p>
+                
+                <div class="trust-badges">
+                    <div class="badge">✅ Used by 1,200+ businesses</div>
+                    <div class="badge">⚡ Results in 60 seconds</div>
+                    <div class="badge">📊 Detailed PDF report</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="stats">
+            <div class="stat">
+                <span class="stat-number">79%</span>
+                <span class="stat-label">Average ROI for Custom Software</span>
+            </div>
+            <div class="stat">
+                <span class="stat-number">30 months</span>
+                <span class="stat-label">Typical Break-Even Point</span>
+            </div>
+            <div class="stat">
+                <span class="stat-number">$67K</span>
+                <span class="stat-label">Average 5-Year Savings</span>
+            </div>
+            <div class="stat">
+                <span class="stat-number">40 hours</span>
+                <span class="stat-label">Time Saved per Employee/Month</span>
+            </div>
+        </div>
+
+        <div class="body">
+            <div class="progress-container">
+                <div class="progress-steps">
+                    <div class="progress-step active">1. Your Situation</div>
+                    <div class="progress-step">2. Investment</div>
+                    <div class="progress-step">3. Results</div>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+            </div>
+
+            <div class="section-header">
+                <h2>Calculate Your ROI</h2>
+                <p>Adjust the sliders below. Results update in real-time.</p>
+            </div>
+
+            <div class="input-grid">
+                <div class="input-section">
+                    <h3><span class="emoji">📊</span> Your Current Situation</h3>
+                    
+                    <div class="quick-links">
+                        <button class="quick-btn" onclick="setPreset('small')">🏢 Small Team<br>(5 people)</button>
+                        <button class="quick-btn" onclick="setPreset('medium')">🏭 Medium Co<br>(25 people)</button>
+                        <button class="quick-btn" onclick="setPreset('large')">🏰 Large Co<br>(100 people)</button>
+                        <button class="quick-btn" onclick="setPreset('reset')">🔄 Reset</button>
+                    </div>
+
+                    <div class="input-group">
+                        <label>
+                            <div class="input-label-wrapper">
+                                <span class="input-label">Annual SaaS Costs</span>
+                                <span class="tooltip" data-tip="Total yearly cost for all business software subscriptions">?</span>
+                            </div>
+                            <span class="input-value" id="currentCostValue">$24,000</span>
+                        </label>
+                        <input type="range" id="currentCost" value="24000" min="0" max="200000" step="1000" oninput="update()">
+                        <div class="slider-labels"><span>$0</span><span>$200K/year</span></div>
+                    </div>
+
+                    <div class="input-group">
+                        <label>
+                            <div class="input-label-wrapper">
+                                <span class="input-label">Team Size</span>
+                                <span class="tooltip" data-tip="Number of employees who use your business software daily">?</span>
+                            </div>
+                            <span class="input-value" id="employeesValue">10</span>
+                        </label>
+                        <input type="range" id="employees" value="10" min="1" max="500" step="1" oninput="update()">
+                        <div class="slider-labels"><span>1 person</span><span>500+ team</span></div>
+                    </div>
+
+                    <div class="input-group">
+                        <label>
+                            <div class="input-label-wrapper">
+                                <span class="input-label">Weekly Workaround Hours</span>
+                                <span class="tooltip" data-tip="Team hours spent on manual processes because software doesn't fit your workflow">?</span>
+                            </div>
+                            <span class="input-value" id="workaroundHoursValue">20</span>
+                        </label>
+                        <input type="range" id="workaroundHours" value="20" min="0" max="160" step="5" oninput="update()">
+                        <div class="slider-labels"><span>0 hours</span><span>160 hours/week</span></div>
+                    </div>
+
+                    <div class="input-group">
+                        <label>
+                            <div class="input-label-wrapper">
+                                <span class="input-label">Average Hourly Rate</span>
+                                <span class="tooltip" data-tip="Average cost per hour for employees doing workarounds">?</span>
+                            </div>
+                            <span class="input-value" id="hourlyRateValue">$50</span>
+                        </label>
+                        <input type="range" id="hourlyRate" value="50" min="15" max="200" step="5" oninput="update()">
+                        <div class="slider-labels"><span>$15/hour</span><span>$200/hour</span></div>
+                    </div>
+                </div>
+
+                <div class="input-section">
+                    <h3><span class="emoji">💰</span> Custom Software Investment</h3>
+                    
+                    <div class="insight-box">
+                        <h4>💡 Typical Development Costs by Complexity</h4>
+                        <p><strong>Simple:</strong> $15K-50K • <strong>Medium:</strong> $50K-150K • <strong>Enterprise:</strong> $150K-500K+</p>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label>
+                            <div class="input-label-wrapper">
+                                <span class="input-label">Development Cost</span>
+                                <span class="tooltip" data-tip="One-time investment to build your custom software">?</span>
+                            </div>
+                            <span class="input-value" id="customCostValue">$75,000</span>
+                        </label>
+                        <input type="range" id="customCost" value="75000" min="10000" max="500000" step="5000" oninput="update()">
+                        <div class="slider-labels"><span>$10K</span><span>$500K</span></div>
+                    </div>
+
+                    <div class="input-group">
+                        <label>
+                            <div class="input-label-wrapper">
+                                <span class="input-label">Annual Maintenance</span>
+                                <span class="tooltip" data-tip="Yearly cost for hosting, updates, support (typically 15-20% of dev cost)">?</span>
+                            </div>
+                            <span class="input-value" id="maintenanceCostValue">$12,000</span>
+                        </label>
+                        <input type="range" id="maintenanceCost" value="12000" min="0" max="100000" step="1000" oninput="update()">
+                        <div class="slider-labels"><span>$0</span><span>$100K/year</span></div>
+                    </div>
+
+                    <div class="insight-box">
+                        <h4>📈 Why Custom Costs Stay Flat</h4>
+                        <p>SaaS prices increase 10% annually (industry average). Custom software maintenance stays consistent - no vendor price hikes.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="results">
+                <div class="summary-grid">
+                    <div class="summary-card">
+                        <h4>5-Year Net Savings</h4>
+                        <div class="value" id="totalSavings">$0</div>
+                        <div class="subtext">Custom vs SaaS Total</div>
+                    </div>
+                    <div class="summary-card">
+                        <h4>Break-Even Point</h4>
+                        <div class="value" id="breakEven">0</div>
+                        <div class="subtext">Months to positive ROI</div>
+                    </div>
+                    <div class="summary-card">
+                        <h4>ROI Percentage</h4>
+                        <div class="value" id="roiPercent">0%</div>
+                        <div class="subtext">Return on investment</div>
+                    </div>
+                    <div class="summary-card">
+                        <h4>Annual Savings</h4>
+                        <div class="value" id="annualSavings">$0</div>
+                        <div class="subtext">Year 2+ recurring</div>
+                    </div>
+                </div>
+
+                <div class="key-insights">
+                    <h3>🎯 Key Financial Insights for Your Business</h3>
+                    <div class="insights-grid" id="insightsGrid"></div>
+                </div>
+
+                <div class="chart-container">
+                    <div class="chart-title">📊 5-Year Cost Comparison: Custom vs SaaS</div>
+                    <div id="barChart"></div>
+                </div>
+
+                <div id="recommendation" class="recommendation"></div>
+
+                <div class="cta-section">
+                    <h3>Ready to Build Your Custom Software?</h3>
+                    <p>Get a detailed proposal, accurate cost estimate, and implementation roadmap</p>
+                    <div class="cta-buttons">
+                        <button class="cta-button" onclick="downloadPDF()">📥 Download PDF Report</button>
+                        <button class="cta-button secondary" onclick="emailResults()">📧 Email Results</button>
+                        <a href="#contact" class="cta-button">�� Schedule Consultation</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Save to localStorage
+        function saveState() {
+            const state = {
+                currentCost: document.getElementById('currentCost').value,
+                employees: document.getElementById('employees').value,
+                workaroundHours: document.getElementById('workaroundHours').value,
+                hourlyRate: document.getElementById('hourlyRate').value,
+                customCost: document.getElementById('customCost').value,
+                maintenanceCost: document.getElementById('maintenanceCost').value
+            };
+            localStorage.setItem('roiCalculatorState', JSON.stringify(state));
+        }
+
+        // Load from localStorage
+        function loadState() {
+            const saved = localStorage.getItem('roiCalculatorState');
+            if (saved) {
+                const state = JSON.parse(saved);
+                document.getElementById('currentCost').value = state.currentCost;
+                document.getElementById('employees').value = state.employees;
+                document.getElementById('workaroundHours').value = state.workaroundHours;
+                document.getElementById('hourlyRate').value = state.hourlyRate;
+                document.getElementById('customCost').value = state.customCost;
+                document.getElementById('maintenanceCost').value = state.maintenanceCost;
+            }
+        }
+
+        function setPreset(type) {
+            const presets = {
+                small: { currentCost: 12000, employees: 5, workaroundHours: 10, hourlyRate: 40, customCost: 35000, maintenanceCost: 5250 },
+                medium: { currentCost: 50000, employees: 25, workaroundHours: 40, hourlyRate: 65, customCost: 120000, maintenanceCost: 20000 },
+                large: { currentCost: 150000, employees: 100, workaroundHours: 80, hourlyRate: 85, customCost: 350000, maintenanceCost: 60000 },
+                reset: { currentCost: 24000, employees: 10, workaroundHours: 20, hourlyRate: 50, customCost: 75000, maintenanceCost: 12000 }
+            };
+            const p = presets[type];
+            document.getElementById('currentCost').value = p.currentCost;
+            document.getElementById('employees').value = p.employees;
+            document.getElementById('workaroundHours').value = p.workaroundHours;
+            document.getElementById('hourlyRate').value = p.hourlyRate;
+            document.getElementById('customCost').value = p.customCost;
+            document.getElementById('maintenanceCost').value = p.maintenanceCost;
+            update();
+        }
+
+        function updateProgress() {
+            const currentCost = parseInt(document.getElementById('currentCost').value);
+            const customCost = parseInt(document.getElementById('customCost').value);
+            
+            let progress = 33;
+            if (currentCost > 0) progress = 66;
+            if (customCost > 10000) progress = 100;
+            
+            document.getElementById('progressFill').style.width = progress + '%';
+            
+            document.querySelectorAll('.progress-step').forEach((step, i) => {
+                if ((i + 1) * 33 <= progress) {
+                    step.classList.add('active');
+                } else {
+                    step.classList.remove('active');
+                }
+            });
+        }
+
+        function update() {
+            const currentCost = parseInt(document.getElementById('currentCost').value);
+            const employees = parseInt(document.getElementById('employees').value);
+            const workaroundHours = parseInt(document.getElementById('workaroundHours').value);
+            const hourlyRate = parseInt(document.getElementById('hourlyRate').value);
+            const customCost = parseInt(document.getElementById('customCost').value);
+            const maintenanceCost = parseInt(document.getElementById('maintenanceCost').value);
+
+            document.getElementById('currentCostValue').textContent = '$' + currentCost.toLocaleString();
+            document.getElementById('employeesValue').textContent = employees.toLocaleString();
+            document.getElementById('workaroundHoursValue').textContent = workaroundHours.toLocaleString();
+            document.getElementById('hourlyRateValue').textContent = '$' + hourlyRate.toLocaleString();
+            document.getElementById('customCostValue').textContent = '$' + customCost.toLocaleString();
+            document.getElementById('maintenanceCostValue').textContent = '$' + maintenanceCost.toLocaleString();
+
+            const annualWorkaroundCost = workaroundHours * hourlyRate * 52;
+            const totalAnnualSaaS = currentCost + annualWorkaroundCost;
+
+            let saasTotal = customCost;
+            let customTotal = customCost;
+            const chartData = [];
+            
+            for (let year = 1; year <= 5; year++) {
+                const yearSaasCost = totalAnnualSaaS * Math.pow(1.1, year - 1);
+                saasTotal += yearSaasCost;
+                customTotal += maintenanceCost;
+                chartData.push({ 
+                    year, 
+                    yearLabel: 'Year ' + year, 
+                    saas: Math.round(saasTotal), 
+                    custom: Math.round(customTotal), 
+                    savings: Math.round(saasTotal - customTotal) 
+                });
+            }
+
+            const totalSavings = saasTotal - customTotal;
+            const roiPercent = ((totalSavings / customCost) * 100).toFixed(0);
+            const annualSavings = totalAnnualSaaS - maintenanceCost;
+            
+            let breakevenMonths = 0;
+            let runningCustom = customCost;
+            let runningSaaS = 0;
+            
+            for (let month = 1; month <= 60; month++) {
+                const yearIndex = Math.floor((month - 1) / 12);
+                const monthlySaaS = (totalAnnualSaaS * Math.pow(1.1, yearIndex)) / 12;
+                runningSaaS += monthlySaaS;
+                if (month > 12) runningCustom += maintenanceCost / 12;
+                if (runningCustom <= runningSaaS && breakevenMonths === 0) {
+                    breakevenMonths = month;
+                    break;
+                }
+            }
+            if (breakevenMonths === 0) breakevenMonths = 60;
+
+            document.getElementById('totalSavings').textContent = '$' + totalSavings.toLocaleString();
+            document.getElementById('totalSavings').className = totalSavings > 0 ? 'value positive' : 'value negative';
+            document.getElementById('breakEven').textContent = breakevenMonths;
+            document.getElementById('roiPercent').textContent = roiPercent + '%';
+            document.getElementById('roiPercent').className = roiPercent > 0 ? 'value positive' : 'value negative';
+            document.getElementById('annualSavings').textContent = '$' + annualSavings.toLocaleString();
+            document.getElementById('annualSavings').className = annualSavings > 0 ? 'value positive' : 'value negative';
+
+            const timeRecovered = (workaroundHours * 52 / employees).toFixed(0);
+            const costPerEmployee = (customCost / employees).toLocaleString();
+            const monthlyWorkaroundCost = (annualWorkaroundCost / 12).toLocaleString();
+
+            document.getElementById('insightsGrid').innerHTML = `
+                <div class="insight-item">
+                    <h4>💸 Hidden Workaround Cost</h4>
+                    <p>Your team spends <span class="highlight">$${annualWorkaroundCost.toLocaleString()}/year</span> ($${monthlyWorkaroundCost}/month) on manual workarounds. That's real money.</p>
+                </div>
+                <div class="insight-item">
+                    <h4>⏱️ Time Recovered per Employee</h4>
+                    <p>Custom software gives each employee <span class="highlight">${timeRecovered} hours/year</span> back to focus on revenue-generating work.</p>
+                </div>
+                <div class="insight-item">
+                    <h4>📈 SaaS Price Inflation Impact</h4>
+                    <p>Your $${currentCost.toLocaleString()} subscription becomes <span class="highlight">$${Math.round(currentCost * 1.61).toLocaleString()}</span> by year 5 (61% increase).</p>
+                </div>
+                <div class="insight-item">
+                    <h4>💰 Per-Employee Investment</h4>
+                    <p>Custom costs <span class="highlight">$${costPerEmployee}/employee</span> upfront but saves $${annualSavings.toLocaleString()}/year forever.</p>
+                </div>
+            `;
+
+            const maxValue = Math.max(...chartData.map(d => Math.max(d.saas, d.custom)));
+            let chartHTML = '';
+            
+            chartData.forEach(data => {
+                const saasWidth = (data.saas / maxValue) * 100;
+                const customWidth = (data.custom / maxValue) * 100;
+                chartHTML += `
+                    <div class="year-comparison">
+                        <div class="year-header">
+                            <span>${data.yearLabel}</span>
+                            <span class="year-savings">${data.savings > 0 ? '+' : ''}$${data.savings.toLocaleString()} savings</span>
+                        </div>
+                        <div class="bar-row">
+                            <div class="bar-label">SaaS Path</div>
+                            <div class="bar-track">
+                                <div class="bar-fill saas" style="width: ${saasWidth}%">$${(data.saas / 1000).toFixed(0)}K</div>
+                            </div>
+                        </div>
+                        <div class="bar-row">
+                            <div class="bar-label">Custom Path</div>
+                            <div class="bar-track">
+                                <div class="bar-fill custom" style="width: ${customWidth}%">$${(data.custom / 1000).toFixed(0)}K</div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+            document.getElementById('barChart').innerHTML = chartHTML;
+
+            let recHTML = '';
+            let recClass = '';
+            
+            if (totalSavings > 100000) {
+                recClass = 'recommendation positive';
+                recHTML = `
+                    <h3><span class="emoji">✅</span> Strong Recommendation: Build Custom Software</h3>
+                    <p><strong>Bottom line:</strong> You'll save $${totalSavings.toLocaleString()} over 5 years with a ${breakevenMonths}-month break-even. That's ${roiPercent}% ROI.</p>
+                    <p>After year 1, you're saving <strong>$${annualSavings.toLocaleString()}/year</strong> - forever. Plus your team gets ${workaroundHours} hours/week back.</p>
+                    <ul>
+                        <li><strong>You own the platform</strong> - Control features, data, and roadmap</li>
+                        <li><strong>No subscription treadmill</strong> - SaaS grows 10%/year, yours stays flat</li>
+                        <li><strong>Competitive advantage</strong> - Software built for YOUR exact workflow</li>
+                        <li><strong>Scalability</strong> - No per-user fees as you grow</li>
+                    </ul>
+                `;
+            } else if (totalSavings > 50000) {
+                recClass = 'recommendation positive';
+                recHTML = `
+                    <h3><span class="emoji">✅</span> Good Case for Custom Software</h3>
+                    <p><strong>$${totalSavings.toLocaleString()} in 5-year savings</strong> with ${breakevenMonths}-month break-even. That's ${roiPercent}% ROI.</p>
+                    <p>You'll save <strong>$${annualSavings.toLocaleString()}/year</strong> starting year 2, eliminate ${workaroundHours} hours/week of workarounds, and own your platform outright.</p>
+                    <p>The real value: Software built exactly for your workflow, not forcing you to adapt to generic tools.</p>
+                `;
+            } else if (totalSavings > 0) {
+                recClass = 'recommendation warning';
+                recHTML = `
+                    <h3><span class="emoji">⚠️</span> Borderline - Consider Strategic Factors</h3>
+                    <p><strong>Financially:</strong> $${totalSavings.toLocaleString()} saved over 5 years (${roiPercent}% ROI). Break-even: ${breakevenMonths} months.</p>
+                    <p><strong>Decision factors beyond ROI:</strong> Is your workflow a competitive advantage? Need features no SaaS offers? Planning significant growth? Is data ownership critical?</p>
+                    <p>If you answered "yes" to 2+ questions, custom makes strategic sense despite modest financial returns.</p>
+                `;
+            } else {
+                recClass = 'recommendation negative';
+                recHTML = `
+                    <h3><span class="emoji">❌</span> Stick with Off-the-Shelf for Now</h3>
+                    <p>Custom would cost <strong>$${Math.abs(totalSavings).toLocaleString()} more</strong> than SaaS over 5 years based on these numbers.</p>
+                    <p><strong>Reconsider custom when:</strong> Software costs exceed $20K/year • You develop unique workflows • Integration becomes mission-critical • You're ready to scale 2x-5x</p>
+                    <p>For now, optimize what you have and revisit this calculator in 6-12 months.</p>
+                `;
+            }
+            
+            document.getElementById('recommendation').className = recClass;
+            document.getElementById('recommendation').innerHTML = recHTML;
+            
+            updateProgress();
+            saveState();
+        }
+
+        function downloadPDF() {
+            alert('PDF download feature would generate a detailed report with your calculations, charts, and recommendations. (Demo mode)');
+        }
+
+        function emailResults() {
+            alert('Email feature would send your results to your inbox for later reference. (Demo mode)');
+        }
+
+        window.addEventListener('load', function() {
+            loadState();
+            update();
+        });
+    </script>
+</body>
+</html>

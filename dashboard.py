@@ -20,45 +20,355 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Custom CSS
+# Custom CSS - Apple/Nike Design System
 st.markdown("""
 <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+    
+    /* Global Reset & Typography */
+    * {
+        font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", "Segoe UI", Roboto, sans-serif !important;
+    }
+    
+    /* Main Container */
+    .main {
+        background: #ffffff;
+        padding: 2rem;
+    }
+    
+    /* Headers */
     .main-header {
-        font-size: 2.5rem;
-        font-weight: bold;
-        color: #1f77b4;
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        font-weight: 700;
+        color: #1d1d1f;
         margin-bottom: 0.5rem;
+        letter-spacing: -0.02em;
+        line-height: 1.1;
     }
+    
     .subheader {
-        font-size: 1.2rem;
-        color: #666;
-        margin-bottom: 2rem;
+        font-size: clamp(1rem, 2.5vw, 1.4rem);
+        color: #86868b;
+        margin-bottom: 3rem;
+        font-weight: 400;
+        line-height: 1.5;
     }
+    
+    /* Insight Boxes */
     .insight-box {
-        background-color: #f0f8ff;
-        padding: 1.5rem;
-        border-radius: 0.5rem;
-        border-left: 4px solid #1f77b4;
-        margin: 1rem 0;
-        color: #000;
+        background: linear-gradient(135deg, #f5f5f7 0%, #ffffff 100%);
+        padding: 2.5rem;
+        border-radius: 18px;
+        border: 1px solid #d2d2d7;
+        margin: 2rem 0;
+        color: #1d1d1f;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
+    
+    .insight-box:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+    }
+    
     .insight-box h3 {
-        color: #1f77b4;
+        color: #0071e3;
+        font-weight: 600;
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        letter-spacing: -0.01em;
     }
+    
     .insight-box p {
-        color: #000;
+        color: #1d1d1f;
+        line-height: 1.6;
+        font-size: 1.05rem;
     }
+    
+    .insight-box strong {
+        color: #1d1d1f;
+        font-weight: 600;
+    }
+    
+    /* Keyword Category Cards */
     .keyword-category {
-        background-color: #f8f9fa;
-        padding: 1rem;
-        border-radius: 0.5rem;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        margin: 0.5rem 0;
-        border: 1px solid #dee2e6;
+        background: #ffffff;
+        padding: 2rem;
+        border-radius: 18px;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+        margin: 1rem 0;
+        border: 1px solid #d2d2d7;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
-    /* Force dark text in all elements */
-    .element-container, .stMarkdown, p, li, span {
-        color: inherit !important;
+    
+    .keyword-category:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 12px 32px rgba(0,0,0,0.15);
+        border-color: #0071e3;
+    }
+    
+    /* Buttons */
+    .stButton>button {
+        background: linear-gradient(135deg, #0071e3 0%, #005bb5 100%);
+        color: white !important;
+        border: none;
+        border-radius: 980px;
+        padding: 14px 40px;
+        font-weight: 600;
+        font-size: 1rem;
+        transition: all 0.2s;
+        box-shadow: 0 4px 16px rgba(0, 113, 227, 0.3);
+        letter-spacing: 0.02em;
+    }
+    
+    .stButton>button:hover {
+        transform: scale(1.03);
+        box-shadow: 0 6px 24px rgba(0, 113, 227, 0.4);
+        background: linear-gradient(135deg, #0077ed 0%, #0066cc 100%);
+    }
+    
+    .stButton>button:active {
+        transform: scale(0.98);
+    }
+    
+    /* Tabs */
+    .stTabs [data-baseweb="tab-list"] {
+        gap: 8px;
+        background: #f5f5f7;
+        padding: 8px;
+        border-radius: 14px;
+    }
+    
+    .stTabs [data-baseweb="tab"] {
+        height: 50px;
+        padding: 12px 24px;
+        border-radius: 10px;
+        color: #86868b;
+        font-weight: 500;
+        background: transparent;
+        border: none;
+        transition: all 0.2s;
+    }
+    
+    .stTabs [aria-selected="true"] {
+        background: #ffffff !important;
+        color: #1d1d1f !important;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    
+    /* Data Tables */
+    .stDataFrame {
+        border-radius: 14px;
+        overflow: hidden;
+        border: 1px solid #d2d2d7;
+    }
+    
+    .stDataFrame table {
+        font-size: 0.95rem;
+    }
+    
+    .stDataFrame thead tr th {
+        background: #f5f5f7 !important;
+        color: #1d1d1f !important;
+        font-weight: 600 !important;
+        padding: 16px !important;
+        border: none !important;
+    }
+    
+    .stDataFrame tbody tr td {
+        padding: 14px !important;
+        border-bottom: 1px solid #f5f5f7 !important;
+    }
+    
+    .stDataFrame tbody tr:hover {
+        background: #f9f9f9 !important;
+    }
+    
+    /* Metrics */
+    .stMetric {
+        background: #ffffff;
+        padding: 1.5rem;
+        border-radius: 14px;
+        border: 1px solid #d2d2d7;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        transition: all 0.3s;
+    }
+    
+    .stMetric:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    }
+    
+    .stMetric label {
+        color: #86868b !important;
+        font-size: 0.9rem !important;
+        font-weight: 500 !important;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+    
+    .stMetric [data-testid="stMetricValue"] {
+        color: #1d1d1f !important;
+        font-size: 2rem !important;
+        font-weight: 700 !important;
+        letter-spacing: -0.02em;
+    }
+    
+    .stMetric [data-testid="stMetricDelta"] {
+        font-size: 0.9rem !important;
+        font-weight: 500 !important;
+    }
+    
+    /* Expanders */
+    .streamlit-expanderHeader {
+        background: #f5f5f7;
+        border-radius: 12px;
+        padding: 16px 20px !important;
+        font-weight: 600;
+        color: #1d1d1f;
+        border: 1px solid #d2d2d7;
+    }
+    
+    .streamlit-expanderHeader:hover {
+        background: #ebebed;
+        border-color: #0071e3;
+    }
+    
+    /* Text Areas & Inputs */
+    .stTextInput>div>div>input,
+    .stTextArea textarea {
+        border-radius: 12px;
+        border: 1px solid #d2d2d7;
+        padding: 12px 16px;
+        font-size: 1rem;
+        transition: all 0.2s;
+    }
+    
+    .stTextInput>div>div>input:focus,
+    .stTextArea textarea:focus {
+        border-color: #0071e3;
+        box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.1);
+    }
+    
+    /* Select Boxes */
+    .stSelectbox>div>div>div {
+        border-radius: 12px;
+        border: 1px solid #d2d2d7;
+    }
+    
+    /* Dividers */
+    hr {
+        margin: 3rem 0;
+        border: none;
+        height: 1px;
+        background: #d2d2d7;
+    }
+    
+    /* Sidebar */
+    [data-testid="stSidebar"] {
+        background: #f5f5f7;
+        padding: 2rem 1rem;
+    }
+    
+    [data-testid="stSidebar"] h1,
+    [data-testid="stSidebar"] h2,
+    [data-testid="stSidebar"] h3 {
+        color: #1d1d1f;
+    }
+    
+    /* Progress Bars */
+    .stProgress > div > div > div {
+        background: linear-gradient(90deg, #0071e3, #005bb5);
+        border-radius: 4px;
+    }
+    
+    /* Captions */
+    .caption {
+        color: #86868b;
+        font-size: 0.9rem;
+        line-height: 1.5;
+        margin-top: 0.5rem;
+    }
+    
+    /* Code Blocks */
+    code {
+        background: #f5f5f7;
+        padding: 2px 6px;
+        border-radius: 6px;
+        font-size: 0.9em;
+        color: #0071e3;
+    }
+    
+    pre {
+        background: #f5f5f7;
+        border-radius: 12px;
+        padding: 16px;
+        border: 1px solid #d2d2d7;
+    }
+    
+    /* Links */
+    a {
+        color: #0071e3;
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.2s;
+    }
+    
+    a:hover {
+        color: #005bb5;
+        text-decoration: underline;
+    }
+    
+    /* Headers in content */
+    h1, h2, h3, h4, h5, h6 {
+        color: #1d1d1f;
+        font-weight: 600;
+        letter-spacing: -0.01em;
+    }
+    
+    /* Paragraph text */
+    p {
+        color: #1d1d1f;
+        line-height: 1.6;
+    }
+    
+    /* Lists */
+    ul, ol {
+        color: #1d1d1f;
+        line-height: 1.8;
+    }
+    
+    li {
+        margin: 0.5rem 0;
+    }
+    
+    /* Info/Warning/Success boxes */
+    .stAlert {
+        border-radius: 12px;
+        border: none;
+        padding: 16px 20px;
+    }
+    
+    /* Radio buttons */
+    .stRadio > label {
+        color: #1d1d1f;
+        font-weight: 500;
+    }
+    
+    /* Checkboxes */
+    .stCheckbox > label {
+        color: #1d1d1f;
+        font-weight: 500;
+    }
+    
+    /* Remove default streamlit branding colors */
+    [data-testid="stHeader"] {
+        background: transparent;
+    }
+    
+    /* Smooth scrolling */
+    html {
+        scroll-behavior: smooth;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -1905,13 +2215,12 @@ with tab8:
     with tool_col1:
         st.subheader("💰 ROI Calculator")
         st.markdown("""
-        Interactive calculator with sliders for:
-        - Current SaaS costs
-        - Employee count
-        - Workaround hours
-        - Development costs
+        Interactive calculator with minimalist Apple design:
+        - Clean sliders for inputs
+        - Real-time calculations
         - 5-year projections
         - Break-even analysis
+        - Smart recommendations
         """)
         
         if os.path.exists('roi-calculator.html'):
@@ -1922,13 +2231,15 @@ with tab8:
             st.markdown(f"""
             <a href="file://{calculator_path}" target="_blank" style="
                 display: inline-block;
-                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                background: linear-gradient(135deg, #0071e3 0%, #005bb5 100%);
                 color: white;
-                padding: 12px 24px;
-                border-radius: 8px;
+                padding: 16px 40px;
+                border-radius: 980px;
                 text-decoration: none;
                 font-weight: 600;
                 margin: 10px 0;
+                box-shadow: 0 4px 12px rgba(0, 113, 227, 0.25);
+                transition: all 0.2s;
             ">🚀 Open ROI Calculator</a>
             """, unsafe_allow_html=True)
             
@@ -1946,10 +2257,10 @@ with tab8:
         st.subheader("💵 Cost Breakdown")
         st.markdown("""
         Visual infographic showing:
-        - 3 pricing tiers (Simple/Medium/Complex)
+        - 3 pricing tiers
         - Cost factors table
         - Hidden costs
-        - Budget rules
+        - Budget planning
         """)
         
         if os.path.exists('cost-breakdown-infographic.html'):
@@ -1959,13 +2270,14 @@ with tab8:
             st.markdown(f"""
             <a href="file://{breakdown_path}" target="_blank" style="
                 display: inline-block;
-                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                background: linear-gradient(135deg, #0071e3 0%, #005bb5 100%);
                 color: white;
-                padding: 12px 24px;
-                border-radius: 8px;
+                padding: 16px 40px;
+                border-radius: 980px;
                 text-decoration: none;
                 font-weight: 600;
                 margin: 10px 0;
+                box-shadow: 0 4px 12px rgba(0, 113, 227, 0.25);
             ">🚀 Open Cost Breakdown</a>
             """, unsafe_allow_html=True)
             
@@ -1982,11 +2294,11 @@ with tab8:
     with tool_col3:
         st.subheader("🤔 Decision Framework")
         st.markdown("""
-        Interactive flowchart with:
-        - 5 key decision questions
+        Interactive assessment with:
+        - 5 decision questions
         - Scoring system
         - Build vs Buy recommendations
-        - Hybrid approach guidance
+        - Next steps guidance
         """)
         
         if os.path.exists('decision-framework.html'):
@@ -1996,13 +2308,14 @@ with tab8:
             st.markdown(f"""
             <a href="file://{framework_path}" target="_blank" style="
                 display: inline-block;
-                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                background: linear-gradient(135deg, #0071e3 0%, #005bb5 100%);
                 color: white;
-                padding: 12px 24px;
-                border-radius: 8px;
+                padding: 16px 40px;
+                border-radius: 980px;
                 text-decoration: none;
                 font-weight: 600;
                 margin: 10px 0;
+                box-shadow: 0 4px 12px rgba(0, 113, 227, 0.25);
             ">🚀 Open Decision Framework</a>
             """, unsafe_allow_html=True)
             
