@@ -14,10 +14,10 @@ import os
 
 # Page configuration
 st.set_page_config(
-    page_title="Content Strategy Command Center",
-    page_icon="📊",
+    page_title="Content Strategy Dashboard",
+    page_icon="🚀",
     layout="wide",
-    initial_sidebar_state="expanded"
+    initial_sidebar_state="collapsed"
 )
 
 # Custom CSS - Apple/Nike Design System
@@ -25,86 +25,149 @@ st.markdown("""
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
     
-    /* Global Reset & Typography */
+    /* Global Reset */
     * {
         font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", "Segoe UI", Roboto, sans-serif !important;
     }
     
+    /* Hide Streamlit Branding */
+    #MainMenu {visibility: hidden;}
+    footer {visibility: hidden;}
+    header {visibility: hidden;}
+    
     /* Main Container */
     .main {
         background: #ffffff;
-        padding: 2rem;
+        padding: 0;
+        max-width: 1400px;
+        margin: 0 auto;
     }
     
-    /* Headers */
-    .main-header {
-        font-size: clamp(2rem, 5vw, 3.5rem);
-        font-weight: 700;
-        color: #1d1d1f;
-        margin-bottom: 0.5rem;
-        letter-spacing: -0.02em;
-        line-height: 1.1;
+    .block-container {
+        padding: 3rem 2rem !important;
+        max-width: 1400px !important;
     }
     
-    .subheader {
-        font-size: clamp(1rem, 2.5vw, 1.4rem);
-        color: #86868b;
-        margin-bottom: 3rem;
-        font-weight: 400;
-        line-height: 1.5;
-    }
-    
-    /* Insight Boxes */
-    .insight-box {
+    /* Hero Section */
+    .hero-section {
         background: linear-gradient(135deg, #f5f5f7 0%, #ffffff 100%);
-        padding: 2.5rem;
-        border-radius: 18px;
-        border: 1px solid #d2d2d7;
-        margin: 2rem 0;
+        padding: 4rem 3rem;
+        border-radius: 24px;
+        margin-bottom: 3rem;
+        text-align: center;
+    }
+    
+    .hero-title {
+        font-size: clamp(2.5rem, 6vw, 4rem);
+        font-weight: 800;
         color: #1d1d1f;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    
-    .insight-box:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 8px 32px rgba(0,0,0,0.12);
-    }
-    
-    .insight-box h3 {
-        color: #0071e3;
-        font-weight: 600;
-        font-size: 1.5rem;
         margin-bottom: 1rem;
-        letter-spacing: -0.01em;
+        letter-spacing: -0.03em;
+        line-height: 1.05;
     }
     
-    .insight-box p {
-        color: #1d1d1f;
-        line-height: 1.6;
-        font-size: 1.05rem;
+    .hero-subtitle {
+        font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+        color: #86868b;
+        font-weight: 400;
+        margin-bottom: 2rem;
+        line-height: 1.4;
     }
     
-    .insight-box strong {
-        color: #1d1d1f;
-        font-weight: 600;
+    /* Stats Row */
+    .stats-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+        margin: 3rem 0;
     }
     
-    /* Keyword Category Cards */
-    .keyword-category {
+    .stat-card {
         background: #ffffff;
         padding: 2rem;
         border-radius: 18px;
-        box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-        margin: 1rem 0;
         border: 1px solid #d2d2d7;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        text-align: center;
+        transition: all 0.3s;
     }
     
-    .keyword-category:hover {
-        transform: translateY(-6px);
-        box-shadow: 0 12px 32px rgba(0,0,0,0.15);
+    .stat-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 32px rgba(0,0,0,0.12);
+    }
+    
+    .stat-number {
+        font-size: 3rem;
+        font-weight: 700;
+        color: #0071e3;
+        letter-spacing: -0.02em;
+    }
+    
+    .stat-label {
+        font-size: 0.95rem;
+        color: #86868b;
+        margin-top: 0.5rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        font-weight: 500;
+    }
+    
+    /* Section Headers */
+    .section-header {
+        font-size: clamp(1.8rem, 4vw, 2.5rem);
+        font-weight: 700;
+        color: #1d1d1f;
+        margin: 3rem 0 1.5rem 0;
+        letter-spacing: -0.02em;
+    }
+    
+    .section-subtitle {
+        font-size: 1.1rem;
+        color: #86868b;
+        margin-bottom: 2rem;
+    }
+    
+    /* Card Grid */
+    .card-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin: 2rem 0;
+    }
+    
+    .feature-card {
+        background: #ffffff;
+        padding: 2.5rem;
+        border-radius: 20px;
+        border: 1px solid #d2d2d7;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .feature-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 16px 48px rgba(0,0,0,0.15);
         border-color: #0071e3;
+    }
+    
+    .feature-card h3 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #1d1d1f;
+        margin-bottom: 1rem;
+    }
+    
+    .feature-card p {
+        color: #86868b;
+        line-height: 1.6;
+        font-size: 1rem;
+    }
+    
+    .feature-icon {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        display: block;
     }
     
     /* Buttons */
@@ -113,262 +176,195 @@ st.markdown("""
         color: white !important;
         border: none;
         border-radius: 980px;
-        padding: 14px 40px;
+        padding: 16px 48px;
         font-weight: 600;
-        font-size: 1rem;
-        transition: all 0.2s;
-        box-shadow: 0 4px 16px rgba(0, 113, 227, 0.3);
+        font-size: 1.1rem;
+        transition: all 0.3s;
+        box-shadow: 0 6px 20px rgba(0, 113, 227, 0.35);
         letter-spacing: 0.02em;
+        width: 100%;
+        margin: 1rem 0;
     }
     
     .stButton>button:hover {
-        transform: scale(1.03);
-        box-shadow: 0 6px 24px rgba(0, 113, 227, 0.4);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 28px rgba(0, 113, 227, 0.45);
         background: linear-gradient(135deg, #0077ed 0%, #0066cc 100%);
     }
     
-    .stButton>button:active {
-        transform: scale(0.98);
+    /* Tabs - Minimal Design */
+    .stTabs {
+        background: transparent;
     }
     
-    /* Tabs */
     .stTabs [data-baseweb="tab-list"] {
-        gap: 8px;
-        background: #f5f5f7;
-        padding: 8px;
-        border-radius: 14px;
+        gap: 0;
+        background: transparent;
+        border-bottom: 2px solid #d2d2d7;
+        padding: 0;
     }
     
     .stTabs [data-baseweb="tab"] {
-        height: 50px;
-        padding: 12px 24px;
-        border-radius: 10px;
+        height: 60px;
+        padding: 0 32px;
         color: #86868b;
         font-weight: 500;
+        font-size: 1rem;
         background: transparent;
         border: none;
-        transition: all 0.2s;
+        border-bottom: 3px solid transparent;
+        border-radius: 0;
     }
     
     .stTabs [aria-selected="true"] {
-        background: #ffffff !important;
-        color: #1d1d1f !important;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        background: transparent !important;
+        color: #0071e3 !important;
+        border-bottom-color: #0071e3 !important;
+        box-shadow: none !important;
     }
     
     /* Data Tables */
     .stDataFrame {
-        border-radius: 14px;
+        border-radius: 16px;
         overflow: hidden;
         border: 1px solid #d2d2d7;
-    }
-    
-    .stDataFrame table {
-        font-size: 0.95rem;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.08);
     }
     
     .stDataFrame thead tr th {
-        background: #f5f5f7 !important;
-        color: #1d1d1f !important;
+        background: #1d1d1f !important;
+        color: #ffffff !important;
         font-weight: 600 !important;
-        padding: 16px !important;
+        padding: 18px !important;
         border: none !important;
-    }
-    
-    .stDataFrame tbody tr td {
-        padding: 14px !important;
-        border-bottom: 1px solid #f5f5f7 !important;
-    }
-    
-    .stDataFrame tbody tr:hover {
-        background: #f9f9f9 !important;
-    }
-    
-    /* Metrics */
-    .stMetric {
-        background: #ffffff;
-        padding: 1.5rem;
-        border-radius: 14px;
-        border: 1px solid #d2d2d7;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-        transition: all 0.3s;
-    }
-    
-    .stMetric:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 4px 16px rgba(0,0,0,0.1);
-    }
-    
-    .stMetric label {
-        color: #86868b !important;
-        font-size: 0.9rem !important;
-        font-weight: 500 !important;
         text-transform: uppercase;
+        font-size: 0.85rem;
         letter-spacing: 0.05em;
     }
     
-    .stMetric [data-testid="stMetricValue"] {
+    .stDataFrame tbody tr td {
+        padding: 16px !important;
+        border-bottom: 1px solid #f5f5f7 !important;
         color: #1d1d1f !important;
-        font-size: 2rem !important;
+    }
+    
+    .stDataFrame tbody tr:hover {
+        background: #f9f9fb !important;
+    }
+    
+    /* Metrics */
+    [data-testid="stMetricValue"] {
+        font-size: 2.5rem !important;
         font-weight: 700 !important;
-        letter-spacing: -0.02em;
+        color: #1d1d1f !important;
+        letter-spacing: -0.02em !important;
     }
     
-    .stMetric [data-testid="stMetricDelta"] {
+    [data-testid="stMetricLabel"] {
         font-size: 0.9rem !important;
+        color: #86868b !important;
         font-weight: 500 !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.05em !important;
     }
     
-    /* Expanders */
-    .streamlit-expanderHeader {
-        background: #f5f5f7;
-        border-radius: 12px;
-        padding: 16px 20px !important;
-        font-weight: 600;
-        color: #1d1d1f;
-        border: 1px solid #d2d2d7;
-    }
-    
-    .streamlit-expanderHeader:hover {
-        background: #ebebed;
-        border-color: #0071e3;
-    }
-    
-    /* Text Areas & Inputs */
-    .stTextInput>div>div>input,
-    .stTextArea textarea {
-        border-radius: 12px;
-        border: 1px solid #d2d2d7;
-        padding: 12px 16px;
-        font-size: 1rem;
-        transition: all 0.2s;
-    }
-    
-    .stTextInput>div>div>input:focus,
-    .stTextArea textarea:focus {
-        border-color: #0071e3;
-        box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.1);
-    }
-    
-    /* Select Boxes */
-    .stSelectbox>div>div>div {
-        border-radius: 12px;
-        border: 1px solid #d2d2d7;
+    [data-testid="stMetricDelta"] {
+        font-size: 0.95rem !important;
+        font-weight: 600 !important;
     }
     
     /* Dividers */
     hr {
-        margin: 3rem 0;
+        margin: 4rem 0;
         border: none;
         height: 1px;
-        background: #d2d2d7;
+        background: linear-gradient(90deg, transparent, #d2d2d7, transparent);
     }
     
-    /* Sidebar */
-    [data-testid="stSidebar"] {
-        background: #f5f5f7;
-        padding: 2rem 1rem;
-    }
-    
-    [data-testid="stSidebar"] h1,
-    [data-testid="stSidebar"] h2,
-    [data-testid="stSidebar"] h3 {
-        color: #1d1d1f;
-    }
-    
-    /* Progress Bars */
-    .stProgress > div > div > div {
-        background: linear-gradient(90deg, #0071e3, #005bb5);
-        border-radius: 4px;
-    }
-    
-    /* Captions */
-    .caption {
-        color: #86868b;
-        font-size: 0.9rem;
-        line-height: 1.5;
-        margin-top: 0.5rem;
-    }
-    
-    /* Code Blocks */
-    code {
-        background: #f5f5f7;
-        padding: 2px 6px;
-        border-radius: 6px;
-        font-size: 0.9em;
-        color: #0071e3;
-    }
-    
-    pre {
-        background: #f5f5f7;
-        border-radius: 12px;
-        padding: 16px;
+    /* Alerts/Info Boxes */
+    .stAlert {
+        border-radius: 14px;
         border: 1px solid #d2d2d7;
+        padding: 1.5rem;
+        background: #f5f5f7;
+    }
+    
+    /* Text Styling */
+    h1, h2, h3, h4, h5, h6 {
+        color: #1d1d1f !important;
+        font-weight: 600 !important;
+        letter-spacing: -0.01em !important;
+    }
+    
+    p, li, span, div {
+        color: #1d1d1f !important;
+        line-height: 1.6 !important;
     }
     
     /* Links */
     a {
-        color: #0071e3;
-        text-decoration: none;
-        font-weight: 500;
-        transition: all 0.2s;
+        color: #0071e3 !important;
+        text-decoration: none !important;
+        font-weight: 500 !important;
+        transition: all 0.2s !important;
     }
     
     a:hover {
-        color: #005bb5;
-        text-decoration: underline;
+        color: #005bb5 !important;
+        text-decoration: underline !important;
     }
     
-    /* Headers in content */
-    h1, h2, h3, h4, h5, h6 {
-        color: #1d1d1f;
-        font-weight: 600;
-        letter-spacing: -0.01em;
+    /* Expanders */
+    .streamlit-expanderHeader {
+        background: #f5f5f7 !important;
+        border-radius: 14px !important;
+        padding: 20px 24px !important;
+        font-weight: 600 !important;
+        color: #1d1d1f !important;
+        border: 1px solid #d2d2d7 !important;
+        font-size: 1.1rem !important;
     }
     
-    /* Paragraph text */
-    p {
-        color: #1d1d1f;
-        line-height: 1.6;
+    .streamlit-expanderHeader:hover {
+        background: #ebebed !important;
+        border-color: #0071e3 !important;
     }
     
-    /* Lists */
-    ul, ol {
-        color: #1d1d1f;
-        line-height: 1.8;
+    /* Remove sidebar */
+    [data-testid="stSidebar"] {
+        display: none;
     }
     
-    li {
-        margin: 0.5rem 0;
+    /* Smooth animations */
+    * {
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
     }
     
-    /* Info/Warning/Success boxes */
-    .stAlert {
-        border-radius: 12px;
-        border: none;
-        padding: 16px 20px;
+    /* Focus Card - Special styling */
+    .focus-card {
+        background: linear-gradient(135deg, #f5f5f7 0%, #ffffff 100%);
+        padding: 3rem;
+        border-radius: 24px;
+        border: 1px solid #d2d2d7;
+        margin: 2rem 0 3rem 0;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.1);
     }
     
-    /* Radio buttons */
-    .stRadio > label {
-        color: #1d1d1f;
-        font-weight: 500;
+    .focus-card h2 {
+        color: #0071e3 !important;
+        font-size: 2rem !important;
+        margin-bottom: 1.5rem !important;
     }
     
-    /* Checkboxes */
-    .stCheckbox > label {
-        color: #1d1d1f;
-        font-weight: 500;
+    .focus-card p {
+        font-size: 1.1rem !important;
+        line-height: 1.7 !important;
+        margin: 1rem 0 !important;
     }
     
-    /* Remove default streamlit branding colors */
-    [data-testid="stHeader"] {
-        background: transparent;
-    }
-    
-    /* Smooth scrolling */
-    html {
-        scroll-behavior: smooth;
+    .focus-card strong {
+        color: #1d1d1f !important;
+        font-weight: 600 !important;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -378,26 +374,48 @@ if 'researcher' not in st.session_state:
     st.session_state.researcher = KeywordResearcher()
 
 # Header
-st.markdown('<p class="main-header">📊 Content Strategy Command Center</p>', unsafe_allow_html=True)
-st.markdown('<p class="subheader">Gera Yeremin | Digital Marketing & Software Architecture Specialist</p>', unsafe_allow_html=True)
+st.markdown('<div class="hero-section">', unsafe_allow_html=True)
+st.markdown('<h1 class="hero-title">Content Strategy Dashboard</h1>', unsafe_allow_html=True)
+st.markdown('<p class="hero-subtitle">Gera Yeremin | Digital Marketing & Software Architecture</p>', unsafe_allow_html=True)
+st.markdown('</div>', unsafe_allow_html=True)
 
-# Key findings from brand profile
+# Focus card
 st.markdown("""
-<div class="insight-box">
-    <h3>🎯 Your Primary Focus: Custom Software Development</h3>
+<div class="focus-card">
+    <h2>🎯 Your Focus: Custom Software Development</h2>
     <p><strong>Core Offering:</strong> Building custom business applications and software architecture solutions</p>
-    <p><strong>Specialty Areas:</strong> Review management systems, business intelligence tools, workflow automation, custom CRM/data platforms</p>
-    <p><strong>Marketing Advantage:</strong> You understand both the technical AND marketing side - rare combination that helps you build software that actually drives business results</p>
+    <p><strong>Specialty:</strong> Review management systems, BI tools, workflow automation, custom CRM/data platforms</p>
+    <p><strong>Your Edge:</strong> You understand both technical AND marketing - build software that drives actual business results</p>
 </div>
 """, unsafe_allow_html=True)
 
-st.divider()
-
 # Create tabs for different views
-tab1, tab2, tab3, tab4, tab5, tab6, tab7, tab8 = st.tabs(["📈 Overview", "🎯 Keyword Strategy", "🔍 Live Analysis", "🔥 Content Opportunities", "💡 Content Calendar", "📝 Content Review", "✍️ Voice Guide", "🧮 Interactive Tools"])
+tab1, tab2, tab3, tab4, tab5, tab6, tab7, tab8 = st.tabs([
+    "📊 Strategy Overview", 
+    "🧮 Interactive Tools", 
+    "📅 Content Calendar",
+    "🔥 Content Opportunities",
+    "💡 Strategy",
+    "📝 Content Review",
+    "✍️ Voice Guide",
+    "🔧 Tools"
+])
 
 with tab1:
-    st.header("Market Overview")
+    # Quick stats
+    col1, col2, col3, col4 = st.columns(4)
+    
+    with col1:
+        st.metric("Target Keywords", "6", "🟢 Low Competition")
+    
+    with col2:
+        st.metric("Avg Search Interest", "42", "Rising")
+    
+    with col3:
+        st.metric("Content Pieces", "12", "Weeks 1-12")
+    
+    with col4:
+        st.metric("Tools Built", "3", "Interactive")
     
     # Search Volume Estimates (based on Google Trends relative data)
     st.subheader("📊 Search Interest & Competition")
