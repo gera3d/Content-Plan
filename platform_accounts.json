@@ -1,0 +1,90 @@
+{
+  "accounts": {
+    "medium": {
+      "email": "gera3d@gmail.com",
+      "status": "needs_verification",
+      "profile_url": "",
+      "setup_date": "",
+      "notes": "High authority platform (DA: 95) for republishing content"
+    },
+    "devto": {
+      "email": "gera3d@gmail.com",
+      "status": "needs_verification",
+      "profile_url": "",
+      "setup_date": "",
+      "notes": "Developer community (DA: 85), technical content focus"
+    },
+    "linkedin": {
+      "email": "gera3d@gmail.com",
+      "status": "needs_verification",
+      "profile_url": "",
+      "setup_date": "",
+      "notes": "Professional network (DA: 99), articles and carousel posts"
+    },
+    "reddit": {
+      "email": "gera3d@gmail.com",
+      "username": "",
+      "status": "needs_verification",
+      "profile_url": "",
+      "setup_date": "",
+      "notes": "Community engagement, target subreddits: r/entrepreneur, r/smallbusiness, r/SaaS"
+    },
+    "quora": {
+      "email": "gera3d@gmail.com",
+      "status": "needs_verification",
+      "profile_url": "",
+      "setup_date": "",
+      "notes": "Q&A platform (DA: 93), long-term SEO value"
+    },
+    "youtube": {
+      "email": "gera3d@gmail.com",
+      "channel_name": "",
+      "status": "needs_verification",
+      "profile_url": "",
+      "setup_date": "",
+      "notes": "Video content (DA: 100), 2nd largest search engine"
+    },
+    "twitter": {
+      "email": "gera3d@gmail.com",
+      "handle": "",
+      "status": "needs_verification",
+      "profile_url": "",
+      "setup_date": "",
+      "notes": "Quick engagement, thread strategy, viral potential"
+    },
+    "hackernews": {
+      "email": "gera3d@gmail.com",
+      "username": "",
+      "status": "needs_verification",
+      "profile_url": "",
+      "setup_date": "",
+      "notes": "Tech community (DA: 92), can drive massive traffic if successful"
+    },
+    "github": {
+      "email": "gera3d@gmail.com",
+      "username": "",
+      "status": "needs_verification",
+      "profile_url": "",
+      "setup_date": "",
+      "notes": "Code examples, technical documentation (DA: 100)"
+    },
+    "substack": {
+      "email": "gera3d@gmail.com",
+      "publication_name": "",
+      "status": "needs_verification",
+      "profile_url": "",
+      "setup_date": "",
+      "notes": "Newsletter platform, email list building"
+    },
+    "website_57seconds": {
+      "email": "gera3d@gmail.com",
+      "domain": "57seconds.com",
+      "status": "needs_verification",
+      "profile_url": "https://57seconds.com",
+      "setup_date": "",
+      "notes": "Main hub - Full content, lead capture, interactive tools"
+    }
+  },
+  "last_updated": "2025-11-24",
+  "notes": "All accounts should use gera3d@gmail.com as primary email for consistency"
+}
