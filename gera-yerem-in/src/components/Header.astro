@@ -1,0 +1,30 @@
+---
+const currentPath = Astro.url.pathname;
+
+const navLinks = [
+  { href: '/', label: 'Writing' },
+  { href: '/about', label: 'About' },
+  { href: '/work', label: 'Work' },
+  { href: '/contact', label: 'Contact' },
+];
+---
+
+<header class="header">
+  <div class="container header__inner">
+    <a href="/" class="header__logo">gera.yerem.in</a>
+    <nav class="header__nav">
+      {navLinks.map(link => (
+        <a 
+          href={link.href} 
+          class:list={[
+            'header__link',
+            { 'header__link--active': currentPath === link.href || 
+              (link.href !== '/' && currentPath.startsWith(link.href)) }
+          ]}
+        >
+          {link.label}
+        </a>
+      ))}
+    </nav>
+  </div>
+</header>

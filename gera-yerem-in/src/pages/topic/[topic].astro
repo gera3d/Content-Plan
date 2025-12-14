@@ -1,0 +1,79 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BlogCard from '../../components/BlogCard.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  return [
+    { params: { topic: 'software-development' } },
+    { params: { topic: 'digital-marketing' } },
+    { params: { topic: 'business-automation' } }
+  ];
+}
+
+const { topic } = Astro.params;
+
+// Topic display names
+const topicNames: Record<string, string> = {
+  'software-development': 'Software Development',
+  'digital-marketing': 'Digital Marketing',
+  'business-automation': 'Business Automation'
+};
+
+const topicDescriptions: Record<string, string> = {
+  'software-development': 'Custom software, application development, and technical insights for businesses.',
+  'digital-marketing': 'Digital marketing strategies, SEO, and online growth tactics.',
+  'business-automation': 'Workflow automation, process optimization, and efficiency improvements.'
+};
+
+const topicName = topicNames[topic] || topic;
+const topicDescription = topicDescriptions[topic] || '';
+
+// Get posts for this topic
+const allPosts = await getCollection('posts', ({ data }) => {
+  return data.topic === topic && !data.draft;
+});
+
+// Sort by date, newest first
+const posts = allPosts.sort((a, b) => 
+  b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
+);
+
+// Format date
+const formatDate = (date: Date) => {
+  return new Intl.DateTimeFormat('en-US', { 
+    year: 'numeric', 
+    month: 'short', 
+    day: 'numeric' 
+  }).format(date);
+};
+---
+
+<BaseLayout 
+  title={topicName}
+  description={topicDescription}
+>
+  <div class="page">
+    <div class="container">
+      <header class="page__header">
+        <h1 class="page__title">{topicName}</h1>
+        <p class="page__description">{topicDescription}</p>
+      </header>
+
+      {posts.length > 0 ? (
+        <div class="posts-list">
+          {posts.map(post => (
+            <BlogCard 
+              title={post.data.title} 
+              href={`/${post.slug}`}
+              date={formatDate(post.data.publishDate)}
+              topic={topicName}
+            />
+          ))}
+        </div>
+      ) : (
+        <p class="text-muted">No posts in this topic yet.</p>
+      )}
+    </div>
+  </div>
+</BaseLayout>

@@ -1,0 +1,46 @@
+---
+const topics = [
+  { href: '/topic/software-development', label: 'Software Development' },
+  { href: '/topic/digital-marketing', label: 'Digital Marketing' },
+  { href: '/topic/business-automation', label: 'Business Automation' },
+];
+
+const social = [
+  { href: 'https://www.linkedin.com/in/gerayeremin', label: 'LinkedIn' },
+  { href: 'https://github.com/gerayeremin', label: 'GitHub' },
+  { href: 'https://twitter.com/gerayeremin', label: 'Twitter' },
+];
+---
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__section">
+      <h4 class="footer__title">Topics</h4>
+      <ul class="footer__links">
+        {topics.map(topic => (
+          <li>
+            <a href={topic.href} class="footer__link">{topic.label}</a>
+          </li>
+        ))}
+      </ul>
+    </div>
+    
+    <div class="footer__section">
+      <h4 class="footer__title">Connect</h4>
+      <ul class="footer__links">
+        {social.map(link => (
+          <li>
+            <a href={link.href} class="footer__link" target="_blank" rel="noopener noreferrer">
+              {link.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+    
+    <div class="footer__section">
+      <p class="footer__cta">Want to work together?</p>
+      <a href="/contact" class="btn btn--primary">Schedule a call</a>
+    </div>
+  </div>
+</footer>

@@ -5,7 +5,8 @@
       "status": "needs_verification",
       "profile_url": "",
       "setup_date": "",
-      "notes": "High authority platform (DA: 95) for republishing content"
+      "notes": "High authority platform (DA: 95) - Sign in page shows 'Welcome back' - may have existing account",
+      "action_needed": "Sign in with Google using gera3d@gmail.com"
     },
     "devto": {
       "email": "gera3d@gmail.com",

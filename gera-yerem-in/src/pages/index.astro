@@ -1,0 +1,141 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import BlogCard from '../components/BlogCard.astro';
+
+const services = [
+  {
+    title: 'Custom Business Applications',
+    description: "When off-the-shelf doesn't fit. Built around YOUR workflow, not someone else's idea of how you should work."
+  },
+  {
+    title: 'Review & Reputation Tools',
+    description: "Get more reviews, automatically. I built this for my own agency first—now it works for clients too."
+  },
+  {
+    title: 'Workflow Automation',
+    description: "Stop doing the same task 50 times. Connect your systems, eliminate manual data entry, reclaim your time."
+  }
+];
+
+const workWithItems = [
+  "Businesses making $500K-$5M/year",
+  "Teams drowning in spreadsheets and workarounds",
+  "Companies whose processes don't fit in Salesforce",
+  "People who want a partner, not just a vendor"
+];
+---
+
+<BaseLayout 
+  title="Home" 
+  description="I build custom software for businesses that have outgrown spreadsheets. Developer + Marketer. I don't just write code—I build tools that actually make you money."
+>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <h1 class="hero__title">
+        I build custom software for businesses<br />that have outgrown spreadsheets.
+      </h1>
+      <p class="hero__subtitle">
+        Developer + Marketer. I don't just write code—I build tools that actually make you money.
+      </p>
+      <div class="hero__actions">
+        <a href="/custom-business-software-guide" class="btn btn--secondary">Read the guide</a>
+        <a href="/contact" class="btn btn--primary">Let's talk</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- What I Build Section -->
+  <section class="section section--alt">
+    <div class="container">
+      <h2 class="mb-8">What I Build</h2>
+      <div class="services">
+        {services.map(service => (
+          <ServiceCard title={service.title} description={service.description} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Who I Work With Section -->
+  <section class="section">
+    <div class="container">
+      <div class="work-with">
+        <h2 class="mb-8">I work best with:</h2>
+        <ul class="work-with__list">
+          {workWithItems.map(item => (
+            <li class="work-with__item">{item}</li>
+          ))}
+        </ul>
+        <p class="work-with__note">
+          Projects typically run $15K-$150K over 2-6 months.
+        </p>
+        <p class="work-with__honest">
+          I'll tell you if we're not a good fit.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Content Section -->
+  <section class="section section--alt">
+    <div class="container">
+      <h2 class="mb-8">Latest Writing</h2>
+      <div class="featured">
+        <div class="featured__main">
+          <h3 class="featured__main-title">
+            <a href="/custom-business-software-guide">Custom Business Software: The Complete Guide</a>
+          </h3>
+          <p class="featured__main-description">
+            Your team is drowning in spreadsheets. What if there was another way? 
+            Here's everything I've learned building custom software for 15+ years.
+          </p>
+          <a href="/custom-business-software-guide" class="btn btn--primary">Read the guide →</a>
+        </div>
+        
+        <div class="featured__secondary">
+          <BlogCard 
+            title="5 Signs You Need Custom Software" 
+            href="/5-signs-you-need-custom-software"
+            topic="Software Development"
+          />
+          <BlogCard 
+            title="ROI Calculator: Build vs Buy" 
+            href="/roi-calculator-build-vs-buy"
+            topic="Business"
+          />
+        </div>
+      </div>
+      
+      <p class="text-center mb-4" style="margin-top: var(--space-8);">
+        <a href="/topic/software-development">Browse all posts →</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="section">
+    <div class="container">
+      <div class="about-preview">
+        <div class="about-preview__photo">
+          <img src="/images/gera-headshot.jpg" alt="Gera Yeremin" width="200" height="200" />
+        </div>
+        <div class="about-preview__content">
+          <h2 class="mb-4">About Me</h2>
+          <p class="about-preview__text">
+            I'm Gera. I've been building software for 15+ years and running marketing for almost as long.
+          </p>
+          <p class="about-preview__text">
+            That combo is rare. Most developers don't understand marketing. Most marketers can't build software. I do both.
+          </p>
+          <p class="about-preview__text">
+            I co-founded 57 Seconds, a digital marketing agency, where I build the tools we use to help clients. 
+            I use my own software every day.
+          </p>
+          <a href="/about" class="btn btn--secondary">More about me</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

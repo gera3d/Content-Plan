@@ -1,0 +1,55 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout 
+  title="Contact" 
+  description="Want to discuss your specific situation? Let's do a quick call. No pitch, just conversation."
+>
+  <div class="page">
+    <div class="container">
+      <div class="contact">
+        <header class="page__header">
+          <h1 class="page__title">Let's Talk</h1>
+        </header>
+
+        <p class="contact__cta">
+          Want to discuss your specific situation? Let's do a quick call. No pitch, just conversation.
+        </p>
+
+        <div class="contact__method">
+          <span class="contact__label">Schedule a Call</span>
+          <p class="text-muted mb-4">
+            30 minutes. We'll talk about what you're trying to solve and whether I can help. 
+            If we're not a good fit, I'll tell you.
+          </p>
+          <a href="https://calendly.com/gera_yeremin/30minskype" class="btn btn--primary" target="_blank" rel="noopener noreferrer">
+            Book a time →
+          </a>
+        </div>
+
+        <div class="contact__method" style="margin-top: var(--space-8);">
+          <span class="contact__label">Email</span>
+          <p class="text-muted">
+            Prefer email? That works too.
+          </p>
+          <p>
+            <a href="mailto:gera@yerem.in">gera@yerem.in</a>
+          </p>
+        </div>
+
+        <div class="contact__method" style="margin-top: var(--space-8);">
+          <span class="contact__label">Connect</span>
+          <p class="text-muted mb-4">
+            Or find me on social media.
+          </p>
+          <ul style="list-style: none; display: flex; gap: var(--space-4); flex-wrap: wrap;">
+            <li><a href="https://www.linkedin.com/in/gerayeremin" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+            <li><a href="https://github.com/gerayeremin" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+            <li><a href="https://twitter.com/gerayeremin" target="_blank" rel="noopener noreferrer">Twitter</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

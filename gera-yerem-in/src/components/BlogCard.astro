@@ -1,0 +1,22 @@
+---
+interface Props {
+  title: string;
+  href: string;
+  date?: string;
+  topic?: string;
+}
+
+const { title, href, date, topic } = Astro.props;
+---
+
+<article class="blog-card">
+  <h3 class="blog-card__title">
+    <a href={href}>{title}</a>
+  </h3>
+  {(date || topic) && (
+    <div class="blog-card__meta">
+      {date && <span>{date}</span>}
+      {topic && <span>{topic}</span>}
+    </div>
+  )}
+</article>

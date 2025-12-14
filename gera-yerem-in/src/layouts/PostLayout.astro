@@ -1,0 +1,95 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  post: CollectionEntry<'posts'>;
+}
+
+const { post } = Astro.props;
+const { title, description, publishDate, updatedDate, topic, tags, author } = post.data;
+
+// Format dates
+const formatDate = (date: Date) => {
+  return new Intl.DateTimeFormat('en-US', { 
+    year: 'numeric', 
+    month: 'long', 
+    day: 'numeric' 
+  }).format(date);
+};
+
+// Calculate reading time (rough estimate)
+const readingTime = Math.ceil(post.body.split(/\s+/).length / 200);
+
+// Topic display names
+const topicNames: Record<string, string> = {
+  'software-development': 'Software Development',
+  'digital-marketing': 'Digital Marketing',
+  'business-automation': 'Business Automation'
+};
+
+// Article schema for structured data
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": title,
+  "description": description,
+  "author": {
+    "@type": "Person",
+    "name": author,
+    "url": "https://gera.yerem.in"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Gera Yeremin",
+    "url": "https://gera.yerem.in"
+  },
+  "datePublished": publishDate.toISOString(),
+  "dateModified": (updatedDate || publishDate).toISOString(),
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": `https://gera.yerem.in/${post.slug}`
+  }
+};
+---
+
+<BaseLayout 
+  title={title}
+  description={description}
+  type="article"
+  publishedTime={publishDate.toISOString()}
+  modifiedTime={(updatedDate || publishDate).toISOString()}
+  author={author}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} slot="head" />
+  
+  <article class="post">
+    <div class="container">
+      <header class="post__header">
+        <a href={`/topic/${topic}`} class="post__topic">{topicNames[topic]}</a>
+        <h1 class="post__title">{title}</h1>
+        <div class="post__meta">
+          <span>{formatDate(publishDate)}</span>
+          <span>·</span>
+          <span>{readingTime} min read</span>
+        </div>
+      </header>
+      
+      <div class="post__content">
+        <slot />
+      </div>
+      
+      {tags.length > 0 && (
+        <footer style="margin-top: var(--space-12); padding-top: var(--space-8); border-top: 1px solid var(--color-border);">
+          <div style="display: flex; gap: var(--space-2); flex-wrap: wrap;">
+            {tags.map(tag => (
+              <span style="padding: var(--space-1) var(--space-3); background: var(--color-background-alt); border-radius: 4px; font-size: var(--font-size-sm); color: var(--color-text-muted);">
+                #{tag}
+              </span>
+            ))}
+          </div>
+        </footer>
+      )}
+    </div>
+  </article>
+</BaseLayout>

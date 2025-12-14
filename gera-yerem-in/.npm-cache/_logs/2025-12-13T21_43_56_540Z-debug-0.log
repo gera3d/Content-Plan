@@ -1,0 +1,965 @@
+0 verbose cli /usr/local/bin/node /usr/local/bin/npm
+1 info using npm@11.6.2
+2 info using node@v24.11.1
+3 silly config load:file:/usr/local/lib/node_modules/npm/npmrc
+4 silly config load:file:/Users/gerayeremin/Documents/Projects/Content Plan/gera-yerem-in/.npmrc
+5 silly config load:file:/Users/gerayeremin/.npmrc
+6 silly config load:file:/usr/local/etc/npmrc
+7 verbose title npm install @astrojs/mdx @astrojs/sitemap @astrojs/rss
+8 verbose argv "install" "@astrojs/mdx" "@astrojs/sitemap" "@astrojs/rss" "--cache" "./.npm-cache"
+9 verbose logfile logs-max:10 dir:/Users/gerayeremin/Documents/Projects/Content Plan/gera-yerem-in/.npm-cache/_logs/2025-12-13T21_43_56_540Z-
+10 verbose logfile /Users/gerayeremin/Documents/Projects/Content Plan/gera-yerem-in/.npm-cache/_logs/2025-12-13T21_43_56_540Z-debug-0.log
+11 silly logfile done cleaning log files
+12 silly packumentCache heap:4496293888 maxSize:1124073472 maxEntrySize:562036736
+13 silly idealTree buildDeps
+14 silly fetch manifest @astrojs/mdx@*
+15 silly packumentCache full:https://registry.npmjs.org/@astrojs%2fmdx cache-miss
+16 http fetch GET 200 https://registry.npmjs.org/@astrojs%2fmdx 527ms (cache miss)
+17 silly packumentCache full:https://registry.npmjs.org/@astrojs%2fmdx set size:undefined disposed:false
+18 silly fetch manifest astro@^5.16.5
+19 silly packumentCache full:https://registry.npmjs.org/astro cache-miss
+20 http cache https://registry.npmjs.org/astro 31ms (cache hit)
+21 silly packumentCache full:https://registry.npmjs.org/astro set size:8509022 disposed:false
+22 silly fetch manifest @astrojs/sitemap@*
+23 silly packumentCache full:https://registry.npmjs.org/@astrojs%2fsitemap cache-miss
+24 http fetch GET 200 https://registry.npmjs.org/@astrojs%2fsitemap 547ms (cache miss)
+25 silly packumentCache full:https://registry.npmjs.org/@astrojs%2fsitemap set size:undefined disposed:false
+26 silly fetch manifest @astrojs/rss@*
+27 silly packumentCache full:https://registry.npmjs.org/@astrojs%2frss cache-miss
+28 http fetch GET 200 https://registry.npmjs.org/@astrojs%2frss 431ms (cache miss)
+29 silly packumentCache full:https://registry.npmjs.org/@astrojs%2frss set size:undefined disposed:false
+30 silly placeDep ROOT @astrojs/mdx@4.3.13 OK for: gera-yerem-in@0.0.1 want: *
+31 silly placeDep ROOT @astrojs/rss@4.0.14 OK for: gera-yerem-in@0.0.1 want: *
+32 silly placeDep ROOT @astrojs/sitemap@3.6.0 OK for: gera-yerem-in@0.0.1 want: *
+33 silly fetch manifest @mdx-js/mdx@^3.1.1
+34 silly packumentCache full:https://registry.npmjs.org/@mdx-js%2fmdx cache-miss
+35 silly fetch manifest estree-util-visit@^2.0.0
+36 silly packumentCache full:https://registry.npmjs.org/estree-util-visit cache-miss
+37 silly fetch manifest source-map@^0.7.6
+38 silly packumentCache full:https://registry.npmjs.org/source-map cache-miss
+39 silly fetch manifest fast-xml-parser@^5.3.0
+40 silly packumentCache full:https://registry.npmjs.org/fast-xml-parser cache-miss
+41 silly fetch manifest sitemap@^8.0.0
+42 silly packumentCache full:https://registry.npmjs.org/sitemap cache-miss
+43 http fetch GET 200 https://registry.npmjs.org/@mdx-js%2fmdx 119ms (cache miss)
+44 silly packumentCache full:https://registry.npmjs.org/@mdx-js%2fmdx set size:undefined disposed:false
+45 silly fetch manifest stream-replace-string@^2.0.0
+46 silly packumentCache full:https://registry.npmjs.org/stream-replace-string cache-miss
+47 http fetch GET 200 https://registry.npmjs.org/source-map 165ms (cache miss)
+48 silly packumentCache full:https://registry.npmjs.org/source-map set size:undefined disposed:false
+49 http fetch GET 200 https://registry.npmjs.org/fast-xml-parser 170ms (cache miss)
+50 silly packumentCache full:https://registry.npmjs.org/fast-xml-parser set size:undefined disposed:false
+51 http fetch GET 200 https://registry.npmjs.org/sitemap 184ms (cache miss)
+52 silly packumentCache full:https://registry.npmjs.org/sitemap set size:undefined disposed:false
+53 http fetch GET 200 https://registry.npmjs.org/estree-util-visit 264ms (cache miss)
+54 silly packumentCache full:https://registry.npmjs.org/estree-util-visit set size:undefined disposed:false
+55 http fetch GET 200 https://registry.npmjs.org/stream-replace-string 370ms (cache miss)
+56 silly packumentCache full:https://registry.npmjs.org/stream-replace-string set size:undefined disposed:false
+57 silly placeDep ROOT @mdx-js/mdx@3.1.1 OK for: @astrojs/mdx@4.3.13 want: ^3.1.1
+58 silly placeDep ROOT estree-util-visit@2.0.0 OK for: @astrojs/mdx@4.3.13 want: ^2.0.0
+59 silly placeDep ROOT source-map@0.7.6 OK for: @astrojs/mdx@4.3.13 want: ^0.7.6
+60 silly fetch manifest @types/estree-jsx@^1.0.0
+61 silly packumentCache full:https://registry.npmjs.org/@types%2festree-jsx cache-miss
+62 silly fetch manifest @types/mdx@^2.0.0
+63 silly packumentCache full:https://registry.npmjs.org/@types%2fmdx cache-miss
+64 silly fetch manifest collapse-white-space@^2.0.0
+65 silly packumentCache full:https://registry.npmjs.org/collapse-white-space cache-miss
+66 silly fetch manifest estree-util-is-identifier-name@^3.0.0
+67 silly packumentCache full:https://registry.npmjs.org/estree-util-is-identifier-name cache-miss
+68 silly fetch manifest estree-util-scope@^1.0.0
+69 silly packumentCache full:https://registry.npmjs.org/estree-util-scope cache-miss
+70 http fetch GET 200 https://registry.npmjs.org/estree-util-scope 61ms (cache miss)
+71 silly packumentCache full:https://registry.npmjs.org/estree-util-scope set size:undefined disposed:false
+72 silly fetch manifest hast-util-to-jsx-runtime@^2.0.0
+73 silly packumentCache full:https://registry.npmjs.org/hast-util-to-jsx-runtime cache-miss
+74 http fetch GET 200 https://registry.npmjs.org/@types%2festree-jsx 69ms (cache miss)
+75 silly packumentCache full:https://registry.npmjs.org/@types%2festree-jsx set size:undefined disposed:false
+76 silly fetch manifest markdown-extensions@^2.0.0
+77 silly packumentCache full:https://registry.npmjs.org/markdown-extensions cache-miss
+78 http fetch GET 200 https://registry.npmjs.org/estree-util-is-identifier-name 72ms (cache miss)
+79 silly packumentCache full:https://registry.npmjs.org/estree-util-is-identifier-name set size:undefined disposed:false
+80 silly fetch manifest recma-build-jsx@^1.0.0
+81 silly packumentCache full:https://registry.npmjs.org/recma-build-jsx cache-miss
+82 http fetch GET 200 https://registry.npmjs.org/@types%2fmdx 76ms (cache miss)
+83 silly packumentCache full:https://registry.npmjs.org/@types%2fmdx set size:undefined disposed:false
+84 silly fetch manifest recma-jsx@^1.0.0
+85 silly packumentCache full:https://registry.npmjs.org/recma-jsx cache-miss
+86 http fetch GET 200 https://registry.npmjs.org/collapse-white-space 85ms (cache miss)
+87 silly packumentCache full:https://registry.npmjs.org/collapse-white-space set size:undefined disposed:false
+88 silly fetch manifest recma-stringify@^1.0.0
+89 silly packumentCache full:https://registry.npmjs.org/recma-stringify cache-miss
+90 http fetch GET 200 https://registry.npmjs.org/recma-build-jsx 62ms (cache miss)
+91 silly packumentCache full:https://registry.npmjs.org/recma-build-jsx set size:undefined disposed:false
+92 silly fetch manifest rehype-recma@^1.0.0
+93 silly packumentCache full:https://registry.npmjs.org/rehype-recma cache-miss
+94 http fetch GET 200 https://registry.npmjs.org/markdown-extensions 68ms (cache miss)
+95 silly packumentCache full:https://registry.npmjs.org/markdown-extensions set size:undefined disposed:false
+96 silly fetch manifest remark-mdx@^3.0.0
+97 silly packumentCache full:https://registry.npmjs.org/remark-mdx cache-miss
+98 http fetch GET 200 https://registry.npmjs.org/recma-jsx 62ms (cache miss)
+99 silly packumentCache full:https://registry.npmjs.org/recma-jsx set size:undefined disposed:false
+100 silly fetch manifest source-map@^0.7.0
+101 silly packumentCache full:https://registry.npmjs.org/source-map cache-miss
+102 http fetch GET 200 https://registry.npmjs.org/recma-stringify 54ms (cache miss)
+103 silly packumentCache full:https://registry.npmjs.org/recma-stringify set size:undefined disposed:false
+104 silly fetch manifest unist-util-position-from-estree@^2.0.0
+105 silly packumentCache full:https://registry.npmjs.org/unist-util-position-from-estree cache-miss
+106 http fetch GET 200 https://registry.npmjs.org/hast-util-to-jsx-runtime 76ms (cache miss)
+107 silly packumentCache full:https://registry.npmjs.org/hast-util-to-jsx-runtime set size:undefined disposed:false
+108 http cache https://registry.npmjs.org/source-map 10ms (cache hit)
+109 silly packumentCache full:https://registry.npmjs.org/source-map set size:226090 disposed:false
+110 http fetch GET 200 https://registry.npmjs.org/rehype-recma 36ms (cache miss)
+111 silly packumentCache full:https://registry.npmjs.org/rehype-recma set size:undefined disposed:false
+112 http fetch GET 200 https://registry.npmjs.org/unist-util-position-from-estree 51ms (cache miss)
+113 silly packumentCache full:https://registry.npmjs.org/unist-util-position-from-estree set size:undefined disposed:false
+114 http fetch GET 200 https://registry.npmjs.org/remark-mdx 68ms (cache miss)
+115 silly packumentCache full:https://registry.npmjs.org/remark-mdx set size:undefined disposed:false
+116 silly placeDep ROOT fast-xml-parser@5.3.3 OK for: @astrojs/rss@4.0.14 want: ^5.3.0
+117 silly fetch manifest strnum@^2.1.0
+118 silly packumentCache full:https://registry.npmjs.org/strnum cache-miss
+119 http fetch GET 200 https://registry.npmjs.org/strnum 60ms (cache miss)
+120 silly packumentCache full:https://registry.npmjs.org/strnum set size:undefined disposed:false
+121 silly placeDep ROOT sitemap@8.0.2 OK for: @astrojs/sitemap@3.6.0 want: ^8.0.0
+122 silly placeDep ROOT stream-replace-string@2.0.0 OK for: @astrojs/sitemap@3.6.0 want: ^2.0.0
+123 silly fetch manifest arg@^5.0.0
+124 silly packumentCache full:https://registry.npmjs.org/arg cache-miss
+125 silly fetch manifest @types/sax@^1.2.1
+126 silly packumentCache full:https://registry.npmjs.org/@types%2fsax cache-miss
+127 silly fetch manifest @types/node@^17.0.5
+128 silly packumentCache full:https://registry.npmjs.org/@types%2fnode cache-miss
+129 http cache https://registry.npmjs.org/@types%2fnode 31ms (cache hit)
+130 silly packumentCache full:https://registry.npmjs.org/@types%2fnode set size:10715206 disposed:false
+131 http fetch GET 200 https://registry.npmjs.org/arg 180ms (cache miss)
+132 silly packumentCache full:https://registry.npmjs.org/arg set size:undefined disposed:false
+133 http fetch GET 200 https://registry.npmjs.org/@types%2fsax 217ms (cache miss)
+134 silly packumentCache full:https://registry.npmjs.org/@types%2fsax set size:undefined disposed:false
+135 silly fetch manifest acorn@^8.0.0
+136 silly packumentCache full:https://registry.npmjs.org/acorn cache-miss
+137 http cache https://registry.npmjs.org/acorn 3ms (cache hit)
+138 silly packumentCache full:https://registry.npmjs.org/acorn set size:377362 disposed:false
+139 silly placeDep ROOT @types/estree-jsx@1.0.5 OK for: @mdx-js/mdx@3.1.1 want: ^1.0.0
+140 silly placeDep ROOT @types/mdx@2.0.13 OK for: @mdx-js/mdx@3.1.1 want: ^2.0.0
+141 silly placeDep ROOT collapse-white-space@2.1.0 OK for: @mdx-js/mdx@3.1.1 want: ^2.0.0
+142 silly placeDep ROOT estree-util-is-identifier-name@3.0.0 OK for: @mdx-js/mdx@3.1.1 want: ^3.0.0
+143 silly placeDep ROOT estree-util-scope@1.0.0 OK for: @mdx-js/mdx@3.1.1 want: ^1.0.0
+144 silly placeDep ROOT hast-util-to-jsx-runtime@2.3.6 OK for: @mdx-js/mdx@3.1.1 want: ^2.0.0
+145 silly placeDep ROOT markdown-extensions@2.0.0 OK for: @mdx-js/mdx@3.1.1 want: ^2.0.0
+146 silly placeDep ROOT recma-build-jsx@1.0.0 OK for: @mdx-js/mdx@3.1.1 want: ^1.0.0
+147 silly placeDep ROOT recma-jsx@1.0.1 OK for: @mdx-js/mdx@3.1.1 want: ^1.0.0
+148 silly placeDep ROOT recma-stringify@1.0.0 OK for: @mdx-js/mdx@3.1.1 want: ^1.0.0
+149 silly placeDep ROOT rehype-recma@1.0.0 OK for: @mdx-js/mdx@3.1.1 want: ^1.0.0
+150 silly placeDep ROOT remark-mdx@3.1.1 OK for: @mdx-js/mdx@3.1.1 want: ^3.0.0
+151 silly placeDep ROOT unist-util-position-from-estree@2.0.0 OK for: @mdx-js/mdx@3.1.1 want: ^2.0.0
+152 silly fetch manifest mdast-util-mdx-expression@^2.0.0
+153 silly packumentCache full:https://registry.npmjs.org/mdast-util-mdx-expression cache-miss
+154 silly fetch manifest mdast-util-mdx-jsx@^3.0.0
+155 silly packumentCache full:https://registry.npmjs.org/mdast-util-mdx-jsx cache-miss
+156 silly fetch manifest mdast-util-mdxjs-esm@^2.0.0
+157 silly packumentCache full:https://registry.npmjs.org/mdast-util-mdxjs-esm cache-miss
+158 silly fetch manifest style-to-js@^1.0.0
+159 silly packumentCache full:https://registry.npmjs.org/style-to-js cache-miss
+160 silly fetch manifest estree-util-build-jsx@^3.0.0
+161 silly packumentCache full:https://registry.npmjs.org/estree-util-build-jsx cache-miss
+162 http fetch GET 200 https://registry.npmjs.org/estree-util-build-jsx 48ms (cache miss)
+163 silly packumentCache full:https://registry.npmjs.org/estree-util-build-jsx set size:undefined disposed:false
+164 silly fetch manifest acorn-jsx@^5.0.0
+165 silly packumentCache full:https://registry.npmjs.org/acorn-jsx cache-miss
+166 http fetch GET 200 https://registry.npmjs.org/mdast-util-mdx-expression 51ms (cache miss)
+167 silly packumentCache full:https://registry.npmjs.org/mdast-util-mdx-expression set size:undefined disposed:false
+168 silly fetch manifest estree-util-to-js@^2.0.0
+169 silly packumentCache full:https://registry.npmjs.org/estree-util-to-js cache-miss
+170 http fetch GET 200 https://registry.npmjs.org/style-to-js 57ms (cache miss)
+171 silly packumentCache full:https://registry.npmjs.org/style-to-js set size:undefined disposed:false
+172 silly fetch manifest recma-parse@^1.0.0
+173 silly packumentCache full:https://registry.npmjs.org/recma-parse cache-miss
+174 http fetch GET 200 https://registry.npmjs.org/mdast-util-mdxjs-esm 67ms (cache miss)
+175 silly packumentCache full:https://registry.npmjs.org/mdast-util-mdxjs-esm set size:undefined disposed:false
+176 silly fetch manifest estree-util-to-js@^2.0.0
+177 silly packumentCache full:https://registry.npmjs.org/estree-util-to-js cache-miss
+178 http fetch GET 200 https://registry.npmjs.org/acorn-jsx 45ms (cache miss)
+179 silly packumentCache full:https://registry.npmjs.org/acorn-jsx set size:undefined disposed:false
+180 silly fetch manifest hast-util-to-estree@^3.0.0
+181 silly packumentCache full:https://registry.npmjs.org/hast-util-to-estree cache-miss
+182 http fetch GET 200 https://registry.npmjs.org/recma-parse 50ms (cache miss)
+183 silly packumentCache full:https://registry.npmjs.org/recma-parse set size:undefined disposed:false
+184 silly fetch manifest mdast-util-mdx@^3.0.0
+185 silly packumentCache full:https://registry.npmjs.org/mdast-util-mdx cache-miss
+186 http fetch GET 200 https://registry.npmjs.org/estree-util-to-js 64ms (cache miss)
+187 silly packumentCache full:https://registry.npmjs.org/estree-util-to-js set size:undefined disposed:false
+188 silly fetch manifest micromark-extension-mdxjs@^3.0.0
+189 silly packumentCache full:https://registry.npmjs.org/micromark-extension-mdxjs cache-miss
+190 http fetch GET 200 https://registry.npmjs.org/estree-util-to-js 53ms (cache miss)
+191 silly packumentCache full:https://registry.npmjs.org/estree-util-to-js set size:undefined disposed:false
+192 http fetch GET 200 https://registry.npmjs.org/mdast-util-mdx-jsx 164ms (cache miss)
+193 silly packumentCache full:https://registry.npmjs.org/mdast-util-mdx-jsx set size:undefined disposed:false
+194 http fetch GET 200 https://registry.npmjs.org/micromark-extension-mdxjs 61ms (cache miss)
+195 silly packumentCache full:https://registry.npmjs.org/micromark-extension-mdxjs set size:undefined disposed:false
+196 http fetch GET 200 https://registry.npmjs.org/hast-util-to-estree 83ms (cache miss)
+197 silly packumentCache full:https://registry.npmjs.org/hast-util-to-estree set size:undefined disposed:false
+198 http fetch GET 200 https://registry.npmjs.org/mdast-util-mdx 72ms (cache miss)
+199 silly packumentCache full:https://registry.npmjs.org/mdast-util-mdx set size:undefined disposed:false
+200 silly placeDep ROOT strnum@2.1.2 OK for: fast-xml-parser@5.3.3 want: ^2.1.0
+201 silly placeDep ROOT mdast-util-mdx-expression@2.0.1 OK for: hast-util-to-jsx-runtime@2.3.6 want: ^2.0.0
+202 silly placeDep ROOT mdast-util-mdx-jsx@3.2.0 OK for: hast-util-to-jsx-runtime@2.3.6 want: ^3.0.0
+203 silly placeDep ROOT mdast-util-mdxjs-esm@2.0.1 OK for: hast-util-to-jsx-runtime@2.3.6 want: ^2.0.0
+204 silly placeDep ROOT style-to-js@1.1.21 OK for: hast-util-to-jsx-runtime@2.3.6 want: ^1.0.0
+205 silly fetch manifest parse-entities@^4.0.0
+206 silly packumentCache full:https://registry.npmjs.org/parse-entities cache-miss
+207 silly fetch manifest style-to-object@1.0.14
+208 silly packumentCache full:https://registry.npmjs.org/style-to-object cache-miss
+209 http fetch GET 200 https://registry.npmjs.org/parse-entities 66ms (cache miss)
+210 silly packumentCache full:https://registry.npmjs.org/parse-entities set size:undefined disposed:false
+211 http fetch GET 200 https://registry.npmjs.org/style-to-object 145ms (cache miss)
+212 silly packumentCache full:https://registry.npmjs.org/style-to-object set size:undefined disposed:false
+213 silly placeDep ROOT parse-entities@4.0.2 OK for: mdast-util-mdx-jsx@3.2.0 want: ^4.0.0
+214 silly fetch manifest @types/unist@^2.0.0
+215 silly packumentCache full:https://registry.npmjs.org/@types%2funist cache-miss
+216 silly fetch manifest character-reference-invalid@^2.0.0
+217 silly packumentCache full:https://registry.npmjs.org/character-reference-invalid cache-miss
+218 silly fetch manifest is-alphanumerical@^2.0.0
+219 silly packumentCache full:https://registry.npmjs.org/is-alphanumerical cache-miss
+220 silly fetch manifest is-decimal@^2.0.0
+221 silly packumentCache full:https://registry.npmjs.org/is-decimal cache-miss
+222 silly fetch manifest is-hexadecimal@^2.0.0
+223 silly packumentCache full:https://registry.npmjs.org/is-hexadecimal cache-miss
+224 http cache https://registry.npmjs.org/@types%2funist 14ms (cache hit)
+225 silly packumentCache full:https://registry.npmjs.org/@types%2funist set size:39215 disposed:false
+226 http fetch GET 200 https://registry.npmjs.org/is-decimal 133ms (cache miss)
+227 silly packumentCache full:https://registry.npmjs.org/is-decimal set size:undefined disposed:false
+228 http fetch GET 200 https://registry.npmjs.org/is-alphanumerical 135ms (cache miss)
+229 silly packumentCache full:https://registry.npmjs.org/is-alphanumerical set size:undefined disposed:false
+230 http fetch GET 200 https://registry.npmjs.org/is-hexadecimal 138ms (cache miss)
+231 silly packumentCache full:https://registry.npmjs.org/is-hexadecimal set size:undefined disposed:false
+232 http fetch GET 200 https://registry.npmjs.org/character-reference-invalid 142ms (cache miss)
+233 silly packumentCache full:https://registry.npmjs.org/character-reference-invalid set size:undefined disposed:false
+234 silly placeDep node_modules/parse-entities @types/unist@2.0.11 OK for: parse-entities@4.0.2 want: ^2.0.0
+235 silly placeDep ROOT character-reference-invalid@2.0.1 OK for: parse-entities@4.0.2 want: ^2.0.0
+236 silly placeDep ROOT is-alphanumerical@2.0.1 OK for: parse-entities@4.0.2 want: ^2.0.0
+237 silly placeDep ROOT is-decimal@2.0.1 OK for: parse-entities@4.0.2 want: ^2.0.0
+238 silly placeDep ROOT is-hexadecimal@2.0.1 OK for: parse-entities@4.0.2 want: ^2.0.0
+239 silly fetch manifest is-alphabetical@^2.0.0
+240 silly packumentCache full:https://registry.npmjs.org/is-alphabetical cache-miss
+241 http fetch GET 200 https://registry.npmjs.org/is-alphabetical 55ms (cache miss)
+242 silly packumentCache full:https://registry.npmjs.org/is-alphabetical set size:undefined disposed:false
+243 silly placeDep ROOT is-alphabetical@2.0.1 OK for: is-alphanumerical@2.0.1 want: ^2.0.0
+244 silly placeDep ROOT estree-util-build-jsx@3.0.1 OK for: recma-build-jsx@1.0.0 want: ^3.0.0
+245 silly fetch manifest acorn@^6.0.0 || ^7.0.0 || ^8.0.0
+246 silly packumentCache full:https://registry.npmjs.org/acorn cache-hit
+247 silly placeDep ROOT acorn-jsx@5.3.2 OK for: recma-jsx@1.0.1 want: ^5.0.0
+248 silly placeDep ROOT estree-util-to-js@2.0.0 OK for: recma-jsx@1.0.1 want: ^2.0.0
+249 silly placeDep ROOT recma-parse@1.0.0 OK for: recma-jsx@1.0.1 want: ^1.0.0
+250 silly fetch manifest astring@^1.8.0
+251 silly packumentCache full:https://registry.npmjs.org/astring cache-miss
+252 silly fetch manifest esast-util-from-js@^2.0.0
+253 silly packumentCache full:https://registry.npmjs.org/esast-util-from-js cache-miss
+254 http fetch GET 200 https://registry.npmjs.org/astring 37ms (cache miss)
+255 silly packumentCache full:https://registry.npmjs.org/astring set size:undefined disposed:false
+256 http fetch GET 200 https://registry.npmjs.org/esast-util-from-js 54ms (cache miss)
+257 silly packumentCache full:https://registry.npmjs.org/esast-util-from-js set size:undefined disposed:false
+258 silly placeDep ROOT astring@1.9.0 OK for: estree-util-to-js@2.0.0 want: ^1.8.0
+259 silly placeDep ROOT esast-util-from-js@2.0.1 OK for: recma-parse@1.0.0 want: ^2.0.0
+260 silly fetch manifest esast-util-from-estree@^2.0.0
+261 silly packumentCache full:https://registry.npmjs.org/esast-util-from-estree cache-miss
+262 http fetch GET 200 https://registry.npmjs.org/esast-util-from-estree 52ms (cache miss)
+263 silly packumentCache full:https://registry.npmjs.org/esast-util-from-estree set size:undefined disposed:false
+264 silly placeDep ROOT esast-util-from-estree@2.0.0 OK for: esast-util-from-js@2.0.1 want: ^2.0.0
+265 silly placeDep ROOT hast-util-to-estree@3.1.3 OK for: rehype-recma@1.0.0 want: ^3.0.0
+266 silly fetch manifest estree-util-attach-comments@^3.0.0
+267 silly packumentCache full:https://registry.npmjs.org/estree-util-attach-comments cache-miss
+268 http fetch GET 200 https://registry.npmjs.org/estree-util-attach-comments 44ms (cache miss)
+269 silly packumentCache full:https://registry.npmjs.org/estree-util-attach-comments set size:undefined disposed:false
+270 silly placeDep ROOT estree-util-attach-comments@3.0.0 OK for: hast-util-to-estree@3.1.3 want: ^3.0.0
+271 silly placeDep ROOT mdast-util-mdx@3.0.0 OK for: remark-mdx@3.1.1 want: ^3.0.0
+272 silly placeDep ROOT micromark-extension-mdxjs@3.0.0 OK for: remark-mdx@3.1.1 want: ^3.0.0
+273 silly fetch manifest micromark-extension-mdx-expression@^3.0.0
+274 silly packumentCache full:https://registry.npmjs.org/micromark-extension-mdx-expression cache-miss
+275 silly fetch manifest micromark-extension-mdx-jsx@^3.0.0
+276 silly packumentCache full:https://registry.npmjs.org/micromark-extension-mdx-jsx cache-miss
+277 silly fetch manifest micromark-extension-mdx-md@^2.0.0
+278 silly packumentCache full:https://registry.npmjs.org/micromark-extension-mdx-md cache-miss
+279 silly fetch manifest micromark-extension-mdxjs-esm@^3.0.0
+280 silly packumentCache full:https://registry.npmjs.org/micromark-extension-mdxjs-esm cache-miss
+281 http fetch GET 200 https://registry.npmjs.org/micromark-extension-mdx-md 123ms (cache miss)
+282 silly packumentCache full:https://registry.npmjs.org/micromark-extension-mdx-md set size:undefined disposed:false
+283 http fetch GET 200 https://registry.npmjs.org/micromark-extension-mdxjs-esm 123ms (cache miss)
+284 silly packumentCache full:https://registry.npmjs.org/micromark-extension-mdxjs-esm set size:undefined disposed:false
+285 http fetch GET 200 https://registry.npmjs.org/micromark-extension-mdx-expression 127ms (cache miss)
+286 silly packumentCache full:https://registry.npmjs.org/micromark-extension-mdx-expression set size:undefined disposed:false
+287 http fetch GET 200 https://registry.npmjs.org/micromark-extension-mdx-jsx 157ms (cache miss)
+288 silly packumentCache full:https://registry.npmjs.org/micromark-extension-mdx-jsx set size:undefined disposed:false
+289 silly placeDep ROOT micromark-extension-mdx-expression@3.0.1 OK for: micromark-extension-mdxjs@3.0.0 want: ^3.0.0
+290 silly placeDep ROOT micromark-extension-mdx-jsx@3.0.2 OK for: micromark-extension-mdxjs@3.0.0 want: ^3.0.0
+291 silly placeDep ROOT micromark-extension-mdx-md@2.0.0 OK for: micromark-extension-mdxjs@3.0.0 want: ^2.0.0
+292 silly placeDep ROOT micromark-extension-mdxjs-esm@3.0.0 OK for: micromark-extension-mdxjs@3.0.0 want: ^3.0.0
+293 silly fetch manifest micromark-factory-mdx-expression@^2.0.0
+294 silly packumentCache full:https://registry.npmjs.org/micromark-factory-mdx-expression cache-miss
+295 silly fetch manifest micromark-util-events-to-acorn@^2.0.0
+296 silly packumentCache full:https://registry.npmjs.org/micromark-util-events-to-acorn cache-miss
+297 silly fetch manifest micromark-factory-mdx-expression@^2.0.0
+298 silly packumentCache full:https://registry.npmjs.org/micromark-factory-mdx-expression cache-miss
+299 silly fetch manifest micromark-util-events-to-acorn@^2.0.0
+300 silly packumentCache full:https://registry.npmjs.org/micromark-util-events-to-acorn cache-miss
+301 silly fetch manifest micromark-util-events-to-acorn@^2.0.0
+302 silly packumentCache full:https://registry.npmjs.org/micromark-util-events-to-acorn cache-miss
+303 http fetch GET 200 https://registry.npmjs.org/micromark-util-events-to-acorn 142ms (cache miss)
+304 silly packumentCache full:https://registry.npmjs.org/micromark-util-events-to-acorn set size:undefined disposed:false
+305 http fetch GET 200 https://registry.npmjs.org/micromark-util-events-to-acorn 155ms (cache miss)
+306 silly packumentCache full:https://registry.npmjs.org/micromark-util-events-to-acorn set size:undefined disposed:false
+307 http fetch GET 200 https://registry.npmjs.org/micromark-util-events-to-acorn 157ms (cache miss)
+308 silly packumentCache full:https://registry.npmjs.org/micromark-util-events-to-acorn set size:undefined disposed:false
+309 http fetch GET 200 https://registry.npmjs.org/micromark-factory-mdx-expression 163ms (cache miss)
+310 silly packumentCache full:https://registry.npmjs.org/micromark-factory-mdx-expression set size:undefined disposed:false
+311 http fetch GET 200 https://registry.npmjs.org/micromark-factory-mdx-expression 165ms (cache miss)
+312 silly packumentCache full:https://registry.npmjs.org/micromark-factory-mdx-expression set size:undefined disposed:false
+313 silly placeDep ROOT micromark-factory-mdx-expression@2.0.3 OK for: micromark-extension-mdx-expression@3.0.1 want: ^2.0.0
+314 silly placeDep ROOT micromark-util-events-to-acorn@2.0.3 OK for: micromark-extension-mdx-expression@3.0.1 want: ^2.0.0
+315 silly placeDep node_modules/sitemap @types/node@17.0.45 OK for: sitemap@8.0.2 want: ^17.0.5
+316 silly placeDep ROOT @types/sax@1.2.7 OK for: sitemap@8.0.2 want: ^1.2.1
+317 silly placeDep ROOT arg@5.0.2 OK for: sitemap@8.0.2 want: ^5.0.0
+318 silly placeDep ROOT style-to-object@1.0.14 OK for: style-to-js@1.1.21 want: 1.0.14
+319 silly fetch manifest inline-style-parser@0.2.7
+320 silly packumentCache full:https://registry.npmjs.org/inline-style-parser cache-miss
+321 http fetch GET 200 https://registry.npmjs.org/inline-style-parser 51ms (cache miss)
+322 silly packumentCache full:https://registry.npmjs.org/inline-style-parser set size:undefined disposed:false
+323 silly placeDep ROOT inline-style-parser@0.2.7 OK for: style-to-object@1.0.14 want: 0.2.7
+324 silly reify moves {}
+325 silly audit bulk request {
+325 silly audit   '@astrojs/compiler': [ '2.13.0' ],
+325 silly audit   '@astrojs/internal-helpers': [ '0.7.5' ],
+325 silly audit   '@astrojs/markdown-remark': [ '6.3.10' ],
+325 silly audit   '@astrojs/prism': [ '3.3.0' ],
+325 silly audit   '@astrojs/telemetry': [ '3.3.0' ],
+325 silly audit   '@babel/helper-string-parser': [ '7.27.1' ],
+325 silly audit   '@babel/helper-validator-identifier': [ '7.28.5' ],
+325 silly audit   '@babel/parser': [ '7.28.5' ],
+325 silly audit   '@babel/types': [ '7.28.5' ],
+325 silly audit   '@capsizecss/unpack': [ '3.0.1' ],
+325 silly audit   '@emnapi/runtime': [ '1.7.1' ],
+325 silly audit   '@esbuild/aix-ppc64': [ '0.25.12' ],
+325 silly audit   '@esbuild/android-arm': [ '0.25.12' ],
+325 silly audit   '@esbuild/android-arm64': [ '0.25.12' ],
+325 silly audit   '@esbuild/android-x64': [ '0.25.12' ],
+325 silly audit   '@esbuild/darwin-arm64': [ '0.25.12' ],
+325 silly audit   '@esbuild/darwin-x64': [ '0.25.12' ],
+325 silly audit   '@esbuild/freebsd-arm64': [ '0.25.12' ],
+325 silly audit   '@esbuild/freebsd-x64': [ '0.25.12' ],
+325 silly audit   '@esbuild/linux-arm': [ '0.25.12' ],
+325 silly audit   '@esbuild/linux-arm64': [ '0.25.12' ],
+325 silly audit   '@esbuild/linux-ia32': [ '0.25.12' ],
+325 silly audit   '@esbuild/linux-loong64': [ '0.25.12' ],
+325 silly audit   '@esbuild/linux-mips64el': [ '0.25.12' ],
+325 silly audit   '@esbuild/linux-ppc64': [ '0.25.12' ],
+325 silly audit   '@esbuild/linux-riscv64': [ '0.25.12' ],
+325 silly audit   '@esbuild/linux-s390x': [ '0.25.12' ],
+325 silly audit   '@esbuild/linux-x64': [ '0.25.12' ],
+325 silly audit   '@esbuild/netbsd-arm64': [ '0.25.12' ],
+325 silly audit   '@esbuild/netbsd-x64': [ '0.25.12' ],
+325 silly audit   '@esbuild/openbsd-arm64': [ '0.25.12' ],
+325 silly audit   '@esbuild/openbsd-x64': [ '0.25.12' ],
+325 silly audit   '@esbuild/openharmony-arm64': [ '0.25.12' ],
+325 silly audit   '@esbuild/sunos-x64': [ '0.25.12' ],
+325 silly audit   '@esbuild/win32-arm64': [ '0.25.12' ],
+325 silly audit   '@esbuild/win32-ia32': [ '0.25.12' ],
+325 silly audit   '@esbuild/win32-x64': [ '0.25.12' ],
+325 silly audit   '@img/colour': [ '1.0.0' ],
+325 silly audit   '@img/sharp-darwin-arm64': [ '0.34.5' ],
+325 silly audit   '@img/sharp-darwin-x64': [ '0.34.5' ],
+325 silly audit   '@img/sharp-libvips-darwin-arm64': [ '1.2.4' ],
+325 silly audit   '@img/sharp-libvips-darwin-x64': [ '1.2.4' ],
+325 silly audit   '@img/sharp-libvips-linux-arm': [ '1.2.4' ],
+325 silly audit   '@img/sharp-libvips-linux-arm64': [ '1.2.4' ],
+325 silly audit   '@img/sharp-libvips-linux-ppc64': [ '1.2.4' ],
+325 silly audit   '@img/sharp-libvips-linux-riscv64': [ '1.2.4' ],
+325 silly audit   '@img/sharp-libvips-linux-s390x': [ '1.2.4' ],
+325 silly audit   '@img/sharp-libvips-linux-x64': [ '1.2.4' ],
+325 silly audit   '@img/sharp-libvips-linuxmusl-arm64': [ '1.2.4' ],
+325 silly audit   '@img/sharp-libvips-linuxmusl-x64': [ '1.2.4' ],
+325 silly audit   '@img/sharp-linux-arm': [ '0.34.5' ],
+325 silly audit   '@img/sharp-linux-arm64': [ '0.34.5' ],
+325 silly audit   '@img/sharp-linux-ppc64': [ '0.34.5' ],
+325 silly audit   '@img/sharp-linux-riscv64': [ '0.34.5' ],
+325 silly audit   '@img/sharp-linux-s390x': [ '0.34.5' ],
+325 silly audit   '@img/sharp-linux-x64': [ '0.34.5' ],
+325 silly audit   '@img/sharp-linuxmusl-arm64': [ '0.34.5' ],
+325 silly audit   '@img/sharp-linuxmusl-x64': [ '0.34.5' ],
+325 silly audit   '@img/sharp-wasm32': [ '0.34.5' ],
+325 silly audit   '@img/sharp-win32-arm64': [ '0.34.5' ],
+325 silly audit   '@img/sharp-win32-ia32': [ '0.34.5' ],
+325 silly audit   '@img/sharp-win32-x64': [ '0.34.5' ],
+325 silly audit   '@jridgewell/sourcemap-codec': [ '1.5.5' ],
+325 silly audit   '@oslojs/encoding': [ '1.1.0' ],
+325 silly audit   '@rollup/pluginutils': [ '5.3.0' ],
+325 silly audit   'estree-walker': [ '2.0.2', '3.0.3' ],
+325 silly audit   '@rollup/rollup-android-arm-eabi': [ '4.53.3' ],
+325 silly audit   '@rollup/rollup-android-arm64': [ '4.53.3' ],
+325 silly audit   '@rollup/rollup-darwin-arm64': [ '4.53.3' ],
+325 silly audit   '@rollup/rollup-darwin-x64': [ '4.53.3' ],
+325 silly audit   '@rollup/rollup-freebsd-arm64': [ '4.53.3' ],
+325 silly audit   '@rollup/rollup-freebsd-x64': [ '4.53.3' ],
+325 silly audit   '@rollup/rollup-linux-arm-gnueabihf': [ '4.53.3' ],
+325 silly audit   '@rollup/rollup-linux-arm-musleabihf': [ '4.53.3' ],
+325 silly audit   '@rollup/rollup-linux-arm64-gnu': [ '4.53.3' ],
+325 silly audit   '@rollup/rollup-linux-arm64-musl': [ '4.53.3' ],
+325 silly audit   '@rollup/rollup-linux-loong64-gnu': [ '4.53.3' ],
+325 silly audit   '@rollup/rollup-linux-ppc64-gnu': [ '4.53.3' ],
+325 silly audit   '@rollup/rollup-linux-riscv64-gnu': [ '4.53.3' ],
+325 silly audit   '@rollup/rollup-linux-riscv64-musl': [ '4.53.3' ],
+325 silly audit   '@rollup/rollup-linux-s390x-gnu': [ '4.53.3' ],
+325 silly audit   '@rollup/rollup-linux-x64-gnu': [ '4.53.3' ],
+325 silly audit   '@rollup/rollup-linux-x64-musl': [ '4.53.3' ],
+325 silly audit   '@rollup/rollup-openharmony-arm64': [ '4.53.3' ],
+325 silly audit   '@rollup/rollup-win32-arm64-msvc': [ '4.53.3' ],
+325 silly audit   '@rollup/rollup-win32-ia32-msvc': [ '4.53.3' ],
+325 silly audit   '@rollup/rollup-win32-x64-gnu': [ '4.53.3' ],
+325 silly audit   '@rollup/rollup-win32-x64-msvc': [ '4.53.3' ],
+325 silly audit   '@shikijs/core': [ '3.20.0' ],
+325 silly audit   '@shikijs/engine-javascript': [ '3.20.0' ],
+325 silly audit   '@shikijs/engine-oniguruma': [ '3.20.0' ],
+325 silly audit   '@shikijs/langs': [ '3.20.0' ],
+325 silly audit   '@shikijs/themes': [ '3.20.0' ],
+325 silly audit   '@shikijs/types': [ '3.20.0' ],
+325 silly audit   '@shikijs/vscode-textmate': [ '10.0.2' ],
+325 silly audit   '@swc/helpers': [ '0.5.17' ],
+325 silly audit   '@types/debug': [ '4.1.12' ],
+325 silly audit   '@types/estree': [ '1.0.8' ],
+325 silly audit   '@types/fontkit': [ '2.0.8' ],
+325 silly audit   '@types/hast': [ '3.0.4' ],
+325 silly audit   '@types/mdast': [ '4.0.4' ],
+325 silly audit   '@types/ms': [ '2.1.0' ],
+325 silly audit   '@types/nlcst': [ '2.0.3' ],
+325 silly audit   '@types/node': [ '25.0.1', '17.0.45' ],
+325 silly audit   '@types/unist': [ '3.0.3', '2.0.11' ],
+325 silly audit   '@ungap/structured-clone': [ '1.3.0' ],
+325 silly audit   acorn: [ '8.15.0' ],
+325 silly audit   'ansi-align': [ '3.0.1' ],
+325 silly audit   'ansi-regex': [ '5.0.1', '6.2.2' ],
+325 silly audit   'emoji-regex': [ '8.0.0', '10.6.0' ],
+325 silly audit   'string-width': [ '4.2.3', '7.2.0' ],
+325 silly audit   'strip-ansi': [ '6.0.1', '7.1.2' ],
+325 silly audit   'ansi-styles': [ '6.2.3' ],
+325 silly audit   anymatch: [ '3.1.3' ],
+325 silly audit   picomatch: [ '2.3.1', '4.0.3' ],
+325 silly audit   argparse: [ '2.0.1' ],
+325 silly audit   'aria-query': [ '5.3.2' ],
+325 silly audit   'array-iterate': [ '2.0.1' ],
+325 silly audit   astro: [ '5.16.5' ],
+325 silly audit   'axobject-query': [ '4.1.0' ],
+325 silly audit   bail: [ '2.0.2' ],
+325 silly audit   'base-64': [ '1.0.0' ],
+325 silly audit   'base64-js': [ '1.5.1' ],
+325 silly audit   boolbase: [ '1.0.0' ],
+325 silly audit   boxen: [ '8.0.1' ],
+325 silly audit   brotli: [ '1.3.3' ],
+325 silly audit   camelcase: [ '8.0.0' ],
+325 silly audit   ccount: [ '2.0.1' ],
+325 silly audit   chalk: [ '5.6.2' ],
+325 silly audit   'character-entities': [ '2.0.2' ],
+325 silly audit   'character-entities-html4': [ '2.1.0' ],
+325 silly audit   'character-entities-legacy': [ '3.0.0' ],
+325 silly audit   chokidar: [ '4.0.3' ],
+325 silly audit   'ci-info': [ '4.3.1' ],
+325 silly audit   'cli-boxes': [ '3.0.0' ],
+325 silly audit   clone: [ '2.1.2' ],
+325 silly audit   clsx: [ '2.1.1' ],
+325 silly audit   'comma-separated-tokens': [ '2.0.3' ],
+325 silly audit   commander: [ '11.1.0' ],
+325 silly audit   'common-ancestor-path': [ '1.0.1' ],
+325 silly audit   cookie: [ '1.1.1' ],
+325 silly audit   'cookie-es': [ '1.2.2' ],
+325 silly audit   crossws: [ '0.3.5' ],
+325 silly audit   'css-select': [ '5.2.2' ],
+325 silly audit   'css-tree': [ '3.1.0', '2.2.1' ],
+325 silly audit   'css-what': [ '6.2.2' ],
+325 silly audit   cssesc: [ '3.0.0' ],
+325 silly audit   csso: [ '5.0.5' ],
+325 silly audit   'mdn-data': [ '2.0.28', '2.12.2' ],
+325 silly audit   debug: [ '4.4.3' ],
+325 silly audit   'decode-named-character-reference': [ '1.2.0' ],
+325 silly audit   defu: [ '6.1.4' ],
+325 silly audit   dequal: [ '2.0.3' ],
+325 silly audit   destr: [ '2.0.5' ],
+325 silly audit   'detect-libc': [ '2.1.2' ],
+325 silly audit   'deterministic-object-hash': [ '2.0.2' ],
+325 silly audit   devalue: [ '5.6.1' ],
+325 silly audit   devlop: [ '1.1.0' ],
+325 silly audit   dfa: [ '1.2.0' ],
+325 silly audit   diff: [ '5.2.0' ],
+325 silly audit   dlv: [ '1.1.3' ],
+325 silly audit   'dom-serializer': [ '2.0.0' ],
+325 silly audit   entities: [ '4.5.0', '6.0.1' ],
+325 silly audit   domelementtype: [ '2.3.0' ],
+325 silly audit   domhandler: [ '5.0.3' ],
+325 silly audit   domutils: [ '3.2.2' ],
+325 silly audit   dset: [ '3.1.4' ],
+325 silly audit   'es-module-lexer': [ '1.7.0' ],
+325 silly audit   esbuild: [ '0.25.12' ],
+325 silly audit   'escape-string-regexp': [ '5.0.0' ],
+325 silly audit   eventemitter3: [ '5.0.1' ],
+325 silly audit   extend: [ '3.0.2' ],
+325 silly audit   'fast-deep-equal': [ '3.1.3' ],
+325 silly audit   fdir: [ '6.5.0' ],
+325 silly audit   flattie: [ '1.1.1' ],
+325 silly audit   fontace: [ '0.3.1' ],
+325 silly audit   fontkit: [ '2.0.4' ],
+325 silly audit   fsevents: [ '2.3.3' ],
+325 silly audit   'get-east-asian-width': [ '1.4.0' ],
+325 silly audit   'github-slugger': [ '2.0.0' ],
+325 silly audit   h3: [ '1.15.4' ],
+325 silly audit   'hast-util-from-html': [ '2.0.3' ],
+325 silly audit   'hast-util-from-parse5': [ '8.0.3' ],
+325 silly audit   'hast-util-is-element': [ '3.0.0' ],
+325 silly audit   'hast-util-parse-selector': [ '4.0.0' ],
+325 silly audit   'hast-util-raw': [ '9.1.0' ],
+325 silly audit   'hast-util-to-html': [ '9.0.5' ],
+325 silly audit   'hast-util-to-parse5': [ '8.0.1' ],
+325 silly audit   'hast-util-to-text': [ '4.0.2' ],
+325 silly audit   'hast-util-whitespace': [ '3.0.0' ],
+325 silly audit   hastscript: [ '9.0.1' ],
+325 silly audit   'html-escaper': [ '3.0.3' ],
+325 silly audit   'html-void-elements': [ '3.0.0' ],
+325 silly audit   'http-cache-semantics': [ '4.2.0' ],
+325 silly audit   'import-meta-resolve': [ '4.2.0' ],
+325 silly audit   'iron-webcrypto': [ '1.2.1' ],
+325 silly audit   'is-docker': [ '3.0.0' ],
+325 silly audit   'is-fullwidth-code-point': [ '3.0.0' ],
+325 silly audit   'is-inside-container': [ '1.0.0' ],
+325 silly audit   'is-plain-obj': [ '4.1.0' ],
+325 silly audit   'is-wsl': [ '3.1.0' ],
+325 silly audit   'js-yaml': [ '4.1.1' ],
+325 silly audit   kleur: [ '3.0.3' ],
+325 silly audit   'longest-streak': [ '3.1.0' ],
+325 silly audit   'lru-cache': [ '10.4.3' ],
+325 silly audit   'magic-string': [ '0.30.21' ],
+325 silly audit   magicast: [ '0.5.1' ],
+325 silly audit   'markdown-table': [ '3.0.4' ],
+325 silly audit   'mdast-util-definitions': [ '6.0.0' ],
+325 silly audit   'mdast-util-find-and-replace': [ '3.0.2' ],
+325 silly audit   'mdast-util-from-markdown': [ '2.0.2' ],
+325 silly audit   'mdast-util-gfm': [ '3.1.0' ],
+325 silly audit   'mdast-util-gfm-autolink-literal': [ '2.0.1' ],
+325 silly audit   'mdast-util-gfm-footnote': [ '2.1.0' ],
+325 silly audit   'mdast-util-gfm-strikethrough': [ '2.0.0' ],
+325 silly audit   'mdast-util-gfm-table': [ '2.0.0' ],
+325 silly audit   'mdast-util-gfm-task-list-item': [ '2.0.0' ],
+325 silly audit   'mdast-util-phrasing': [ '4.1.0' ],
+325 silly audit   'mdast-util-to-hast': [ '13.2.1' ],
+325 silly audit   'mdast-util-to-markdown': [ '2.1.2' ],
+325 silly audit   'mdast-util-to-string': [ '4.0.0' ],
+325 silly audit   micromark: [ '4.0.2' ],
+325 silly audit   'micromark-core-commonmark': [ '2.0.3' ],
+325 silly audit   'micromark-extension-gfm': [ '3.0.0' ],
+325 silly audit   'micromark-extension-gfm-autolink-literal': [ '2.1.0' ],
+325 silly audit   'micromark-extension-gfm-footnote': [ '2.1.0' ],
+325 silly audit   'micromark-extension-gfm-strikethrough': [ '2.1.0' ],
+325 silly audit   'micromark-extension-gfm-table': [ '2.1.1' ],
+325 silly audit   'micromark-extension-gfm-tagfilter': [ '2.0.0' ],
+325 silly audit   'micromark-extension-gfm-task-list-item': [ '2.1.0' ],
+325 silly audit   'micromark-factory-destination': [ '2.0.1' ],
+325 silly audit   'micromark-factory-label': [ '2.0.1' ],
+325 silly audit   'micromark-factory-space': [ '2.0.1' ],
+325 silly audit   'micromark-factory-title': [ '2.0.1' ],
+325 silly audit   'micromark-factory-whitespace': [ '2.0.1' ],
+325 silly audit   'micromark-util-character': [ '2.1.1' ],
+325 silly audit   'micromark-util-chunked': [ '2.0.1' ],
+325 silly audit   'micromark-util-classify-character': [ '2.0.1' ],
+325 silly audit   'micromark-util-combine-extensions': [ '2.0.1' ],
+325 silly audit   'micromark-util-decode-numeric-character-reference': [ '2.0.2' ],
+325 silly audit   'micromark-util-decode-string': [ '2.0.1' ],
+325 silly audit   'micromark-util-encode': [ '2.0.1' ],
+325 silly audit   'micromark-util-html-tag-name': [ '2.0.1' ],
+325 silly audit   'micromark-util-normalize-identifier': [ '2.0.1' ],
+325 silly audit   'micromark-util-resolve-all': [ '2.0.1' ],
+325 silly audit   'micromark-util-sanitize-uri': [ '2.0.1' ],
+325 silly audit   'micromark-util-subtokenize': [ '2.1.0' ],
+325 silly audit   'micromark-util-symbol': [ '2.0.1' ],
+325 silly audit   'micromark-util-types': [ '2.0.2' ],
+325 silly audit   mrmime: [ '2.0.1' ],
+325 silly audit   ms: [ '2.1.3' ],
+325 silly audit   nanoid: [ '3.3.11' ],
+325 silly audit   neotraverse: [ '0.6.18' ],
+325 silly audit   'nlcst-to-string': [ '4.0.0' ],
+325 silly audit   'node-fetch-native': [ '1.6.7' ],
+325 silly audit   'node-mock-http': [ '1.0.4' ],
+325 silly audit   'normalize-path': [ '3.0.0' ],
+325 silly audit   'nth-check': [ '2.1.1' ],
+325 silly audit   ofetch: [ '1.5.1' ],
+325 silly audit   ohash: [ '2.0.11' ],
+325 silly audit   'oniguruma-parser': [ '0.12.1' ],
+325 silly audit   'oniguruma-to-es': [ '4.3.4' ],
+325 silly audit   'p-limit': [ '6.2.0' ],
+325 silly audit   'p-queue': [ '8.1.1' ],
+325 silly audit   'p-timeout': [ '6.1.4' ],
+325 silly audit   'package-manager-detector': [ '1.6.0' ],
+325 silly audit   pako: [ '0.2.9' ],
+325 silly audit   'parse-latin': [ '7.0.0' ],
+325 silly audit   parse5: [ '7.3.0' ],
+325 silly audit   piccolore: [ '0.1.3' ],
+325 silly audit   picocolors: [ '1.1.1' ],
+325 silly audit   postcss: [ '8.5.6' ],
+325 silly audit   prismjs: [ '1.30.0' ],
+325 silly audit   prompts: [ '2.4.2' ],
+325 silly audit   'property-information': [ '7.1.0' ],
+325 silly audit   radix3: [ '1.1.2' ],
+325 silly audit   readdirp: [ '4.1.2' ],
+325 silly audit   regex: [ '6.1.0' ],
+325 silly audit   'regex-recursion': [ '6.0.2' ],
+325 silly audit   'regex-utilities': [ '2.3.0' ],
+325 silly audit   rehype: [ '13.0.2' ],
+325 silly audit   'rehype-parse': [ '9.0.1' ],
+325 silly audit   'rehype-raw': [ '7.0.0' ],
+325 silly audit   'rehype-stringify': [ '10.0.1' ],
+325 silly audit   'remark-gfm': [ '4.0.1' ],
+325 silly audit   'remark-parse': [ '11.0.0' ],
+325 silly audit   'remark-rehype': [ '11.1.2' ],
+325 silly audit   'remark-smartypants': [ '3.0.2' ],
+325 silly audit   'remark-stringify': [ '11.0.0' ],
+325 silly audit   restructure: [ '3.0.2' ],
+325 silly audit   retext: [ '9.0.0' ],
+325 silly audit   'retext-latin': [ '4.0.0' ],
+325 silly audit   'retext-smartypants': [ '6.2.0' ],
+325 silly audit   'retext-stringify': [ '4.0.0' ],
+325 silly audit   rollup: [ '4.53.3' ],
+325 silly audit   sax: [ '1.4.3' ],
+325 silly audit   semver: [ '7.7.3' ],
+325 silly audit   sharp: [ '0.34.5' ],
+325 silly audit   shiki: [ '3.20.0' ],
+325 silly audit   sisteransi: [ '1.0.5' ],
+325 silly audit   'smol-toml': [ '1.5.2' ],
+325 silly audit   'source-map-js': [ '1.2.1' ],
+325 silly audit   'space-separated-tokens': [ '2.0.2' ],
+325 silly audit   'stringify-entities': [ '4.0.4' ],
+325 silly audit   svgo: [ '4.0.0' ],
+325 silly audit   'tiny-inflate': [ '1.0.3' ],
+325 silly audit   tinyexec: [ '1.0.2' ],
+325 silly audit   tinyglobby: [ '0.2.15' ],
+325 silly audit   'trim-lines': [ '3.0.1' ],
+325 silly audit   trough: [ '2.2.0' ],
+325 silly audit   tsconfck: [ '3.1.6' ],
+325 silly audit   tslib: [ '2.8.1' ],
+325 silly audit   'type-fest': [ '4.41.0' ],
+325 silly audit   typescript: [ '5.9.3' ],
+325 silly audit   ufo: [ '1.6.1' ],
+325 silly audit   ultrahtml: [ '1.6.0' ],
+325 silly audit   uncrypto: [ '0.1.3' ],
+325 silly audit   'undici-types': [ '7.16.0' ],
+325 silly audit   'unicode-properties': [ '1.4.1' ],
+325 silly audit   'unicode-trie': [ '2.0.0' ],
+325 silly audit   unified: [ '11.0.5' ],
+325 silly audit   unifont: [ '0.6.0' ],
+325 silly audit   'unist-util-find-after': [ '5.0.0' ],
+325 silly audit   'unist-util-is': [ '6.0.1' ],
+325 silly audit   'unist-util-modify-children': [ '4.0.0' ],
+325 silly audit   'unist-util-position': [ '5.0.0' ],
+325 silly audit   'unist-util-remove-position': [ '5.0.0' ],
+325 silly audit   'unist-util-stringify-position': [ '4.0.0' ],
+325 silly audit   'unist-util-visit': [ '5.0.0' ],
+325 silly audit   'unist-util-visit-children': [ '3.0.0' ],
+325 silly audit   'unist-util-visit-parents': [ '6.0.2' ],
+325 silly audit   unstorage: [ '1.17.3' ],
+325 silly audit   vfile: [ '6.0.3' ],
+325 silly audit   'vfile-location': [ '5.0.3' ],
+325 silly audit   'vfile-message': [ '4.0.3' ],
+325 silly audit   vite: [ '6.4.1' ],
+325 silly audit   vitefu: [ '1.1.1' ],
+325 silly audit   'web-namespaces': [ '2.0.1' ],
+325 silly audit   'which-pm-runs': [ '1.1.0' ],
+325 silly audit   'widest-line': [ '5.0.0' ],
+325 silly audit   'wrap-ansi': [ '9.0.2' ],
+325 silly audit   'xxhash-wasm': [ '1.1.0' ],
+325 silly audit   'yargs-parser': [ '21.1.1' ],
+325 silly audit   'yocto-queue': [ '1.2.2' ],
+325 silly audit   'yocto-spinner': [ '0.2.3' ],
+325 silly audit   yoctocolors: [ '2.1.2' ],
+325 silly audit   zod: [ '3.25.76' ],
+325 silly audit   'zod-to-json-schema': [ '3.25.0' ],
+325 silly audit   'zod-to-ts': [ '1.2.0' ],
+325 silly audit   zwitch: [ '2.0.4' ],
+325 silly audit   '@astrojs/mdx': [ '4.3.13' ],
+325 silly audit   '@astrojs/rss': [ '4.0.14' ],
+325 silly audit   '@astrojs/sitemap': [ '3.6.0' ],
+325 silly audit   '@mdx-js/mdx': [ '3.1.1' ],
+325 silly audit   'estree-util-visit': [ '2.0.0' ],
+325 silly audit   'source-map': [ '0.7.6' ],
+325 silly audit   'fast-xml-parser': [ '5.3.3' ],
+325 silly audit   sitemap: [ '8.0.2' ],
+325 silly audit   'stream-replace-string': [ '2.0.0' ],
+325 silly audit   '@types/estree-jsx': [ '1.0.5' ],
+325 silly audit   '@types/mdx': [ '2.0.13' ],
+325 silly audit   'collapse-white-space': [ '2.1.0' ],
+325 silly audit   'estree-util-is-identifier-name': [ '3.0.0' ],
+325 silly audit   'estree-util-scope': [ '1.0.0' ],
+325 silly audit   'hast-util-to-jsx-runtime': [ '2.3.6' ],
+325 silly audit   'markdown-extensions': [ '2.0.0' ],
+325 silly audit   'recma-build-jsx': [ '1.0.0' ],
+325 silly audit   'recma-jsx': [ '1.0.1' ],
+325 silly audit   'recma-stringify': [ '1.0.0' ],
+325 silly audit   'rehype-recma': [ '1.0.0' ],
+325 silly audit   'remark-mdx': [ '3.1.1' ],
+325 silly audit   'unist-util-position-from-estree': [ '2.0.0' ],
+325 silly audit   strnum: [ '2.1.2' ],
+325 silly audit   'mdast-util-mdx-expression': [ '2.0.1' ],
+325 silly audit   'mdast-util-mdx-jsx': [ '3.2.0' ],
+325 silly audit   'mdast-util-mdxjs-esm': [ '2.0.1' ],
+325 silly audit   'style-to-js': [ '1.1.21' ],
+325 silly audit   'parse-entities': [ '4.0.2' ],
+325 silly audit   'character-reference-invalid': [ '2.0.1' ],
+325 silly audit   'is-alphanumerical': [ '2.0.1' ],
+325 silly audit   'is-decimal': [ '2.0.1' ],
+325 silly audit   'is-hexadecimal': [ '2.0.1' ],
+325 silly audit   'is-alphabetical': [ '2.0.1' ],
+325 silly audit   'estree-util-build-jsx': [ '3.0.1' ],
+325 silly audit   'acorn-jsx': [ '5.3.2' ],
+325 silly audit   'estree-util-to-js': [ '2.0.0' ],
+325 silly audit   'recma-parse': [ '1.0.0' ],
+325 silly audit   astring: [ '1.9.0' ],
+325 silly audit   'esast-util-from-js': [ '2.0.1' ],
+325 silly audit   'esast-util-from-estree': [ '2.0.0' ],
+325 silly audit   'hast-util-to-estree': [ '3.1.3' ],
+325 silly audit   'estree-util-attach-comments': [ '3.0.0' ],
+325 silly audit   'mdast-util-mdx': [ '3.0.0' ],
+325 silly audit   'micromark-extension-mdxjs': [ '3.0.0' ],
+325 silly audit   'micromark-extension-mdx-expression': [ '3.0.1' ],
+325 silly audit   'micromark-extension-mdx-jsx': [ '3.0.2' ],
+325 silly audit   'micromark-extension-mdx-md': [ '2.0.0' ],
+325 silly audit   'micromark-extension-mdxjs-esm': [ '3.0.0' ],
+325 silly audit   'micromark-factory-mdx-expression': [ '2.0.3' ],
+325 silly audit   'micromark-util-events-to-acorn': [ '2.0.3' ],
+325 silly audit   '@types/sax': [ '1.2.7' ],
+325 silly audit   arg: [ '5.0.2' ],
+325 silly audit   'style-to-object': [ '1.0.14' ],
+325 silly audit   'inline-style-parser': [ '0.2.7' ]
+325 silly audit }
+326 http cache inline-style-parser@https://registry.npmjs.org/inline-style-parser/-/inline-style-parser-0.2.7.tgz 0ms (cache hit)
+327 http cache style-to-object@https://registry.npmjs.org/style-to-object/-/style-to-object-1.0.14.tgz 0ms (cache hit)
+328 http cache arg@https://registry.npmjs.org/arg/-/arg-5.0.2.tgz 0ms (cache hit)
+329 http cache micromark-util-events-to-acorn@https://registry.npmjs.org/micromark-util-events-to-acorn/-/micromark-util-events-to-acorn-2.0.3.tgz 0ms (cache hit)
+330 http cache @types/sax@https://registry.npmjs.org/@types/sax/-/sax-1.2.7.tgz 0ms (cache hit)
+331 http cache micromark-factory-mdx-expression@https://registry.npmjs.org/micromark-factory-mdx-expression/-/micromark-factory-mdx-expression-2.0.3.tgz 0ms (cache hit)
+332 http cache micromark-extension-mdxjs-esm@https://registry.npmjs.org/micromark-extension-mdxjs-esm/-/micromark-extension-mdxjs-esm-3.0.0.tgz 0ms (cache hit)
+333 http cache micromark-extension-mdx-md@https://registry.npmjs.org/micromark-extension-mdx-md/-/micromark-extension-mdx-md-2.0.0.tgz 0ms (cache hit)
+334 http cache micromark-extension-mdx-jsx@https://registry.npmjs.org/micromark-extension-mdx-jsx/-/micromark-extension-mdx-jsx-3.0.2.tgz 0ms (cache hit)
+335 http cache micromark-extension-mdx-expression@https://registry.npmjs.org/micromark-extension-mdx-expression/-/micromark-extension-mdx-expression-3.0.1.tgz 0ms (cache hit)
+336 http cache micromark-extension-mdxjs@https://registry.npmjs.org/micromark-extension-mdxjs/-/micromark-extension-mdxjs-3.0.0.tgz 0ms (cache hit)
+337 http cache estree-util-attach-comments@https://registry.npmjs.org/estree-util-attach-comments/-/estree-util-attach-comments-3.0.0.tgz 0ms (cache hit)
+338 http cache mdast-util-mdx@https://registry.npmjs.org/mdast-util-mdx/-/mdast-util-mdx-3.0.0.tgz 0ms (cache hit)
+339 http cache hast-util-to-estree@https://registry.npmjs.org/hast-util-to-estree/-/hast-util-to-estree-3.1.3.tgz 0ms (cache hit)
+340 http cache esast-util-from-estree@https://registry.npmjs.org/esast-util-from-estree/-/esast-util-from-estree-2.0.0.tgz 0ms (cache hit)
+341 http cache esast-util-from-js@https://registry.npmjs.org/esast-util-from-js/-/esast-util-from-js-2.0.1.tgz 0ms (cache hit)
+342 http cache astring@https://registry.npmjs.org/astring/-/astring-1.9.0.tgz 0ms (cache hit)
+343 http cache recma-parse@https://registry.npmjs.org/recma-parse/-/recma-parse-1.0.0.tgz 0ms (cache hit)
+344 http cache estree-util-to-js@https://registry.npmjs.org/estree-util-to-js/-/estree-util-to-js-2.0.0.tgz 0ms (cache hit)
+345 http cache acorn-jsx@https://registry.npmjs.org/acorn-jsx/-/acorn-jsx-5.3.2.tgz 0ms (cache hit)
+346 http cache estree-util-build-jsx@https://registry.npmjs.org/estree-util-build-jsx/-/estree-util-build-jsx-3.0.1.tgz 0ms (cache hit)
+347 http cache is-alphabetical@https://registry.npmjs.org/is-alphabetical/-/is-alphabetical-2.0.1.tgz 0ms (cache hit)
+348 http cache is-hexadecimal@https://registry.npmjs.org/is-hexadecimal/-/is-hexadecimal-2.0.1.tgz 0ms (cache hit)
+349 http cache is-decimal@https://registry.npmjs.org/is-decimal/-/is-decimal-2.0.1.tgz 0ms (cache hit)
+350 http cache is-alphanumerical@https://registry.npmjs.org/is-alphanumerical/-/is-alphanumerical-2.0.1.tgz 1ms (cache hit)
+351 http cache character-reference-invalid@https://registry.npmjs.org/character-reference-invalid/-/character-reference-invalid-2.0.1.tgz 0ms (cache hit)
+352 http cache style-to-js@https://registry.npmjs.org/style-to-js/-/style-to-js-1.1.21.tgz 0ms (cache hit)
+353 http cache mdast-util-mdxjs-esm@https://registry.npmjs.org/mdast-util-mdxjs-esm/-/mdast-util-mdxjs-esm-2.0.1.tgz 0ms (cache hit)
+354 http cache mdast-util-mdx-jsx@https://registry.npmjs.org/mdast-util-mdx-jsx/-/mdast-util-mdx-jsx-3.2.0.tgz 0ms (cache hit)
+355 http cache mdast-util-mdx-expression@https://registry.npmjs.org/mdast-util-mdx-expression/-/mdast-util-mdx-expression-2.0.1.tgz 0ms (cache hit)
+356 http cache strnum@https://registry.npmjs.org/strnum/-/strnum-2.1.2.tgz 0ms (cache hit)
+357 http cache unist-util-position-from-estree@https://registry.npmjs.org/unist-util-position-from-estree/-/unist-util-position-from-estree-2.0.0.tgz 0ms (cache hit)
+358 http cache rehype-recma@https://registry.npmjs.org/rehype-recma/-/rehype-recma-1.0.0.tgz 0ms (cache hit)
+359 http cache remark-mdx@https://registry.npmjs.org/remark-mdx/-/remark-mdx-3.1.1.tgz 0ms (cache hit)
+360 http cache recma-jsx@https://registry.npmjs.org/recma-jsx/-/recma-jsx-1.0.1.tgz 0ms (cache hit)
+361 http cache recma-build-jsx@https://registry.npmjs.org/recma-build-jsx/-/recma-build-jsx-1.0.0.tgz 0ms (cache hit)
+362 http cache markdown-extensions@https://registry.npmjs.org/markdown-extensions/-/markdown-extensions-2.0.0.tgz 0ms (cache hit)
+363 http cache hast-util-to-jsx-runtime@https://registry.npmjs.org/hast-util-to-jsx-runtime/-/hast-util-to-jsx-runtime-2.3.6.tgz 0ms (cache hit)
+364 http cache recma-stringify@https://registry.npmjs.org/recma-stringify/-/recma-stringify-1.0.0.tgz 0ms (cache hit)
+365 http cache estree-util-scope@https://registry.npmjs.org/estree-util-scope/-/estree-util-scope-1.0.0.tgz 0ms (cache hit)
+366 http cache estree-util-is-identifier-name@https://registry.npmjs.org/estree-util-is-identifier-name/-/estree-util-is-identifier-name-3.0.0.tgz 0ms (cache hit)
+367 http cache parse-entities@https://registry.npmjs.org/parse-entities/-/parse-entities-4.0.2.tgz 0ms (cache hit)
+368 http cache collapse-white-space@https://registry.npmjs.org/collapse-white-space/-/collapse-white-space-2.1.0.tgz 0ms (cache hit)
+369 http cache @types/mdx@https://registry.npmjs.org/@types/mdx/-/mdx-2.0.13.tgz 0ms (cache hit)
+370 http cache stream-replace-string@https://registry.npmjs.org/stream-replace-string/-/stream-replace-string-2.0.0.tgz 0ms (cache hit)
+371 http cache @types/estree-jsx@https://registry.npmjs.org/@types/estree-jsx/-/estree-jsx-1.0.5.tgz 0ms (cache hit)
+372 http cache sitemap@https://registry.npmjs.org/sitemap/-/sitemap-8.0.2.tgz 0ms (cache hit)
+373 http cache fast-xml-parser@https://registry.npmjs.org/fast-xml-parser/-/fast-xml-parser-5.3.3.tgz 0ms (cache hit)
+374 http cache source-map@https://registry.npmjs.org/source-map/-/source-map-0.7.6.tgz 0ms (cache hit)
+375 http cache estree-util-visit@https://registry.npmjs.org/estree-util-visit/-/estree-util-visit-2.0.0.tgz 0ms (cache hit)
+376 http cache @mdx-js/mdx@https://registry.npmjs.org/@mdx-js/mdx/-/mdx-3.1.1.tgz 0ms (cache hit)
+377 http cache @astrojs/rss@https://registry.npmjs.org/@astrojs/rss/-/rss-4.0.14.tgz 0ms (cache hit)
+378 http cache @astrojs/sitemap@https://registry.npmjs.org/@astrojs/sitemap/-/sitemap-3.6.0.tgz 0ms (cache hit)
+379 http cache @astrojs/mdx@https://registry.npmjs.org/@astrojs/mdx/-/mdx-4.3.13.tgz 0ms (cache hit)
+380 http cache fsevents@https://registry.npmjs.org/fsevents/-/fsevents-2.3.3.tgz 0ms (cache hit)
+381 http cache @types/unist@https://registry.npmjs.org/@types/unist/-/unist-2.0.11.tgz 0ms (cache hit)
+382 http cache @types/node@https://registry.npmjs.org/@types/node/-/node-17.0.45.tgz 0ms (cache hit)
+383 silly tarball no local data for inline-style-parser@https://registry.npmjs.org/inline-style-parser/-/inline-style-parser-0.2.7.tgz. Extracting by manifest.
+384 silly tarball no local data for style-to-object@https://registry.npmjs.org/style-to-object/-/style-to-object-1.0.14.tgz. Extracting by manifest.
+385 silly tarball no local data for arg@https://registry.npmjs.org/arg/-/arg-5.0.2.tgz. Extracting by manifest.
+386 silly tarball no local data for micromark-util-events-to-acorn@https://registry.npmjs.org/micromark-util-events-to-acorn/-/micromark-util-events-to-acorn-2.0.3.tgz. Extracting by manifest.
+387 silly tarball no local data for @types/sax@https://registry.npmjs.org/@types/sax/-/sax-1.2.7.tgz. Extracting by manifest.
+388 silly tarball no local data for micromark-factory-mdx-expression@https://registry.npmjs.org/micromark-factory-mdx-expression/-/micromark-factory-mdx-expression-2.0.3.tgz. Extracting by manifest.
+389 silly tarball no local data for micromark-extension-mdxjs-esm@https://registry.npmjs.org/micromark-extension-mdxjs-esm/-/micromark-extension-mdxjs-esm-3.0.0.tgz. Extracting by manifest.
+390 silly tarball no local data for micromark-extension-mdx-md@https://registry.npmjs.org/micromark-extension-mdx-md/-/micromark-extension-mdx-md-2.0.0.tgz. Extracting by manifest.
+391 silly tarball no local data for micromark-extension-mdx-jsx@https://registry.npmjs.org/micromark-extension-mdx-jsx/-/micromark-extension-mdx-jsx-3.0.2.tgz. Extracting by manifest.
+392 silly tarball no local data for micromark-extension-mdx-expression@https://registry.npmjs.org/micromark-extension-mdx-expression/-/micromark-extension-mdx-expression-3.0.1.tgz. Extracting by manifest.
+393 silly tarball no local data for micromark-extension-mdxjs@https://registry.npmjs.org/micromark-extension-mdxjs/-/micromark-extension-mdxjs-3.0.0.tgz. Extracting by manifest.
+394 silly tarball no local data for estree-util-attach-comments@https://registry.npmjs.org/estree-util-attach-comments/-/estree-util-attach-comments-3.0.0.tgz. Extracting by manifest.
+395 silly tarball no local data for mdast-util-mdx@https://registry.npmjs.org/mdast-util-mdx/-/mdast-util-mdx-3.0.0.tgz. Extracting by manifest.
+396 silly tarball no local data for hast-util-to-estree@https://registry.npmjs.org/hast-util-to-estree/-/hast-util-to-estree-3.1.3.tgz. Extracting by manifest.
+397 silly tarball no local data for esast-util-from-estree@https://registry.npmjs.org/esast-util-from-estree/-/esast-util-from-estree-2.0.0.tgz. Extracting by manifest.
+398 silly tarball no local data for esast-util-from-js@https://registry.npmjs.org/esast-util-from-js/-/esast-util-from-js-2.0.1.tgz. Extracting by manifest.
+399 silly tarball no local data for astring@https://registry.npmjs.org/astring/-/astring-1.9.0.tgz. Extracting by manifest.
+400 silly tarball no local data for recma-parse@https://registry.npmjs.org/recma-parse/-/recma-parse-1.0.0.tgz. Extracting by manifest.
+401 silly tarball no local data for estree-util-to-js@https://registry.npmjs.org/estree-util-to-js/-/estree-util-to-js-2.0.0.tgz. Extracting by manifest.
+402 silly tarball no local data for acorn-jsx@https://registry.npmjs.org/acorn-jsx/-/acorn-jsx-5.3.2.tgz. Extracting by manifest.
+403 silly tarball no local data for estree-util-build-jsx@https://registry.npmjs.org/estree-util-build-jsx/-/estree-util-build-jsx-3.0.1.tgz. Extracting by manifest.
+404 silly tarball no local data for is-alphabetical@https://registry.npmjs.org/is-alphabetical/-/is-alphabetical-2.0.1.tgz. Extracting by manifest.
+405 silly tarball no local data for is-hexadecimal@https://registry.npmjs.org/is-hexadecimal/-/is-hexadecimal-2.0.1.tgz. Extracting by manifest.
+406 silly tarball no local data for is-decimal@https://registry.npmjs.org/is-decimal/-/is-decimal-2.0.1.tgz. Extracting by manifest.
+407 silly tarball no local data for is-alphanumerical@https://registry.npmjs.org/is-alphanumerical/-/is-alphanumerical-2.0.1.tgz. Extracting by manifest.
+408 silly tarball no local data for character-reference-invalid@https://registry.npmjs.org/character-reference-invalid/-/character-reference-invalid-2.0.1.tgz. Extracting by manifest.
+409 silly tarball no local data for style-to-js@https://registry.npmjs.org/style-to-js/-/style-to-js-1.1.21.tgz. Extracting by manifest.
+410 silly tarball no local data for mdast-util-mdxjs-esm@https://registry.npmjs.org/mdast-util-mdxjs-esm/-/mdast-util-mdxjs-esm-2.0.1.tgz. Extracting by manifest.
+411 silly tarball no local data for mdast-util-mdx-jsx@https://registry.npmjs.org/mdast-util-mdx-jsx/-/mdast-util-mdx-jsx-3.2.0.tgz. Extracting by manifest.
+412 silly tarball no local data for mdast-util-mdx-expression@https://registry.npmjs.org/mdast-util-mdx-expression/-/mdast-util-mdx-expression-2.0.1.tgz. Extracting by manifest.
+413 silly tarball no local data for strnum@https://registry.npmjs.org/strnum/-/strnum-2.1.2.tgz. Extracting by manifest.
+414 silly tarball no local data for unist-util-position-from-estree@https://registry.npmjs.org/unist-util-position-from-estree/-/unist-util-position-from-estree-2.0.0.tgz. Extracting by manifest.
+415 silly tarball no local data for rehype-recma@https://registry.npmjs.org/rehype-recma/-/rehype-recma-1.0.0.tgz. Extracting by manifest.
+416 silly tarball no local data for remark-mdx@https://registry.npmjs.org/remark-mdx/-/remark-mdx-3.1.1.tgz. Extracting by manifest.
+417 silly tarball no local data for recma-jsx@https://registry.npmjs.org/recma-jsx/-/recma-jsx-1.0.1.tgz. Extracting by manifest.
+418 silly tarball no local data for recma-build-jsx@https://registry.npmjs.org/recma-build-jsx/-/recma-build-jsx-1.0.0.tgz. Extracting by manifest.
+419 silly tarball no local data for markdown-extensions@https://registry.npmjs.org/markdown-extensions/-/markdown-extensions-2.0.0.tgz. Extracting by manifest.
+420 silly tarball no local data for hast-util-to-jsx-runtime@https://registry.npmjs.org/hast-util-to-jsx-runtime/-/hast-util-to-jsx-runtime-2.3.6.tgz. Extracting by manifest.
+421 silly tarball no local data for recma-stringify@https://registry.npmjs.org/recma-stringify/-/recma-stringify-1.0.0.tgz. Extracting by manifest.
+422 silly tarball no local data for estree-util-scope@https://registry.npmjs.org/estree-util-scope/-/estree-util-scope-1.0.0.tgz. Extracting by manifest.
+423 silly tarball no local data for estree-util-is-identifier-name@https://registry.npmjs.org/estree-util-is-identifier-name/-/estree-util-is-identifier-name-3.0.0.tgz. Extracting by manifest.
+424 silly tarball no local data for parse-entities@https://registry.npmjs.org/parse-entities/-/parse-entities-4.0.2.tgz. Extracting by manifest.
+425 silly tarball no local data for collapse-white-space@https://registry.npmjs.org/collapse-white-space/-/collapse-white-space-2.1.0.tgz. Extracting by manifest.
+426 silly tarball no local data for @types/mdx@https://registry.npmjs.org/@types/mdx/-/mdx-2.0.13.tgz. Extracting by manifest.
+427 silly tarball no local data for stream-replace-string@https://registry.npmjs.org/stream-replace-string/-/stream-replace-string-2.0.0.tgz. Extracting by manifest.
+428 silly tarball no local data for @types/estree-jsx@https://registry.npmjs.org/@types/estree-jsx/-/estree-jsx-1.0.5.tgz. Extracting by manifest.
+429 silly tarball no local data for sitemap@https://registry.npmjs.org/sitemap/-/sitemap-8.0.2.tgz. Extracting by manifest.
+430 silly tarball no local data for fast-xml-parser@https://registry.npmjs.org/fast-xml-parser/-/fast-xml-parser-5.3.3.tgz. Extracting by manifest.
+431 silly tarball no local data for source-map@https://registry.npmjs.org/source-map/-/source-map-0.7.6.tgz. Extracting by manifest.
+432 silly tarball no local data for estree-util-visit@https://registry.npmjs.org/estree-util-visit/-/estree-util-visit-2.0.0.tgz. Extracting by manifest.
+433 silly tarball no local data for @mdx-js/mdx@https://registry.npmjs.org/@mdx-js/mdx/-/mdx-3.1.1.tgz. Extracting by manifest.
+434 silly tarball no local data for @astrojs/rss@https://registry.npmjs.org/@astrojs/rss/-/rss-4.0.14.tgz. Extracting by manifest.
+435 silly tarball no local data for @astrojs/sitemap@https://registry.npmjs.org/@astrojs/sitemap/-/sitemap-3.6.0.tgz. Extracting by manifest.
+436 silly tarball no local data for @astrojs/mdx@https://registry.npmjs.org/@astrojs/mdx/-/mdx-4.3.13.tgz. Extracting by manifest.
+437 silly tarball no local data for @types/unist@https://registry.npmjs.org/@types/unist/-/unist-2.0.11.tgz. Extracting by manifest.
+438 silly tarball no local data for @types/node@https://registry.npmjs.org/@types/node/-/node-17.0.45.tgz. Extracting by manifest.
+439 http fetch POST 200 https://registry.npmjs.org/-/npm/v1/security/advisories/bulk 170ms
+440 silly audit report {}
+441 http fetch GET 200 https://registry.npmjs.org/arg/-/arg-5.0.2.tgz 160ms (cache miss)
+442 http fetch GET 200 https://registry.npmjs.org/esast-util-from-estree/-/esast-util-from-estree-2.0.0.tgz 154ms (cache miss)
+443 http fetch GET 200 https://registry.npmjs.org/inline-style-parser/-/inline-style-parser-0.2.7.tgz 176ms (cache miss)
+444 http fetch GET 200 https://registry.npmjs.org/micromark-util-events-to-acorn/-/micromark-util-events-to-acorn-2.0.3.tgz 177ms (cache miss)
+445 http fetch GET 200 https://registry.npmjs.org/style-to-object/-/style-to-object-1.0.14.tgz 179ms (cache miss)
+446 http fetch GET 200 https://registry.npmjs.org/esast-util-from-js/-/esast-util-from-js-2.0.1.tgz 333ms (cache miss)
+447 http fetch GET 200 https://registry.npmjs.org/recma-parse/-/recma-parse-1.0.0.tgz 333ms (cache miss)
+448 http fetch GET 200 https://registry.npmjs.org/estree-util-build-jsx/-/estree-util-build-jsx-3.0.1.tgz 392ms (cache miss)
+449 http fetch GET 200 https://registry.npmjs.org/acorn-jsx/-/acorn-jsx-5.3.2.tgz 396ms (cache miss)
+450 http fetch GET 200 https://registry.npmjs.org/is-alphabetical/-/is-alphabetical-2.0.1.tgz 398ms (cache miss)
+451 http fetch GET 200 https://registry.npmjs.org/estree-util-to-js/-/estree-util-to-js-2.0.0.tgz 434ms (cache miss)
+452 http fetch GET 200 https://registry.npmjs.org/is-hexadecimal/-/is-hexadecimal-2.0.1.tgz 455ms (cache miss)
+453 http fetch GET 200 https://registry.npmjs.org/is-decimal/-/is-decimal-2.0.1.tgz 488ms (cache miss)
+454 http fetch GET 200 https://registry.npmjs.org/is-alphanumerical/-/is-alphanumerical-2.0.1.tgz 555ms (cache miss)
+455 http fetch GET 200 https://registry.npmjs.org/@types/sax/-/sax-1.2.7.tgz 593ms (cache miss)
+456 http fetch GET 200 https://registry.npmjs.org/character-reference-invalid/-/character-reference-invalid-2.0.1.tgz 578ms (cache miss)
+457 http fetch GET 200 https://registry.npmjs.org/micromark-extension-mdx-md/-/micromark-extension-mdx-md-2.0.0.tgz 600ms (cache miss)
+458 http fetch GET 200 https://registry.npmjs.org/micromark-extension-mdxjs/-/micromark-extension-mdxjs-3.0.0.tgz 603ms (cache miss)
+459 http fetch GET 200 https://registry.npmjs.org/mdast-util-mdx-jsx/-/mdast-util-mdx-jsx-3.2.0.tgz 600ms (cache miss)
+460 http fetch GET 200 https://registry.npmjs.org/mdast-util-mdxjs-esm/-/mdast-util-mdxjs-esm-2.0.1.tgz 602ms (cache miss)
+461 http fetch GET 200 https://registry.npmjs.org/estree-util-is-identifier-name/-/estree-util-is-identifier-name-3.0.0.tgz 617ms (cache miss)
+462 http fetch GET 200 https://registry.npmjs.org/collapse-white-space/-/collapse-white-space-2.1.0.tgz 619ms (cache miss)
+463 http fetch GET 200 https://registry.npmjs.org/rehype-recma/-/rehype-recma-1.0.0.tgz 633ms (cache miss)
+464 http fetch GET 200 https://registry.npmjs.org/recma-stringify/-/recma-stringify-1.0.0.tgz 627ms (cache miss)
+465 http fetch GET 200 https://registry.npmjs.org/parse-entities/-/parse-entities-4.0.2.tgz 625ms (cache miss)
+466 http fetch GET 200 https://registry.npmjs.org/markdown-extensions/-/markdown-extensions-2.0.0.tgz 643ms (cache miss)
+467 http fetch GET 200 https://registry.npmjs.org/mdast-util-mdx/-/mdast-util-mdx-3.0.0.tgz 669ms (cache miss)
+468 http fetch GET 200 https://registry.npmjs.org/estree-util-attach-comments/-/estree-util-attach-comments-3.0.0.tgz 672ms (cache miss)
+469 http fetch GET 200 https://registry.npmjs.org/recma-jsx/-/recma-jsx-1.0.1.tgz 657ms (cache miss)
+470 http fetch GET 200 https://registry.npmjs.org/recma-build-jsx/-/recma-build-jsx-1.0.0.tgz 657ms (cache miss)
+471 http fetch GET 200 https://registry.npmjs.org/@types/estree-jsx/-/estree-jsx-1.0.5.tgz 650ms (cache miss)
+472 http fetch GET 200 https://registry.npmjs.org/@types/mdx/-/mdx-2.0.13.tgz 656ms (cache miss)
+473 http fetch GET 200 https://registry.npmjs.org/@types/unist/-/unist-2.0.11.tgz 649ms (cache miss)
+474 http fetch GET 200 https://registry.npmjs.org/unist-util-position-from-estree/-/unist-util-position-from-estree-2.0.0.tgz 669ms (cache miss)
+475 http fetch GET 200 https://registry.npmjs.org/strnum/-/strnum-2.1.2.tgz 669ms (cache miss)
+476 http fetch GET 200 https://registry.npmjs.org/stream-replace-string/-/stream-replace-string-2.0.0.tgz 660ms (cache miss)
+477 http fetch GET 200 https://registry.npmjs.org/micromark-factory-mdx-expression/-/micromark-factory-mdx-expression-2.0.3.tgz 700ms (cache miss)
+478 http fetch GET 200 https://registry.npmjs.org/mdast-util-mdx-expression/-/mdast-util-mdx-expression-2.0.1.tgz 678ms (cache miss)
+479 http fetch GET 200 https://registry.npmjs.org/hast-util-to-jsx-runtime/-/hast-util-to-jsx-runtime-2.3.6.tgz 678ms (cache miss)
+480 http fetch GET 200 https://registry.npmjs.org/astring/-/astring-1.9.0.tgz 700ms (cache miss)
+481 http fetch GET 200 https://registry.npmjs.org/micromark-extension-mdxjs-esm/-/micromark-extension-mdxjs-esm-3.0.0.tgz 711ms (cache miss)
+482 http fetch GET 200 https://registry.npmjs.org/remark-mdx/-/remark-mdx-3.1.1.tgz 685ms (cache miss)
+483 http fetch GET 200 https://registry.npmjs.org/estree-util-visit/-/estree-util-visit-2.0.0.tgz 685ms (cache miss)
+484 http fetch GET 200 https://registry.npmjs.org/estree-util-scope/-/estree-util-scope-1.0.0.tgz 694ms (cache miss)
+485 http fetch GET 200 https://registry.npmjs.org/@astrojs/rss/-/rss-4.0.14.tgz 694ms (cache miss)
+486 http fetch GET 200 https://registry.npmjs.org/micromark-extension-mdx-expression/-/micromark-extension-mdx-expression-3.0.1.tgz 735ms (cache miss)
+487 http fetch GET 200 https://registry.npmjs.org/style-to-js/-/style-to-js-1.1.21.tgz 736ms (cache miss)
+488 http fetch GET 200 https://registry.npmjs.org/@astrojs/sitemap/-/sitemap-3.6.0.tgz 735ms (cache miss)
+489 http fetch GET 200 https://registry.npmjs.org/@astrojs/mdx/-/mdx-4.3.13.tgz 780ms (cache miss)
+490 http fetch GET 200 https://registry.npmjs.org/source-map/-/source-map-0.7.6.tgz 873ms (cache miss)
+491 http fetch GET 200 https://registry.npmjs.org/micromark-extension-mdx-jsx/-/micromark-extension-mdx-jsx-3.0.2.tgz 929ms (cache miss)
+492 http fetch GET 200 https://registry.npmjs.org/hast-util-to-estree/-/hast-util-to-estree-3.1.3.tgz 949ms (cache miss)
+493 http fetch GET 200 https://registry.npmjs.org/sitemap/-/sitemap-8.0.2.tgz 949ms (cache miss)
+494 http fetch GET 200 https://registry.npmjs.org/@types/node/-/node-17.0.45.tgz 947ms (cache miss)
+495 http fetch GET 200 https://registry.npmjs.org/@mdx-js/mdx/-/mdx-3.1.1.tgz 980ms (cache miss)
+496 http fetch GET 200 https://registry.npmjs.org/fast-xml-parser/-/fast-xml-parser-5.3.3.tgz 988ms (cache miss)
+497 silly ADD node_modules/inline-style-parser
+498 silly ADD node_modules/style-to-object
+499 silly ADD node_modules/arg
+500 silly ADD node_modules/@types/sax
+501 silly ADD node_modules/micromark-util-events-to-acorn
+502 silly ADD node_modules/micromark-factory-mdx-expression
+503 silly ADD node_modules/micromark-extension-mdxjs-esm
+504 silly ADD node_modules/micromark-extension-mdx-md
+505 silly ADD node_modules/micromark-extension-mdx-jsx
+506 silly ADD node_modules/micromark-extension-mdx-expression
+507 silly ADD node_modules/micromark-extension-mdxjs
+508 silly ADD node_modules/mdast-util-mdx
+509 silly ADD node_modules/estree-util-attach-comments
+510 silly ADD node_modules/hast-util-to-estree
+511 silly ADD node_modules/esast-util-from-estree
+512 silly ADD node_modules/esast-util-from-js
+513 silly ADD node_modules/astring
+514 silly ADD node_modules/recma-parse
+515 silly ADD node_modules/estree-util-to-js
+516 silly ADD node_modules/acorn-jsx
+517 silly ADD node_modules/estree-util-build-jsx
+518 silly ADD node_modules/is-alphabetical
+519 silly ADD node_modules/is-hexadecimal
+520 silly ADD node_modules/is-decimal
+521 silly ADD node_modules/is-alphanumerical
+522 silly ADD node_modules/character-reference-invalid
+523 silly ADD node_modules/parse-entities
+524 silly ADD node_modules/parse-entities/node_modules/@types/unist
+525 silly ADD node_modules/style-to-js
+526 silly ADD node_modules/mdast-util-mdxjs-esm
+527 silly ADD node_modules/mdast-util-mdx-jsx
+528 silly ADD node_modules/mdast-util-mdx-expression
+529 silly ADD node_modules/strnum
+530 silly ADD node_modules/unist-util-position-from-estree
+531 silly ADD node_modules/remark-mdx
+532 silly ADD node_modules/rehype-recma
+533 silly ADD node_modules/recma-stringify
+534 silly ADD node_modules/recma-jsx
+535 silly ADD node_modules/recma-build-jsx
+536 silly ADD node_modules/markdown-extensions
+537 silly ADD node_modules/hast-util-to-jsx-runtime
+538 silly ADD node_modules/estree-util-scope
+539 silly ADD node_modules/estree-util-is-identifier-name
+540 silly ADD node_modules/collapse-white-space
+541 silly ADD node_modules/@types/mdx
+542 silly ADD node_modules/@types/estree-jsx
+543 silly ADD node_modules/stream-replace-string
+544 silly ADD node_modules/sitemap
+545 silly ADD node_modules/sitemap/node_modules/@types/node
+546 silly ADD node_modules/fast-xml-parser
+547 silly ADD node_modules/source-map
+548 silly ADD node_modules/estree-util-visit
+549 silly ADD node_modules/@mdx-js/mdx
+550 silly ADD node_modules/@astrojs/sitemap
+551 silly ADD node_modules/@astrojs/rss
+552 silly ADD node_modules/@astrojs/mdx
+553 silly ADD node_modules/fsevents
+554 verbose cwd /Users/gerayeremin/Documents/Projects/Content Plan/gera-yerem-in
+555 verbose os Darwin 23.6.0
+556 verbose node v24.11.1
+557 verbose npm  v11.6.2
+558 verbose exit 0
+559 info ok
