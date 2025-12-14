@@ -92,4 +92,37 @@ const articleSchema = {
       )}
     </div>
   </article>
+
+  <script>
+    // TOC Active State Logic
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px 0px -50% 0px', // Trigger when section hits middle of viewport
+      threshold: 0
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute('id');
+          if (id) {
+            // Remove active class from all links
+            document.querySelectorAll('.toc__link').forEach(link => {
+              link.classList.remove('active');
+            });
+            // Add active class to current link
+            const activeLink = document.querySelector(`.toc__link[href="#${id}"]`);
+            if (activeLink) {
+              activeLink.classList.add('active');
+            }
+          }
+        }
+      });
+    }, observerOptions);
+
+    // Observe all h2 and h3 headings in the post content
+    document.querySelectorAll('.post__content h2, .post__content h3').forEach(heading => {
+      observer.observe(heading);
+    });
+  </script>
 </BaseLayout>
