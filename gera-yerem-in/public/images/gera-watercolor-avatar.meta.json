@@ -1,0 +1,75 @@
+{
+    "imageInfo": {
+        "url": "https://a.lovart.ai/artifacts/agent/leqRYI1tyuBmII5C.png",
+        "localPath": "/images/gera-watercolor-avatar.png",
+        "name": "Watercolor Speaker Icon",
+        "originalDimensions": {
+            "width": 768,
+            "height": 1376
+        },
+        "aspectRatio": "9:16",
+        "orientation": "portrait",
+        "fileType": "PNG",
+        "colorMode": "RGB"
+    },
+    "visualStyle": {
+        "medium": "Digital watercolor simulation with translucent washes",
+        "brushstrokes": "Visible, organic brushstrokes especially in hair, denim, and shadows",
+        "edgeTreatment": "Soft, feathered edges with slight blooming effect (pigment settling at edges)",
+        "texture": "Handmade, organic texture throughout with wet-on-wet techniques",
+        "luminosity": "Luminous quality with white background showing through translucent layers"
+    },
+    "colorPalette": {
+        "skin": {
+            "description": "Warm light brown/beige with rosy undertones",
+            "primary": "rgb(200, 160, 120)",
+            "shadows": "rgb(100, 70, 40)"
+        },
+        "hairAndBeard": {
+            "description": "Deep charcoal grey to black with grey highlights",
+            "primary": "rgb(30, 30, 30)",
+            "highlights": "rgb(80, 80, 80)"
+        },
+        "shirt": {
+            "description": "Bright white with soft grey/blue washes",
+            "primary": "rgb(255, 255, 255)",
+            "shadows": "rgb(180, 180, 190)"
+        },
+        "jeans": {
+            "description": "Medium to light blue with uneven wash texture",
+            "primary": "rgb(80, 120, 160)",
+            "lighter": "rgb(120, 150, 180)"
+        },
+        "beltAndShoes": {
+            "description": "Rich reddish-brown (sienna/umber)",
+            "primary": "rgb(140, 80, 60)",
+            "darker": "rgb(90, 50, 40)"
+        }
+    },
+    "character": {
+        "pose": "Full-body standing, centered, facing forward with slight tilt",
+        "posture": "Confident, friendly stance",
+        "expression": "Warm, approachable smile",
+        "clothing": {
+            "shirt": "Short-sleeve white shirt with soft grey and blue washes for fabric folds",
+            "jeans": "Medium to light blue denim with varied wash intensity",
+            "belt": "Rich reddish-brown leather with detailed buckle",
+            "shoes": "Brown leather shoes with stitching details"
+        }
+    },
+    "artisticDetails": {
+        "hair": "Layered brushstrokes for volume and texture",
+        "denim": "Uneven pigment distribution suggesting worn texture",
+        "skin": "Smooth gradients with subtle rosy undertones",
+        "edges": "Clean but with watercolor feathering in most areas",
+        "outlines": "Soft, implied rather than hard continuous lines"
+    },
+    "usageRecommendations": [
+        "Website avatars and profile icons",
+        "Table of Contents header",
+        "Brand identity elements",
+        "Mobile and desktop UI elements"
+    ],
+    "dateAdded": "2025-12-14",
+    "source": "lovart.ai"
+}

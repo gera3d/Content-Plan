@@ -65,17 +65,16 @@ const articleSchema = {
   
   <article class="post">
     <div class="container">
-      <header class="post__header">
-        <a href={`/topic/${topic}`} class="post__topic">{topicNames[topic]}</a>
-        <h1 class="post__title">{title}</h1>
-        <div class="post__meta">
-          <span>{formatDate(publishDate)}</span>
-          <span>·</span>
-          <span>{readingTime} min read</span>
-        </div>
-      </header>
-      
       <div class="post__content">
+        <header class="post__header post__header--inline">
+          <a href={`/topic/${topic}`} class="post__topic">{topicNames[topic]}</a>
+          <h1 class="post__title">{title}</h1>
+          <div class="post__meta">
+            <span>{formatDate(publishDate)}</span>
+            <span>·</span>
+            <span>{readingTime} min read</span>
+          </div>
+        </header>
         <slot />
       </div>
       
@@ -95,9 +94,11 @@ const articleSchema = {
 
   <script>
     // TOC Active State Logic
+    let currentActiveId = null;
+
     const observerOptions = {
       root: null,
-      rootMargin: '0px 0px -50% 0px', // Trigger when section hits middle of viewport
+      rootMargin: '-10% 0px -60% 0px', // Trigger when section is in upper portion
       threshold: 0
     };
 
@@ -105,7 +106,8 @@ const articleSchema = {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           const id = entry.target.getAttribute('id');
-          if (id) {
+          if (id && id !== currentActiveId) {
+            currentActiveId = id;
             // Remove active class from all links
             document.querySelectorAll('.toc__link').forEach(link => {
               link.classList.remove('active');
@@ -124,5 +126,39 @@ const articleSchema = {
     document.querySelectorAll('.post__content h2, .post__content h3').forEach(heading => {
       observer.observe(heading);
     });
+
+    // Set initial active state on first TOC link
+    const firstTocLink = document.querySelector('.toc__link');
+    if (firstTocLink) {
+      firstTocLink.classList.add('active');
+    }
+
+    // TOC Header fade-out on scroll effect (avatar + greeting)
+    const tocHeader = document.querySelector('.toc__header');
+    if (tocHeader) {
+      let ticking = false;
+      const fadeThreshold = 150; // Start fading after scrolling 150px
+
+      const handleScroll = () => {
+        if (!ticking) {
+          window.requestAnimationFrame(() => {
+            const scrollY = window.scrollY;
+            
+            if (scrollY > fadeThreshold) {
+              tocHeader.classList.add('faded');
+            } else {
+              tocHeader.classList.remove('faded');
+            }
+            
+            ticking = false;
+          });
+          ticking = true;
+        }
+      };
+
+      window.addEventListener('scroll', handleScroll, { passive: true });
+      // Check initial scroll position
+      handleScroll();
+    }
   </script>
 </BaseLayout>

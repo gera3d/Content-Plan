@@ -32,21 +32,21 @@
   --font-size-4xl: 2.25rem;
   --font-size-5xl: 3rem;
 
-  --line-height-tight: 1.25;
-  --line-height-normal: 1.6;
-  --line-height-relaxed: 1.75;
+  --line-height-tight: 1.15;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.6;
 
-  /* Spacing */
-  --space-1: 0.25rem;
-  --space-2: 0.5rem;
-  --space-3: 0.75rem;
-  --space-4: 1rem;
-  --space-6: 1.5rem;
-  --space-8: 2rem;
-  --space-12: 3rem;
-  --space-16: 4rem;
-  --space-20: 5rem;
-  --space-24: 6rem;
+  /* Spacing - HALVED for tighter layout */
+  --space-1: 0.125rem;
+  --space-2: 0.25rem;
+  --space-3: 0.375rem;
+  --space-4: 0.5rem;
+  --space-6: 0.75rem;
+  --space-8: 1rem;
+  --space-12: 1.5rem;
+  --space-16: 2rem;
+  --space-20: 2.5rem;
+  --space-24: 3rem;
 
   /* Layout */
   --max-width-content: 680px;
@@ -100,24 +100,34 @@ h6 {
 
 h1 {
   font-size: var(--font-size-4xl);
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
+  margin-bottom: var(--space-2);
 }
 
 h2 {
   font-size: var(--font-size-3xl);
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
+  margin-top: var(--space-6);
+  margin-bottom: var(--space-2);
 }
 
 h3 {
   font-size: var(--font-size-2xl);
+  letter-spacing: -0.01em;
+  margin-top: var(--space-4);
+  margin-bottom: var(--space-2);
 }
 
 h4 {
   font-size: var(--font-size-xl);
+  letter-spacing: -0.01em;
+  margin-top: var(--space-3);
+  margin-bottom: var(--space-1);
 }
 
 p {
-  margin-bottom: var(--space-4);
+  margin-bottom: var(--space-3);
+  line-height: 1.6;
 }
 
 a {
@@ -583,25 +593,27 @@ strong {
    Post Layout
    -------------------------------------------------------------------------- */
 .post {
-  padding: var(--space-12) 0;
+  padding: var(--space-6) 0;
 }
 
 .post__header {
-  margin-bottom: var(--space-8);
+  margin-bottom: var(--space-4);
   text-align: center;
 }
 
 .post__title {
   font-size: var(--font-size-4xl);
-  margin-bottom: var(--space-4);
+  margin-bottom: var(--space-2);
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
+  line-height: 1.1;
 }
 
 .post__meta {
   font-size: var(--font-size-sm);
   color: var(--color-text-muted);
+  margin-top: var(--space-1);
   display: flex;
   gap: var(--space-4);
   justify-content: center;
@@ -625,6 +637,22 @@ strong {
   color: white;
 }
 
+/* Inline header for grid layout - left aligned in post column */
+.post__header--inline {
+  text-align: left;
+  margin-bottom: var(--space-4);
+}
+
+.post__header--inline .post__title {
+  margin-left: 0;
+  margin-right: 0;
+  max-width: none;
+}
+
+.post__header--inline .post__meta {
+  justify-content: flex-start;
+}
+
 /* Post Content Styles */
 .post__content {
   max-width: var(--max-width-content);
@@ -632,70 +660,45 @@ strong {
 }
 
 .post__content h2 {
-  margin-top: var(--space-12);
-  margin-bottom: var(--space-4);
+  margin-top: var(--space-8);
+  margin-bottom: var(--space-3);
+  letter-spacing: -0.02em;
+  font-weight: 700;
+  padding-top: var(--space-4);
+  border-top: 2px solid var(--color-border);
+  line-height: 1.15;
+}
+
+.post__content h2:first-of-type {
+  border-top: none;
+  padding-top: 0;
+  margin-top: var(--space-4);
 }
 
 .post__content h3 {
-  margin-top: var(--space-8);
+  margin-top: var(--space-6);
+  margin-bottom: var(--space-2);
+  letter-spacing: -0.015em;
+  font-weight: 600;
+  color: var(--color-text);
+  line-height: 1.2;
+}
+
+.post__content p {
   margin-bottom: var(--space-3);
+  line-height: 1.6;
 }
 
-.post__content ul,
-.post__content ol {
-  margin-bottom: var(--space-6);
-  padding-left: 0;
-  /* Remove default padding, we handle it */
-  list-style: none;
-  /* Remove default bullets */
-}
-
-/* Custom unordered list bullets */
-.post__content ul li {
-  position: relative;
-  padding-left: var(--space-6);
-  margin-bottom: var(--space-3);
-  line-height: var(--line-height-relaxed);
-}
-
-.post__content ul li::before {
-  content: "•";
-  color: var(--color-accent);
-  font-weight: bold;
-  font-size: 1.2em;
-  position: absolute;
-  left: var(--space-2);
-  top: -2px;
-  /* Visual alignment fix */
-}
-
-/* Custom ordered list numbers */
-.post__content ol {
-  counter-reset: post-counter;
-}
-
-.post__content ol li {
-  position: relative;
-  padding-left: var(--space-8);
-  margin-bottom: var(--space-3);
-  line-height: var(--line-height-relaxed);
-}
-
-.post__content ol li::before {
-  counter-increment: post-counter;
-  content: counter(post-counter) ".";
-  color: var(--color-accent);
-  font-weight: 700;
-  position: absolute;
-  left: 0;
-}
+/* Lists are styled in the Custom List Styling section below */
 
 .post__content blockquote {
   border-left: 3px solid var(--color-accent);
-  padding-left: var(--space-6);
-  margin: var(--space-6) 0;
+  padding: var(--space-4) var(--space-6);
+  margin: var(--space-8) 0;
   font-style: italic;
   color: var(--color-text-muted);
+  background-color: var(--color-background-alt);
+  border-radius: 0 var(--border-radius) var(--border-radius) 0;
 }
 
 .post__content code {
@@ -746,14 +749,66 @@ strong {
 /* --------------------------------------------------------------------------
    Table of Contents
    -------------------------------------------------------------------------- */
-/* --------------------------------------------------------------------------
-   Table of Contents
-   -------------------------------------------------------------------------- */
 .toc {
   background-color: var(--color-background-alt);
   padding: var(--space-6);
   border-radius: var(--border-radius);
-  margin-bottom: var(--space-8);
+  margin-bottom: var(--space-4);
+}
+
+/* TOC Header Layout - Avatar at top, full width */
+.toc__header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: var(--space-4);
+  transition: opacity 0.4s ease, transform 0.4s ease, max-height 0.5s ease;
+  max-height: 600px;
+  /* Increased to show full body */
+  overflow: hidden;
+}
+
+.toc__header.faded {
+  opacity: 0;
+  transform: translateY(-20px);
+  max-height: 0;
+  margin-bottom: 0;
+}
+
+.toc__avatar-wrapper {
+  width: 100%;
+}
+
+.toc__avatar {
+  width: 100%;
+  height: auto;
+  display: block;
+  /* No border, no shadow - standing naturally */
+}
+
+.toc__header-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-top: var(--space-3);
+  text-align: left;
+}
+
+.toc__greeting {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  color: var(--color-text);
+  letter-spacing: -0.02em;
+}
+
+.toc__subtitle {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  margin-top: var(--space-1);
+}
+
+.toc__nav {
+  /* The TOC navigation stays visible when header fades */
 }
 
 .toc__title {
@@ -778,21 +833,16 @@ strong {
   color: var(--color-text-muted);
   display: block;
   text-decoration: none;
-  transition: all var(--transition-fast);
-  padding: 4px 0;
+  transition: color var(--transition-fast), border-color var(--transition-fast);
+  padding: 6px 0 6px 12px;
   border-left: 2px solid transparent;
-  padding-left: 12px;
-  margin-left: -14px;
-  /* Align text with title visually */
 }
 
 .toc__link:hover,
 .toc__link.active {
   color: var(--color-accent);
   border-left-color: var(--color-accent);
-  font-weight: 500;
-  background-color: var(--color-accent-light);
-  /* Subtle highlight */
+  background-color: rgba(20, 184, 166, 0.08);
 }
 
 /* Desktop Sidebar TOC Layout */
@@ -818,12 +868,17 @@ strong {
   .post__content>.toc {
     grid-column: 1;
     grid-row: 1 / 1000;
-    /* Span full height */
     position: sticky;
     top: 2rem;
     height: auto;
     max-height: calc(100vh - 4rem);
     overflow-y: auto;
+
+    /* Prevent blur/shifting on scroll with GPU acceleration */
+    will-change: transform;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transform: translateZ(0);
 
     /* Remove box styling for cleaner sidebar look */
     background-color: transparent;
@@ -1077,25 +1132,24 @@ strong {
   margin-left: 0 !important;
 }
 
-/* Custom unordered list bullets */
-.post__content ul li {
+/* Custom unordered list bullets - EXCLUDE TOC */
+.post__content ul:not(.toc__list) li {
   position: relative;
   padding-left: 1.5rem !important;
-  margin-bottom: 0.75rem;
-  line-height: 1.75;
+  margin-bottom: 0.5rem;
+  line-height: 1.7;
   list-style: none !important;
-  /* Force remove default bullets on LI */
 }
 
-.post__content ul li::before {
+.post__content ul:not(.toc__list) li::before {
   content: "•";
   color: var(--color-accent);
   font-weight: bold;
-  font-size: 1.2em;
+  font-size: 1em;
   position: absolute;
-  left: 0.25rem;
-  top: -2px;
-  line-height: 1;
+  left: 0;
+  top: 0;
+  line-height: inherit;
 }
 
 /* Custom ordered list numbers */
