@@ -1,0 +1,135 @@
+---
+interface Props {
+  title: string;
+  price: string;
+  timeline: string;
+  highlight?: boolean;
+}
+
+const { title, price, timeline, highlight = false } = Astro.props;
+---
+
+<div class={`pricing-card ${highlight ? 'pricing-card--highlight' : ''}`}>
+  <div class="pricing-card__header">
+    <h3 class="pricing-card__title">{title}</h3>
+    <div class="pricing-card__price">{price}</div>
+    <div class="pricing-card__timeline icon-text">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      {timeline}
+    </div>
+  </div>
+  <div class="pricing-card__content">
+    <slot />
+  </div>
+</div>
+
+<style>
+  .pricing-card {
+    background-color: var(--color-accent-light);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    position: relative;
+    transition: transform 0.2s ease;
+  }
+  
+  .pricing-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  }
+
+  .pricing-card--highlight {
+    border-color: var(--color-accent);
+    box-shadow: 0 4px 6px -1px rgba(13, 148, 136, 0.1);
+    background: linear-gradient(to bottom, #f0fdfa, white);
+  }
+  
+  .pricing-card--highlight::before {
+    content: 'MOST COMMON';
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--color-accent);
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .pricing-card__header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .pricing-card__title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--color-text);
+  }
+
+  .pricing-card__price {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--color-text);
+    margin-bottom: 0.5rem;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+  
+  .pricing-card--highlight .pricing-card__price {
+      color: var(--color-accent);
+  }
+
+  .pricing-card__timeline {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  .pricing-card__content {
+    font-size: 0.95rem;
+    flex: 1;
+  }
+  
+  .pricing-card__content :global(ul) {
+      padding-left: 0;
+      list-style: none;
+  }
+  
+  .pricing-card__content :global(li) {
+      margin-bottom: 0.75rem;
+      padding-left: 1.5rem;
+      position: relative;
+  }
+  
+  .pricing-card__content :global(li::before) {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--color-accent);
+      font-weight: bold;
+  }
+  
+  .pricing-card__content :global(h4) {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--color-text-muted);
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+  }
+</style>

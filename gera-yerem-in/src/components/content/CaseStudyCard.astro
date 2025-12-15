@@ -1,0 +1,124 @@
+---
+const { title, subtitle, investment, timeline, roi, breakEven } = Astro.props;
+---
+
+<article class="case-study">
+  <div class="case-study-header">
+    <h3>{title}</h3>
+    {subtitle && <p class="subtitle">{subtitle}</p>}
+  </div>
+
+  <div class="stats-grid">
+    <div class="stat-box">
+      <span class="stat-label">Investment</span>
+      <span class="stat-value">{investment}</span>
+    </div>
+    <div class="stat-box">
+      <span class="stat-label">Timeline</span>
+      <span class="stat-value">{timeline}</span>
+    </div>
+    <div class="stat-box highlight">
+      <span class="stat-label">ROI (Year 1)</span>
+      <span class="stat-value">{roi}</span>
+    </div>
+    <div class="stat-box highlight">
+      <span class="stat-label">Break-even</span>
+      <span class="stat-value">{breakEven}</span>
+    </div>
+  </div>
+
+  <div class="case-content">
+    <slot />
+  </div>
+</article>
+
+<style>
+  .case-study {
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    background: var(--color-accent-light);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    margin: 3rem 0;
+    overflow: hidden;
+  }
+
+  .case-study-header {
+    background: #ffffff;
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid #e2e8f0;
+  }
+
+  .case-study-header h3 {
+    margin: 0;
+    color: #0d9488; /* Accent color */
+    font-size: 1.25rem;
+  }
+
+  .subtitle {
+    margin: 0.5rem 0 0 0;
+    color: #64748b;
+    font-weight: 500;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-bottom: 1px solid #e2e8f0;
+  }
+
+  .stat-box {
+    padding: 1rem;
+    text-align: center;
+    border-right: 1px solid #e2e8f0;
+  }
+
+  .stat-box:last-child {
+    border-right: none;
+  }
+
+  .stat-label {
+    display: block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #64748b;
+    margin-bottom: 0.25rem;
+  }
+
+  .stat-value {
+    display: block;
+    font-weight: 700;
+    color: #1e293b;
+    font-size: 1rem;
+  }
+
+  .stat-box.highlight {
+    background: #ffffff; /* White to pop against accent-light */
+  }
+
+  .stat-box.highlight .stat-value {
+    color: #0d9488;
+  }
+
+  .case-content {
+    padding: 2rem;
+  }
+
+  @media (max-width: 768px) {
+    .stats-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .stat-box:nth-child(2) {
+      border-right: none;
+    }
+    
+    .stat-box {
+      border-bottom: 1px solid #e2e8f0;
+    }
+    
+    .stat-box:nth-last-child(-n+2) {
+      border-bottom: none;
+    }
+  }
+</style>

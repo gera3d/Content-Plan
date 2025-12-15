@@ -1,0 +1,61 @@
+<div class="comparison-table-wrapper">
+  <div class="comparison-table-scroll">
+    <slot />
+  </div>
+</div>
+
+<style>
+  .comparison-table-wrapper {
+    margin: 2.5rem 0;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    background: white;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  }
+
+  .comparison-table-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .comparison-table-wrapper :global(table) {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px; /* Ensure it scrolls on mobile */
+  }
+
+  .comparison-table-wrapper :global(th) {
+    background-color: var(--color-background-alt);
+    padding: 1rem 1.5rem;
+    text-align: left;
+    font-weight: 600;
+    color: var(--color-text);
+    border-bottom: 2px solid var(--color-border);
+    position: sticky;
+    top: 0;
+  }
+  
+  .comparison-table-wrapper :global(th:first-child) {
+      width: 25%;
+  }
+
+  .comparison-table-wrapper :global(td) {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--color-border);
+    vertical-align: top;
+    color: var(--color-text);
+  }
+
+  .comparison-table-wrapper :global(tr:last-child td) {
+    border-bottom: none;
+  }
+  
+  .comparison-table-wrapper :global(tr:nth-child(even)) {
+      background-color: #fcfcfc;
+  }
+
+  .comparison-table-wrapper :global(strong) {
+    color: var(--color-accent); /* Make bold text accent colored */
+  }
+</style>

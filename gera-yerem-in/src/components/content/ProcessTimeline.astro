@@ -1,0 +1,31 @@
+<div class="process-timeline">
+  <slot />
+</div>
+
+<style>
+  .process-timeline {
+    position: relative;
+    padding: 2rem 0;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  /* The vertical line connection */
+  .process-timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 1.5rem; /* Aligned with the step circle center (3rem / 2) */
+    width: 2px;
+    background: var(--color-border);
+    transform: translateX(-50%);
+    z-index: 0;
+  }
+  
+  @media (max-width: 640px) {
+    .process-timeline::before {
+      display: none;
+    }
+  }
+</style>

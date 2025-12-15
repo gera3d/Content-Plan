@@ -1,87 +1,170 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import ServiceCard from '../components/ServiceCard.astro';
+import FeatureGrid from '../components/content/FeatureGrid.astro';
+import FeatureCard from '../components/content/FeatureCard.astro';
+import CaseStudyCard from '../components/content/CaseStudyCard.astro';
 import BlogCard from '../components/BlogCard.astro';
+import CtaRow from '../components/content/CtaRow.astro';
 
-const services = [
-  {
-    title: 'Custom Business Applications',
-    description: "When off-the-shelf doesn't fit. Built around YOUR workflow, not someone else's idea of how you should work."
-  },
-  {
-    title: 'Review & Reputation Tools',
-    description: "Get more reviews, automatically. I built this for my own agency first—now it works for clients too."
-  },
-  {
-    title: 'Workflow Automation',
-    description: "Stop doing the same task 50 times. Connect your systems, eliminate manual data entry, reclaim your time."
-  }
-];
-
-const workWithItems = [
-  "Businesses making $500K-$5M/year",
-  "Teams drowning in spreadsheets and workarounds",
-  "Companies whose processes don't fit in Salesforce",
-  "People who want a partner, not just a vendor"
+// Testimonial Data
+const testimonials = [
+    {
+        quote: "Gera is a strategist. While he has all the capability in development and coding, what makes him such a leader is his high-level mindset and ability to see the larger picture.",
+        author: "Tom Hakel | Client & Collaborator"
+    },
+    {
+        quote: "I would say the single greatest thing about Gera is his integrity. Being able to build a large cache of reviews for your brand or business will help your growth.",
+        author: "Nuvolum Colleague"
+    },
+    {
+        quote: "Gera is a truly innovative thinker. His fresh approach and careful product testing make a massive difference for his clients.",
+        author: "Client Recommendation"
+    },
+    {
+        quote: "Gera's positive attitude is infectious. He is so talented at inspiring others to do their best and reach for the stars.",
+        author: "Nuvolum Colleague"
+    }
 ];
 ---
 
 <BaseLayout 
   title="Home" 
-  description="I build custom software for businesses that have outgrown spreadsheets. Developer + Marketer. I don't just write code—I build tools that actually make you money."
+  description="Stop manually copying data. Start building assets. I build custom software for businesses that have outgrown spreadsheets."
 >
-  <!-- Hero Section -->
+  <!-- Hero Section: Problem Focused -->
   <section class="hero">
     <div class="container">
-      <h1 class="hero__title">
-        I build custom software for businesses<br />that have outgrown spreadsheets.
-      </h1>
-      <p class="hero__subtitle">
-        Developer + Marketer. I don't just write code—I build tools that actually make you money.
-      </p>
-      <div class="hero__actions">
-        <a href="/custom-business-software-guide" class="btn btn--secondary">Read the guide</a>
-        <a href="/contact" class="btn btn--primary">Let's talk</a>
+      <div class="hero__content">
+          <h1 class="hero__title">
+            Stop manually copying data.<br />
+            <span class="text-gradient">Start building assets.</span>
+          </h1>
+          <p class="hero__subtitle">
+            You've outgrown spreadsheets. You need a partner who speaks both "Code" and "Business" to build the tools that will scale your operations.
+          </p>
+          
+          <CtaRow>
+            <a href="/work" class="btn btn--primary">View My Work</a>
+            <a href="/contact" class="btn btn--secondary">Let's Talk Strategy</a>
+          </CtaRow>
+      </div>
+      <div class="hero__visual">
+        <img src="/images/never-meeting-obama.webp" alt="Gera shaking hands with Barack Obama" />
       </div>
     </div>
   </section>
 
-  <!-- What I Build Section -->
+  <!-- Value Props: The "Hybrid" Advantage -->
   <section class="section section--alt">
     <div class="container">
-      <h2 class="mb-8">What I Build</h2>
-      <div class="services">
-        {services.map(service => (
-          <ServiceCard title={service.title} description={service.description} />
-        ))}
-      </div>
+      <h2 class="section-title text-center mb-12">The "Hybrid" Advantage</h2>
+      <FeatureGrid columns={3}>
+        <FeatureCard 
+            icon="zap"
+            title="Workflow Automation"
+        >
+            Stop doing the same task 50 times. I connect your isolated systems (CRM, Email, Billing) to eliminate manual data entry.
+        </FeatureCard>
+        <FeatureCard 
+            icon="trending-up"
+            title="Growth Engines"
+        >
+            Tools that actually make money. From automated review generation to lead scoring systems that prioritize your sales team.
+        </FeatureCard>
+        <FeatureCard 
+            icon="code"
+            title="Custom Architecture"
+        >
+            When "off-the-shelf" doesn't fit. I build software wrapped around <em>your</em> unique process, not the other way around.
+        </FeatureCard>
+      </FeatureGrid>
     </div>
   </section>
 
-  <!-- Who I Work With Section -->
+  <!-- Social Proof: Carousel -->
   <section class="section">
     <div class="container">
-      <div class="work-with">
-        <h2 class="mb-8">I work best with:</h2>
-        <ul class="work-with__list">
-          {workWithItems.map(item => (
-            <li class="work-with__item">{item}</li>
-          ))}
-        </ul>
-        <p class="work-with__note">
-          Projects typically run $15K-$150K over 2-6 months.
-        </p>
-        <p class="work-with__honest">
-          I'll tell you if we're not a good fit.
-        </p>
-      </div>
+      <h2 class="section-title text-center mb-12">Trusted by Leaders</h2>
+      
+       <div class="carousel-container">
+            <button class="nav-arrow prev" aria-label="Previous testimonials">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+            </button>
+            
+            <div class="post__content carousel-track">
+                {/* Slot 1 */}
+                <div class="testimonial-slot" id="slot-1">
+                    <blockquote>
+                        <p id="quote-1"></p>
+                        <cite id="author-1"></cite>
+                    </blockquote>
+                </div>
+
+                {/* Slot 2 */}
+                <div class="testimonial-slot" id="slot-2">
+                    <blockquote>
+                        <p id="quote-2"></p>
+                        <cite id="author-2"></cite>
+                    </blockquote>
+                </div>
+            </div>
+
+            <button class="nav-arrow next" aria-label="Next testimonials">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+            </button>
+        </div>
+
+        {/* Integration Logos */}
+        <div class="logos-container">
+            <p class="logos-label">Integrations & Tools</p>
+            <div class="logos-grid">
+                <div class="logo-item">Salesforce</div>
+                <div class="logo-item">Google API</div>
+                <div class="logo-item">HealthGrades</div>
+                <div class="logo-item">HubSpot</div>
+                <div class="logo-item">Stripe</div>
+            </div>
+        </div>
+
     </div>
   </section>
 
-  <!-- Featured Content Section -->
+  <!-- Recent Work Teaser -->
   <section class="section section--alt">
     <div class="container">
-      <h2 class="mb-8">Latest Writing</h2>
+        <h2 class="section-title text-center mb-8">Measure Results, Not Hours</h2>
+        <p class="text-center text-muted mb-12" style="max-width: 600px; margin: 0 auto;">
+            I don't sell code. I sell outcomes. Here is just one example of how custom software transforms a business.
+        </p>
+
+        <CaseStudyCard
+            title="The 'Agency OS' Platform"
+            subtitle="Client: Nuvolum"
+            investment="Internal Platform"
+            timeline="3 Month Rollout"
+            roi="Saved 570 Hours/Mo"
+            breakEven="Month 1"
+        >
+            <p><strong>The Problem:</strong> Growing fast with 60+ clients, the agency was drowning in manual reporting. Account managers spent 10 hours/month per client just gathering data.</p>
+            <p><strong>The Solution:</strong> I architected a centralized "Agency OS" that aggregates data from all marketing channels into a single real-time dashboard.</p>
+            <ul>
+                <li><strong>Result:</strong> Reporting time dropped to &lt;30 mins per client.</li>
+                <li><strong>Impact:</strong> The agency doubled its client load without hiring additional account managers.</li>
+            </ul>
+        </CaseStudyCard>
+
+        <div class="text-center mt-12">
+            <CtaRow>
+                <a href="/work" class="btn btn--secondary" style="width: auto; margin: 0 auto;">View Full Portfolio →</a>
+            </CtaRow>
+        </div>
+    </div>
+  </section>
+
+  <!-- Latest Writing -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title mb-8">Latest Strategy</h2>
       <div class="featured">
         <div class="featured__main">
           <h3 class="featured__main-title">
@@ -114,28 +197,269 @@ const workWithItems = [
     </div>
   </section>
 
-  <!-- About Section -->
-  <section class="section">
-    <div class="container">
-      <div class="about-preview">
-        <div class="about-preview__photo">
-          <img src="/images/gera-headshot.jpg" alt="Gera Yeremin" width="200" height="200" />
-        </div>
-        <div class="about-preview__content">
-          <h2 class="mb-4">About Me</h2>
-          <p class="about-preview__text">
-            I'm Gera. I've been building software for 15+ years and running marketing for almost as long.
-          </p>
-          <p class="about-preview__text">
-            That combo is rare. Most developers don't understand marketing. Most marketers can't build software. I do both.
-          </p>
-          <p class="about-preview__text">
-            I co-founded 57 Seconds, a digital marketing agency, where I build the tools we use to help clients. 
-            I use my own software every day.
-          </p>
-          <a href="/about" class="btn btn--secondary">More about me</a>
-        </div>
-      </div>
-    </div>
-  </section>
+  {/* Script for Testimonials */}
+  <script is:inline define:vars={{ testimonials }}>
+        let currentIndex = 0;
+
+        const updateCarousel = () => {
+             const q1 = document.getElementById('quote-1');
+             const a1 = document.getElementById('author-1');
+             const q2 = document.getElementById('quote-2');
+             const a2 = document.getElementById('author-2');
+
+             if(!q1 || !q2) return;
+
+             const idx1 = currentIndex % testimonials.length;
+             const idx2 = (currentIndex + 1) % testimonials.length;
+
+             const track = document.querySelector('.carousel-track');
+             if(track) track.style.opacity = '0';
+             
+             setTimeout(() => {
+                q1.textContent = `"${testimonials[idx1].quote}"`;
+                a1.textContent = `— ${testimonials[idx1].author}`;
+                
+                q2.textContent = `"${testimonials[idx2].quote}"`;
+                a2.textContent = `— ${testimonials[idx2].author}`;
+                
+                if(track) track.style.opacity = '1';
+             }, 200);
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
+            updateCarousel(); 
+
+            const nextBtn = document.querySelector('.nav-arrow.next');
+            const prevBtn = document.querySelector('.nav-arrow.prev');
+
+            if (nextBtn) {
+                nextBtn.addEventListener('click', () => {
+                    currentIndex = (currentIndex + 2) % testimonials.length;
+                    updateCarousel();
+                });
+            }
+
+            if (prevBtn) {
+                prevBtn.addEventListener('click', () => {
+                    currentIndex = (currentIndex - 2 + testimonials.length) % testimonials.length;
+                    updateCarousel();
+                });
+            }
+        });
+  </script>
 </BaseLayout>
+
+<style>
+    /* Hero Styles */
+    .hero {
+        padding: var(--space-24) 0 var(--space-20);
+        display: flex;
+        align-items: center;
+    }
+
+    .hero .container {
+        display: grid;
+        grid-template-columns: 1fr 0.8fr; /* More space for text */
+        gap: var(--space-16);
+        align-items: center;
+    }
+
+    .hero__content {
+        max-width: 600px;
+    }
+
+    .hero__title {
+        font-size: var(--font-size-5xl);
+        font-weight: 800;
+        line-height: 1.1;
+        margin-bottom: var(--space-6);
+        color: var(--color-text);
+        letter-spacing: -0.02em;
+    }
+
+    .text-gradient {
+        color: var(--color-accent); /* Fallback */
+        background: linear-gradient(135deg, var(--color-accent) 0%, #3b82f6 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .hero__subtitle {
+        font-size: var(--font-size-xl);
+        color: var(--color-text-muted);
+        margin-bottom: var(--space-10);
+        line-height: 1.6;
+        font-weight: 400;
+    }
+
+    .hero__visual img {
+        width: 100%;
+        border-radius: var(--border-radius);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        transform: rotate(2deg); /* Subtle playful tilt */
+        transition: transform 0.3s ease;
+    }
+    
+    .hero__visual img:hover {
+        transform: rotate(0deg) scale(1.02);
+    }
+
+    /* Carousel Styles (Scoped) */
+    .carousel-container {
+        display: flex;
+        align-items: center;
+        gap: var(--space-6);
+        margin-bottom: var(--space-16);
+    }
+
+    .carousel-track {
+        flex: 1;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        transition: opacity 0.2s ease-in-out;
+    }
+
+    /* Polished Testimonial Slots */
+    .testimonial-slot {
+        height: 100%;
+    }
+
+    .testimonial-slot > :global(blockquote) {
+        margin: 0 !important;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between; /* Space out quote and author */
+        background: #ffffff;
+        padding: 2.5rem;
+        border-radius: var(--border-radius);
+        border: 1px solid var(--color-border);
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); /* Card-like shadow */
+    }
+
+    .testimonial-slot :global(p) {
+        font-size: 1.125rem;
+        line-height: 1.7;
+        color: var(--color-text);
+        font-style: italic;
+    }
+    
+    .testimonial-slot :global(cite) {
+        display: block; 
+        margin-top: 1.5rem; 
+        font-size: 0.875rem; 
+        font-weight: 700; 
+        font-style: normal; 
+        color: var(--color-accent);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    .nav-arrow {
+        background: #ffffff;
+        border: 1px solid var(--color-border);
+        color: var(--color-text-muted);
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        flex-shrink: 0;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+
+    .nav-arrow:hover {
+        background: var(--color-accent);
+        color: #ffffff;
+        border-color: var(--color-accent);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    /* Logos Bar */
+    .logos-container {
+        border-top: 1px solid var(--color-border);
+        padding-top: var(--space-12);
+        text-align: center;
+    }
+    
+    .logos-label {
+        color: var(--color-text-muted);
+        font-size: 0.875rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        margin-bottom: var(--space-6);
+        font-weight: 600;
+    }
+
+    .logos-grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: var(--space-8);
+        align-items: center;
+        opacity: 0.7;
+    }
+
+    .logo-item {
+        font-size: var(--font-size-xl);
+        font-family: var(--font-family-mono);
+        color: var(--color-text-muted);
+        font-weight: 700;
+        transition: opacity 0.2s;
+    }
+    
+    .logo-item:hover {
+        opacity: 1;
+        color: var(--color-accent);
+    }
+
+    @media (max-width: 768px) {
+        .hero {
+             padding: var(--space-12) 0;
+        }
+
+        .hero .container {
+            grid-template-columns: 1fr;
+            text-align: center;
+        }
+        
+        .hero__content {
+            margin: 0 auto;
+        }
+
+        .hero__visual {
+            margin-top: var(--space-8);
+        }
+        
+        .hero__visual img {
+             transform: none;
+        }
+
+        .carousel-track {
+            grid-template-columns: 1fr;
+        }
+        
+        .carousel-container {
+            position: relative;
+            padding-bottom: 70px; /* Space for arrows */
+        }
+
+        .nav-arrow {
+            position: absolute;
+            bottom: 0;
+            z-index: 10;
+        }
+
+        .nav-arrow.prev { left: calc(50% - 60px); }
+        .nav-arrow.next { right: calc(50% - 60px); }
+
+        .logos-grid {
+            gap: var(--space-4);
+        }
+    }
+</style>

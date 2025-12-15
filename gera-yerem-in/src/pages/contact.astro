@@ -1,55 +1,214 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import ComparisonColumns from '../components/content/ComparisonColumns.astro';
+import ProcessTimeline from '../components/content/ProcessTimeline.astro';
+import ProcessStep from '../components/content/ProcessStep.astro';
+import Callout from '../components/content/Callout.astro';
 ---
 
 <BaseLayout 
-  title="Contact" 
-  description="Want to discuss your specific situation? Let's do a quick call. No pitch, just conversation."
+  title="Contact Gera Yeremin" 
+  description="Let's start a conversation. No sales pitches, just honest advice about your software and marketing needs."
 >
   <div class="page">
     <div class="container">
-      <div class="contact">
-        <header class="page__header">
-          <h1 class="page__title">Let's Talk</h1>
-        </header>
-
-        <p class="contact__cta">
-          Want to discuss your specific situation? Let's do a quick call. No pitch, just conversation.
-        </p>
-
-        <div class="contact__method">
-          <span class="contact__label">Schedule a Call</span>
-          <p class="text-muted mb-4">
-            30 minutes. We'll talk about what you're trying to solve and whether I can help. 
-            If we're not a good fit, I'll tell you.
+      
+      {/* Hero Section */}
+      <div class="contact-hero">
+        <div class="contact-hero__content">
+          <h1 class="page__title">Let's Start a <br/><span style="color: var(--color-accent);">Conversation.</span></h1>
+          <p class="page__description">
+            I don't sell "hours" or "features." I sell outcomes. Let's see if we're a match to build something great.
           </p>
-          <a href="https://calendly.com/gera_yeremin/30minskype" class="btn btn--primary" target="_blank" rel="noopener noreferrer">
-            Book a time →
-          </a>
+          <div class="contact-options-primary">
+            <a href="https://calendly.com/gera_yeremin/30minskype" class="btn btn--primary" target="_blank" rel="noopener noreferrer">
+              Book Your Strategy Session
+            </a>
+            <span class="contact-email-text">
+                or email <a href="mailto:gera@yerem.in">gera@yerem.in</a>
+            </span>
+          </div>
         </div>
-
-        <div class="contact__method" style="margin-top: var(--space-8);">
-          <span class="contact__label">Email</span>
-          <p class="text-muted">
-            Prefer email? That works too.
-          </p>
-          <p>
-            <a href="mailto:gera@yerem.in">gera@yerem.in</a>
-          </p>
-        </div>
-
-        <div class="contact__method" style="margin-top: var(--space-8);">
-          <span class="contact__label">Connect</span>
-          <p class="text-muted mb-4">
-            Or find me on social media.
-          </p>
-          <ul style="list-style: none; display: flex; gap: var(--space-4); flex-wrap: wrap;">
-            <li><a href="https://www.linkedin.com/in/gerayeremin" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-            <li><a href="https://github.com/gerayeremin" target="_blank" rel="noopener noreferrer">GitHub</a></li>
-            <li><a href="https://twitter.com/gerayeremin" target="_blank" rel="noopener noreferrer">Twitter</a></li>
-          </ul>
+        <div class="contact-hero__image">
+            <img src="/images/professional/coffee-shop-professional.png" alt="Let's have a friendly chat" />
         </div>
       </div>
+
+      <div class="section-divider"></div>
+
+      {/* Qualification Section */}
+      <div class="qualification-section">
+        <h2 style="text-align: center;">Is This You?</h2>
+        <p style="text-align: center; max-width: 600px; margin: 0 auto; color: var(--color-text-muted);">
+            I operate best as a strategic partner, not just a pair of hands.
+        </p>
+
+        <ComparisonColumns 
+            titleLeft="Who I Work Best With" 
+            titleRight="Not the Right Fit"
+        >
+            <div slot="left">
+                <ul>
+                    <li><strong>Growth-Focused:</strong> You view software/marketing as an investment, not a cost center.</li>
+                    <li><strong>Values Expertise:</strong> You want a partner who will push back and offer better solutions.</li>
+                    <li><strong>Ready to scale:</strong> You have a proven business model and need the technology to accelerate it.</li>
+                    <li><strong>Decisive:</strong> You are ready to move fast when the right plan is presented.</li>
+                </ul>
+            </div>
+            <div slot="right">
+                <ul style="opacity: 0.7;">
+                    <li><strong>Lowest Bidder:</strong> You are looking for the cheapest possible option.</li>
+                    <li><strong>Micromanager:</strong> You want someone to just "type the code" without asking questions.</li>
+                    <li><strong>Quick Fixes:</strong> You want a "band-aid" solution for a fundamental business problem.</li>
+                    <li><strong>Vague Goals:</strong> You aren't sure what you want to achieve yet.</li>
+                </ul>
+            </div>
+        </ComparisonColumns>
+      </div>
+
+      <div class="section-divider"></div>
+
+      {/* The Roadmap Process */}
+      <div class="process-section">
+        <h2 style="text-align: center; margin-bottom: var(--space-8);">The Engagement Process</h2>
+        
+        <ProcessTimeline>
+            <ProcessStep number="1" title="Discovery Call" duration="30 Mins (Free)">
+                <p>We hop on a focused call. No sales pressure. We discuss your business goals, current bottlenecks, and what "winning" looks like for you. If I can't help, I'll refer you to someone who can.</p>
+            </ProcessStep>
+            
+            <ProcessStep number="2" title="The Roadmap" duration="2-3 Days">
+                <p>I analyze our discussion and deliver a high-level strategy roadmap. This outlines the technical architecture, marketing channels, and timeline required to hit your goals.</p>
+            </ProcessStep>
+
+            <ProcessStep number="3" title="Execution" duration="Sprint Based">
+                <p>We finalize the agreement and get to work. I work in rapid sprints, delivering tangible value and updates every single week. You always know exactly what is being built.</p>
+            </ProcessStep>
+        </ProcessTimeline>
+      </div>
+
+       <div style="margin-top: 3rem; max-width: 800px; margin-left: auto; margin-right: auto; text-align: center;">
+         <Callout variant="tip">
+            <strong>My Guarantee:</strong> You talk directly to me (Gera). I don't employ sales people, and I don't outsource my thinking.
+         </Callout>
+         
+         <div style="margin-top: 2rem;">
+            <a href="https://calendly.com/gera_yeremin/30minskype" class="btn btn--primary btn--lg" target="_blank" rel="noopener noreferrer">
+              Book Your Discovery Call
+            </a>
+         </div>
+       </div>
+
+       <div class="section-divider"></div>
+
+       {/* Socials / Secondary */}
+       <div class="social-connect" style="text-align: center; margin-top: var(--space-12);">
+          <h3>Connect Elsewhere</h3>
+          <p style="color: var(--color-text-muted); margin-bottom: var(--space-6);">Not ready to chat yet? Follow my work.</p>
+          <div class="social-links-row">
+            <a href="https://www.linkedin.com/in/gerayeremin" target="_blank" rel="noopener noreferrer" class="social-btn">
+                LinkedIn
+            </a>
+            <a href="https://github.com/gerayeremin" target="_blank" rel="noopener noreferrer" class="social-btn">
+                GitHub
+            </a>
+            <a href="https://twitter.com/gerayeremin" target="_blank" rel="noopener noreferrer" class="social-btn">
+                Twitter
+            </a>
+          </div>
+       </div>
+
     </div>
   </div>
 </BaseLayout>
+
+<style>
+    .contact-hero {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-8);
+        align-items: center;
+        margin-bottom: var(--space-12);
+    }
+
+    .contact-hero__content {
+        order: 1;
+    }
+
+    .contact-hero__image {
+        order: 2;
+    }
+
+    .contact-hero__image img {
+        width: 100%;
+        height: auto;
+        border-radius: var(--border-radius);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        transform: rotate(1deg); /* Slight playful tilt */
+    }
+
+    .contact-options-primary {
+        display: flex;
+        align-items: center;
+        gap: var(--space-4);
+        margin-top: var(--space-8);
+        flex-wrap: wrap;
+    }
+
+    .contact-email-text {
+        font-size: var(--font-size-sm);
+        color: var(--color-text-muted);
+    }
+    
+    .contact-email-text a {
+        color: var(--color-text);
+        text-decoration: underline;
+        font-weight: 500;
+    }
+    
+    .btn--lg {
+        padding: 1rem 2rem;
+        font-size: 1.1rem;
+    }
+
+    .social-links-row {
+        display: flex;
+        justify-content: center;
+        gap: var(--space-4);
+        flex-wrap: wrap;
+    }
+
+    .social-btn {
+        padding: var(--space-2) var(--space-6);
+        border: 1px solid var(--color-border);
+        border-radius: 50px; /* Pill shape */
+        color: var(--color-text);
+        font-weight: 500;
+        transition: all 0.2s ease;
+        text-decoration: none;
+    }
+
+    .social-btn:hover {
+        border-color: var(--color-accent);
+        background-color: var(--color-accent);
+        color: white;
+        transform: translateY(-2px);
+    }
+
+    @media (max-width: 768px) {
+        .contact-hero {
+            grid-template-columns: 1fr;
+        }
+        .contact-hero__content {
+            order: 2;
+            text-align: center;
+        }
+        .contact-hero__image {
+            order: 1;
+            margin-bottom: var(--space-4);
+        }
+        .contact-options-primary {
+            justify-content: center;
+        }
+    }
+</style>

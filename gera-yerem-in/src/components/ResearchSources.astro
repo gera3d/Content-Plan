@@ -1,0 +1,21 @@
+---
+const { sources } = Astro.props;
+---
+<div class="not-prose my-12 bg-slate-50 p-6 rounded-2xl border border-slate-100">
+  <p class="text-sm font-semibold text-slate-500 tracking-wider uppercase mb-6 text-center">Data & Insights Sourced From</p>
+  
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    {sources.map((source) => (
+      <a href={source.url} target="_blank" rel="noopener noreferrer" class="flex flex-col p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition-all border border-slate-100 group">
+        <span class="text-xs font-bold text-blue-600 mb-1 uppercase tracking-wide">{source.name}</span>
+        <span class="text-sm font-medium text-slate-800 group-hover:text-blue-700 leading-snug">
+          {source.title}
+        </span>
+      </a>
+    ))}
+  </div>
+
+  <p class="text-xs text-center text-slate-400 mt-6">
+    Analysis based on publicly available TCO studies and industry reports from 2024-2025.
+  </p>
+</div>

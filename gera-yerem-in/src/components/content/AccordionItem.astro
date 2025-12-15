@@ -1,0 +1,90 @@
+---
+interface Props {
+  title: string;
+  group?: string;
+  open?: boolean;
+}
+
+const { title, group, open = false } = Astro.props;
+---
+
+<details class="accordion-item" name={group} open={open}>
+  <summary class="accordion-summary">
+    <span class="accordion-title">{title}</span>
+    <span class="accordion-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+    </span>
+  </summary>
+  <div class="accordion-content">
+    <div class="accordion-content__inner">
+      <slot />
+    </div>
+  </div>
+</details>
+
+<style>
+  .accordion-item {
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+    background-color: var(--color-background);
+    overflow: hidden;
+    transition: all 0.2s ease;
+  }
+  
+  .accordion-item[open] {
+    border-color: var(--color-accent);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  }
+
+  .accordion-summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.25rem;
+    cursor: pointer;
+    list-style: none; /* Hide default triangle */
+    background-color: var(--color-background);
+    transition: background-color 0.2s ease;
+  }
+  
+  .accordion-summary::-webkit-details-marker {
+    display: none; /* Hide default triangle Chrome */
+  }
+
+  .accordion-summary:hover {
+    background-color: var(--color-background-alt);
+  }
+
+  .accordion-title {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--color-text);
+  }
+  
+  .accordion-item[open] .accordion-title {
+    color: var(--color-accent);
+  }
+
+  .accordion-icon {
+    color: var(--color-text-muted);
+    transition: transform 0.3s ease;
+    display: flex;
+    align-items: center;
+  }
+
+  .accordion-item[open] .accordion-icon {
+    transform: rotate(180deg);
+    color: var(--color-accent);
+  }
+
+  .accordion-content {
+    border-top: 1px solid var(--color-border);
+    background-color: var(--color-background-alt); /* Light bg for content */
+  }
+
+  .accordion-content__inner {
+    padding: 1.25rem;
+    color: var(--color-text);
+    line-height: 1.6;
+  }
+</style>

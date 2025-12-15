@@ -1,0 +1,79 @@
+---
+interface Props {
+  title?: string;
+  icon?: string;
+}
+
+const { title = "Key Takeaways", icon = "lightbulb" } = Astro.props;
+---
+
+<div class="key-takeaways">
+  <div class="key-takeaways__header">
+    <slot name="icon">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-1.2 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg>
+    </slot>
+    <h3 class="key-takeaways__title">{title}</h3>
+  </div>
+  <div class="key-takeaways__content">
+    <slot />
+  </div>
+</div>
+
+<style>
+  .key-takeaways {
+    background-color: var(--color-background-alt);
+    border: 1px solid var(--color-border);
+    border-top: 4px solid var(--color-accent); /* Distinctive top border */
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    margin: 2rem 0;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  }
+
+  .key-takeaways__header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+    color: var(--color-accent);
+  }
+
+  .key-takeaways__title {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-text);
+  }
+
+  .icon {
+    color: var(--color-accent);
+  }
+
+  /* Style lists inside the slot mostly */
+  .key-takeaways__content :global(ul) {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .key-takeaways__content :global(li) {
+    position: relative;
+    padding-left: 1.5rem;
+    line-height: 1.6;
+  }
+
+  .key-takeaways__content :global(li::before) {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--color-accent);
+    font-weight: bold;
+  }
+  
+  .key-takeaways__content :global(p) {
+      margin-bottom: 0.5rem;
+  }
+</style>

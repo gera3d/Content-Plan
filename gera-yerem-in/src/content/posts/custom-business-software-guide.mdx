@@ -10,6 +10,22 @@ featured: true
 draft: false
 ---
 
+import KeyTakeaways from '../../components/content/KeyTakeaways.astro';
+import Callout from '../../components/content/Callout.astro';
+import FeatureGrid from '../../components/content/FeatureGrid.astro';
+import FeatureCard from '../../components/content/FeatureCard.astro';
+import ProcessTimeline from '../../components/content/ProcessTimeline.astro';
+import ProcessStep from '../../components/content/ProcessStep.astro';
+import Accordion from '../../components/content/Accordion.astro';
+import AccordionItem from '../../components/content/AccordionItem.astro';
+import PricingCard from '../../components/content/PricingCard.astro';
+import ComparisonTable from '../../components/content/ComparisonTable.astro';
+import ComparisonColumns from '../../components/content/ComparisonColumns.astro';
+import SelectionCard from '../../components/content/SelectionCard.astro';
+import CaseStudyCard from '../../components/content/CaseStudyCard.astro';
+import AuthorCard from '../../components/content/AuthorCard.astro';
+import CtaRow from '../../components/content/CtaRow.astro';
+import ResearchSources from '../../components/ResearchSources.astro';
 
 <img src="/images/memes/meme-morpheus-excel.png" alt="Custom Business Software Hero Image" class="img-small-center" />
 
@@ -38,20 +54,13 @@ Here's what you'll learn:
 
 Let's get into it.
 
-<div class="infobox">
-  <div class="infobox__title">
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-lightbulb"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-1.2 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg>
-    Key Takeaways
-  </div>
-  <ul>
-    <li>**Custom vs. Off-the-Shelf**: Custom adapts to you; off-the-shelf forces you to adapt.</li>
-    <li>**Cost Reality**: Higher upfront ($15k-$150k+), but often cheaper over 3-5 years due to no licensing fees.</li>
-    <li>**When to Buy**: Unique workflows, integration needs, or competitive advantage are key drivers.</li>
-    <li>**Ownership**: You own the code and data, eliminating vendor lock-in and forced price hikes.</li>
-  </ul>
-</div>
+<KeyTakeaways title="Key Takeaways" icon="lightbulb">
+  - **Custom vs. Off-the-Shelf**: Custom adapts to you; off-the-shelf forces you to adapt.
+  - **Cost Reality**: Higher upfront ($15k-$150k+), but often cheaper over 3-5 years due to no licensing fees.
+  - **When to Buy**: Unique workflows, integration needs, or competitive advantage are key drivers.
+  - **Ownership**: You own the code and data, eliminating vendor lock-in and forced price hikes.
+</KeyTakeaways>
 
----
 
 ## What Is Custom Business Software?
 
@@ -69,94 +78,76 @@ Same idea with software.
 
 ### What Makes It Different
 
-✅ **Built for YOUR processes** - Software adapts to how you work, not the other way around
-✅ **You own it** - The code, the data, the platform. No vendor lock-in
-✅ **Scales on your terms** - Add features when you need them, grow when you're ready
-✅ **Integrates with everything** - Connects to your existing systems exactly how you need
+<FeatureGrid columns={2}>
+  <FeatureCard title="Built for YOUR processes">
+    Software adapts to how you work, not the other way around.
+  </FeatureCard>
   
+  <FeatureCard title="You own it">
+    The code, the data, the platform. No vendor lock-in.
+  </FeatureCard>
+  
+  <FeatureCard title="Scales on your terms">
+    Add features when you need them, grow when you're ready.
+  </FeatureCard>
+  
+  <FeatureCard title="Integrates with everything">
+    Connects to your existing systems exactly how you need.
+  </FeatureCard>
+</FeatureGrid>
 
-<img src="/images/custom-business-software-guide/custom-software-benefits-infographic.png" alt="Custom Software Benefits Infographic" class="img-small-center" />
+
 
 ### Types of Custom Business Software
 
 
 Custom business software can take many forms:
 
-<div class="feature-grid">
+<FeatureGrid columns={2}>
 
-  <div class="feature-card">
-    <div class="feature-icon">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-    </div>
-    <h4>Custom CRM Systems</h4>
-    <ul>
-      <li>Manage customers, leads, and relationships your way</li>
-      <li>Track interactions across your unique sales process</li>
-      <li>Integration with your specific tools and data sources</li>
-    </ul>
-  </div>
+  <FeatureCard title="Custom CRM Systems">
+    <svg slot="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+    - Manage customers, leads, and relationships your way
+    - Track interactions across your unique sales process
+    - Integration with your specific tools and data sources
+  </FeatureCard>
 
-  <div class="feature-card">
-    <div class="feature-icon">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
-    </div>
-    <h4>Business Intelligence</h4>
-    <ul>
-      <li>Pull data from multiple sources into one view</li>
-      <li>Custom metrics that matter to YOUR business</li>
-      <li>Real-time insights for faster decision-making</li>
-    </ul>
-  </div>
+  <FeatureCard title="Business Intelligence">
+    <svg slot="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+    - Pull data from multiple sources into one view
+    - Custom metrics that matter to YOUR business
+    - Real-time insights for faster decision-making
+  </FeatureCard>
 
-  <div class="feature-card">
-    <div class="feature-icon">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-    </div>
-    <h4>Workflow Automation</h4>
-    <ul>
-      <li>Automate your specific processes (not generic workflows)</li>
-      <li>Connect systems that don't normally talk to each other</li>
-      <li>Eliminate manual data entry and errors</li>
-    </ul>
-  </div>
+  <FeatureCard title="Workflow Automation">
+    <svg slot="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+    - Automate your specific processes (not generic workflows)
+    - Connect systems that don't normally talk to each other
+    - Eliminate manual data entry and errors
+  </FeatureCard>
 
-  <div class="feature-card">
-    <div class="feature-icon">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01"/><path d="M16 6h.01"/><path d="M12 6h.01"/><path d="M12 10h.01"/><path d="M12 14h.01"/><path d="M16 10h.01"/><path d="M16 14h.01"/><path d="M8 10h.01"/><path d="M8 14h.01"/></svg>
-    </div>
-    <h4>Industry-Specific Apps</h4>
-    <ul>
-      <li>Healthcare: HIPAA-compliant patient management</li>
-      <li>Manufacturing: Custom inventory and production tracking</li>
-      <li>Legal: Case management and document automation</li>
-    </ul>
-  </div>
+  <FeatureCard title="Industry-Specific Apps">
+    <svg slot="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01"/><path d="M16 6h.01"/><path d="M12 6h.01"/><path d="M12 10h.01"/><path d="M12 14h.01"/><path d="M16 10h.01"/><path d="M16 14h.01"/><path d="M8 10h.01"/><path d="M8 14h.01"/></svg>
+    - Healthcare: HIPAA-compliant patient management
+    - Manufacturing: Custom inventory and production tracking
+    - Legal: Case management and document automation
+  </FeatureCard>
 
-  <div class="feature-card">
-    <div class="feature-icon">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
-    </div>
-    <h4>Integration Platforms</h4>
-    <ul>
-      <li>Custom middleware connecting your tech stack</li>
-      <li>API layers for legacy system modernization</li>
-      <li>Data synchronization across platforms</li>
-    </ul>
-  </div>
+  <FeatureCard title="Integration Platforms">
+    <svg slot="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+    - Custom middleware connecting your tech stack
+    - API layers for legacy system modernization
+    - Data synchronization across platforms
+  </FeatureCard>
 
-  <div class="feature-card">
-    <div class="feature-icon">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
-    </div>
-    <h4>Mobile Business Apps</h4>
-    <ul>
-      <li>Field service management</li>
-      <li>Sales team enablement</li>
-      <li>Remote workforce tools</li>
-    </ul>
-  </div>
+  <FeatureCard title="Mobile Business Apps">
+    <svg slot="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+    - Field service management
+    - Sales team enablement
+    - Remote workforce tools
+  </FeatureCard>
 
-</div>
+</FeatureGrid>
 
 The common thread? These solutions don't exist as off-the-shelf products. 
 
@@ -167,155 +158,158 @@ Or if they do, you'd need so many customizations that building custom makes more
 
 
 ## Why Businesses Choose Custom Software: 7 Reasons
+ 
+<Accordion>
 
-### 1. Perfect Fit for Your Workflow
+  <AccordionItem title="1. Perfect Fit for Your Workflow" group="reasons" open>
+    You've spent years refining your processes. You know what works. But every software you try forces you to adapt to THEIR way of doing things.
 
-You've spent years refining your processes. You know what works. But every software you try forces you to adapt to THEIR way of doing things.
+    Custom software mirrors your exact workflow. Not a compromise version.
 
-Custom software mirrors your exact workflow. Not a compromise version.
+    **Real example:** Manufacturing company had a unique production scheduling system - their competitive edge. Off-the-shelf software required them to change it. Instead, they built custom software around their process. Kept their advantage AND automated their operations.
 
-**Real example:** Manufacturing company had a unique production scheduling system - their competitive edge. Off-the-shelf software required them to change it. Instead, they built custom software around their process. Kept their advantage AND automated their operations.
+    Here's the truth: <mark>Your processes are more sophisticated than you think.</mark> Generic software assumes everyone works the same way. They don't.
+  </AccordionItem>
 
-Here's the truth: <mark>Your processes are more sophisticated than you think.</mark> Generic software assumes everyone works the same way. They don't.
+  <AccordionItem title="2. Competitive Advantage You Can't Get Elsewhere" group="reasons">
+    Here's what most business owners miss: Your competitors are using the same software you're considering.
 
-### 2. Competitive Advantage You Can't Get Elsewhere
+    Think about that. Salesforce, HubSpot, QuickBooks, Shopify - everyone in your industry uses the same tools. How do you differentiate?
 
-Here's what most business owners miss: Your competitors are using the same software you're considering.
+    Custom software becomes a proprietary asset:
+    - Amazon's fulfillment system
+    - Uber's dispatch algorithm  
+    - That competitor you can't figure out how they move so fast (probably custom software)
 
-Think about that. Salesforce, HubSpot, QuickBooks, Shopify - everyone in your industry uses the same tools. How do you differentiate?
+    <mark>When you build custom, you're not just automating. You're creating a competitive moat.</mark>
+  </AccordionItem>
 
-Custom software becomes a proprietary asset:
-- Amazon's fulfillment system
-- Uber's dispatch algorithm  
-- That competitor you can't figure out how they move so fast (probably custom software)
+  <AccordionItem title="3. True Ownership (No Vendor Lock-In)" group="reasons">
+    What you own with off-the-shelf software: Nothing.
+    - Monthly subscriptions forever
+    - Subject to price increases
+    - Feature changes you don't control
+    - Can't modify or extend
+    - If they shut down, you're stuck
 
-<mark>When you build custom, you're not just automating. You're creating a competitive moat.</mark>
+    What you own with custom software: Everything.
+    - The code (100% yours)
+    - The data (in your control)
+    - The platform (your infrastructure)  
+    - The roadmap (you decide features)
+    - The timeline (you set priorities)
 
-### 3. True Ownership (No Vendor Lock-In)
+    Financial impact: No $500/month that becomes $750/month that becomes $1,200/month. One investment, then just hosting and maintenance.
+  </AccordionItem>
 
-What you own with off-the-shelf software: Nothing.
-- Monthly subscriptions forever
-- Subject to price increases
-- Feature changes you don't control
-- Can't modify or extend
-- If they shut down, you're stuck
+  <AccordionItem title="4. Scalability Without Limits" group="reasons">
+    The off-the-shelf trap:
+    - Start on the $99/month plan
+    - Grow to $299/month (more users)
+    - Hit the $799/month tier (more features)
+    - Enterprise pricing: "Contact us" (Translation: $5,000+/month)
 
-What you own with custom software: Everything.
-- The code (100% yours)
-- The data (in your control)
-- The platform (your infrastructure)  
-- The roadmap (you decide features)
-- The timeline (you set priorities)
+    The custom approach:
+    - Build what you need now
+    - Scale infrastructure as you grow (actual costs, not artificial tiers)
+    - Add features based on ROI, not vendor pricing
+    - No penalties for success
 
-Financial impact: No $500/month that becomes $750/month that becomes $1,200/month. One investment, then just hosting and maintenance.
+    Real example: SaaS company was spending $3,500/month on customer support software. They grew to 1,000+ customers. Price jumped to $8,000/month. They built custom for $45,000. <mark>Break-even in 6 months. Savings after year one: $51,000.</mark>
+  </AccordionItem>
 
-### 4. Scalability Without Limits
+  <AccordionItem title="5. Integration Freedom" group="reasons">
+    The current state of most businesses:
+    - Sales data in CRM
+    - Financial data in accounting software
+    - Customer data in support system
+    - Marketing data in email platform
+    - Custom data in... spreadsheets
 
-The off-the-shelf trap:
-- Start on the $99/month plan
-- Grow to $299/month (more users)
-- Hit the $799/month tier (more features)
-- Enterprise pricing: "Contact us" (Translation: $5,000+/month)
+    <img src="/images/memes/meme-disaster-spreadsheet.png" alt="Disaster girl spreadsheet meme" class="img-small-center" />
 
-The custom approach:
-- Build what you need now
-- Scale infrastructure as you grow (actual costs, not artificial tiers)
-- Add features based on ROI, not vendor pricing
-- No penalties for success
+    The dream: One unified view. All systems talking to each other. No manual data entry.
 
-Real example: SaaS company was spending $3,500/month on customer support software. They grew to 1,000+ customers. Price jumped to $8,000/month. They built custom for $45,000. <mark>Break-even in 6 months. Savings after year one: $51,000.</mark>
+    <img src="/images/memes/meme-buzz-integrations.png" alt="Integrations everywhere meme" class="img-small-center" />
 
-### 5. Integration Freedom
+    Off-the-shelf reality: 
+    - "Integrations available!" (for the top 10 most popular tools)
+    - Everything else requires Zapier, Make, or manual work
+    - Data syncs break, causing chaos
 
-The current state of most businesses:
-- Sales data in CRM
-- Financial data in accounting software
-- Customer data in support system
-- Marketing data in email platform
-- Custom data in... spreadsheets
+    Custom software reality:
+    - Connect to ANY system with an API
+    - Build custom integrations for legacy systems
+    - Real-time data synchronization
+    - One source of truth
 
-<img src="/images/memes/meme-disaster-spreadsheet.png" alt="Disaster girl spreadsheet meme" class="img-small-center" />
+    Example: Healthcare practice needed to integrate EHR, scheduling, billing, review management, and patient communication. No off-the-shelf solution did all of this. Custom integration platform connected everything. Saved 15 hours/week of manual data entry.
+  </AccordionItem>
 
-The dream: One unified view. All systems talking to each other. No manual data entry.
+  <AccordionItem title="6. Better Security & Compliance" group="reasons">
+    Industry requirements:
+    - Healthcare: HIPAA compliance
+    - Finance: SOC 2, PCI-DSS
+    - Legal: Attorney-client privilege
+    - Enterprise: Custom security protocols
 
-<img src="/images/memes/meme-buzz-integrations.png" alt="Integrations everywhere meme" class="img-small-center" />
+    Off-the-shelf approach: Hope the vendor has the certifications you need. Accept their security model. Trust they won't have a data breach.
 
-Off-the-shelf reality: 
-- "Integrations available!" (for the top 10 most popular tools)
-- Everything else requires Zapier, Make, or manual work
-- Data syncs break, causing chaos
+    Custom approach: 
+    - Design security exactly to your requirements
+    - Choose where data is stored
+    - Control access at every level
+    - Audit trail customized to your compliance needs
+    - No sharing infrastructure with thousands of other companies
 
-Custom software reality:
-- Connect to ANY system with an API
-- Build custom integrations for legacy systems
-- Real-time data synchronization
-- One source of truth
+    For regulated industries, custom often isn't optional - it's required.
 
-Example: Healthcare practice needed to integrate EHR, scheduling, billing, review management, and patient communication. No off-the-shelf solution did all of this. Custom integration platform connected everything. Saved 15 hours/week of manual data entry.
+    <img src="/images/memes/meme-mocking-spongebob.png" alt="Mocking Spongebob meme" class="img-small-center" />
 
-### 6. Better Security & Compliance
+    Off-the-shelf security is "one size fits all." Custom security is "fits exactly you."
 
-Industry requirements:
-- Healthcare: HIPAA compliance
-- Finance: SOC 2, PCI-DSS
-- Legal: Attorney-client privilege
-- Enterprise: Custom security protocols
+    You define exactly who sees what, where data is stored, and how it's encrypted.
 
-Off-the-shelf approach: Hope the vendor has the certifications you need. Accept their security model. Trust they won't have a data breach.
+    <img src="/images/memes/meme-rollsafe-data.png" alt="Roll Safe data meme" class="img-small-center" />
+  </AccordionItem>
 
-Custom approach: 
-- Design security exactly to your requirements
-- Choose where data is stored
-- Control access at every level
-- Audit trail customized to your compliance needs
-- No sharing infrastructure with thousands of other companies
+  <AccordionItem title="7. Long-Term ROI (The Math That Matters)" group="reasons">
+    Here's the calculation most businesses don't make:
 
-### 6. Compliance & Security
-For regulated industries, custom often isn't optional - it's required.
+    Scenario: Medium-sized business using multiple SaaS tools
 
-<img src="/images/memes/meme-mocking-spongebob.png" alt="Mocking Spongebob meme" class="img-small-center" />
+    Current annual costs:
+    - CRM: $12,000/year
+    - Project management: $3,600/year
+    - Custom reporting: $6,000/year
+    - Integration platform: $2,400/year
+    - Total: $24,000/year
 
-Off-the-shelf security is "one size fits all." Custom security is "fits exactly you."
+    What happens over 5 years?
+    - Year 1: $24,000
+    - Year 2: $26,400 (10% increase)
+    - Year 3: $29,040
+    - Year 4: $31,944
+    - Year 5: $35,138
+    - **Total: $146,522**
 
-You define exactly who sees what, where data is stored, and how it's encrypted.
+    Custom alternative:
+    - Development: $75,000
+    - Annual hosting/maintenance: $3,000/year
+    - **5-year total: $87,000**
 
-<img src="/images/memes/meme-rollsafe-data.png" alt="Roll Safe data meme" class="img-small-center" />
+    <mark>**Savings: $59,522**</mark> (and you own the software)
 
-### 7. Long-Term ROI (The Math That Matters)
+    That's real money that goes back into your pocket.
 
-Here's the calculation most businesses don't make:
+    <img src="/images/memes/meme-leo-cheers.png" alt="Leonardo DiCaprio cheers meme" class="img-small-center" />
 
-Scenario: Medium-sized business using multiple SaaS tools
+    And that's before we even talk about the value of your data.
 
-Current annual costs:
-- CRM: $12,000/year
-- Project management: $3,600/year
-- Custom reporting: $6,000/year
-- Integration platform: $2,400/year
-- Total: $24,000/year
+    <img src="/images/memes/meme-fry-automation.png" alt="Fry automation potential meme" class="img-small-center" />
+  </AccordionItem>
 
-What happens over 5 years?
-- Year 1: $24,000
-- Year 2: $26,400 (10% increase)
-- Year 3: $29,040
-- Year 4: $31,944
-- Year 5: $35,138
-- **Total: $146,522**
-
-Custom alternative:
-- Development: $75,000
-- Annual hosting/maintenance: $3,000/year
-- **5-year total: $87,000**
-
-<mark>**Savings: $59,522**</mark> (and you own the software)
-
-That's real money that goes back into your pocket.
-
-<img src="/images/memes/meme-leo-cheers.png" alt="Leonardo DiCaprio cheers meme" class="img-small-center" />
-
-And that's before we even talk about the value of your data.
-
-<img src="/images/memes/meme-fry-automation.png" alt="Fry automation potential meme" class="img-small-center" />
+</Accordion>
 
 > [!TIP]
 > **Want a custom ROI analysis?**
@@ -328,102 +322,105 @@ And that's before we even talk about the value of your data.
 
 Not every business needs custom software. Here's how to know if you do.
 
-### Sign #1: You've Outgrown Off-the-Shelf
+<FeatureGrid columns={1}>
 
-You know you're here when:
-- "We use this workaround because the software doesn't do X"
-- Using 5+ tools to accomplish one workflow
-- Exporting from one system and importing to another manually
-- "We do it the software's way because we have to"
-- Your most valuable employees spend hours on admin work
+  <FeatureCard title="Sign #1: You've Outgrown Off-the-Shelf">
+    You know you're here when:
+    - "We use this workaround because the software doesn't do X"
+    - Using 5+ tools to accomplish one workflow
+    - Exporting from one system and importing to another manually
+    - "We do it the software's way because we have to"
+    - Your most valuable employees spend hours on admin work
 
-<img src="/images/memes/meme-oprah-workaround.png" alt="Oprah you get a workaround meme" class="img-small-center" />
+    <img src="/images/memes/meme-oprah-workaround.png" alt="Oprah you get a workaround meme" class="img-small-center" />
 
-The tipping point: When workarounds cost more than solutions.
+    The tipping point: When workarounds cost more than solutions.
 
-Quick test: Add up the hours your team spends on workarounds per week. Multiply by hourly cost. <mark>If that's over $500/week, you're spending $26,000/year on inefficiency.</mark>
+    Quick test: Add up the hours your team spends on workarounds per week. Multiply by hourly cost. <mark>If that's over $500/week, you're spending $26,000/year on inefficiency.</mark>
+  </FeatureCard>
 
-### Sign #2: Your Process Is Your Competitive Advantage
+  <FeatureCard title="Sign #2: Your Process Is Your Competitive Advantage">
+    Indicators:
+    - "I can't find software that does it our way"
+    - Your process is what makes you successful
+    - Industry-specific workflow that doesn't exist in generic tools
+    - Proprietary methodology you've developed
 
-Indicators:
-- "I can't find software that does it our way"
-- Your process is what makes you successful
-- Industry-specific workflow that doesn't exist in generic tools
-- Proprietary methodology you've developed
+    Example industries:
+    - Medical practices with unique patient care models
+    - Manufacturing with custom production processes
+    - Professional services with specialized deliverables
+    - Logistics companies with unique routing algorithms
 
-Example industries:
-- Medical practices with unique patient care models
-- Manufacturing with custom production processes
-- Professional services with specialized deliverables
-- Logistics companies with unique routing algorithms
+    The question: If your process is what makes you successful, why force it into generic software?
+  </FeatureCard>
 
-The question: If your process is what makes you successful, why force it into generic software?
+  <FeatureCard title="Sign #3: Integration Nightmares">
+    The symptoms:
+    - Data exists in silos
+    - Multiple versions of the same information
+    - "Which system has the right data?"
+    - Manual data entry between systems
+    - Reports require pulling from 3+ sources
 
-### Sign #3: Integration Nightmares
+    <img src="/images/memes/meme-excel-fine.png" alt="This is fine - running business on excel" class="img-small-center" />
 
-The symptoms:
-- Data exists in silos
-- Multiple versions of the same information
-- "Which system has the right data?"
-- Manual data entry between systems
-- Reports require pulling from 3+ sources
+    The breaking point: When integration problems cause lost sales, angry customers, or team frustration.
 
-<img src="/images/memes/meme-excel-fine.png" alt="This is fine - running business on excel" class="img-small-center" />
+    Reality check: Zapier and Make are great, but they're band-aids. If you're paying $200+/month for integration tools AND still doing manual work, that's a sign.
 
-The breaking point: When integration problems cause lost sales, angry customers, or team frustration.
+    <img src="/images/memes/meme-panik-kalm.png" alt="Panik Kalm Panik - custom software meme" class="img-small-center" />
+  </FeatureCard>
 
-Reality check: Zapier and Make are great, but they're band-aids. If you're paying $200+/month for integration tools AND still doing manual work, that's a sign.
+  <FeatureCard title="Sign #4: You're Spending $20,000+/Year on Software">
+    Do this exercise:
+    1. Add up all your software subscriptions
+    2. Include per-user costs × number of users
+    3. Add integration tools (Zapier, etc.)
+    4. Don't forget training, workarounds, tech support
 
-<img src="/images/memes/meme-panik-kalm.png" alt="Panik Kalm Panik - custom software meme" class="img-small-center" />
+    If you're over $20,000/year: Custom software starts making financial sense.
 
-### Sign #4: You're Spending $20,000+/Year on Software
+    <mark>If you're over $50,000/year: Custom is likely significantly cheaper.</mark>
 
-Do this exercise:
-1. Add up all your software subscriptions
-2. Include per-user costs × number of users
-3. Add integration tools (Zapier, etc.)
-4. Don't forget training, workarounds, tech support
+    Break-even math:
+    - $50,000 investment in custom software
+    - $20,000/year savings on subscriptions  
+    - Break-even in 2.5 years
 
-If you're over $20,000/year: Custom software starts making financial sense.
+    <img src="/images/memes/meme-pigeon-database.png" alt="Is this a database meme" class="img-small-center" />
 
-<mark>If you're over $50,000/year: Custom is likely significantly cheaper.</mark>
+    - Everything after is pure savings
 
-Break-even math:
-- $50,000 investment in custom software
-- $20,000/year savings on subscriptions  
-- Break-even in 2.5 years
+    <img src="/images/memes/meme-batman-slap.png" alt="Batman slap meme" class="img-small-center" />
+  </FeatureCard>
 
-<img src="/images/memes/meme-pigeon-database.png" alt="Is this a database meme" class="img-small-center" />
+  <FeatureCard title="Sign #5: You're Planning to Scale">
+    Growth scenarios:
+    - Doubling your team
+    - Expanding to new locations
+    - Adding new product lines
+    - Entering new markets
 
-- Everything after is pure savings
+    The off-the-shelf problem:
+    - Pricing explodes with growth
+    - "We need the enterprise plan now" ($$$)
+    - Features you don't need, but must buy
+    - Platform limits (users, records, API calls)
 
-<img src="/images/memes/meme-batman-slap.png" alt="Batman slap meme" class="img-small-center" />
+    <img src="/images/memes/meme-wonka-enterprise.png" alt="Wonka tell me more about enterprise pricing meme" class="img-small-center" />
 
-### Sign #5: You're Planning to Scale
+    The custom advantage:
+    - Infrastructure scales at actual cost
+    - No artificial limits
+    - Add features that support YOUR growth
+    - Platform grows with you, not against you
 
-Growth scenarios:
-- Doubling your team
-- Expanding to new locations
-- Adding new product lines
-- Entering new markets
+    Future-proofing: Will your current software support you at 2x your size? 5x? 10x?
+  </FeatureCard>
 
-The off-the-shelf problem:
-- Pricing explodes with growth
-- "We need the enterprise plan now" ($$$)
-- Features you don't need, but must buy
-- Platform limits (users, records, API calls)
+</FeatureGrid>
 
-<img src="/images/memes/meme-wonka-enterprise.png" alt="Wonka tell me more about enterprise pricing meme" class="img-small-center" />
-
-The custom advantage:
-- Infrastructure scales at actual cost
-- No artificial limits
-- Add features that support YOUR growth
-- Platform grows with you, not against you
-
-Future-proofing: Will your current software support you at 2x your size? 5x? 10x?
-
----
 
 ## What Custom Software Actually Costs
 
@@ -434,68 +431,44 @@ Let's talk about what everyone wants to know: What does this actually cost?
 
 ### Pricing Ranges (2025 Market Rates)
 
-#### Simple Applications: $15,000 - $50,000
-Timeline: 2-3 months  
+<FeatureGrid columns={3}>
 
-What you get:
-- Basic CRUD functionality (Create, Read, Update, Delete)
-- 3-5 core features
-- Simple user interface
-- Basic reporting
-- Mobile-responsive web app
+  <PricingCard title="Simple Applications" price="$15k - $50k" timeline="2-3 months">
+    **What you get:**
+    - Basic CRUD functionality (Create, Read, Update, Delete)
+    - 3-5 core features
+    - Simple user interface
+    - Basic reporting
+    - Mobile-responsive web app
 
-Examples:
-- Basic CRM for small team
-- Simple inventory tracker
-- Customer portal
-- Lead management system
-- Internal workflow tool
+    **Best for:** Small businesses with straightforward needs, clear requirements
+  </PricingCard>
 
-Best for: Small businesses with straightforward needs, clear requirements
+  <PricingCard title="Medium Complexity" price="$50k - $150k" timeline="3-6 months" highlight={true}>
+    **What you get:**
+    - 10-20 features
+    - Multiple user roles and permissions
+    - Integration with critical legacy systems
+    - Custom reporting and dashboards
+    - API for future extensions
 
-#### Medium Complexity: $50,000 - $150,000
-Timeline: 3-6 months  
+    **Best for:** Growing businesses with specific requirements, need for integration
+  </PricingCard>
 
-What you get:
-- 10-20 features
-- Multiple user roles and permissions
-- You need specialized features no product offers
+  <PricingCard title="Complex Systems" price="$150k - $500k+" timeline="6-12+ months">
+    **What you get:**
+    - Comprehensive feature set
+    - Complex business logic
+    - Multiple integrations (5+ systems)
+    - Advanced analytics and AI/ML
+    - Native mobile apps (iOS + Android)
+    - High-scale infrastructure
+    - Compliance requirements (HIPAA, SOC2)
 
-- Integration with critical legacy systems is mandatory. This is often where off-the-shelf options fail completely, leaving you with manual data entry.
+    **Best for:** Established businesses with complex operations, regulatory requirements
+  </PricingCard>
 
-- Custom reporting and dashboards
-- API for future extensions
-- Mobile app (iOS or Android)
-
-Examples:
-- Integrated CRM with marketing automation
-- Custom business intelligence platform
-- Field service management system
-- Multi-location inventory management
-- Review management with reputation monitoring
-
-Best for: Growing businesses with specific requirements, need for integration
-
-#### Complex Systems: $150,000 - $500,000+
-Timeline: 6-12+ months  
-
-What you get:
-- Comprehensive feature set
-- Complex business logic
-- Multiple integrations (5+ systems)
-- Advanced analytics and AI/ML
-- Native mobile apps (iOS + Android)
-- High-scale infrastructure
-- Compliance requirements (HIPAA, SOC2)
-
-Examples:
-- Enterprise resource planning (ERP)
-- Healthcare practice management system
-- E-commerce platform with custom workflows
-- Multi-tenant SaaS application
-- Manufacturing execution system
-
-Best for: Established businesses with complex operations, regulatory requirements
+</FeatureGrid>
 
 ### What Affects the Cost?
 
@@ -551,6 +524,7 @@ Budget rule: Plan for 15-20% of development cost annually for maintenance and ho
 ![5 Year Cost Comparison Chart](/images/custom-business-software-guide/5-year-cost-comparison-chart.png)
 
 
+<ComparisonTable>
 | Factor | Off-the-Shelf SaaS | Custom Software |
 |--------|-------------------|-----------------|
 | **Year 1** | $15,000 (subscriptions) | $75,000 (development) |
@@ -563,6 +537,7 @@ Budget rule: Plan for 15-20% of development cost annually for maintenance and ho
 | **Customization** | ⚠️ Limited (what vendor allows) | ✅ Unlimited (it's yours) |
 | **Scalability** | ⚠️ Tier-based pricing | ✅ Pay for actual usage |
 | **Year 10 Total** | **$237,468** | **$111,000** |
+</ComparisonTable>
 
 <mark>**Key Insight:** Custom software breaks even around year 3-4, then becomes significantly cheaper.</mark>
 
@@ -570,7 +545,6 @@ Budget rule: Plan for 15-20% of development cost annually for maintenance and ho
 
 This scaling efficiency is why enterprise starts here. Plus you own an asset.
 
----
 
 ## How Custom Software Is Built: The 5-Phase Process
 
@@ -579,141 +553,135 @@ This scaling efficiency is why enterprise starts here. Plus you own an asset.
 
 Worried about the development process? Here's exactly how it works when you partner with the right developer.
 
-### Phase 1: Discovery & Requirements (2-3 weeks)
+<ProcessTimeline>
 
-What happens:
-- Deep dive into your business and current workflows
-- Document pain points and opportunities
-- Define exact requirements and success metrics
-- Create project scope and timeline
-- Identify technical constraints and dependencies
+  <ProcessStep number="1" title="Discovery & Requirements" duration="2-3 weeks">
+    **What happens:**
+    - Deep dive into your business and current workflows
+    - Document pain points and opportunities
+    - Define exact requirements and success metrics
+    - Create project scope and timeline
+    - Identify technical constraints and dependencies
 
-<img src="/images/memes/meme-simple-process.png" alt="One does not simply skip discovery meme" class="img-small-center" />
+    <img src="/images/memes/meme-simple-process.png" alt="One does not simply skip discovery meme" class="img-small-center" />
 
-Your involvement: High (5-10 hours/week)
+    **Your involvement:** High (5-10 hours/week)
 
-Deliverables:
-- Requirements document (what we're building)
-- Project timeline and milestones
-- Budget breakdown
-- Technical architecture plan
+    **Deliverables:**
+    - Requirements document (what we're building)
+    - Project timeline and milestones
+    - Budget breakdown
+    - Technical architecture plan
 
-Why this matters: <mark>Getting requirements right saves 10x the cost of fixing things later.</mark> Better to spend extra time here than rebuild later.
+    **Why this matters:** <mark>Getting requirements right saves 10x the cost of fixing things later.</mark> Better to spend extra time here than rebuild later.
+  </ProcessStep>
 
-### Phase 2: Design & Prototyping (3-4 weeks)
+  <ProcessStep number="2" title="Design & Prototyping" duration="3-4 weeks">
+    **What happens:**
+    - Create wireframes (blueprints of each screen)
+    - Design user interface and user experience
+    - Build clickable prototype
+    - Get your feedback and refine
+    - Plan database structure and technical architecture
+    - Define API specifications
 
-What happens:
-- Create wireframes (blueprints of each screen)
-- Design user interface and user experience
-- Build clickable prototype
-- Get your feedback and refine
-- Plan database structure and technical architecture
-- Define API specifications
+    **Your involvement:** Medium (3-5 hours/week for feedback)
 
-Your involvement: Medium (3-5 hours/week for feedback)
+    **Deliverables:**
+    - Clickable prototype (you can test before we code anything)
+    - Visual designs for all screens
+    - Technical specifications
+    - Database schema
 
-Deliverables:
-- Clickable prototype (you can test before we code anything)
-- Visual designs for all screens
-- Technical specifications
-- Database schema
+    **Why this matters:** Seeing a working prototype helps you confirm this is what you want. Changes are cheap now, expensive later.
 
-Why this matters: Seeing a working prototype helps you confirm this is what you want. Changes are cheap now, expensive later.
+    <Callout variant="tip">**Pro tip:** Have your actual users test the prototype. Their feedback is gold.</Callout>
+  </ProcessStep>
 
-Pro tip: Have your actual users test the prototype. Their feedback is gold.
+  <ProcessStep number="3" title="Development" duration="8-16 weeks">
+    **What happens:**
+    - Build in 2-week sprints
+    - Demo working features every 2 weeks
+    - Incorporate your feedback iteratively
+    - Write automated tests to ensure quality
+    - Set up staging environment for testing
 
-### Phase 3: Development (8-16 weeks)
+    **Your involvement:** Low-medium (1-2 hours every 2 weeks for demos)
 
-What happens:
-- Build in 2-week sprints
-- Demo working features every 2 weeks
-- Incorporate your feedback iteratively
-- Write automated tests to ensure quality
-- Set up staging environment for testing
+    **Deliverables:**
+    - Working software in your users' hands
+    - Documentation and training guides
+    - Sprint demos and updates
+    - Access to staging environment
 
-Your involvement: Low-medium (1-2 hours every 2 weeks for demos)
+    **Why this matters:** Regular demos mean you're never surprised. You see progress, provide feedback, and we adjust.
 
-Deliverables:
-- Working software in your users' hands
-- Documentation and training guides
+    **How we avoid scope creep:** 
+    - Clear requirements from Phase 1
+    - Changes tracked and discussed
+    - Impact on timeline/budget communicated before proceeding
+  </ProcessStep>
 
-- Sprint demos and updates
-- Access to staging environment
+  <ProcessStep number="4" title="Testing & Refinement" duration="2-3 weeks">
+    **What happens:**
+    - User acceptance testing (your team tests everything)
+    - Load and performance testing
+    - Security testing and penetration testing
+    - Bug fixes and polish
+    - Documentation creation
 
-Why this matters: Regular demos mean you're never surprised. You see progress, provide feedback, and we adjust.
+    **Your involvement:** High (10-15 hours total for testing)
 
-How we avoid scope creep: 
-- Clear requirements from Phase 1
-- Changes tracked and discussed
-- Impact on timeline/budget communicated before proceeding
+    **Deliverables:**
+    - Production-ready software
+    - Test results and quality assurance reports
+    - User documentation
+    - Admin documentation
 
-### Phase 4: Testing & Refinement (2-3 weeks)
+    **Why this matters:** Finding bugs now vs. after launch saves time, money, and reputation.
 
-What happens:
-- User acceptance testing (your team tests everything)
-- Load and performance testing
-- Security testing and penetration testing
-- Bug fixes and polish
-- Documentation creation
+    **Testing checklist:**
+    - Does it do everything we said it would?
+    - Can non-technical users figure it out?
+    - Does it handle errors gracefully?
+    - Is it fast enough?
+    - Is it secure?
+  </ProcessStep>
 
-Your involvement: High (10-15 hours total for testing)
+  <ProcessStep number="5" title="Launch & Training" duration="1-2 weeks">
+    **What happens:**
+    - Deploy to production environment
+    - Training for your team
+    - Migrate data (if applicable)
+    - Monitor closely for issues
+    - Provide go-live support
 
-Deliverables:
-- Production-ready software
-- Test results and quality assurance reports
-- User documentation
-- Admin documentation
+    <img src="/images/memes/meme-gru-plan.png" alt="Gru plan meme" class="img-small-center" />
 
-Why this matters: Finding bugs now vs. after launch saves time, money, and reputation.
+    **Your involvement:** High (training sessions, ~5-10 hours)
 
-Testing checklist:
-- Does it do everything we said it would?
-- Can non-technical users figure it out?
-- Does it handle errors gracefully?
-- Is it fast enough?
-- Is it secure?
+    **Deliverables:**
+    - Fully deployed system (live and operational)
+    - Trained team members
+    - Operation manuals
+    - Support documentation
+    - Success metrics dashboard
 
-### Phase 5: Launch & Training (1-2 weeks)
+    **Post-launch:**
+    - 30-day intensive support period
+    - Monthly check-ins
+    - Ongoing maintenance available
+    - Feature enhancement discussions
 
-What happens:
-- Deploy to production environment
-- Training for your team
+    **Reality check:** Expect a 2-4 week adjustment period where your team gets comfortable with the new system.
+  </ProcessStep>
 
-- Training for your team
+</ProcessTimeline>
 
-### Process Summary
-It's not magic, it's engineering.
-
-- Migrate data (if applicable)
-- Train your team
-- Monitor closely for issues
-
-<img src="/images/memes/meme-gru-plan.png" alt="Gru plan meme" class="img-small-center" />
-
-- Provide go-live support
-
-Your involvement: High (training sessions, ~5-10 hours)
-
-Deliverables:
-- Fully deployed system (live and operational)
-- Trained team members
-- Operation manuals
-- Support documentation
-- Success metrics dashboard
-
-Post-launch:
-- 30-day intensive support period
-- Monthly check-ins
-- Ongoing maintenance available
-- Feature enhancement discussions
-
-Reality check: Expect a 2-4 week adjustment period where your team gets comfortable with the new system.
-
----
 
 ## Should You Build or Buy? The Decision Framework
 
-![Build vs Buy Decision Matrix](/images/custom-business-software-guide/build-vs-buy-decision-matrix.png)
+
 
 
 Still not sure if custom is right for you? Use this framework.
@@ -722,74 +690,78 @@ Still not sure if custom is right for you? Use this framework.
 
 If you have unique problems, you need unique solutions.
 
-### Choose Off-the-Shelf When:
+<ComparisonColumns titleLeft="Choose Off-the-Shelf When:" titleRight="Choose Custom Software When:">
 
-✅ Your needs are common and standard
-- "I just need basic CRM functionality"
-- "We do things pretty much like everyone else"
-- "We can adapt our process to match the software"
+  <div slot="left">
+    ✅ **Your needs are common and standard**
+    - "I just need basic CRM functionality"
+    - "We do things pretty much like everyone else"
+    - "We can adapt our process to match the software"
 
-✅ Your budget is limited (under $50K total)
-- Can't afford upfront custom development cost
-- Need to spread cost over monthly subscriptions
-- Want to test with lower commitment
+    ✅ **Your budget is limited (under $50K total)**
+    - Can't afford upfront custom development cost
+    - Need to spread cost over monthly subscriptions
+    - Want to test with lower commitment
 
-✅ You need something immediately
-- Can't wait 3-6 months for custom development
-- Need solution deployed this month
-- Speed is more important than perfect fit
+    ✅ **You need something immediately**
+    - Can't wait 3-6 months for custom development
+    - Need solution deployed this month
+    - Speed is more important than perfect fit
 
-✅ SaaS solution covers 80%+ of your needs
-- Minor workarounds are acceptable
-- Missing features aren't deal-breakers
-- "Good enough" is actually good enough
+    ✅ **SaaS solution covers 80%+ of your needs**
+    - Minor workarounds are acceptable
+    - Missing features aren't deal-breakers
+    - "Good enough" is actually good enough
 
-✅ You're still figuring out your processes
-- Business model is evolving
-- Not sure what you really need yet
-- Want to test different approaches
+    ✅ **You're still figuring out your processes**
+    - Business model is evolving
+    - Not sure what you really need yet
+    - Want to test different approaches
 
-Bottom line: Off-the-shelf makes sense when you fit the mold.
+    _Bottom line: Off-the-shelf makes sense when you fit the mold._
+  </div>
 
-### Choose Custom Software When:
+  <div slot="right">
+    ✅ **Your workflow is unique or proprietary**
+    - "We do things differently than competitors"
+    - "Our process is our competitive advantage"
+    - "No software does what we need"
 
-✅ Your workflow is unique or proprietary
-- "We do things differently than competitors"
-- "Our process is our competitive advantage"
-- "No software does what we need"
+    ✅ **You're spending $20K+/year on software**
+    - Multiple subscriptions adding up
+    - Integration costs are high
+    - Custom ROI timeline makes sense
 
-✅ You're spending $20K+/year on software
-- Multiple subscriptions adding up
-- Integration costs are high
-- Custom ROI timeline makes sense
+    ✅ **Integration is critical**
+    - Need to connect 5+ systems
+    - Have legacy systems that must integrate
+    - Real-time data sync is required
+    - One source of truth is essential
 
-✅ Integration is critical
-- Need to connect 5+ systems
-- Have legacy systems that must integrate
-- Real-time data sync is required
-- One source of truth is essential
+    ✅ **You need a competitive advantage**
+    - Want proprietary technology
+    - Software as a business differentiator
+    - Can't use same tools as competitors
 
-✅ You need a competitive advantage
-- Want proprietary technology
-- Software as a business differentiator
-- Can't use same tools as competitors
+    ✅ **Long-term ownership matters**
+    - Want to own your platform
+    - Avoiding vendor lock-in is important
+    - Building company asset value
 
-✅ Long-term ownership matters
-- Want to own your platform
-- Avoiding vendor lock-in is important
-- Building company asset value
+    ✅ **Compliance requires custom solution**
+    - HIPAA, SOC2, industry-specific requirements
+    - Can't trust third-party with your data
+    - Custom security protocols needed
 
-✅ Compliance requires custom solution
-- HIPAA, SOC2, industry-specific requirements
-- Can't trust third-party with your data
-- Custom security protocols needed
+    ✅ **You're planning significant growth**
+    - Will outgrow tier-based pricing
+    - Need platform that scales without penalties
+    - Current solutions won't support 2x-5x growth
 
-✅ You're planning significant growth
-- Will outgrow tier-based pricing
-- Need platform that scales without penalties
-- Current solutions won't support 2x-5x growth
+    _Bottom line: Custom makes sense when you need something truly yours._
+  </div>
 
-Bottom line: Custom makes sense when you need something truly yours.
+</ComparisonColumns>
 
 ### The Hybrid Approach (Often the Best Answer)
 
@@ -814,7 +786,6 @@ Example:
 - Create integration that syncs order data to QuickBooks
 - Best of both worlds
 
----
 
 ## Real Success Stories: Custom Software ROI
 
@@ -825,123 +796,123 @@ Let's look at real examples of businesses that chose custom software and the res
 
 <img src="/images/memes/meme-success-roi.png" alt="Success kid ROI meme" class="img-small-center" />
 
-### Case Study #1: Regional Real Estate Brokerage
+<CaseStudyCard 
+  title="Case Study #1: Regional Real Estate Brokerage"
+  subtitle="Company: 45-agent real estate brokerage"
+  investment="$65,000"
+  timeline="14 weeks"
+  roi="289%"
+  breakEven="8 months"
+>
+  **The Problem:**
+  Using Salesforce - $18,000/year and growing. Needed MLS integration that didn't exist. Agents frustrated with complexity. Missing key features for real estate workflow.
 
-Company: 45-agent real estate brokerage  
+  **The Solution:**
+  - Property management integrated with MLS data feed
+  - Client relationship tracking specific to real estate
+  - Transaction pipeline visualization
+  - Automated follow-up sequences
+  - Mobile app for agents in the field
 
-The problem: Using Salesforce - $18,000/year and growing. Needed MLS integration that didn't exist. Agents frustrated with complexity. Missing key features for real estate workflow.
+  **Results (Year One):**
+  - Saved $18,000 (no more Salesforce)
+  - Agent productivity up 30% (less admin time)
+  - 40% increase in closed transactions (better follow-up)
 
-What I built:
-- Property management integrated with MLS data feed
-- Client relationship tracking specific to real estate
-- Transaction pipeline visualization
-- Automated follow-up sequences
-- Mobile app for agents in the field
+  > "The custom CRM does exactly what we need, nothing more, nothing less. Our agents actually USE it because it makes their job easier, not harder."
+</CaseStudyCard>
 
-Investment: $65,000 development  
-Timeline: 14 weeks
+<CaseStudyCard 
+  title="Case Study #2: Medical Practice"
+  subtitle="Company: 3-location family medicine practice"
+  investment="$35,000"
+  timeline="8 weeks"
+  roi="312%"
+  breakEven="4 months"
+>
+  **The Problem:**
+  Patient reviews scattered across multiple platforms. No system for requesting reviews. Negative reviews not being addressed. Reputation management manual and inconsistent.
 
-Results (Year One):
-- Saved $18,000 (no more Salesforce)
-- Agent productivity up 30% (less admin time)
-- 40% increase in closed transactions (better follow-up)
-- ROI: 289% in first year
-- <mark>Break-even: 8 months</mark>
+  **The Solution:**
+  - Automated review request system (email + SMS)
+  - Centralized dashboard for all review platforms
+  - Alert system for negative reviews
+  - Integration with practice management software
+  - Patient satisfaction tracking
 
-Quote from owner: *"The custom CRM does exactly what we need, nothing more, nothing less. Our agents actually USE it because it makes their job easier, not harder."*
+  **Results (6 Months):**
+  - Generated 500+ new reviews
+  - Average rating increased from 3.9 to 4.8 stars
+  - New patient inquiries up 45%
+  - Staff time on reputation management reduced from 10 hours/week to 1 hour/week
 
-### Case Study #2: Medical Practice
+  **The Numbers:**
+  - 45% increase in new patients = ~30 additional patients/month
+  - Average patient lifetime value = $2,400
+  - Monthly revenue increase = $72,000
 
-Company: 3-location family medicine practice  
+  > "We tried Birdeye and Podium - spent $8,000 and got mediocre results. Our custom system cost less and works infinitely better because it fits our exact workflow."
+</CaseStudyCard>
 
-The problem: Patient reviews scattered across multiple platforms. No system for requesting reviews. Negative reviews not being addressed. Reputation management manual and inconsistent.
+<CaseStudyCard 
+  title="Case Study #3: Manufacturing Company"
+  subtitle="Company: Mid-size custom parts manufacturer"
+  investment="$95,000"
+  timeline="16 weeks"
+  roi="187%"
+  breakEven="10 months"
+>
+  **The Problem:**
+  Order processing took 3-5 days. High error rate (15% of orders had issues). Manual handoffs between sales, production, shipping. No real-time visibility into order status. Lost orders, missed deadlines, frustrated customers.
 
-What I built:
-- Automated review request system (email + SMS)
-- Centralized dashboard for all review platforms
-- Alert system for negative reviews
-- Integration with practice management software
-- Patient satisfaction tracking
+  **The Solution:**
+  - Automated order workflow from quote to shipment
+  - Real-time production scheduling
+  - Inventory tracking integrated with ordering
+  - Customer portal for order status
+  - Automated notifications at each stage
 
-Investment: $35,000 development  
-Timeline: 8 weeks
+  **Results (First Year):**
+  - Order processing time: 3-5 days → 4 hours
+  - Error rate: 15% → 0.8%
+  - Customer satisfaction score: +34%
+  - On-time delivery: 67% → 94%
 
-Results (6 Months):
-- Generated 500+ new reviews
-- Average rating increased from 3.9 to 4.8 stars
-- New patient inquiries up 45%
-- Staff time on reputation management: reduced from 10 hours/week to 1 hour/week
-- <mark>ROI: 312% in first year</mark>
-- Break-even: 4 months
+  **The Numbers:**
+  - 25 hours/week staff time saved ($58,500/year)
+  - Error reduction saved ~$35,000/year
+  - Increased capacity allowed 20% more orders
 
-The numbers:
-- 45% increase in new patients = ~30 additional patients/month
-- Average patient lifetime value = $2,400
-- Monthly revenue increase = $72,000
-- Annual revenue impact = $864,000
+  > "We were skeptical about the investment, but within 3 months we couldn't imagine running the business without it. It's transformed how we operate."
+</CaseStudyCard>
 
-Quote from practice manager: *"We tried Birdeye and Podium - spent $8,000 and got mediocre results. Our custom system cost less and works infinitely better because it fits our exact workflow."*
+<CaseStudyCard 
+  title="Case Study #4: Marketing Agency"
+  subtitle="Company: 25 employees, 60 clients"
+  investment="$72,000"
+  timeline="12 weeks"
+  roi="425%"
+  breakEven="3 months"
+>
+  **The Problem:**
+  Client reporting extremely manual (8-10 hours per client/month). Data in multiple tools (Google Analytics, social media, ads platforms). No client self-service. Constant "where are we?" questions.
 
-### Case Study #3: Manufacturing Company
+  **The Solution:**
+  - Automated data aggregation from 8+ platforms
+  - Real-time client dashboards
+  - Automated monthly report generation
+  - Client portal for self-service access
 
-Company: Mid-size custom parts manufacturer  
+  **Results (First Year):**
+  - Reporting time: 10 hours/client → 30 minutes/client
+  - Time saved: 570 hours/month
+  - Reinvested time into new client acquisition
+  - New clients added: 15 (25% growth)
+  - Client retention: 89% → 96%
 
-The problem: Order processing took 3-5 days. High error rate (15% of orders had issues). Manual handoffs between sales, production, shipping. No real-time visibility into order status. Lost orders, missed deadlines, frustrated customers.
+  > "This was the best business decision we've made. The time saved went directly into growing the business. Plus, clients LOVE the real-time dashboards."
+</CaseStudyCard>
 
-What I built:
-- Automated order workflow from quote to shipment
-- Real-time production scheduling
-- Inventory tracking integrated with ordering
-- Customer portal for order status
-- Automated notifications at each stage
-
-Investment: $95,000 development  
-Timeline: 16 weeks
-
-Results (First Year):
-- Order processing time: 3-5 days → 4 hours
-- Error rate: 15% → 0.8%
-- Staff time saved: 25 hours/week
-- Customer satisfaction score: +34%
-- On-time delivery: 67% → 94%
-- ROI: 187% first year
-- Break-even: 10 months
-
-The numbers:
-- 25 hours/week saved × $45/hour = $58,500/year labor savings
-- Error reduction saved ~$35,000/year in rework and lost materials
-- Increased capacity allowed 20% more orders without adding staff
-
-Quote from operations manager: *"We were skeptical about the investment, but within 3 months we couldn't imagine running the business without it. It's transformed how we operate."*
-
-### Case Study #4: Marketing Agency
-
-Company: 25 employees, 60 clients  
-
-The problem: Client reporting extremely manual (8-10 hours per client/month). Data in multiple tools (Google Analytics, social media, ads platforms). No client self-service. Constant "where are we?" questions.
-
-What I built:
-- Automated data aggregation from 8+ platforms
-- Real-time client dashboards
-- Automated monthly report generation
-- Client portal for self-service access
-- Custom metrics important to clients
-
-Investment: $72,000 development  
-Timeline: 12 weeks
-
-Results (First Year):
-- Reporting time: 10 hours/client → 30 minutes/client
-- Time saved: 570 hours/month
-- Reinvested time into new client acquisition
-- New clients added: 15 (25% growth)
-- Client retention: 89% → 96%
-- <mark>ROI: 425% first year</mark>
-- Break-even: 3 months
-
-Quote from agency owner: *"This was the best business decision we've made. The time saved went directly into growing the business. Plus, clients LOVE the real-time dashboards."*
-
----
 
 ## How to Choose the Right Developer
 
@@ -955,437 +926,479 @@ The success of your project depends heavily on choosing the right developer. Her
 - Do they understand ROI, not just code?
 - Do they challenge your assumptions (in a helpful way)?
 
-<mark>**Pro Tip:** Look for developers who speak business, not just tech.</mark>
+<Callout variant="tip">
+  Look for developers who speak business, not just tech.
+</Callout>
 
 The success of your project depends heavily on choosing the right developer. Here's how to evaluate and select.
 
 ### What to Look For
 
-#### 1. Business Understanding (Not Just Technical Skills)
+<SelectionCard step="1" title="Business Understanding (Not Just Technical Skills)">
 
-<img src="/images/memes/meme-dwight-dev.png" alt="Dwight cheapest developer meme" class="img-small-center" />
+  <img src="/images/memes/meme-dwight-dev.png" alt="Dwight cheapest developer meme" class="img-small-center" />
 
-Ask yourself:
-- Do they ask about your business goals, or just technical specs?
-- Can they explain technical decisions in business terms?
-- Do they understand ROI, not just code?
-- Do they challenge your assumptions (in a helpful way)?
+  Ask yourself:
+  - Do they ask about your business goals, or just technical specs?
+  - Can they explain technical decisions in business terms?
+  - Do they understand ROI, not just code?
+  - Do they challenge your assumptions (in a helpful way)?
 
-- **Red Flag**: "We don't do testing, we just fix bugs as they appear." (Run away)
+  - **Red Flag**: "We don't do testing, we just fix bugs as they appear." (Run away)
 
-<img src="/images/memes/meme-kermit-push-to-prod.png" alt="Evil kermit push to prod meme" class="img-small-center" />
+  <img src="/images/memes/meme-kermit-push-to-prod.png" alt="Evil kermit push to prod meme" class="img-small-center" />
 
-Red flag: Developer who just says "sure, we can build that" to everything without asking WHY.
+  Red flag: Developer who just says "sure, we can build that" to everything without asking WHY.
 
-<img src="/images/memes/meme-first-time.png" alt="First time hiring dev meme" class="img-small-center" />
+  Green flag: Developer who asks "What business problem are we solving?" and "How will we measure success?"
 
-Green flag: Developer who asks "What business problem are we solving?" and "How will we measure success?"
+  <img src="/images/memes/meme-ackabar-trap.png" alt="Ackbar its a trap meme" class="img-small-center" />
 
-<img src="/images/memes/meme-ackabar-trap.png" alt="Ackbar its a trap meme" class="img-small-center" />
+  My perspective: I'm a developer who understands marketing and business metrics. I care about whether your software makes you money, not just whether the code is elegant.
+</SelectionCard>
 
-My perspective: I'm a developer who understands marketing and business metrics. I care about whether your software makes you money, not just whether the code is elegant.
+<SelectionCard step="2" title="Relevant Experience">
 
-#### 2. Relevant Experience
+  Questions to ask:
+  - "Have you built something similar?"
+  - "Do you understand my industry?"
+  - "Can you show me working examples?"
+  - "Can I talk to past clients in similar situations?"
 
-Questions to ask:
-- "Have you built something similar?"
-- "Do you understand my industry?"
-- "Can you show me working examples?"
-- "Can I talk to past clients in similar situations?"
+  Portfolio check:
+  - Look for variety (shows adaptability)
+  - Look for completion (not just prototypes)
+  - Look for longevity (are clients still using it years later?)
 
-Portfolio check:
-- Look for variety (shows adaptability)
-- Look for completion (not just prototypes)
-- Look for longevity (are clients still using it years later?)
+  Don't expect perfect match: They don't need to have built your EXACT software before, but they should have relevant domain experience.
+</SelectionCard>
 
-Don't expect perfect match: They don't need to have built your EXACT software before, but they should have relevant domain experience.
+<SelectionCard step="3" title="Process & Communication">
 
-#### 3. Process & Communication
+  Evaluate their process:
+  - Do they have a clear methodology?
+  - How do they handle requirements gathering?
+  - What does their timeline look like?
+  - How often will you see progress?
+  - How do they handle changes?
 
-Evaluate their process:
-- Do they have a clear methodology?
-- How do they handle requirements gathering?
-- What does their timeline look like?
-- How often will you see progress?
-- How do they handle changes?
+  Communication red flags:
+  - Slow to respond
+  - Unclear explanations
+  - Dismissive of questions
+  - "Trust me, I'm the expert"
 
-Communication red flags:
-- Slow to respond
-- Unclear explanations
-- Dismissive of questions
-- "Trust me, I'm the expert"
+  Communication green flags:
+  - Proactive updates
+  - Clear, jargon-free explanations
+  - Welcomes questions
+  - Sets expectations clearly
+</SelectionCard>
 
-Communication green flags:
-- Proactive updates
-- Clear, jargon-free explanations
-- Welcomes questions
-- Sets expectations clearly
+<SelectionCard step="4" title="Post-Launch Support">
 
-#### 4. Post-Launch Support
+  Critical questions:
+  - "What happens after launch?"
+  - "How do you handle bugs found after deployment?"
+  - "What are maintenance options?"
+  - "How do you handle feature requests later?"
+  - "What if I need training for new team members?"
 
-Critical questions:
-- "What happens after launch?"
-- "How do you handle bugs found after deployment?"
-- "What are maintenance options?"
-- "How do you handle feature requests later?"
-- "What if I need training for new team members?"
+  Options to look for:
+  - Warranty period (30-90 days of bug fixes)
+  - Maintenance agreements (ongoing support)
+  - Training documentation
+  - Code handoff (if you want to maintain in-house later)
+</SelectionCard>
 
-Options to look for:
-- Warranty period (30-90 days of bug fixes)
-- Maintenance agreements (ongoing support)
-- Training documentation
-- Code handoff (if you want to maintain in-house later)
+<SelectionCard step="5" title="Cultural Fit & Trust">
 
-#### 5. Cultural Fit & Trust
+  Subjective but crucial:
+  - Do you trust this person/team?
+  - Are they genuinely interested in your success?
+  - Do your communication styles match?
+  - Can you see working with them for 3-6 months?
 
-Subjective but crucial:
-- Do you trust this person/team?
-- Are they genuinely interested in your success?
-- Do your communication styles match?
-- Can you see working with them for 3-6 months?
-
-Your gut matters: You'll be in regular contact during development. If something feels off, it probably is.
+  Your gut matters: You'll be in regular contact during development. If something feels off, it probably is.
+</SelectionCard>
 
 ### Red Flags to Avoid
 
-❌ **Guaranteed fixed prices without understanding requirements**  
-If you're asking "How much?", you're asking the wrong question.
+<Callout variant="warning">
+  **Watch out for these warning signs:**
 
-<img src="/images/memes/meme-stonks-efficiency.png" alt="Stonks efficiency meme" class="img-small-center" />
+  ❌ **Guaranteed fixed prices without understanding requirements**  
+  If you're asking "How much?", you're asking the wrong question. "We can build your CRM for $30K" before asking any questions = disaster waiting to happen.
 
-The right question is: "What features drive revenue, and which ones are just nice-to-haves?"
+  <img src="/images/memes/meme-stonks-efficiency.png" alt="Stonks efficiency meme" class="img-small-center" />
 
-<img src="/images/memes/meme-stonks-efficiency.png" alt="Stonks efficiency meme" class="img-small-center" />
+  ❌ **"Yes" to everything without questions**  
+  Real developers know trade-offs exist. If they agree to everything, they don't understand the complexity.
 
-"We can build your CRM for $30K" before asking any questions = disaster waiting to happen
+  ❌ **No working examples or case studies**  
+  "Trust us" isn't enough. See actual work they've completed.
 
-❌ **"Yes" to everything without questions**  
-Real developers know trade-offs exist. If they agree to everything, they don't understand the complexity.
+  ❌ **Vague about timeline or process**  
+  "It'll take however long it takes" is not a plan.
 
-❌ **No working examples or case studies**  
-"Trust us" isn't enough. See actual work they've completed.
+  ❌ **Offshore-only with significant communication barriers**  
+  Nothing wrong with offshore developers, but if communication is painful, the project will be too.
 
-❌ **Vague about timeline or process**  
-"It'll take however long it takes" is not a plan.
+  ❌ **Unwilling to start small or do phased approach**  
+  Good developers are confident in incremental value. All-or-nothing is risky.
 
-❌ **Offshore-only with significant communication barriers**  
-Nothing wrong with offshore developers, but if communication is painful, the project will be too.
-
-❌ **Unwilling to start small or do phased approach**  
-Good developers are confident in incremental value. All-or-nothing is risky.
-
-❌ **No discussion of maintenance or support**  
-Software isn't "done" after launch. If they don't mention ongoing support, they don't understand software lifecycle.
+  ❌ **No discussion of maintenance or support**  
+  Software isn't "done" after launch. If they don't mention ongoing support, they don't understand software lifecycle.
+</Callout>
 
 ### Questions to Ask Potential Developers
 
-**About Their Work:**
-1. "Can you show me 3 similar projects you've completed?"
-2. "Can I see the actual working software, not just screenshots?"
-3. "Can I speak with 2-3 past clients?"
+<Accordion>
+  <AccordionItem title="About Their Work">
+    1. "Can you show me 3 similar projects you've completed?"
+    2. "Can I see the actual working software, not just screenshots?"
+    3. "Can I speak with 2-3 past clients?"
+  </AccordionItem>
+  
+  <AccordionItem title="About Process">
+    4. "Walk me through your development process from start to finish."
+    5. "How do you gather and document requirements?"
+    6. "How often will I see progress and provide feedback?"
+    7. "What happens if my requirements change mid-project?"
+  </AccordionItem>
+  
+  <AccordionItem title="About Quality">
+    8. "How do you ensure the software is secure?"
+    9. "What's your testing process?"
+    10. "How do you handle bugs found after launch?"
+  </AccordionItem>
+  
+  <AccordionItem title="About Practical Matters">
+    11. "What's the payment structure?" (Milestone-based is standard)
+    12. "Who owns the code when the project is done?" (You should)
+    13. "What happens if we need to pause the project?"
+    14. "What ongoing costs should I expect after launch?"
+  </AccordionItem>
+  
+  <AccordionItem title="About Them">
+    15. "Why do you think you're the right fit for this project?"
+    16. "What questions do you have for me?"
+  </AccordionItem>
+</Accordion>
 
-**About Process:**
-4. "Walk me through your development process from start to finish."
-5. "How do you gather and document requirements?"
-6. "How often will I see progress and provide feedback?"
-7. "What happens if my requirements change mid-project?"
+<Callout variant="tip">
+  The questions THEY ask you are as important as the answers they give.
+</Callout>
 
-**About Quality:**
-8. "How do you ensure the software is secure?"
-9. "What's your testing process?"
-10. "How do you handle bugs found after launch?"
-
-**About Practical Matters:**
-11. "What's the payment structure?" (Milestone-based is standard)
-12. "Who owns the code when the project is done?" (You should)
-13. "What happens if we need to pause the project?"
-14. "What ongoing costs should I expect after launch?"
-
-**About Them:**
-15. "Why do you think you're the right fit for this project?"
-16. "What questions do you have for me?"
-
-**Pro tip:** The questions THEY ask you are as important as the answers they give.
-
----
 
 ## Ready to Explore Custom Software?
 
-### Your Next Steps
+<ProcessTimeline>
 
-#### Step 1: Calculate Your ROI
+  <ProcessStep number="1" title="Calculate Your ROI">
+    Before going further, run the numbers on your specific situation.
 
-Before going further, run the numbers on your specific situation.
+    This takes 3 minutes and could save you thousands.
 
-This takes 3 minutes and could save you thousands.
+    <Callout variant="note">
+    **Need help running the numbers?** We can help you build this ROI case. <a href="/contact">Get in touch</a>.
+    </Callout>
+  </ProcessStep>
 
-> [!NOTE]
-> **Need help running the numbers?** We can help you build this ROI case. <a href="/contact">Get in touch</a>.
+  <ProcessStep number="2" title="Document Your Requirements">
+    Even if you're not sure what you need, start documenting:
+    - Current pain points
+    - Manual processes you'd like to automate
+    - Systems that need to talk to each other
+    - Features you wish existed
 
-#### Step 2: Document Your Requirements
+    - Communicate clearly with developers
 
-Even if you're not sure what you need, start documenting:
-- Current pain points
-- Manual processes you'd like to automate
-- Systems that need to talk to each other
-- Features you wish existed
+    <CtaRow>
+      <a href="/contact" class="btn btn--secondary">Request Content Templates</a>
+    </CtaRow>
+  </ProcessStep>
 
-- Communicate clearly with developers
+  <ProcessStep number="3" title="Get a No-Obligation Consultation">
+    Ready to discuss your specific situation?
 
-<a href="/contact" class="btn btn--secondary">Request Content Templates</a>
+    <CtaRow>
+      <a href="/contact" class="btn btn--primary">Schedule a Free 30-Minute Consultation</a>
+    </CtaRow>
 
-#### Step 3: Get a No-Obligation Consultation
+    **What you'll get:**
+    ✅ Honest assessment (I'll tell you if off-the-shelf is better)  
+    ✅ Ballpark pricing for your project  
+    ✅ Timeline estimate  
+    ✅ Potential ROI analysis  
+    ✅ Clear next steps (if it makes sense to proceed)
 
-Ready to discuss your specific situation?
+    **What you won't get:**
+    ❌ High-pressure sales tactics  
+    ❌ Vague promises  
+    ❌ Commitment before you're ready
 
-Ready to discuss your specific situation?
+    **My promise:** I only want to work with clients where custom software makes clear business sense. If off-the-shelf is smarter for you, I'll tell you.
+  </ProcessStep>
 
-<a href="/contact" class="btn btn--primary">Schedule a Free 30-Minute Consultation</a>
+</ProcessTimeline>
 
-What you'll get:
-✅ Honest assessment (I'll tell you if off-the-shelf is better)  
-✅ Ballpark pricing for your project  
-✅ Timeline estimate  
-✅ Potential ROI analysis  
-✅ Clear next steps (if it makes sense to proceed)
 
-What you won't get:
-❌ High-pressure sales tactics  
-❌ Vague promises  
-❌ Commitment before you're ready
+## Sources & Methodology
 
-My promise: I only want to work with clients where custom software makes clear business sense. If off-the-shelf is smarter for you, I'll tell you.
+<ResearchSources />
 
----
+The insights in this guide are backed by 2024-2025 industry research and Total Cost of Ownership (TCO) studies from leading firms including Gartner, Forrester, and McKinsey & Company.
+
+**Key Research Findings:**
+
+1.  **Total Cost of Ownership (TCO):** Studies by [Full Scale](https://fullscale.io/blog/custom-software-vs-off-the-shelf/) and Stratagem Systems indicate that while custom software has higher upfront costs, the break-even point typically occurs between years 2 and 4 compared to enterprise SaaS licensing.
+2.  **Operational Efficiency:** [Forrester Research](https://www.forrester.com) has found that businesses using mismatched software solutions can experience up to **40% lower operational efficiency** due to process workarounds.
+3.  **Maintenance Standards:** The industry standard for custom software maintenance is **15-20% of initial development cost** annually, covering security updates, bug fixes, and minor feature enhancements ([LTS Group](https://ltsgroup.tech), [SolTech](https://soltech.net)).
+4.  **Manufacturing ROI:** Case studies from [Cognizant](https://www.cognizant.com) and others show that replacing siloed legacy systems with custom integrated platforms can reduce support costs by up to 80% and significantly improve global inventory visibility.
 
 ## Frequently Asked Questions
 
-### How long does custom software take to build?
+<Accordion>
 
-Short answer: 2-6 months for most business applications.
+  <AccordionItem title="How long does custom software take to build?" open>
+    Short answer: 2-6 months for most business applications.
 
-Detailed answer:
-- Simple tools: 6-12 weeks
-- Medium applications: 12-24 weeks  
-- Complex systems: 24-52+ weeks
+    Detailed answer:
+    - Simple tools: 6-12 weeks
+    - Medium applications: 12-24 weeks  
+    - Complex systems: 24-52+ weeks
 
-Timeline depends on:
-- Feature complexity
-- Number of integrations
-- Design requirements
-- Your availability for feedback
-- Changes during development
+    Timeline depends on:
+    - Feature complexity
+    - Number of integrations
+    - Design requirements
+    - Your availability for feedback
+    - Changes during development
 
-I recommend: Phased approach. Build core features first (8-12 weeks), launch and validate, then add enhancements. This gets you value faster and reduces risk.
+    I recommend: Phased approach. Build core features first (8-12 weeks), launch and validate, then add enhancements. This gets you value faster and reduces risk.
+  </AccordionItem>
 
-### What if my needs change during development?
+  <AccordionItem title="What if my needs change during development?">
+    Reality: Requirements almost always evolve. That's normal and expected.
 
-Reality: Requirements almost always evolve. That's normal and expected.
+    How I handle it:
+    - 2-week sprints with regular demos
+    - Clear change request process
+    - Discuss impact on timeline/budget before proceeding
+    - Prioritize changes (must-have vs. nice-to-have)
+    - Document all decisions
 
-How I handle it:
-- 2-week sprints with regular demos
-- Clear change request process
-- Discuss impact on timeline/budget before proceeding
-- Prioritize changes (must-have vs. nice-to-have)
-- Document all decisions
+    Cost impact: Minor changes are usually included. Major scope changes require timeline/budget discussion. Transparency is key.
+  </AccordionItem>
 
-Cost impact: Minor changes are usually included. Major scope changes require timeline/budget discussion. Transparency is key.
+  <AccordionItem title="Who owns the code?">
+    You do. Period.
 
-### Who owns the code?
+    All custom software I build is 100% owned by the client. You get:
+    - Complete source code
+    - All documentation
+    - Database schemas
+    - Deployment instructions
+    - License to modify, extend, or hire someone else to work on it
 
-You do. Period.
+    No licensing fees. No vendor lock-in. It's yours.
+  </AccordionItem>
 
-All custom software I build is 100% owned by the client. You get:
-- Complete source code
-- All documentation
-- Database schemas
-- Deployment instructions
-- License to modify, extend, or hire someone else to work on it
+  <AccordionItem title="What about ongoing maintenance?">
+    Options:
 
-No licensing fees. No vendor lock-in. It's yours.
+    **Option 1: DIY**
+    - I provide documentation
+    - You handle updates yourself (or hire your own developers)
+    - Works if you have technical resources in-house
 
-### What about ongoing maintenance?
+    **Option 2: Maintenance Agreement**
+    - Monthly retainer ($200-$2,000/month depending on complexity)
+    - Includes: Hosting, monitoring, bug fixes, minor updates
+    - Priority support when you need it
+    - Optional: Feature enhancements on a project basis
 
-Options:
+    **Option 3: As-Needed**
+    - No monthly commitment
+    - Pay hourly when you need support
+    - Works for stable applications with minimal changes
 
-Option 1: DIY
-- I provide documentation
-- You handle updates yourself (or hire your own developers)
-- Works if you have technical resources in-house
+    My recommendation: Maintenance agreement for first year while you learn the system, then reassess.
+  </AccordionItem>
 
-Option 2: Maintenance Agreement
-- Monthly retainer ($200-$2,000/month depending on complexity)
-- Includes: Hosting, monitoring, bug fixes, minor updates
-- Priority support when you need it
-- Optional: Feature enhancements on a project basis
+  <AccordionItem title="Can it integrate with specific software?">
+    If it has an API or accessible database: Yes.
 
-Option 3: As-Needed
-- No monthly commitment
-- Pay hourly when you need support
-- Works for stable applications with minimal changes
+    Most modern software has APIs. I've integrated with:
+    - CRMs (Salesforce, HubSpot, Pipedrive)
+    - Accounting (QuickBooks, Xero)
+    - E-commerce (Shopify, WooCommerce)
+    - Payment processors (Stripe, PayPal)
+    - Email platforms (Mailchimp, SendGrid)
+    - Google Workspace, Microsoft 365
+    - Custom/legacy systems
 
-My recommendation: Maintenance agreement for first year while you learn the system, then reassess.
+    During consultation: I'll confirm integration feasibility for your specific tools.
+  </AccordionItem>
 
-### Can it integrate with specific software?
+  <AccordionItem title="What if you get hit by a bus?">
+    Valid concern. Here's the protection:
 
-If it has an API or accessible database: Yes.
+    **1. You own everything**
+    - Complete source code
+    - Full documentation
+    - Deployment procedures
 
-Most modern software has APIs. I've integrated with:
-- CRMs (Salesforce, HubSpot, Pipedrive)
-- Accounting (QuickBooks, Xero)
-- E-commerce (Shopify, WooCommerce)
-- Payment processors (Stripe, PayPal)
-- Email platforms (Mailchimp, SendGrid)
-- Google Workspace, Microsoft 365
-- Custom/legacy systems
+    **2. Code is clean and documented**
+    - Any competent developer can work on it
+    - No proprietary frameworks or weird dependencies
+    - Industry-standard technologies
 
-During consultation: I'll confirm integration feasibility for your specific tools.
+    **3. I can provide backup contacts**
+    - Other developers who can take over
+    - Maintenance providers
+    - Your in-house team can be trained
 
-### What if you get hit by a bus?
+    Reality: Software should outlast any single developer. I build with that in mind.
+  </AccordionItem>
 
-Valid concern. Here's the protection:
+  <AccordionItem title="Is custom software secure?">
+    **When built properly: Yes. Often more secure than off-the-shelf.**
 
-1. You own everything
-- Complete source code
-- Full documentation
-- Deployment procedures
+    **Security measures I implement:**
+    - Industry best practices (OWASP Top 10)
+    - Encrypted data transmission (HTTPS/SSL)
+    - Encrypted data storage for sensitive information
+    - User authentication and authorization
+    - Role-based access control
+    - Security audits and penetration testing
+    - Regular security updates
+    - HIPAA/SOC2 compliance if required
 
-2. Code is clean and documented
-- Any competent developer can work on it
-- No proprietary frameworks or weird dependencies
-- Industry-standard technologies
+    **Advantage over SaaS:** You control where data is stored, who has access, and security protocols.
 
-3. I can provide backup contacts
-- Other developers who can take over
-- Maintenance providers
-- Your in-house team can be trained
+    **Recommendation:** Annual security audit for applications handling sensitive data.
+  </AccordionItem>
 
-Reality: Software should outlast any single developer. I build with that in mind.
+  <AccordionItem title="Can I start with something small?">
+    **Absolutely. I actually recommend it.**
 
-### Is custom software secure?
+    **MVP Approach (Minimum Viable Product):**
+    1. Identify core must-have features
+    2. Build and deploy those first (6-12 weeks)
+    3. Get it in use, gather feedback
+    4. Add enhancements in phases
 
-**When built properly: Yes. Often more secure than off-the-shelf.**
+    **Benefits:**
+    - Lower initial investment
+    - Faster time to value
+    - Validate before full build
+    - Learn what you actually need vs. what you thought you'd need
+    - Reduced risk
 
-**Security measures I implement:**
-- Industry best practices (OWASP Top 10)
-- Encrypted data transmission (HTTPS/SSL)
-- Encrypted data storage for sensitive information
-- User authentication and authorization
-- Role-based access control
-- Security audits and penetration testing
-- Regular security updates
-- HIPAA/SOC2 compliance if required
+    **Example:** Build basic CRM with contact management and pipeline tracking. After 3 months, add reporting, then email automation, then advanced features.
 
-**Advantage over SaaS:** You control where data is stored, who has access, and security protocols.
+    **Start small, prove value, grow from there.**
+  </AccordionItem>
 
-**Recommendation:** Annual security audit for applications handling sensitive data.
+  <AccordionItem title="How much should I budget for custom software?">
+    **Rule of thumb:**
 
-### Can I start with something small?
+    **For replacement of current software:**
+    - Calculate 3-4x your annual software costs
+    - Example: Spending $25K/year on software → Budget $75-100K for custom
 
-**Absolutely. I actually recommend it.**
+    **For new capability:**
+    - Simple: $15K-$50K
+    - Medium: $50K-$150K
+    - Complex: $150K+
 
-**MVP Approach (Minimum Viable Product):**
-1. Identify core must-have features
-2. Build and deploy those first (6-12 weeks)
-3. Get it in use, gather feedback
-4. Add enhancements in phases
+    **Don't forget ongoing:**
+    - Hosting: $50-$500/month
+    - Maintenance: $200-$2,000/month
+    - Budget 15-20% of development cost annually
 
-**Benefits:**
-- Lower initial investment
-- Faster time to value
-- Validate before full build
-- Learn what you actually need vs. what you thought you'd need
-- Reduced risk
+    **ROI timeline:** Expect 2-4 year break-even for software replacing subscriptions.
+  </AccordionItem>
 
-**Example:** Build basic CRM with contact management and pipeline tracking. After 3 months, add reporting, then email automation, then advanced features.
+  <AccordionItem title="What technology stack do you use?">
+    **I choose the right tools for YOUR needs, not mine.**
 
-**Start small, prove value, grow from there.**
+    **Common stacks:**
+    - **Web apps:** React/Vue.js frontend, Node.js or Python backend
+    - **Mobile:** React Native (iOS + Android) or native Swift/Kotlin
+    - **Databases:** PostgreSQL, MySQL, MongoDB depending on data structure
+    - **Infrastructure:** AWS, Google Cloud, or DigitalOcean depending on requirements
+    - **APIs:** RESTful or GraphQL
 
-### How much should I budget for custom software?
+    **Selection criteria:**
+    - What fits your needs best
+    - What scales for your growth
+    - What's maintainable long-term
+    - What integrates with your existing systems
 
-**Rule of thumb:**
+    **During discovery:** We'll discuss technology choices and why they make sense for you.
+  </AccordionItem>
 
-**For replacement of current software:**
-- Calculate 3-4x your annual software costs
-- Example: Spending $25K/year on software → Budget $75-100K for custom
+</Accordion>
 
-**For new capability:**
-- Simple: $15K-$50K
-- Medium: $50K-$150K
-- Complex: $150K+
-
-**Don't forget ongoing:**
-- Hosting: $50-$500/month
-- Maintenance: $200-$2,000/month
-- Budget 15-20% of development cost annually
-
-**ROI timeline:** Expect 2-4 year break-even for software replacing subscriptions.
-
-### What technology stack do you use?
-
-**I choose the right tools for YOUR needs, not mine.**
-
-**Common stacks:**
-- **Web apps:** React/Vue.js frontend, Node.js or Python backend
-- **Mobile:** React Native (iOS + Android) or native Swift/Kotlin
-- **Databases:** PostgreSQL, MySQL, MongoDB depending on data structure
-- **Infrastructure:** AWS, Google Cloud, or DigitalOcean depending on requirements
-- **APIs:** RESTful or GraphQL
-
-**Selection criteria:**
-- What fits your needs best
-- What scales for your growth
-- What's maintainable long-term
-- What integrates with your existing systems
-
-**During discovery:** We'll discuss technology choices and why they make sense for you.
-
----
 
 ## Final Thoughts: Is Custom Right for You?
 
 Custom software isn't for everyone. And that's okay.
 
-Choose custom when:
-- Your processes are unique and valuable
-- You're spending significant money on software that doesn't quite fit
-- Integration and data flow are critical
-- You want to own your platform
-- Long-term ROI matters more than initial cost
+<ComparisonColumns titleLeft="Choose custom when:" titleRight="Stick with off-the-shelf when:">
+  <div slot="left">
+    - Your processes are unique and valuable
+    - You're spending significant money on software that doesn't quite fit
+    - Integration and data flow are critical
+    - You want to own your platform
+    - Long-term ROI matters more than initial cost
+  </div>
+  <div slot="right">
+    - Standard processes work fine for you
+    - Budget constraints make custom prohibitive right now
+    - You need something immediately
+    - Your needs are still evolving
+  </div>
+</ComparisonColumns>
 
-Stick with off-the-shelf when:
-- Standard processes work fine for you
-- Budget constraints make custom prohibitive right now
-- You need something immediately
-- Your needs are still evolving
+<Callout variant="info" title="The Hybrid Approach">
+  **Most businesses benefit from a mix:**
+  - Use SaaS for commodity functions
+  - Build custom for competitive advantages
+  - Integrate them together
 
-The hybrid approach works for most:
-- Use SaaS for commodity functions
-- Build custom for competitive advantages
-- Integrate them together
+  **My role:** Help you make the right decision for YOUR business, even if that means I tell you custom isn't the answer right now.
+</Callout>
 
-My role: Help you make the right decision for YOUR business, even if that means I tell you custom isn't the answer right now.
+<div class="my-8">
+  <img src="/images/professional/confident-walk.png" alt="Confident professional walking in modern office" style="width: 100%; height: auto; border-radius: 8px;" />
+</div>
 
 ### Ready to Explore?
 
-### Ready to Explore?
-
-<div style="display: flex; flex-direction: column; gap: 1rem; align-items: flex-start;">
+<CtaRow>
   <a href="/contact" class="btn btn--primary">Schedule Free Consultation</a>
   <a href="/contact" class="btn btn--secondary">Request Requirements Template</a>
-</div>
+</CtaRow>
 
 ---
 
-**About the Author**
+<AuthorCard 
+  name="Gera Yeremin" 
+  title="Co-founder of 57 Seconds" 
+  image="/images/professional/children-of-men-documentary.png"
+>
+  I build custom software for growing businesses and understand both the technical and business sides of software decisions.
 
-I'm Gera Yeremin, co-founder of 57 Seconds. I build custom software for growing businesses and understand both the technical and business sides of software decisions.
+  **What makes me different?** I'm a developer who also understands marketing and ROI. I care as much about whether your software makes you money as whether the code is clean.
 
-What makes me different? I'm a developer who also understands marketing and ROI. I care as much about whether your software makes you money as whether the code is clean.
+  I've built everything from simple workflow tools to complex integrations, and I've worked with businesses ranging from solo consultants to multi-location enterprises.
 
-I've built everything from simple workflow tools to complex integrations, and I've worked with businesses ranging from solo consultants to multi-location enterprises.
-
-Let's talk: <a href="/contact">Schedule a consultation</a>
+  Let's talk: <a href="/contact">Schedule a consultation</a>
+</AuthorCard>
 
 ---
 

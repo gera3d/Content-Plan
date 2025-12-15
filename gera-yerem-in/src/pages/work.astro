@@ -1,110 +1,151 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-
-const caseStudies = [
-  {
-    title: 'Regional Real Estate Brokerage',
-    problem: "Using Salesforce at $18K/year. Agents hated it—too complex, missing key features for real estate.",
-    solution: "Custom CRM with MLS integration, mobile app for agents, automated follow-up sequences.",
-    results: [
-      "Saved $18K/year (no more Salesforce)",
-      "Agent productivity up 30%",
-      "40% increase in closed transactions",
-      "ROI: 289% in first year"
-    ],
-    quote: "Our agents actually USE it because it makes their job easier, not harder."
-  },
-  {
-    title: 'Medical Practice (3 Locations)',
-    problem: "Patient reviews scattered across platforms. No system for requesting reviews. Reputation management was manual and inconsistent.",
-    solution: "Automated review request system with email + SMS. Centralized dashboard for all platforms. Integration with practice management software.",
-    results: [
-      "Generated 500+ new reviews",
-      "Rating increased from 3.9 to 4.8 stars",
-      "New patient inquiries up 45%",
-      "Staff time reduced: 10 hours/week → 1 hour/week"
-    ],
-    quote: "We tried Birdeye and Podium—spent $8K with mediocre results. Our custom system cost less and works infinitely better."
-  },
-  {
-    title: 'Marketing Agency (60 Clients)',
-    problem: "Client reporting extremely manual—8-10 hours per client/month. Data scattered across 8+ platforms.",
-    solution: "Automated data aggregation from all platforms. Real-time client dashboards. Automated monthly report generation.",
-    results: [
-      "Reporting time: 10 hours → 30 minutes per client",
-      "570 hours/month saved",
-      "Added 15 new clients (25% growth)",
-      "Client retention improved: 89% → 96%"
-    ],
-    quote: "This was the best business decision we've made. The time saved went directly into growing the business."
-  }
-];
+import CaseStudyCard from '../components/content/CaseStudyCard.astro';
 ---
 
 <BaseLayout 
-  title="Work" 
-  description="Custom software projects that made real impact. Real results, real numbers, real businesses."
+  title="Work & Value | Gera Yeremin" 
+  description="I don't just build software. I build assets that drive revenue, save time, and scale businesses."
 >
   <div class="page">
     <div class="container">
-      <header class="page__header">
-        <h1 class="page__title">Work</h1>
-        <p class="page__description">
-          Real projects. Real results. Here's what custom software can do when it's built right.
-        </p>
-      </header>
-
-      <div class="posts-list">
-        {caseStudies.map(study => (
-          <article class="case-study">
-            <h2>{study.title}</h2>
-            
-            <div style="margin-bottom: var(--space-4);">
-              <strong>The Problem:</strong>
-              <p class="text-muted">{study.problem}</p>
-            </div>
-            
-            <div style="margin-bottom: var(--space-4);">
-              <strong>What I Built:</strong>
-              <p class="text-muted">{study.solution}</p>
-            </div>
-            
-            <div style="margin-bottom: var(--space-4);">
-              <strong>The Results:</strong>
-              <ul style="margin-top: var(--space-2);">
-                {study.results.map(result => (
-                  <li>{result}</li>
-                ))}
-              </ul>
-            </div>
-            
-            <blockquote style="border-left: 3px solid var(--color-accent); padding-left: var(--space-4); margin: var(--space-6) 0; font-style: italic; color: var(--color-text-muted);">
-              "{study.quote}"
-            </blockquote>
-          </article>
-        ))}
+      
+      {/* Hero Section */}
+      <div class="work-hero mb-12">
+        <div class="work-hero__content">
+          <h1 class="page__title">Software is an <br/><span style="color: var(--color-accent);">Investment.</span></h1>
+          <p class="page__description">
+             If it doesn't make money or save time, it's just code. Here is a selection of projects where I delivered measurable return on investment.
+          </p>
+        </div>
+        <div class="work-hero__image">
+            <img src="/images/professional/whiteboard-presentation.png" alt="Strategizing on a whiteboard" />
+        </div>
       </div>
 
-      <div style="margin-top: var(--space-12); padding: var(--space-8); background: var(--color-background-alt); border-radius: var(--border-radius);">
-        <h2 class="mb-4">Ready to talk about your project?</h2>
-        <p class="text-muted mb-8">
-          Every project starts with a conversation. No pitch—just figuring out if we're a good fit.
-        </p>
-        <a href="/contact" class="btn btn--primary">Schedule a call</a>
+      <div class="section-divider"></div>
+
+      {/* Case Studies */}
+      <div class="cases-section">
+        
+        {/* Case 1: Reputation Engine */}
+        <CaseStudyCard
+            title="Automated Reputation Engine"
+            subtitle="Client: 57 Seconds (SaaS Platform)"
+            investment="Full Product Build"
+            timeline="4 Weeks (MVP)"
+            roi="412% ROI for Users"
+            breakEven="Month 3"
+        >
+            <p><strong>The Problem:</strong> 57 Seconds needed a scalable, automated solution to help medical practices generate consistent reviews. Manual outreach was unscalable, and existing tools lacked deep EMR integration.</p>
+            <p><strong>The Solution:</strong> I architected the core "Review Intelligence" engine. It integrates directly with patient records to automatically detect happy patients and trigger intelligent SMS/Email sequences.</p>
+            <ul>
+                <li><strong>Result:</strong> The platform now processes thousands of reviews automatically.</li>
+                <li><strong>Impact:</strong> Users report a 412% ROI in their first year through organic search growth.</li>
+            </ul>
+        </CaseStudyCard>
+
+        {/* Case 2: Agency Scaling */}
+        <CaseStudyCard
+            title="The 'Agency OS' Platform"
+            subtitle="Client: Nuvolum (Digital Agency)"
+            investment="Internal Platform"
+            timeline="3 Month Rollout"
+            roi="Saved 570 Hours/Mo"
+            breakEven="Month 1"
+        >
+            <p><strong>The Problem:</strong> Nuvolum was growing fast (60+ clients), but reporting was a bottleneck. Account managers spent 8-10 hours/month <em>per client</em> manually compiling data, capping growth.</p>
+            <p><strong>The Solution:</strong> I built a centralized "Agency OS" that aggregates live data from Facebook Ads, Google Analytics, and CallTrackingMetrics into a single, real-time client dashboard.</p>
+            <ul>
+                <li><strong>Result:</strong> Reporting time dropped from 10 hours to &lt;30 mins per client.</li>
+                <li><strong>Impact:</strong> The agency doubled its client roster without hiring a single new account manager.</li>
+            </ul>
+        </CaseStudyCard>
+
+        {/* Case 3: Real Estate CRM */}
+        <CaseStudyCard
+            title="Mobile-First Agent CRM"
+            subtitle="Client: Regional Real Estate Brokerage"
+            investment="$25k Custom Build"
+            timeline="8 Weeks"
+            roi="Saved $18k/Year"
+            breakEven="Year 1"
+        >
+            <p><strong>The Problem:</strong> This brokerage was paying $18k/year for Salesforce, but agent adoption was near zero. The complex desktop interface didn't match the mobile reality of real estate agents.</p>
+            <p><strong>The Solution:</strong> I developed a stripped-down, mobile-first CRM focused purely on speed. The "Swipe to Lead" interface allowed agents to update deal stages in seconds from their phones.</p>
+            <ul>
+                <li><strong>Result:</strong> 94% adoption rate achieved within the first 2 weeks.</li>
+                <li><strong>Impact:</strong> They cancelled the Salesforce contract immediately, saving $18k/year while capturing 40% more deal data.</li>
+            </ul>
+        </CaseStudyCard>
+
+        {/* Case 4: Health for California */}
+        <CaseStudyCard
+            title="Digital Enrollment Platform"
+            subtitle="Client: Health for California (Insurance)"
+            investment="Ongoing Retainer"
+            timeline="6 Month Revamp"
+            roi="+30% App Volume"
+            breakEven="Month 4"
+        >
+            <p><strong>The Problem:</strong> The existing enrollment process was paper-heavy and complex, causing high drop-off rates. Applicants were abandoning forms that took 45+ minutes to complete.</p>
+            <p><strong>The Solution:</strong> I led the frontend development of a streamlined, React-based wizard. We simplified the logic, added real-time validation, and optimized the flow for mobile users.</p>
+            <ul>
+                <li><strong>Result:</strong> Application completion time dropped from 45 mins to 15 mins.</li>
+                <li><strong>Impact:</strong> Application volume increased by 30% year-over-year, significantly boosting commission revenue.</li>
+            </ul>
+        </CaseStudyCard>
+
       </div>
+
+       <div style="margin-top: var(--space-12); padding: var(--space-8); background: var(--color-background-alt); border-radius: var(--border-radius); text-align: center;">
+        <h2 class="mb-4">Want results like this?</h2>
+        <p class="text-muted mb-8" style="max-width: 600px; margin-left: auto; margin-right: auto;">
+           Stop buying "hours" of coding. Start investing in business outcomes.
+        </p>
+        <a href="/contact" class="btn btn--primary">Let's Discuss Your ROI</a>
+      </div>
+
     </div>
   </div>
 </BaseLayout>
 
 <style>
-  .case-study {
-    padding: var(--space-8);
-    background: var(--color-background);
-    border: 1px solid var(--color-border);
-    border-radius: var(--border-radius);
-  }
-  
-  .case-study h2 {
-    margin-bottom: var(--space-6);
-  }
+    .work-hero {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-8);
+        align-items: center;
+    }
+
+    .work-hero__content {
+        order: 1;
+    }
+
+    .work-hero__image {
+        order: 2;
+    }
+
+    .work-hero__image img {
+        width: 100%;
+        height: auto;
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow-lg);
+    }
+    
+    .mb-12 { margin-bottom: var(--space-12); }
+
+    @media (max-width: 768px) {
+        .work-hero {
+            grid-template-columns: 1fr;
+        }
+        .work-hero__content {
+            order: 2;
+            text-align: center;
+        }
+        .work-hero__image {
+            order: 1;
+            margin-bottom: var(--space-4);
+        }
+    }
 </style>

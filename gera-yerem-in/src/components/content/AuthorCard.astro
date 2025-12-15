@@ -1,0 +1,81 @@
+---
+const { name, title, image } = Astro.props;
+---
+
+<div class="author-card">
+  <div class="author-image-wrapper">
+    <img src={image} alt={name} class="author-image" />
+  </div>
+  <div class="author-content">
+    <h4 class="author-name">{name}</h4>
+    {title && <p class="author-role">{title}</p>}
+    <div class="author-bio">
+      <slot />
+    </div>
+  </div>
+</div>
+
+<style>
+  .author-card {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+    margin: 3rem 0;
+    padding-top: 2rem;
+    border-top: 1px solid var(--color-border); /* Optional top separator */
+  }
+
+  .author-image-wrapper {
+    flex-shrink: 0;
+    width: 200px; /* Larger width for full body presence */
+    height: auto;
+    border-radius: 8px; /* Slight rounded corners instead of circle */
+    overflow: hidden;
+    /* Removed border and circle constraints */
+  }
+
+  .author-image {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .author-content {
+    flex-grow: 1;
+  }
+
+  .author-name {
+    margin: 0 0 0.25rem 0;
+    color: #1e293b;
+    font-size: 1.25rem;
+  }
+
+  .author-role {
+    margin: 0 0 1rem 0;
+    color: #64748b;
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+
+  .author-bio {
+    font-size: 1rem;
+    color: #334155;
+    line-height: 1.6;
+  }
+
+  .author-bio :global(p:last-child) {
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 640px) {
+    .author-card {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .author-bio {
+      text-align: left; /* Keep bio readable */
+    }
+  }
+</style>

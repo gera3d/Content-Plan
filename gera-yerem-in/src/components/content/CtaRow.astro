@@ -1,0 +1,29 @@
+---
+---
+
+<div class="cta-row">
+  <slot />
+</div>
+
+<style>
+  .cta-row {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 640px) {
+    .cta-row {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    
+    .cta-row :global(a), 
+    .cta-row :global(button) {
+      width: 100%;
+      text-align: center;
+    }
+  }
+</style>

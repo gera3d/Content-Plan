@@ -13,7 +13,7 @@ export async function GET(context: APIContext) {
     return rss({
         title: 'Gera Yeremin',
         description: 'I build custom software for businesses that have outgrown spreadsheets. Developer + Marketer.',
-        site: context.site || 'https://gera.yerem.in',
+        site: context.site || 'https://gera.yere.in',
         items: sortedPosts.map((post) => ({
             title: post.data.title,
             description: post.data.description,

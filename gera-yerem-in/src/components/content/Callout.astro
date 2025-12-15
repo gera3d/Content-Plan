@@ -1,0 +1,113 @@
+---
+interface Props {
+  variant?: 'tip' | 'warning' | 'note' | 'info';
+  title?: string;
+}
+
+const { variant = 'tip', title } = Astro.props;
+
+const icons = {
+  tip: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4"/><path d="m5 5 2.8 2.8"/><path d="M6 12H2"/><path d="m5 19 2.8-2.8"/><path d="M12 22v-4"/><path d="m19 5-2.8 2.8"/><path d="M18 12h4"/><path d="m19 19-2.8-2.8"/><circle cx="12" cy="12" r="3"/></svg>', // Sparkle/Light
+  warning: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>',
+  note: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22h6a2 2 0 0 0 2-2V7l-5-5H6a2 2 0 0 0-2 2v10"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg>',
+  info: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>'
+};
+
+const titles = {
+  tip: 'Pro Tip',
+  warning: 'Warning',
+  note: 'Note',
+  info: 'Information'
+};
+
+const displayTitle = title || titles[variant];
+const icon = icons[variant];
+---
+
+<div class={`callout callout--${variant}`}>
+  <div class="callout__header">
+    <span class="callout__icon" set:html={icon} />
+    <span class="callout__title">{displayTitle}</span>
+  </div>
+  <div class="callout__content">
+    <slot />
+  </div>
+</div>
+
+<style>
+  .callout {
+    padding: 1.25rem;
+    margin: 1.5rem 0;
+    border-radius: var(--border-radius);
+    border: 1px solid transparent;
+    border-left-width: 4px;
+  }
+
+  /* Tip (Default/Success-like) */
+  .callout--tip {
+    background-color: var(--color-accent-light);
+    border-color: var(--color-accent); /* Border matches accent */
+    border-left-color: var(--color-accent);
+  }
+  .callout--tip .callout__title,
+  .callout--tip .callout__icon {
+    color: var(--color-accent-hover);
+  }
+
+  /* Warning */
+  .callout--warning {
+    background-color: #fffbeb; /* Amber-50 */
+    border-color: #fcd34d;     /* Amber-300 */
+    border-left-color: #d97706; /* Amber-600 */
+  }
+  .callout--warning .callout__title,
+  .callout--warning .callout__icon {
+    color: #b45309; /* Amber-700 */
+  }
+
+  /* Note */
+  .callout--note {
+    background-color: #f3f4f6; /* Gray-100 */
+    border-color: #e5e7eb;     /* Gray-200 */
+    border-left-color: #6b7280; /* Gray-500 */
+  }
+  .callout--note .callout__title,
+  .callout--note .callout__icon {
+    color: #374151; /* Gray-700 */
+  }
+
+  /* Info */
+  .callout--info {
+    background-color: #eff6ff; /* Blue-50 */
+    border-color: #bfdbfe;     /* Blue-200 */
+    border-left-color: #2563eb; /* Blue-600 */
+  }
+  .callout--info .callout__title,
+  .callout--info .callout__icon {
+    color: #1d4ed8; /* Blue-700 */
+  }
+
+  .callout__header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+  }
+  
+  .callout__icon {
+    display: flex; /* alignment fix */
+  }
+
+  .callout__content {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+  
+  .callout__content :global(p:last-child) {
+    margin-bottom: 0;
+  }
+</style>

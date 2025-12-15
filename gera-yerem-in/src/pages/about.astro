@@ -3,94 +3,395 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout 
-  title="About" 
-  description="I'm Gera Yeremin. Developer + Marketer. 15+ years building software, making marketing work, and helping businesses grow."
+  title="About Gera Yeremin" 
+  description="Technologist. Marketer. Innovator. I bridge the gap between custom software and business growth."
 >
   <div class="page">
     <div class="container">
-      <div class="content">
-        <header class="page__header">
-          <h1 class="page__title">About Me</h1>
-        </header>
-
-        <div class="about-preview" style="margin-bottom: var(--space-12);">
-          <div class="about-preview__photo" style="width: 200px; height: 200px;">
-            <img src="/images/gera-suit.jpg" alt="Gera Yeremin" style="width: 100%; height: 100%; object-fit: cover;" />
-          </div>
+      
+      {/* Hero Section */}
+      <div class="about-hero">
+        <div class="about-hero__content">
+            <h1 class="page__title">Technologist.<br/>Marketer.<br/><span style="color: var(--color-accent);">Innovator.</span></h1>
+            <p class="page__description">
+                I bridge the gap between custom software and actual business growth.
+            </p>
         </div>
-
-        <p>
-          I'm Gera. I've been building software for 15+ years and running marketing for almost as long.
-        </p>
-
-        <p>
-          That combo is rare. Most developers don't understand marketing. Most marketers can't build software. I do both.
-        </p>
-
-        <h2>What I Actually Do</h2>
-
-        <p>
-          I build custom software for businesses that have outgrown spreadsheets and off-the-shelf solutions. 
-          Companies come to me when they need something unique—tools that work the way THEY work, not the other way around.
-        </p>
-
-        <p>
-          My specialty is understanding what a business actually needs (not just what they think they need) and building 
-          software that solves real problems. I've seen too many projects fail because the developer didn't understand 
-          the business. I make sure that doesn't happen.
-        </p>
-
-        <h2>57 Seconds</h2>
-
-        <p>
-          I co-founded <strong>57 Seconds</strong>, a digital marketing agency focused on review management and reputation building. 
-          The tools we use to help clients? I built them myself. When I tell you I understand both the tech side AND 
-          the marketing side, I mean it.
-        </p>
-
-        <p>
-          I use my own software every single day. If something doesn't work well, I know about it immediately—and I fix it.
-        </p>
-
-        <h2>My Approach</h2>
-
-        <p>
-          <strong>Direct and honest.</strong> I'll tell you if something isn't a good fit. I'd rather turn down a project 
-          than waste your time and money.
-        </p>
-
-        <p>
-          <strong>Results-focused.</strong> My goal isn't to write code. My goal is to build something that makes you money. 
-          If the software doesn't pay for itself, what's the point?
-        </p>
-
-        <p>
-          <strong>Long-term thinking.</strong> I build software that scales with you. Not band-aids that need replacing in 
-          two years.
-        </p>
-
-        <h2>Outside Work</h2>
-
-        <p>
-          When I'm not coding or talking strategy, I'm usually on the water with my family. River trips, ocean trips—
-          anywhere with good weather and space to breathe.
-        </p>
-
-        <p>
-          I'm also still trying to convince my kid that vegetables are actually good. The results have been... mixed.
-        </p>
-
-        <h2>Let's Talk</h2>
-
-        <p>
-          If you're dealing with software problems—or just want to bounce ideas around—I'm happy to chat. No pitch, 
-          just conversation.
-        </p>
-
-        <p style="margin-top: var(--space-8);">
-          <a href="/contact" class="btn btn--primary">Schedule a call</a>
-        </p>
+        <div class="about-hero__image">
+            <img src="/images/professional/children-of-men-documentary.png" alt="Gera Yeremin - Co-founder 57 Seconds" />
+        </div>
       </div>
+
+      <div class="section-divider"></div>
+
+      {/* The Hybrid Advantage */}
+      <div class="feature-row">
+        <div class="feature-row__image">
+            <img src="/images/professional/whiteboard-presentation.png" alt="Strategic Planning and Architecture" />
+        </div>
+        <div class="feature-row__content">
+            <h2>The Hybrid Advantage</h2>
+            <p>
+                <strong>I've been building software for 15+ years and running marketing for almost as long.</strong>
+            </p>
+            <p>
+                That combo is rare. Most developers don't understand marketing. Most marketers can't build software. I do both. This allows me to build custom applications that aren't just technical achievements—they are business assets designed to acquire customers and drive revenue.
+            </p>
+        </div>
+      </div>
+
+      <div class="section-divider"></div>
+
+      {/* The Mission */}
+      <div class="feature-row feature-row--reverse">
+        <div class="feature-row__image">
+            <img src="/images/professional/engaged-professional.png" alt="Mentorship and Teamwork" />
+        </div>
+        <div class="feature-row__content">
+            <h2>Mission: 57 Seconds</h2>
+            <p>
+                As Co-Founder of <strong>57 Seconds</strong>, my focus is simple: empower clients with the tools they need to create a consistent, loyal client base.
+            </p>
+            <p>
+                I build the custom tools we use to help clients acquire reviews and feedback. When I tell you I use my own software every day to grow my own business, I mean it. My goal isn't just to write code; it's to find the solution that brings you one step closer to your overall goal.
+            </p>
+        </div>
+      </div>
+
+      <div class="section-divider"></div>
+
+      {/* Creative Innovation */}
+      <div class="feature-row">
+        <div class="feature-row__image">
+            <img src="/images/professional/ed-wood-quirky.png" alt="Creative Innovation and Fresh Perspectives" />
+        </div>
+        <div class="feature-row__content">
+            <h2>Fresh Perspectives</h2>
+            <p>
+                Standard processes yield standard results. I believe in a fresh approach to product testing and development.
+            </p>
+            <p>
+                Whether it's architecting a complex business intelligence suite or crafting a unique marketing campaign, I bring an innovative mindset to every challenge. I analyze projects on a sophisticated level to develop unique, functional toolsets that <em>simply work</em>.
+            </p>
+        </div>
+      </div>
+
+      <div class="section-divider"></div>
+
+      {/* Wall of Love / Testimonials Carousel */}
+      <div class="testimonials-section">
+        <h2 style="text-align: center; margin-bottom: var(--space-12);">What People Say</h2>
+        
+        <div class="carousel-container">
+            <button class="nav-arrow prev" aria-label="Previous testimonials">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+            </button>
+            
+            <div class="post__content carousel-track">
+                {/* Slot 1 */}
+                <div class="testimonial-slot" id="slot-1">
+                    <blockquote>
+                        <p id="quote-1"></p>
+                        <cite id="author-1" style="display: block; margin-top: 1rem; font-size: 0.9em; font-weight: bold; font-style: normal; color: var(--color-accent);"></cite>
+                    </blockquote>
+                </div>
+
+                {/* Slot 2 */}
+                <div class="testimonial-slot" id="slot-2">
+                    <blockquote>
+                        <p id="quote-2"></p>
+                        <cite id="author-2" style="display: block; margin-top: 1rem; font-size: 0.9em; font-weight: bold; font-style: normal; color: var(--color-accent);"></cite>
+                    </blockquote>
+                </div>
+            </div>
+
+            <button class="nav-arrow next" aria-label="Next testimonials">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+            </button>
+        </div>
+      </div>
+
+      <script>
+        const testimonials = [
+            // Top 2 (Sticky/First)
+            {
+                quote: "Gera is a strategist. While he has all the capability in development and coding, what makes him such a leader is his high-level mindset and ability to see the larger picture.",
+                author: "Tom Hakel | Client & Collaborator"
+            },
+            {
+                quote: "I would say the single greatest thing about Gera is his integrity. Being able to build a large cache of reviews for your brand or business will help your growth.",
+                author: "Nuvolum Colleague"
+            },
+            // Rotating
+            {
+                quote: "Gera is a truly innovative thinker. His fresh approach and careful product testing make a massive difference for his clients.",
+                author: "Client Recommendation"
+            },
+            {
+                quote: "Gera's positive attitude is infectious. He is so talented at inspiring others to do their best and reach for the stars.",
+                author: "Nuvolum Colleague"
+            },
+            {
+                quote: "Gera is an end-to-end developer that absolutely checks all the boxes... The collection of his skills are remarkable and rare.",
+                author: "Development Partner"
+            },
+            {
+                quote: "I had the opportunity to work with Gera on numerous projects... He is easy and fun to collaborate with, has an upbeat and responsive personality, and always exceeds expectations.",
+                author: "Nuvolum Colleague"
+            },
+            {
+                quote: "Gera created a campaign for our North Bay Networking Group... reached the highest response yet for our Eventbrite customers.",
+                author: "North Bay Networking Group"
+            },
+            {
+                quote: "It's a joy and honor to recommend Gera. Not only is he an extremely nice man, not only is he excellent at his craft... Gera is just a wonderful energy to have around the office.",
+                author: "Colleague"
+            },
+            {
+                quote: "If you're looking for a talented, intelligent, dedicated developer, Gera's your guy! He's a true team player and always looking out for the best interest of the whole.",
+                author: "Team Member"
+            },
+            {
+                quote: "Gera is genuinely a great pleasure to work with on any day. His positivity and willingness to find solutions to any challenges big or small is impressive.",
+                author: "Client"
+            },
+            {
+                quote: "Gera was a great employee and mentor for me... He is definitely a WordPress wizard and his creativity with the platform makes him a powerful developer.",
+                author: "Mentee / Colleague"
+            },
+            {
+                quote: "Gera is an INCREDIBLE collection of technologist, designer and innovator... I would highly recommend Gera.",
+                author: "Business Partner"
+            }
+        ];
+
+        let currentIndex = 0;
+
+        const updateCarousel = () => {
+             // Get slots
+             const q1 = document.getElementById('quote-1');
+             const a1 = document.getElementById('author-1');
+             const q2 = document.getElementById('quote-2');
+             const a2 = document.getElementById('author-2');
+
+             // Calculate indices (wrapping)
+             const idx1 = currentIndex % testimonials.length;
+             const idx2 = (currentIndex + 1) % testimonials.length;
+
+             // Update Content with fade effect
+             const track = document.querySelector('.carousel-track');
+             track.style.opacity = '0';
+             
+             setTimeout(() => {
+                q1.textContent = `"${testimonials[idx1].quote}"`;
+                a1.textContent = `— ${testimonials[idx1].author}`;
+                
+                q2.textContent = `"${testimonials[idx2].quote}"`;
+                a2.textContent = `— ${testimonials[idx2].author}`;
+                
+                track.style.opacity = '1';
+             }, 200);
+        };
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            updateCarousel(); // Initial load
+
+            document.querySelector('.nav-arrow.next').addEventListener('click', () => {
+                currentIndex = (currentIndex + 2) % testimonials.length; // Jump 2 to show a fresh pair
+                updateCarousel();
+            });
+
+            document.querySelector('.nav-arrow.prev').addEventListener('click', () => {
+                currentIndex = (currentIndex - 2 + testimonials.length) % testimonials.length;
+                updateCarousel();
+            });
+        });
+      </script>
+
+      <div class="section-divider"></div>
+
+      {/* Values / Conclusion */}
+      <div class="values-section">
+        <div class="values-section__content">
+            <h2>Integrity & Results</h2>
+            <blockquote>
+                "The single greatest thing about Gera is his integrity."
+            </blockquote>
+            <p>
+                I'd rather turn down a project than waste your time. If we work together, it's because I believe I can make a massive difference for your business.
+            </p>
+            <div style="margin-top: var(--space-8);">
+                <a href="/contact" class="btn btn--primary">Let's Build Something Great</a>
+            </div>
+        </div>
+        <div class="values-section__image">
+            <img src="/images/gera-and-bill-gates.webp" alt="Gera meeting with Bill Gates" />
+        </div>
+      </div>
+
     </div>
   </div>
 </BaseLayout>
+
+<style>
+  /* Local styles for the About page layout */
+  .about-hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-12);
+    align-items: center;
+    margin-bottom: var(--space-16);
+  }
+
+  .about-hero__image img {
+    width: 100%;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+
+  .section-divider {
+    height: 1px;
+    background-color: var(--color-border);
+    margin: var(--space-16) 0;
+    max-width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .feature-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-12);
+    align-items: center;
+  }
+
+  .feature-row--reverse {
+    direction: rtl; /* simple way to reverse visual order for grid, text handling needs care or just allow visual swap */
+  }
+
+  .feature-row--reverse > * {
+    direction: ltr; /* reset text direction */
+  }
+
+  .feature-row__image img {
+    width: 100%;
+    border-radius: var(--border-radius);
+    transition: transform var(--transition-normal);
+  }
+
+  .feature-row__image img:hover {
+    transform: scale(1.02);
+  }
+
+  .values-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: var(--space-12);
+  }
+
+  .values-section__image {
+    max-width: 600px;
+    width: 100%;
+  }
+
+  .values-section__image img {
+    width: 100%;
+    border-radius: var(--border-radius);
+  }
+
+  blockquote {
+    font-size: var(--font-size-2xl);
+    font-weight: 700;
+    color: var(--color-accent);
+    margin: var(--space-6) 0;
+    font-family: var(--font-family-mono); /* stylistic choice */
+  }
+
+  @media (max-width: 768px) {
+    .about-hero, .feature-row, .feature-row--reverse {
+      grid-template-columns: 1fr;
+      gap: var(--space-8);
+      direction: ltr; /* Reset direction for mobile stacking */
+    }
+
+    .about-hero__image {
+      order: -1; /* Image first on mobile for hero */
+    }
+
+    /* For feature rows, usually image first or text first? Let's keep natural order or enforce image top */
+    .feature-row__image {
+        order: -1;
+    }
+  }
+
+
+  /* Carousel Styles */
+  .carousel-container {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+  }
+
+  .carousel-track {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Always 2 columns */
+    gap: 2rem;
+    transition: opacity 0.2s ease-in-out;
+  }
+
+  /* Override specific global styles for the carousel context */
+  .carousel-track > :global(blockquote) {
+      margin: 0 !important; /* Remove vertical margin so they align */
+      height: 100%; /* Equal height */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+  }
+
+  .nav-arrow {
+    background: var(--color-background-alt);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-muted);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+  }
+
+  .nav-arrow:hover {
+    background: var(--color-accent);
+    color: #ffffff;
+    border-color: var(--color-accent);
+    transform: scale(1.1);
+  }
+
+  @media (max-width: 768px) {
+    .carousel-track {
+        grid-template-columns: 1fr; /* Stack on mobile */
+    }
+    .carousel-container {
+        position: relative;
+        padding-bottom: 60px; /* Space for arrows */
+    }
+    .nav-arrow {
+        position: absolute;
+        bottom: 0;
+        z-index: 10;
+    }
+    .nav-arrow.prev {
+        left: calc(50% - 60px);
+    }
+    .nav-arrow.next {
+        right: calc(50% - 60px);
+    }
+  }
+</style>

@@ -1,0 +1,66 @@
+---
+const { titleLeft, titleRight } = Astro.props;
+---
+
+<div class="comparison-columns">
+  <div class="column">
+    {titleLeft && <h3 class="column-title">{titleLeft}</h3>}
+    <div class="column-content">
+      <slot name="left" />
+    </div>
+  </div>
+  <div class="column">
+    {titleRight && <h3 class="column-title">{titleRight}</h3>}
+    <div class="column-content">
+      <slot name="right" />
+    </div>
+  </div>
+</div>
+
+<style>
+  .comparison-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin: 3rem 0;
+  }
+
+  .column {
+    background: #f8fafc;
+    padding: 2rem;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+  }
+
+  .column-title {
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    font-size: 1.25rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #e2e8f0;
+  }
+
+  @media (max-width: 768px) {
+    .comparison-columns {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+  }
+
+  /* Scoped styles for lists inside columns */
+  .column-content :global(ul) {
+    padding-left: 0;
+    list-style: none;
+  }
+
+  .column-content :global(li) {
+    position: relative;
+    padding-left: 1.75rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .column-content :global(li::before) {
+    content: "Check"; /* Handled by emoji in content usually, but we can enforce if needed */
+    display: none; /* Let markdown emojis handle it */
+  }
+</style>

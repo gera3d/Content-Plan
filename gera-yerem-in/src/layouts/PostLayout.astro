@@ -45,18 +45,18 @@ const articleSchema = {
   "author": {
     "@type": "Person",
     "name": author,
-    "url": "https://gera.yerem.in"
+    "url": "https://gera.yere.in"
   },
   "publisher": {
     "@type": "Person",
     "name": "Gera Yeremin",
-    "url": "https://gera.yerem.in"
+    "url": "https://gera.yere.in"
   },
   "datePublished": publishDate.toISOString(),
   "dateModified": (updatedDate || publishDate).toISOString(),
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": `https://gera.yerem.in/${post.slug}`
+    "@id": `https://gera.yere.in/${post.slug}`
   }
 };
 
@@ -130,8 +130,8 @@ const showToc = headings.length > 2;
     @media (min-width: 1024px) {
       .post__layout--with-toc {
         display: grid;
-        grid-template-columns: 240px 1fr;
-        gap: 3rem;
+        grid-template-columns: 300px 1fr;
+        gap: 5rem;
         align-items: start;
       }
 
