@@ -134,15 +134,27 @@ a {
   color: var(--color-accent);
   text-decoration: none;
   transition: color var(--transition-fast);
+  background-image: linear-gradient(var(--color-accent), var(--color-accent));
+  background-position: 0% 100%;
+  background-repeat: no-repeat;
+  background-size: 0% 2px;
+  transition: background-size 0.3s ease, color var(--transition-fast);
 }
 
 a:hover {
   color: var(--color-accent-hover);
-  text-decoration: underline;
+  background-size: 100% 2px;
 }
 
-strong {
-  font-weight: 600;
+strong,
+b {
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+em,
+i {
+  font-style: italic;
 }
 
 /* --------------------------------------------------------------------------
@@ -692,34 +704,133 @@ strong {
 /* Lists are styled in the Custom List Styling section below */
 
 .post__content blockquote {
-  border-left: 3px solid var(--color-accent);
+  position: relative;
+  border-left: 4px solid;
+  border-image: linear-gradient(180deg, var(--color-accent), var(--color-accent-hover)) 1;
   padding: var(--space-4) var(--space-6);
-  margin: var(--space-8) 0;
-  font-style: italic;
-  color: var(--color-text-muted);
-  background-color: var(--color-background-alt);
+  margin: var(--space-6) 0;
+  font-size: 1.05em;
+  color: var(--color-text);
+  background: linear-gradient(135deg, var(--color-background-alt) 0%, rgba(13, 148, 136, 0.03) 100%);
   border-radius: 0 var(--border-radius) var(--border-radius) 0;
+  font-style: normal;
+}
+
+.post__content blockquote::before {
+  content: '"';
+  position: absolute;
+  top: -8px;
+  left: 12px;
+  font-size: 4rem;
+  font-family: Georgia, serif;
+  color: var(--color-accent);
+  opacity: 0.15;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.post__content blockquote p {
+  margin-bottom: var(--space-2);
+}
+
+.post__content blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+/* Yellow Highlighter Effect for <mark> tags */
+.post__content mark,
+mark {
+  background: linear-gradient(120deg, #FFF59D 0%, #FFEB3B 100%);
+  padding: 0.1em 0.3em;
+  border-radius: 3px;
+  color: #1a1a1a;
+  font-weight: 500;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+/* Pull Quote styling - for emphasized key quotes */
+.pullquote,
+.post__content .pullquote {
+  font-size: 1.35em;
+  font-weight: 500;
+  text-align: center;
+  color: var(--color-text);
+  padding: var(--space-6) var(--space-4);
+  margin: var(--space-8) 0;
+  border-top: 2px solid var(--color-accent);
+  border-bottom: 2px solid var(--color-accent);
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+}
+
+/* Pro Tip / Callout Boxes */
+.callout,
+.post__content .callout {
+  background: linear-gradient(135deg, #f0fdfa 0%, #e6fffa 100%);
+  border: 1px solid var(--color-accent);
+  border-left: 4px solid var(--color-accent);
+  border-radius: var(--border-radius);
+  padding: var(--space-4);
+  margin: var(--space-6) 0;
+}
+
+.callout::before {
+  content: '💡 Pro Tip';
+  display: block;
+  font-weight: 600;
+  color: var(--color-accent-hover);
+  margin-bottom: var(--space-2);
+  font-size: var(--font-size-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.callout.warning::before {
+  content: '⚠️ Warning';
+  color: #d97706;
+}
+
+.callout.warning {
+  background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+  border-color: #f59e0b;
+}
+
+.callout.note::before {
+  content: '📝 Note';
+  color: #2563eb;
+}
+
+.callout.note {
+  background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+  border-color: #3b82f6;
 }
 
 .post__content code {
   font-family: var(--font-family-mono);
-  font-size: 0.9em;
-  background-color: var(--color-background-alt);
-  padding: 0.2em 0.4em;
+  font-size: 0.875em;
+  background-color: #f3f4f6;
+  padding: 0.15em 0.4em;
   border-radius: 4px;
+  border: 1px solid #e5e7eb;
+  color: #d63384;
 }
 
 .post__content pre {
-  background-color: var(--color-background-alt);
+  background-color: #1e293b;
   padding: var(--space-4);
   border-radius: var(--border-radius);
   overflow-x: auto;
   margin: var(--space-6) 0;
+  border: 1px solid #334155;
 }
 
 .post__content pre code {
   background: none;
   padding: 0;
+  border: none;
+  color: #e2e8f0;
+  font-size: 0.85em;
 }
 
 .post__content table {
@@ -838,40 +949,36 @@ strong {
   border-left: 2px solid transparent;
 }
 
-.toc__link:hover,
-.toc__link.active {
+.toc__link:hover {
   color: var(--color-accent);
   border-left-color: var(--color-accent);
-  background-color: rgba(20, 184, 166, 0.08);
+  background-color: rgba(20, 184, 166, 0.05);
+}
+
+.toc__link.active {
+  color: var(--color-accent);
+  font-weight: 600;
+  border-left: 3px solid var(--color-accent);
+  background-color: rgba(20, 184, 166, 0.12);
+  padding-left: 11px;
+  /* Compensate for thicker border */
 }
 
 /* Desktop Sidebar TOC Layout */
 @media (min-width: 1024px) {
   .post__content {
-    max-width: 1100px;
-    /* Expand container for sidebar */
-    display: grid;
-    grid-template-columns: 240px 1fr;
-    gap: var(--space-12);
-    align-items: start;
+    max-width: 720px;
+    margin-left: 280px;
     position: relative;
   }
 
-  /* Force all direct content to the main column */
-  .post__content>* {
-    grid-column: 2;
-    min-width: 0;
-    /* Prevent grid blowout */
-  }
-
-  /* Sticky TOC styling */
+  /* Fixed TOC sidebar */
   .post__content>.toc {
-    grid-column: 1;
-    grid-row: 1 / 1000;
-    position: sticky;
-    top: 2rem;
-    height: auto;
-    max-height: calc(100vh - 4rem);
+    position: fixed;
+    left: max(calc(50% - 560px), 24px);
+    top: 100px;
+    width: 220px;
+    max-height: calc(100vh - 140px);
     overflow-y: auto;
 
     /* Prevent blur/shifting on scroll with GPU acceleration */
