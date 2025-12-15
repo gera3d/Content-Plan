@@ -1,12 +1,20 @@
 ---
 import BaseLayout from './BaseLayout.astro';
+import TOC from '../components/TOC.astro';
 import type { CollectionEntry } from 'astro:content';
+
+interface Heading {
+  depth: number;
+  slug: string;
+  text: string;
+}
 
 interface Props {
   post: CollectionEntry<'posts'>;
+  headings?: Heading[];
 }
 
-const { post } = Astro.props;
+const { post, headings = [] } = Astro.props;
 const { title, description, publishDate, updatedDate, topic, tags, author } = post.data;
 
 // Format dates
@@ -51,6 +59,9 @@ const articleSchema = {
     "@id": `https://gera.yerem.in/${post.slug}`
   }
 };
+
+// Show TOC for longer posts with headings
+const showToc = headings.length > 2;
 ---
 
 <BaseLayout 
@@ -60,22 +71,31 @@ const articleSchema = {
   publishedTime={publishDate.toISOString()}
   modifiedTime={(updatedDate || publishDate).toISOString()}
   author={author}
+  showHeader={false}
 >
   <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} slot="head" />
   
   <article class="post">
     <div class="container">
-      <div class="post__content">
-        <header class="post__header post__header--inline">
-          <a href={`/topic/${topic}`} class="post__topic">{topicNames[topic]}</a>
-          <h1 class="post__title">{title}</h1>
-          <div class="post__meta">
-            <span>{formatDate(publishDate)}</span>
-            <span>·</span>
-            <span>{readingTime} min read</span>
-          </div>
-        </header>
-        <slot />
+      <div class:list={["post__layout", { "post__layout--with-toc": showToc }]}>
+        {showToc && (
+          <aside class="post__sidebar">
+            <TOC headings={headings} />
+          </aside>
+        )}
+        
+        <div class="post__content">
+          <header class="post__header post__header--inline">
+            <a href={`/topic/${topic}`} class="post__topic">{topicNames[topic]}</a>
+            <h1 class="post__title">{title}</h1>
+            <div class="post__meta">
+              <span>{formatDate(publishDate)}</span>
+              <span>·</span>
+              <span>{readingTime} min read</span>
+            </div>
+          </header>
+          <slot />
+        </div>
       </div>
       
       {tags.length > 0 && (
@@ -92,73 +112,42 @@ const articleSchema = {
     </div>
   </article>
 
-  <script>
-    // TOC Active State Logic
-    let currentActiveId = null;
-
-    const observerOptions = {
-      root: null,
-      rootMargin: '-10% 0px -60% 0px', // Trigger when section is in upper portion
-      threshold: 0
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const id = entry.target.getAttribute('id');
-          if (id && id !== currentActiveId) {
-            currentActiveId = id;
-            // Remove active class from all links
-            document.querySelectorAll('.toc__link').forEach(link => {
-              link.classList.remove('active');
-            });
-            // Add active class to current link
-            const activeLink = document.querySelector(`.toc__link[href="#${id}"]`);
-            if (activeLink) {
-              activeLink.classList.add('active');
-            }
-          }
-        }
-      });
-    }, observerOptions);
-
-    // Observe all h2 and h3 headings in the post content
-    document.querySelectorAll('.post__content h2, .post__content h3').forEach(heading => {
-      observer.observe(heading);
-    });
-
-    // Set initial active state on first TOC link
-    const firstTocLink = document.querySelector('.toc__link');
-    if (firstTocLink) {
-      firstTocLink.classList.add('active');
+  <style>
+    /* Two-column layout with TOC sidebar */
+    .post__layout {
+      display: block;
     }
 
-    // TOC Header fade-out on scroll effect (avatar + greeting)
-    const tocHeader = document.querySelector('.toc__header');
-    if (tocHeader) {
-      let ticking = false;
-      const fadeThreshold = 150; // Start fading after scrolling 150px
-
-      const handleScroll = () => {
-        if (!ticking) {
-          window.requestAnimationFrame(() => {
-            const scrollY = window.scrollY;
-            
-            if (scrollY > fadeThreshold) {
-              tocHeader.classList.add('faded');
-            } else {
-              tocHeader.classList.remove('faded');
-            }
-            
-            ticking = false;
-          });
-          ticking = true;
-        }
-      };
-
-      window.addEventListener('scroll', handleScroll, { passive: true });
-      // Check initial scroll position
-      handleScroll();
+    .post__layout--with-toc {
+      display: block;
     }
-  </script>
+
+    .post__sidebar {
+      display: none;
+    }
+
+    /* Desktop: show sidebar */
+    @media (min-width: 1024px) {
+      .post__layout--with-toc {
+        display: grid;
+        grid-template-columns: 240px 1fr;
+        gap: 3rem;
+        align-items: start;
+      }
+
+      .post__sidebar {
+        display: block;
+        position: sticky;
+        top: 2rem;
+        height: fit-content;
+        max-height: calc(100vh - 4rem);
+        overflow-y: auto;
+      }
+
+      .post__layout--with-toc .post__content {
+        min-width: 0;
+      }
+    }
+  </style>
 </BaseLayout>
+

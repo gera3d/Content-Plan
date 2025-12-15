@@ -11,6 +11,7 @@ interface Props {
   publishedTime?: string;
   modifiedTime?: string;
   author?: string;
+  showHeader?: boolean;
 }
 
 const { 
@@ -20,7 +21,8 @@ const {
   type = "website",
   publishedTime,
   modifiedTime,
-  author = "Gera Yeremin"
+  author = "Gera Yeremin",
+  showHeader = true
 } = Astro.props;
 
 const siteUrl = "https://gera.yerem.in";
@@ -103,7 +105,7 @@ const websiteSchema = {
     )}
   </head>
   <body>
-    <Header />
+    {showHeader && <Header />}
     <main>
       <slot />
     </main>

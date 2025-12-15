@@ -1,0 +1,448 @@
+---
+interface Heading {
+  depth: number;
+  slug: string;
+  text: string;
+}
+
+interface Props {
+  headings: Heading[];
+  title?: string;
+}
+
+const { headings, title = "On this page" } = Astro.props;
+
+// Filter to only H2 headings for a cleaner TOC
+const tocHeadings = headings.filter(h => h.depth === 2);
+---
+
+<aside class="toc-sidebar" id="toc-sidebar">
+  <nav class="toc-nav" aria-label="Table of contents">
+    <div class="toc-avatar-section">
+      <!-- Full View (Large) -->
+      <div class="toc-avatar-full">
+        <a href="/" class="toc-avatar-link" title="Back to Homepage">
+          <img src="/images/gera-watercolor-avatar.png" alt="Gera Yeremin" class="toc-avatar" />
+        </a>
+        <div class="toc-greeting">
+          <a href="/about" class="toc-name-link">Hi, I'm Gera</a>
+          <span class="toc-subtitle">I'll walk you through this guide</span>
+          
+          <nav class="toc-mini-nav">
+            <a href="/" class="mini-nav-link">Writing</a>
+            <span class="mini-nav-sep">·</span>
+            <a href="/work" class="mini-nav-link">Work</a>
+            <span class="mini-nav-sep">·</span>
+            <a href="/contact" class="mini-nav-link">Contact</a>
+          </nav>
+        </div>
+      </div>
+
+      <!-- Compact View (Scrolled) -->
+      <div class="toc-avatar-compact">
+        <a href="/" class="toc-avatar-link-compact" title="Back to Homepage">
+          <img src="/images/gera-watercolor-avatar.png" alt="Gera Yeremin" class="toc-avatar-compact-img" />
+        </a>
+        <div class="toc-greeting-compact">
+          <a href="/about" class="toc-name-link">Hi, I'm Gera</a>
+          <nav class="toc-mini-nav">
+            <a href="/" class="mini-nav-link">Writing</a>
+            <span class="mini-nav-sep">·</span>
+            <a href="/work" class="mini-nav-link">Work</a>
+            <span class="mini-nav-sep">·</span>
+            <a href="/contact" class="mini-nav-link">Contact</a>
+          </nav>
+        </div>
+      </div>
+    </div>
+    
+    <h2 class="toc-title">{title}</h2>
+    
+    <ul class="toc-list" role="list">
+      {tocHeadings.map((heading) => (
+        <li class="toc-item">
+          <a 
+            href={`#${heading.slug}`} 
+            class="toc-link"
+            data-heading-slug={heading.slug}
+          >
+            {heading.text}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+</aside>
+
+<style>
+  .toc-sidebar {
+    position: sticky;
+    top: 2rem;
+    height: fit-content;
+    max-height: calc(100vh - 4rem);
+    overflow-y: auto;
+    padding-right: 1rem;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-border) transparent;
+  }
+
+  .toc-sidebar::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  .toc-sidebar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .toc-sidebar::-webkit-scrollbar-thumb {
+    background-color: var(--color-border);
+    border-radius: 4px;
+  }
+
+  .toc-nav {
+    font-size: 0.875rem;
+  }
+
+  /* 
+   * AVATAR SECTION - TRANSITION LOGIC 
+   * We swap between two layouts using max-height and opacity for smoothness
+   */
+  .toc-avatar-section {
+    border-bottom: 1px solid var(--color-border);
+    margin-bottom: 2rem; /* Initial large margin */
+    transition: margin-bottom 0.5s ease;
+  }
+  
+  .toc-avatar-section.compact {
+    margin-bottom: 1rem; /* Smaller margin when compact */
+    padding-bottom: 0.5rem;
+  }
+
+  /* FULL VIEW STYLES */
+  .toc-avatar-full {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+    padding-bottom: 1.5rem;
+    
+    /* Transition props */
+    max-height: 500px;
+    opacity: 1;
+    transform: translateY(0);
+    transition: 
+      max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+      opacity 0.4s ease,
+      transform 0.5s ease,
+      padding-bottom 0.5s ease;
+    overflow: hidden;
+  }
+
+  /* When compact: hide full view */
+  .toc-avatar-section.compact .toc-avatar-full {
+    max-height: 0;
+    opacity: 0;
+    padding-bottom: 0;
+    transform: translateY(-20px);
+    pointer-events: none;
+  }
+
+  /* COMPACT VIEW STYLES */
+  .toc-avatar-compact {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 0.75rem;
+    text-align: left;
+    
+    /* Hidden initially */
+    max-height: 0;
+    opacity: 0;
+    transform: translateY(10px);
+    overflow: hidden;
+    
+    transition: 
+      max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+      opacity 0.4s ease 0.1s, /* Delay opacity slightly */
+      transform 0.5s ease 0.1s;
+  }
+
+  /* When compact: show compact view */
+  .toc-avatar-section.compact .toc-avatar-compact {
+    max-height: 100px;
+    opacity: 1;
+    transform: translateY(0);
+    padding-bottom: 1rem;
+  }
+
+  /* SHARED ELEMENT STYLES */
+  .toc-avatar-link {
+    display: block;
+    width: 100%;
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    text-decoration: none;
+  }
+
+  .toc-avatar-link:active {
+    transform: scale(0.98);
+  }
+
+  /* Tooltip logic (Full view only) */
+  .toc-avatar-link::after {
+    content: "Let's go back to the homepage";
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    white-space: nowrap;
+    opacity: 0;
+    transition: all 0.2s ease;
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  .toc-avatar-link:hover::after {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  .toc-avatar {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 0;
+    box-shadow: none;
+    display: block;
+  }
+
+  .toc-greeting {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    width: 100%;
+  }
+
+  /* Compact specific elements */
+  .toc-avatar-link-compact {
+    width: 48px;
+    flex-shrink: 0;
+    display: block;
+    transition: transform 0.2s;
+  }
+  
+  .toc-avatar-link-compact:active {
+    transform: scale(0.95);
+  }
+
+  .toc-avatar-compact-img {
+    width: 100%;
+    height: auto;
+    border-radius: 0;
+    display: block;
+  }
+
+  .toc-greeting-compact {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+  }
+
+  /* Nav Links */
+  .toc-name-link {
+    font-weight: 700;
+    color: var(--color-text);
+    font-size: 1.1rem; /* Compact uses same class but context makes it scale? No, explicit size below */
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  
+  .toc-greeting-compact .toc-name-link {
+    font-size: 0.95rem;
+  }
+  
+  .toc-name-link:hover {
+    color: var(--color-accent);
+  }
+
+  .toc-subtitle {
+    color: var(--color-text-muted);
+    font-size: 0.85rem;
+    line-height: 1.4;
+  }
+
+  .toc-mini-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+  }
+  
+  .toc-greeting-compact .toc-mini-nav {
+    margin-top: 0;
+    justify-content: flex-start;
+    font-size: 0.75rem;
+  }
+
+  .mini-nav-link {
+    color: var(--color-text-muted);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+
+  .mini-nav-link:hover {
+    color: var(--color-accent);
+  }
+
+  .mini-nav-sep {
+    opacity: 0.5;
+  }
+
+  .toc-title {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-text-muted);
+    margin-bottom: 0.75rem;
+  }
+
+  .toc-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .toc-item {
+    position: relative;
+  }
+
+  .toc-link {
+    display: block;
+    padding: 0.5rem 0.75rem;
+    color: var(--color-text-muted);
+    text-decoration: none;
+    border-left: 2px solid var(--color-border);
+    transition: all 0.2s ease;
+    line-height: 1.4;
+    font-size: 0.85rem;
+  }
+
+  .toc-link:hover {
+    color: var(--color-accent);
+    border-left-color: var(--color-accent);
+    background: rgba(20, 184, 166, 0.05);
+  }
+
+  .toc-link.active {
+    color: var(--color-accent);
+    font-weight: 600;
+    border-left: 3px solid var(--color-accent);
+    background: rgba(20, 184, 166, 0.1);
+    padding-left: calc(0.75rem - 1px); /* Compensate for thicker border */
+  }
+
+  /* Mobile: hide sidebar */
+  @media (max-width: 1023px) {
+    .toc-sidebar {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  // Scroll-spy: highlight active TOC link based on current section
+  const initTocScrollSpy = () => {
+    const tocLinks = document.querySelectorAll('.toc-link');
+    const headings = Array.from(tocLinks).map(link => {
+      const slug = link.getAttribute('data-heading-slug');
+      return document.getElementById(slug);
+    }).filter(Boolean);
+
+    if (headings.length === 0) return;
+
+    let activeIndex = 0;
+
+    const updateActiveLink = () => {
+      const scrollY = window.scrollY;
+      const windowHeight = window.innerHeight;
+      
+      // Find the heading that's currently in view
+      let newActiveIndex = 0;
+      
+      for (let i = 0; i < headings.length; i++) {
+        const heading = headings[i];
+        const rect = heading.getBoundingClientRect();
+        
+        // Consider a heading "active" when it's in the top third of the viewport
+        if (rect.top <= windowHeight * 0.3) {
+          newActiveIndex = i;
+        }
+      }
+
+      if (newActiveIndex !== activeIndex) {
+        activeIndex = newActiveIndex;
+        
+        // Remove active class from all links
+        tocLinks.forEach(link => link.classList.remove('active'));
+        
+        // Add active class to current link
+        tocLinks[activeIndex]?.classList.add('active');
+      }
+    };
+
+    // Debounced scroll handler
+    let ticking = false;
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          updateActiveLink();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    // Avatar compact mode on scroll
+    const avatarSection = document.querySelector('.toc-avatar-section');
+    const handleAvatarCompact = () => {
+      if (avatarSection) {
+        if (window.scrollY > 150) {
+          avatarSection.classList.add('compact');
+        } else {
+          avatarSection.classList.remove('compact');
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('scroll', handleAvatarCompact, { passive: true });
+    
+    // Initialize
+    updateActiveLink();
+    handleAvatarCompact();
+    
+    // Set first link as active initially
+    if (tocLinks.length > 0 && !document.querySelector('.toc-link.active')) {
+      tocLinks[0].classList.add('active');
+    }
+  };
+
+  // Run on page load and on navigation
+  document.addEventListener('DOMContentLoaded', initTocScrollSpy);
+  document.addEventListener('astro:page-load', initTocScrollSpy);
+</script>
