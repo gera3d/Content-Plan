@@ -1,11 +1,28 @@
 ---
-const { title, subtitle, investment, timeline, roi, breakEven } = Astro.props;
+interface Props {
+  title: string;
+  subtitle?: string;
+  investment: string;
+  timeline: string;
+  roi: string;
+  breakEven: string;
+  logo?: string;
+}
+
+const { title, subtitle, investment, timeline, roi, breakEven, logo } = Astro.props;
 ---
 
 <article class="case-study">
   <div class="case-study-header">
-    <h3>{title}</h3>
-    {subtitle && <p class="subtitle">{subtitle}</p>}
+    <div class="header-content">
+      <h3>{title}</h3>
+      {subtitle && <p class="subtitle">{subtitle}</p>}
+    </div>
+    {logo && (
+      <div class="logo-container">
+        <img src={logo} alt="" class="company-logo" />
+      </div>
+    )}
   </div>
 
   <div class="stats-grid">
@@ -18,7 +35,7 @@ const { title, subtitle, investment, timeline, roi, breakEven } = Astro.props;
       <span class="stat-value">{timeline}</span>
     </div>
     <div class="stat-box highlight">
-      <span class="stat-label">ROI (Year 1)</span>
+      <span class="stat-label">ROI</span>
       <span class="stat-value">{roi}</span>
     </div>
     <div class="stat-box highlight">
@@ -36,38 +53,65 @@ const { title, subtitle, investment, timeline, roi, breakEven } = Astro.props;
   .case-study {
     border: 1px solid #e2e8f0;
     border-radius: 12px;
-    background: var(--color-accent-light);
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-    margin: 3rem 0;
+    background: #ffffff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    margin: 0;
     overflow: hidden;
   }
 
+  /* Header */
   .case-study-header {
-    background: #ffffff;
-    padding: 1.5rem 2rem;
+    background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+    padding: 1.25rem 1.5rem;
     border-bottom: 1px solid #e2e8f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .header-content {
+    flex: 1;
+  }
+
+  .logo-container {
+    flex-shrink: 0;
+  }
+
+  .company-logo {
+    max-height: 36px;
+    max-width: 100px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    opacity: 0.9;
   }
 
   .case-study-header h3 {
     margin: 0;
-    color: #0d9488; /* Accent color */
-    font-size: 1.25rem;
+    color: var(--color-accent, #0d9488);
+    font-size: 1.1rem;
+    font-weight: 700;
+    line-height: 1.3;
   }
 
   .subtitle {
-    margin: 0.5rem 0 0 0;
+    margin: 0.35rem 0 0 0;
     color: #64748b;
+    font-size: 0.85rem;
     font-weight: 500;
   }
 
+  /* Stats Grid */
   .stats-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     border-bottom: 1px solid #e2e8f0;
+    background: #fafbfc;
   }
 
   .stat-box {
-    padding: 1rem;
+    padding: 0.75rem 0.5rem;
     text-align: center;
     border-right: 1px solid #e2e8f0;
   }
@@ -78,33 +122,40 @@ const { title, subtitle, investment, timeline, roi, breakEven } = Astro.props;
 
   .stat-label {
     display: block;
-    font-size: 0.75rem;
+    font-size: 0.65rem;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: #64748b;
-    margin-bottom: 0.25rem;
+    letter-spacing: 0.06em;
+    color: #94a3b8;
+    margin-bottom: 0.2rem;
+    font-weight: 500;
   }
 
   .stat-value {
     display: block;
     font-weight: 700;
-    color: #1e293b;
-    font-size: 1rem;
+    color: #334155;
+    font-size: 0.85rem;
+    line-height: 1.2;
   }
 
   .stat-box.highlight {
-    background: #ffffff; /* White to pop against accent-light */
+    background: #ffffff;
   }
 
   .stat-box.highlight .stat-value {
-    color: #0d9488;
+    color: var(--color-accent, #0d9488);
   }
 
+  /* Content Area */
   .case-content {
-    padding: 2rem;
+    padding: 1.25rem 1.5rem;
+    font-size: 0.875rem;
+    line-height: 1.65;
+    color: #475569;
   }
 
-  @media (max-width: 768px) {
+  /* Responsive */
+  @media (max-width: 900px) {
     .stats-grid {
       grid-template-columns: repeat(2, 1fr);
     }
@@ -113,12 +164,101 @@ const { title, subtitle, investment, timeline, roi, breakEven } = Astro.props;
       border-right: none;
     }
     
-    .stat-box {
+    .stat-box:nth-child(1),
+    .stat-box:nth-child(2) {
       border-bottom: 1px solid #e2e8f0;
     }
-    
-    .stat-box:nth-last-child(-n+2) {
-      border-bottom: none;
+  }
+
+  @media (max-width: 640px) {
+    .case-study-header {
+      padding: 1rem;
     }
+
+    .case-content {
+      padding: 1rem;
+    }
+
+    .case-study-header h3 {
+      font-size: 1rem;
+    }
+  }
+</style>
+
+<!-- Global styles for slotted content -->
+<style is:global>
+  /* Typography for case study content */
+  .case-content p {
+    margin: 0 0 0.875rem 0;
+  }
+
+  .case-content p:last-of-type {
+    margin-bottom: 0;
+  }
+
+  /* Section labels with accent highlight */
+  .case-content p strong:first-child {
+    color: #0d9488;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    display: block;
+    margin-bottom: 0.35rem;
+    font-weight: 700;
+  }
+
+  /* Body text in paragraphs */
+  .case-content p {
+    color: #475569;
+  }
+
+  /* Results list - styled as cards */
+  .case-content ul {
+    margin: 1rem 0 0 0;
+    padding: 0;
+    list-style: none;
+    background: #f8fafc;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+  }
+
+  .case-content li {
+    padding: 0.75rem 1rem 0.75rem 2.25rem;
+    border-bottom: 1px solid #e2e8f0;
+    position: relative;
+    line-height: 1.5;
+  }
+
+  .case-content li:last-child {
+    border-bottom: none;
+  }
+
+  /* Arrow icons before list items */
+  .case-content li::before {
+    content: "→";
+    position: absolute;
+    left: 1rem;
+    color: #0d9488;
+    font-weight: 600;
+  }
+
+  /* Result/Impact labels in list items */
+  .case-content li strong {
+    color: #0d9488;
+    font-weight: 700;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  /* Yellow Highlighter Effect for key numbers/stats */
+  .case-content mark {
+    background: linear-gradient(120deg, #FFF59D 0%, #FFEB3B 100%);
+    padding: 0.1em 0.25em;
+    border-radius: 3px;
+    color: #1a1a1a;
+    font-weight: 600;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
   }
 </style>

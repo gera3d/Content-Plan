@@ -1,0 +1,155 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// Memes with their source posts and sections
+const memes = [
+  // Custom Workflow Automation Guide memes
+  { src: '/images/memes/meme-afraid-zap-failed.png', alt: 'Afraid to Ask meme', post: 'Workflow Automation', section: 'Intro', postUrl: '/custom-workflow-automation-guide#meme-afraid-zap-failed' },
+  { src: '/images/memes/meme-inigo-simple.png', alt: 'Inigo Montoya meme', post: 'Workflow Automation', section: 'Task Trap', postUrl: '/custom-workflow-automation-guide#meme-inigo-simple' },
+  { src: '/images/memes/meme-gandalf-zaps.png', alt: 'Confused Gandalf meme', post: 'Workflow Automation', section: 'Technical Debt', postUrl: '/custom-workflow-automation-guide#meme-gandalf-zaps' },
+  { src: '/images/memes/meme-astronaut-polling.png', alt: 'Always Has Been meme', post: 'Workflow Automation', section: 'Latency', postUrl: '/custom-workflow-automation-guide#meme-astronaut-polling' },
+  { src: '/images/memes/meme-ski-polling.png', alt: 'Ski Instructor meme', post: 'Workflow Automation', section: 'Latency', postUrl: '/custom-workflow-automation-guide#meme-ski-polling' },
+  { src: '/images/memes/meme-wddth-hipaa.png', alt: 'We Dont Do That Here meme', post: 'Workflow Automation', section: 'HIPAA', postUrl: '/custom-workflow-automation-guide#meme-wddth-hipaa' },
+  { src: '/images/memes/meme-pooh-own-engine.png', alt: 'Tuxedo Pooh meme', post: 'Workflow Automation', section: 'Comparison', postUrl: '/custom-workflow-automation-guide#meme-pooh-own-engine' },
+  { src: '/images/memes/meme-drake-own-vs-rent.png', alt: 'Drake meme', post: 'Workflow Automation', section: 'Cost Model', postUrl: '/custom-workflow-automation-guide#meme-drake-own-vs-rent' },
+  { src: '/images/memes/meme-cmm-automation.png', alt: 'Change My Mind meme', post: 'Workflow Automation', section: '$500 Sign', postUrl: '/custom-workflow-automation-guide#meme-cmm-automation' },
+  { src: '/images/memes/meme-exit-build-custom.png', alt: 'Left Exit 12 meme', post: 'Workflow Automation', section: 'Build vs Buy', postUrl: '/custom-workflow-automation-guide#meme-exit-build-custom' },
+  { src: '/images/memes/meme-captain-owner.png', alt: 'I Am the Captain Now meme', post: 'Workflow Automation', section: 'Ownership', postUrl: '/custom-workflow-automation-guide#meme-captain-owner' },
+  { src: '/images/memes/meme-db-distracted.png', alt: 'Distracted Boyfriend meme', post: 'Workflow Automation', section: 'Hybrid', postUrl: '/custom-workflow-automation-guide#meme-db-distracted' },
+  { src: '/images/memes/meme-both-hybrid.png', alt: 'Why Not Both meme', post: 'Workflow Automation', section: 'Hybrid', postUrl: '/custom-workflow-automation-guide#meme-both-hybrid' },
+  { src: '/images/memes/meme-happening-deployed.png', alt: 'Its Happening meme', post: 'Workflow Automation', section: 'ROI', postUrl: '/custom-workflow-automation-guide#meme-happening-deployed' },
+  { src: '/images/memes/meme-boat-buy-custom.png', alt: 'I Should Buy a Boat meme', post: 'Workflow Automation', section: 'Pricing', postUrl: '/custom-workflow-automation-guide#meme-boat-buy-custom' },
+  
+  // Custom Business Software Guide memes
+  { src: '/images/memes/meme-morpheus-excel.png', alt: 'Morpheus Excel meme', post: 'Business Software', section: 'Intro', postUrl: '/custom-business-software-guide#meme-morpheus-excel' },
+  { src: '/images/memes/meme-disaster-spreadsheet.png', alt: 'Disaster Girl meme', post: 'Business Software', section: 'Integration', postUrl: '/custom-business-software-guide#meme-disaster-spreadsheet' },
+  { src: '/images/memes/meme-buzz-integrations.png', alt: 'Buzz Lightyear meme', post: 'Business Software', section: 'Integration', postUrl: '/custom-business-software-guide#meme-buzz-integrations' },
+  { src: '/images/memes/meme-mocking-spongebob.png', alt: 'Mocking Spongebob meme', post: 'Business Software', section: 'Security', postUrl: '/custom-business-software-guide#meme-mocking-spongebob' },
+  { src: '/images/memes/meme-rollsafe-data.png', alt: 'Roll Safe meme', post: 'Business Software', section: 'Security', postUrl: '/custom-business-software-guide#meme-rollsafe-data' },
+  { src: '/images/memes/meme-leo-cheers.png', alt: 'Leonardo DiCaprio meme', post: 'Business Software', section: 'ROI', postUrl: '/custom-business-software-guide#meme-leo-cheers' },
+  { src: '/images/memes/meme-fry-automation.png', alt: 'Fry meme', post: 'Business Software', section: 'ROI', postUrl: '/custom-business-software-guide#meme-fry-automation' },
+  { src: '/images/memes/meme-oprah-workaround.png', alt: 'Oprah meme', post: 'Business Software', section: 'Signs', postUrl: '/custom-business-software-guide#meme-oprah-workaround' },
+  { src: '/images/memes/meme-excel-fine.png', alt: 'This Is Fine meme', post: 'Business Software', section: 'Integration Nightmares', postUrl: '/custom-business-software-guide#meme-excel-fine' },
+  { src: '/images/memes/meme-panik-kalm.png', alt: 'Panik Kalm meme', post: 'Business Software', section: 'Integration Nightmares', postUrl: '/custom-business-software-guide#meme-panik-kalm' },
+  { src: '/images/memes/meme-pigeon-database.png', alt: 'Is This a Pigeon meme', post: 'Business Software', section: 'Spending', postUrl: '/custom-business-software-guide#meme-pigeon-database' },
+  { src: '/images/memes/meme-batman-slap.png', alt: 'Batman Slap meme', post: 'Business Software', section: 'Spending', postUrl: '/custom-business-software-guide#meme-batman-slap' },
+  { src: '/images/memes/meme-wonka-enterprise.png', alt: 'Wonka meme', post: 'Business Software', section: 'Scale', postUrl: '/custom-business-software-guide#meme-wonka-enterprise' },
+  { src: '/images/memes/meme-stonks-efficiency.png', alt: 'Stonks meme', post: 'Business Software', section: 'Costs', postUrl: '/custom-business-software-guide#meme-stonks-efficiency' },
+  { src: '/images/memes/meme-simple-process.png', alt: 'One Does Not Simply meme', post: 'Business Software', section: 'Discovery', postUrl: '/custom-business-software-guide#meme-simple-process' },
+  { src: '/images/memes/meme-gru-plan.png', alt: 'Gru Plan meme', post: 'Business Software', section: 'Launch', postUrl: '/custom-business-software-guide#meme-gru-plan' },
+  { src: '/images/memes/meme-success-roi.png', alt: 'Success Kid meme', post: 'Business Software', section: 'Success Stories', postUrl: '/custom-business-software-guide#meme-success-roi' },
+  { src: '/images/memes/meme-harold-timeline.png', alt: 'Hide the Pain Harold meme', post: 'Business Software', section: 'Case Studies', postUrl: '/custom-business-software-guide#meme-harold-timeline' },
+  { src: '/images/memes/meme-dwight-dev.png', alt: 'Dwight meme', post: 'Business Software', section: 'Hiring', postUrl: '/custom-business-software-guide#meme-dwight-dev' },
+  { src: '/images/memes/meme-kermit-push-to-prod.png', alt: 'Evil Kermit meme', post: 'Business Software', section: 'Red Flags', postUrl: '/custom-business-software-guide#meme-kermit-push-to-prod' },
+  { src: '/images/memes/meme-ackabar-trap.png', alt: 'Its a Trap meme', post: 'Business Software', section: 'Red Flags', postUrl: '/custom-business-software-guide#meme-ackabar-trap' },
+];
+---
+
+<BaseLayout 
+  title="Memes | Gera Yeremin" 
+  description="A collection of memes about custom software, automation, and escaping spreadsheet hell."
+>
+  <div class="page">
+    <div class="container">
+      
+      <div class="memes-hero">
+        <h1 class="page__title">The Meme <span style="color: var(--color-accent);">Gallery</span></h1>
+        <p class="page__description">
+          Sometimes a meme explains it better than a paragraph ever could.
+        </p>
+      </div>
+
+      <div class="memes-masonry">
+        {memes.map((meme) => (
+          <a href={meme.postUrl} class="meme-card">
+            <img src={meme.src} alt={meme.alt} loading="lazy" />
+            <div class="meme-card__info">
+              <span class="meme-card__section">{meme.section}</span>
+              <span class="meme-card__post">{meme.post}</span>
+            </div>
+          </a>
+        ))}
+      </div>
+
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .memes-hero {
+    text-align: center;
+    margin-bottom: var(--space-12);
+  }
+
+  .memes-masonry {
+    columns: 3;
+    column-gap: 1rem;
+  }
+
+  @media (max-width: 900px) {
+    .memes-masonry {
+      columns: 2;
+    }
+  }
+
+  @media (max-width: 500px) {
+    .memes-masonry {
+      columns: 1;
+    }
+  }
+
+  .meme-card {
+    display: block;
+    break-inside: avoid;
+    margin-bottom: 1rem;
+    background: var(--color-surface, #ffffff);
+    border: 1px solid var(--color-border, #e5e7eb);
+    border-radius: var(--border-radius, 12px);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    text-decoration: none;
+  }
+
+  .meme-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+    border-color: var(--color-accent, #6366f1);
+  }
+
+  .meme-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .meme-card__info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    background: var(--color-background-alt, #f9fafb);
+    border-top: 1px solid var(--color-border, #e5e7eb);
+  }
+
+  .meme-card__section {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-text, #1f2937);
+  }
+
+  .meme-card__post {
+    font-size: 0.65rem;
+    font-weight: 500;
+    color: var(--color-accent, #6366f1);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    background: var(--color-accent-light, #eef2ff);
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+  }
+
+  .meme-card:hover .meme-card__section {
+    color: var(--color-accent, #6366f1);
+  }
+</style>

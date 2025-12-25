@@ -1,21 +1,97 @@
 ---
 const { sources = [] } = Astro.props;
 ---
-<div class="not-prose my-12 bg-slate-50 p-6 rounded-2xl border border-slate-100">
-  <p class="text-sm font-semibold text-slate-500 tracking-wider uppercase mb-6 text-center">Data & Insights Sourced From</p>
+<div class="research-sources not-prose">
+  <p class="research-sources__title">Data & Insights Sourced From</p>
   
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+  <div class="research-sources__grid">
     {sources.map((source) => (
-      <a href={source.url} target="_blank" rel="noopener noreferrer" class="flex flex-col p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition-all border border-slate-100 group">
-        <span class="text-xs font-bold text-blue-600 mb-1 uppercase tracking-wide">{source.name}</span>
-        <span class="text-sm font-medium text-slate-800 group-hover:text-blue-700 leading-snug">
-          {source.title}
-        </span>
+      <a href={source.url} target="_blank" rel="noopener noreferrer" class="research-source-card">
+        <span class="research-source-card__name">{source.name}</span>
+        <span class="research-source-card__title">{source.title}</span>
       </a>
     ))}
   </div>
 
-  <p class="text-xs text-center text-slate-400 mt-6">
+  <p class="research-sources__footnote">
     Analysis based on publicly available TCO studies and industry reports from 2024-2025.
   </p>
 </div>
+
+<style>
+  .research-sources {
+    margin: 3rem 0;
+    padding: 2rem;
+    background-color: var(--color-accent-light, #f8fafc);
+    border-radius: var(--border-radius, 12px);
+    border: 1px solid var(--color-border, #e2e8f0);
+  }
+
+  .research-sources__title {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-text-muted, #64748b);
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .research-sources__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  @media (max-width: 640px) {
+    .research-sources__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .research-source-card {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 1.25rem;
+    background-color: #ffffff;
+    border-radius: 8px;
+    border: 1px solid var(--color-border, #e2e8f0);
+    text-decoration: none;
+    transition: all 0.2s ease;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  }
+
+  .research-source-card:hover {
+    border-color: var(--color-accent, #3b82f6);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transform: translateY(-2px);
+  }
+
+  .research-source-card__name {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-accent, #3b82f6);
+    margin-bottom: 0.25rem;
+  }
+
+  .research-source-card__title {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-text, #1e293b);
+    line-height: 1.4;
+  }
+
+  .research-source-card:hover .research-source-card__title {
+    color: var(--color-accent, #3b82f6);
+  }
+
+  .research-sources__footnote {
+    font-size: 0.75rem;
+    text-align: center;
+    color: var(--color-text-muted, #94a3b8);
+    margin-top: 1.5rem;
+    margin-bottom: 0;
+  }
+</style>

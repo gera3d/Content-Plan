@@ -2,10 +2,11 @@
 const currentPath = Astro.url.pathname;
 
 const navLinks = [
-  { href: '/', label: 'Writing' },
-  { href: '/about', label: 'About' },
-  { href: '/work', label: 'Work' },
-  { href: '/contact', label: 'Contact' },
+  { href: '/', label: 'Writing', icon: null },
+  { href: '/memes', label: 'Memes', icon: '😂' },
+  { href: '/about', label: 'About', icon: null },
+  { href: '/work', label: 'Work', icon: null },
+  { href: '/contact', label: 'Contact', icon: null },
 ];
 ---
 
@@ -22,9 +23,17 @@ const navLinks = [
               (link.href !== '/' && currentPath.startsWith(link.href)) }
           ]}
         >
+          {link.icon && <span class="header__link-icon">{link.icon}</span>}
           {link.label}
         </a>
       ))}
     </nav>
   </div>
 </header>
+
+<style>
+  .header__link-icon {
+    font-size: 0.875rem;
+    margin-right: 0.25rem;
+  }
+</style>

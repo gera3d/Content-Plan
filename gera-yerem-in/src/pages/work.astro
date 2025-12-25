@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CaseStudyCard from '../components/content/CaseStudyCard.astro';
+import CaseStudySlider from '../components/content/CaseStudySlider.astro';
 ---
 
 <BaseLayout 
@@ -15,88 +16,164 @@ import CaseStudyCard from '../components/content/CaseStudyCard.astro';
         <div class="work-hero__content">
           <h1 class="page__title">Software is an <br/><span style="color: var(--color-accent);">Investment.</span></h1>
           <p class="page__description">
-             If it doesn't make money or save time, it's just code. Here is a selection of projects where I delivered measurable return on investment.
+             If it doesn't make money or save time, it's just code. Here's a selection of projects where I delivered measurable return on investment.
           </p>
         </div>
         <div class="work-hero__image">
-            <img src="/images/professional/whiteboard-presentation.png" alt="Strategizing on a whiteboard" />
+            <img src="/images/professional/speaker-presentation.png" alt="Speaking to an audience" />
         </div>
       </div>
 
       <div class="section-divider"></div>
 
-      {/* Case Studies */}
-      <div class="cases-section">
-        
-        {/* Case 1: Reputation Engine */}
+      {/* Case Studies - Slider showing 2 at a time */}
+      <CaseStudySlider>
+        {/* Health for California - Review Growth System */}
         <CaseStudyCard
-            title="Automated Reputation Engine"
-            subtitle="Client: 57 Seconds (SaaS Platform)"
-            investment="Full Product Build"
-            timeline="4 Weeks (MVP)"
-            roi="412% ROI for Users"
-            breakEven="Month 3"
+            title="Agent Review Growth System"
+            subtitle="Health for California (Insurance Marketplace)"
+            investment="Full System Build"
+            timeline="4 Years"
+            roi="900x Review Growth"
+            breakEven="Month 2"
+            logo="/images/logos/health-for-california.png"
         >
-            <p><strong>The Problem:</strong> 57 Seconds needed a scalable, automated solution to help medical practices generate consistent reviews. Manual outreach was unscalable, and existing tools lacked deep EMR integration.</p>
-            <p><strong>The Solution:</strong> I architected the core "Review Intelligence" engine. It integrates directly with patient records to automatically detect happy patients and trigger intelligent SMS/Email sequences.</p>
+            <p><strong>The Problem:</strong> In the competitive California health insurance marketplace, agents had almost no online presence. The entire organization had roughly 10 Google reviews—agents were losing clients to competitors with established reputations before they could even make a pitch.</p>
+            <p><strong>What I Built:</strong> An end-to-end review acquisition engine with automated SMS/email workflows triggered post-enrollment. Each agent gets a custom landing page showcasing their reviews and credentials. Management tracks all review data live in Google Sheets—agent rankings, response rates, and coaching opportunities at a glance.</p>
             <ul>
-                <li><strong>Result:</strong> The platform now processes thousands of reviews automatically.</li>
-                <li><strong>Impact:</strong> Users report a 412% ROI in their first year through organic search growth.</li>
+                <li><strong>Result:</strong> Scaled from ~10 to <mark>9,000+</mark> verified Google reviews over 4 years—a <mark>900x increase</mark> in social proof across the agent network.</li>
+                <li><strong>Impact:</strong> Agents now compete on reputation instead of price. Individual landing pages drive higher conversion rates and management uses review velocity as a key performance metric.</li>
             </ul>
         </CaseStudyCard>
 
-        {/* Case 2: Agency Scaling */}
+        {/* Nuvolum - Site Deployment System */}
         <CaseStudyCard
-            title="The 'Agency OS' Platform"
-            subtitle="Client: Nuvolum (Digital Agency)"
+            title="200+ Client Sites with Custom 4K Video"
+            subtitle="Nuvolum (Digital Marketing Agency)"
             investment="Internal Platform"
-            timeline="3 Month Rollout"
-            roi="Saved 570 Hours/Mo"
+            timeline="3 Month Build"
+            roi="Weeks → Hours per Site"
             breakEven="Month 1"
+            logo="/images/logos/nuvolum_logo.jpg"
         >
-            <p><strong>The Problem:</strong> Nuvolum was growing fast (60+ clients), but reporting was a bottleneck. Account managers spent 8-10 hours/month <em>per client</em> manually compiling data, capping growth.</p>
-            <p><strong>The Solution:</strong> I built a centralized "Agency OS" that aggregates live data from Facebook Ads, Google Analytics, and CallTrackingMetrics into a single, real-time client dashboard.</p>
+            <p><strong>The Problem:</strong> Every new oral surgery client needed a custom website that felt unique—not a cookie-cutter template. But the old process took weeks per site. With 60+ clients and growing, the agency couldn't scale fast enough to meet demand.</p>
+            <p><strong>What I Built:</strong> A rapid deployment system that launches fully branded websites in <mark>under 4 hours</mark>—but here's what makes each one unique: every client gets their own <mark>custom 4K video package</mark> shot on-site. Same fast deployment, completely personalized content.</p>
             <ul>
-                <li><strong>Result:</strong> Reporting time dropped from 10 hours to &lt;30 mins per client.</li>
-                <li><strong>Impact:</strong> The agency doubled its client roster without hiring a single new account manager.</li>
+                <li><strong>Result:</strong> Launched <mark>200+ oral surgery sites</mark>, each with unique 4K video content. Clients get a premium, custom feel—delivered in a single afternoon.</li>
+                <li><strong>Impact:</strong> Agency doubled their client roster. Grew from 7 to 50 employees in 4 years. System's still running today.</li>
             </ul>
         </CaseStudyCard>
 
-        {/* Case 3: Real Estate CRM */}
+        {/* DriveSavers */}
         <CaseStudyCard
-            title="Mobile-First Agent CRM"
-            subtitle="Client: Regional Real Estate Brokerage"
-            investment="$25k Custom Build"
-            timeline="8 Weeks"
-            roi="Saved $18k/Year"
+            title="Legacy Website Modernization"
+            subtitle="DriveSavers Data Recovery"
+            investment="Full-Time Role"
+            timeline="4.5 Years"
+            roi="300% Organic Traffic Growth"
             breakEven="Year 1"
+            logo="/images/logos/drivesavers_data_recovery_logo.jpg"
         >
-            <p><strong>The Problem:</strong> This brokerage was paying $18k/year for Salesforce, but agent adoption was near zero. The complex desktop interface didn't match the mobile reality of real estate agents.</p>
-            <p><strong>The Solution:</strong> I developed a stripped-down, mobile-first CRM focused purely on speed. The "Swipe to Lead" interface allowed agents to update deal stages in seconds from their phones.</p>
+            <p><strong>The Problem:</strong> A 40-year-old data recovery company with a website that showed its age. Slow load times, terrible mobile experience, and zero systematic SEO. Marketing team was drowning in manual processes while competitors ate their lunch on Google.</p>
+            <p><strong>What I Did:</strong> Led a complete website overhaul—speed optimization, mobile-first redesign, and strategic SEO campaigns targeting high-value keywords. Transitioned the team from scattered spreadsheets to ClickUp with data-driven marketing workflows.</p>
             <ul>
-                <li><strong>Result:</strong> 94% adoption rate achieved within the first 2 weeks.</li>
-                <li><strong>Impact:</strong> They cancelled the Salesforce contract immediately, saving $18k/year while capturing 40% more deal data.</li>
+                <li><strong>Result:</strong> All-time high website traffic and conversions in 2021-2022. Top 3 rankings for 20+ competitive keywords like "data recovery" and "hard drive recovery."</li>
+                <li><strong>Impact:</strong> <mark>27% increase</mark> in team productivity. <mark>20% increase</mark> in lead generation. <mark>15% boost</mark> in sales revenue. Proved a 40-year-old company can out-SEO the newcomers.</li>
             </ul>
         </CaseStudyCard>
 
-        {/* Case 4: Health for California */}
+        {/* UX Owl */}
         <CaseStudyCard
-            title="Digital Enrollment Platform"
-            subtitle="Client: Health for California (Insurance)"
-            investment="Ongoing Retainer"
-            timeline="6 Month Revamp"
-            roi="+30% App Volume"
-            breakEven="Month 4"
+            title="Lead-Generating Attorney Websites"
+            subtitle="UX Owl (Co-Founded)"
+            investment="Full Product Build"
+            timeline="11 Months"
+            roi="+30-50% Qualified Leads"
+            breakEven="Month 3"
+            logo="/images/logos/ux-owl.png"
         >
-            <p><strong>The Problem:</strong> The existing enrollment process was paper-heavy and complex, causing high drop-off rates. Applicants were abandoning forms that took 45+ minutes to complete.</p>
-            <p><strong>The Solution:</strong> I led the frontend development of a streamlined, React-based wizard. We simplified the logic, added real-time validation, and optimized the flow for mobile users.</p>
+            <p><strong>The Problem:</strong> Solo attorneys in Sonoma County had "brochure websites"—technically they existed, but they weren't generating any business. Zero visibility into what was working. They were paying for websites that did nothing.</p>
+            <p><strong>What I Built:</strong> Lead-generating marketing sites paired with LinkedIn campaigns that leveraged their existing professional networks. Created custom reporting dashboards so they could actually track which efforts were driving new clients.</p>
             <ul>
-                <li><strong>Result:</strong> Application completion time dropped from 45 mins to 15 mins.</li>
-                <li><strong>Impact:</strong> Application volume increased by 30% year-over-year, significantly boosting commission revenue.</li>
+                <li><strong>Result:</strong> Clients saw <mark>30-50% increase</mark> in qualified leads on average. Not vanity traffic—actual prospects who converted.</li>
+                <li><strong>Impact:</strong> Attorneys finally knew which marketing dollars were working. Visibility went from "I guess it's helping?" to actionable weekly insights.</li>
             </ul>
         </CaseStudyCard>
 
-      </div>
+        {/* GoldMail */}
+        <CaseStudyCard
+            title="Enterprise Video Pitching"
+            subtitle="GoldMail (SaaS Startup)"
+            investment="CMO Role"
+            timeline="18 Months"
+            roi="2 IBM Projects Funded"
+            breakEven="Quarter 2"
+            logo="/images/logos/goldmail.png"
+        >
+            <p><strong>The Problem:</strong> GoldMail needed to prove their video messaging platform could drive real business outcomes for enterprise clients. IBM wanted to use it for internal innovation pitches—but they needed help making those pitches actually win funding.</p>
+            <p><strong>What I Built:</strong> Worked directly with IBM teams to develop persuasive video scripts and presentations for internal funding pitches. On the B2C side, ran an Avon campaign converting their existing downline members to GoldMail customers.</p>
+            <ul>
+                <li><strong>Result:</strong> <mark>2 out of 6</mark> IBM innovation ideas received internal funding. Avon campaign achieved <mark>13% conversion rate</mark>—well above industry average.</li>
+                <li><strong>Impact:</strong> Developed white-label features that became major selling points for enterprise clients. Proved the platform worked for both B2B and B2C use cases.</li>
+            </ul>
+        </CaseStudyCard>
+
+        {/* Pitch Theory */}
+        <CaseStudyCard
+            title="Multi-Channel Growth Campaign"
+            subtitle="Pitch Theory (Founded)"
+            investment="Full Campaign"
+            timeline="60 Days"
+            roi="5 New Tenants"
+            breakEven="Month 1"
+            logo="/images/logos/pitch-theory.png"
+        >
+            <p><strong>The Problem:</strong> I founded a co-working space in Petaluma and needed to fill desks fast. Traditional marketing wasn't cutting it—the market was saturated with options and we were the new kid.</p>
+            <p><strong>What I Built:</strong> A multi-channel campaign combining marketing videos, a complete website revamp, and on-site networking events. For a networking group partner, I developed scripted video email campaigns that drove event signups and member referrals.</p>
+            <ul>
+                <li><strong>Result:</strong> Closed <mark>5 new tenants</mark> within <mark>60 days</mark>, hitting our occupancy targets ahead of schedule.</li>
+                <li><strong>Impact:</strong> The partner networking group saw their highest Eventbrite signups in history. The video email system became their primary member acquisition channel.</li>
+            </ul>
+        </CaseStudyCard>
+
+        {/* Sonoma State University */}
+        <CaseStudyCard
+            title="Marketing & WordPress Training"
+            subtitle="Sonoma State University"
+            investment="Adjunct Instructor"
+            timeline="18 Months"
+            roi="Skills Transfer"
+            breakEven="Immediate"
+            logo="/images/logos/SSU.jpg"
+        >
+            <p><strong>The Challenge:</strong> Business students needed practical digital marketing skills—not just theory. They needed to understand how to build an online presence that actually generates opportunities.</p>
+            <p><strong>What I Did:</strong> Developed curriculum combining WordPress development with marketing strategy. Guided students through building real websites and LinkedIn profiles that showcased their skills.</p>
+            <ul>
+                <li><strong>Result:</strong> One student built a community advocacy site for Hispanic business owners that combined storytelling with education.</li>
+                <li><strong>Impact:</strong> Students left with portfolio-ready work and practical skills that landed them jobs.</li>
+            </ul>
+        </CaseStudyCard>
+
+        {/* College of Marin */}
+        <CaseStudyCard
+            title="Google Apps for Education"
+            subtitle="College of Marin"
+            investment="Certificate Instructor"
+            timeline="12 Months"
+            roi="District Adoption"
+            breakEven="Immediate"
+            logo="/images/logos/College-Marin.jpg"
+        >
+            <p><strong>The Challenge:</strong> Educators were stuck on legacy systems. They didn't see how cloud collaboration could transform their classrooms. Change management was the real obstacle.</p>
+            <p><strong>What I Did:</strong> Ran workshops showing teachers how to map their existing workflows into Google Apps. Made it practical, not theoretical—showed them the 10-minute wins first.</p>
+            <ul>
+                <li><strong>Result:</strong> One teacher completely restructured her student collaboration flow, cutting administrative overhead significantly.</li>
+                <li><strong>Impact:</strong> Contributed to the local school system's shift toward Google for Education—groundwork that enabled remote learning years later.</li>
+            </ul>
+        </CaseStudyCard>
+
+
+      </CaseStudySlider>
 
        <div style="margin-top: var(--space-12); padding: var(--space-8); background: var(--color-background-alt); border-radius: var(--border-radius); text-align: center;">
         <h2 class="mb-4">Want results like this?</h2>

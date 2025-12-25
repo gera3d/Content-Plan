@@ -40,6 +40,8 @@ Here's the truth no-code platforms won't tell you: **There is a ceiling.**
 
 And you might have already hit it.
 
+<img id="meme-afraid-zap-failed" src="/images/memes/meme-afraid-zap-failed.png" alt="I don't know why my Zap failed meme" class="img-small-center" />
+
 This guide will show you:
 - What that ceiling looks like (and the math behind it)
 - When custom automation makes financial sense
@@ -66,38 +68,45 @@ But there are two very different flavors:
 ### 1. iPaaS (Integration Platform as a Service)
 Think Zapier, Make (formerly Integromat), and N8N.
 
-**The deal:**
-- No-code, drag-and-drop interfaces
-- Quick to set up (minutes, not months)
-- Great for simple workflows
-- Monthly subscription based on usage
-
-**The catch:**
-- Usage-based pricing that scales unpredictably
-- Limited logic and customization
-- Relies on third-party servers (data ownership concerns)
-- Can become a maintenance nightmare at scale
+<FeatureGrid columns={2}>
+  <FeatureCard title="✅ The Deal">
+    - No-code, drag-and-drop interfaces
+    - Quick to set up (minutes, not months)
+    - Great for simple workflows
+    - Monthly subscription based on usage
+  </FeatureCard>
+  
+  <FeatureCard title="⚠️ The Catch">
+    - Usage-based pricing that scales unpredictably
+    - Limited logic and customization
+    - Relies on third-party servers (data ownership concerns)
+    - Can become hard to maintain at scale
+  </FeatureCard>
+</FeatureGrid>
 
 ### 2. Custom Automation
 Think Python scripts, Node.js apps, AWS Lambda functions, or custom APIs.
 
-**The deal:**
-- You own the code and the infrastructure
-- Unlimited complexity and logic
-- One-time build cost + minimal maintenance
-- Runs exactly how you need it to
+<FeatureGrid columns={2}>
+  <FeatureCard title="✅ The Deal">
+    - You own the code and the infrastructure
+    - Unlimited complexity and logic
+    - One-time build cost + minimal maintenance
+    - Runs exactly how you need it to
+  </FeatureCard>
+  
+  <FeatureCard title="⚠️ The Catch">
+    - Higher upfront investment
+    - Requires development expertise (or hiring someone who has it)
+    - Longer initial setup time
+  </FeatureCard>
+</FeatureGrid>
 
-**The catch:**
-- Higher upfront investment
-- Requires development expertise (or hiring someone who has it)
-- Longer initial setup time
+<Callout variant="info" title="The Transportation Analogy">
+**Zapier/Make** = Ride-hailing app (Uber/Lyft). Great for getting around when you need it. But if you're commuting every day, the costs add up fast.
 
-**The analogy:**
-
-Think of it like transportation.
-
-- **Zapier/Make** = Ride-hailing app (Uber/Lyft). Great for getting around when you need it. But if you're commuting every day, the costs add up fast.
-- **Custom Automation** = Owning your own car. Higher upfront cost, but you're not paying per-trip. And you can go wherever you want, whenever you want.
+**Custom Automation** = Owning your own car. Higher upfront cost, but you're not paying per-trip. And you can go wherever you want, whenever you want.
+</Callout>
 
 ---
 
@@ -105,7 +114,7 @@ Think of it like transportation.
 
 I love Zapier. I use it for simple things.
 
-But for core business operations? It's a ticking time bomb.
+But for core business operations? It can become a real problem.
 
 Here's why.
 
@@ -155,6 +164,8 @@ You're looking at **30,000 - 50,000 tasks/month**.
 
 <mark>The problem isn't Zapier. The problem is that task-based pricing doesn't scale linearly with business value.</mark>
 
+<img id="meme-inigo-simple" src="/images/memes/meme-inigo-simple.png" alt="You keep using the word simple meme" class="img-small-center" />
+
 ### 2. Zapier vs. Make: Which is Actually Cheaper?
 
 "But wait," you say, "Make (Integromat) is cheaper!"
@@ -177,27 +188,31 @@ A workflow that checks for new invoices every minute, but only finds one per hou
 - **Zapier:** 1 task/hour = 720 tasks/month. Easily fits in Professional plan.
 - **Make:** 1 operation/minute (the check) + 1 operation (the action) = 60 + 1 = 43,860 operations/month. You've blown past the $9 plan.
 
-**The takeaway:**
+<Callout variant="tip" title="The Takeaway">
+**Make** is cheaper for complex transformations within a workflow *if* it doesn't trigger often.
 
-Make is cheaper for complex transformations within a workflow *if* it doesn't trigger often.
-Zapier is more predictable for high-volume, simple workflows.
-Custom is cheaper for *everything* once you hit the $500-$1,000/mo mark.
+**Zapier** is more predictable for high-volume, simple workflows.
 
-### 3. The "Invisible Technical Debt" (and Technical Bankruptcy)
+**Custom** is cheaper for *everything* once you hit the $500-$1,000/mo mark.
+</Callout>
+
+### 3. The "Invisible Technical Debt"
 
 Harvard Business Review calls this the "Complexity Crisis."
 
-Forrester takes it further: **"Technical Bankruptcy."**
+Forrester calls it **"Technical Bankruptcy"** when the cost of maintaining your automations exceeds the value they provide.
 
-When you have 50 interconnected steps in a visual builder, debugging a failure is a nightmare. You didn't write code, but you built a complex system with:
+When you have 50 interconnected steps in a visual builder, debugging a failure is a mess. You didn't write code, but you built a complex system with:
 - No version control
 - No automated testing
 - No documentation
 - No clear owner
 
-As your Zaps multiply, your ability to innovate freezes because you're terrified of breaking the "spaghetti."
+As your Zaps multiply, your ability to innovate slows down because nobody wants to break the "spaghetti."
 
-You aren't just in debt; you're bankrupt.
+That's not technical debt. That's starting over.
+
+<img id="meme-gandalf-zaps" src="/images/memes/meme-gandalf-zaps.png" alt="Gandalf looking at 400 Zaps meme" class="img-small-center" />
 
 <Callout variant="warning">
 **Real talk:** I've seen companies with 400+ Zaps where *nobody* knows what half of them do. When the original person who built them leaves, the new team is too scared to touch anything. That's not automation. That's a liability.
@@ -209,12 +224,16 @@ Most standard Zapier plans run on a **5-15 minute polling delay**.
 
 That means your automation checks for new triggers every 5-15 minutes.
 
-In e-commerce or lead gen, 15 minutes is an eternity.
+In e-commerce or lead gen, 15 minutes is a long time.
 - A lead could go cold.
 - A customer could double-order.
 - Inventory could over-sell.
 
+<img id="meme-astronaut-polling" src="/images/memes/meme-astronaut-polling.png" alt="Wait it's all polling delays? Always has been meme" class="img-small-center" />
+
 **Custom automation runs in real-time.** Webhooks fire instantly. Event processing happens in milliseconds. <mark>Loops, retries, and instant notifications are standard—not premium add-ons.</mark>
+
+<img id="meme-ski-polling" src="/images/memes/meme-ski-polling.png" alt="15 minute polling delay - gonna have a bad time meme" class="img-small-center" />
 
 ### 5. The HIPAA Problem (The Smoking Gun)
 
@@ -226,6 +245,8 @@ This one is simple.
 For healthcare companies, clinics, or anyone handling sensitive patient information, Zapier is simply not an option.
 
 Custom automation, built on your own infrastructure with proper encryption and access controls, is the only compliant path.
+
+<img id="meme-wddth-hipaa" src="/images/memes/meme-wddth-hipaa.png" alt="Patient data in Zapier - We don't do that here meme" class="img-small-center" />
 
 ---
 
@@ -249,9 +270,13 @@ Usually, earlier than you think.
 | **Vendor Lock-in**| High (your workflows live on their platform) | None (you own the code)             |
 </ComparisonTable>
 
+<img id="meme-pooh-own-engine" src="/images/memes/meme-pooh-own-engine.png" alt="Paying per task vs owning infrastructure meme" class="img-small-center" />
+
 **The math is simple:**
 
 If you're spending **$500+/month on iPaaS tools AND** still struggling with reliability, latency, or data quality, the break-even point for custom is often **under 12 months**.
+
+<img id="meme-drake-own-vs-rent" src="/images/memes/meme-drake-own-vs-rent.png" alt="Drake - renting automation vs owning the engine meme" class="img-small-center" />
 
 ---
 
@@ -269,10 +294,12 @@ Not every business needs custom automation. Here's how to know if you do.
     A custom Python script running on AWS Lambda costs **pennies** per execution.
 
     <mark>Break-even example: $500/mo = $6,000/year. A $15k custom build pays for itself in 2.5 years. Everything after is savings.</mark>
+
+    <img id="meme-cmm-automation" src="/images/memes/meme-cmm-automation.png" alt="$500/mo on automation - you should own it meme" class="img-small-center" />
   </FeatureCard>
 
   <FeatureCard title="Sign #2: You Have 'Frankenstein' Data">
-    Data fields don't match? Names formatted differently in every system? Regex nightmares?
+    Data fields don't match? Names formatted differently in every system? Regex workarounds everywhere?
 
     **Gartner estimates poor data quality costs organizations an average of $12.9 million per year.**
 
@@ -318,6 +345,8 @@ Not every business needs custom automation. Here's how to know if you do.
 ## The Build vs. Buy Decision Framework
 
 Still not sure? Use this framework.
+
+<img id="meme-exit-build-custom" src="/images/memes/meme-exit-build-custom.png" alt="Left exit - build custom automation meme" class="img-small-center" />
 
 <ComparisonColumns titleLeft="Choose iPaaS (Zapier/Make) When:" titleRight="Choose Custom Automation When:">
 
@@ -387,6 +416,8 @@ Still not sure? Use this framework.
     - Current solutions won't support 2x-5x growth.
 
     _Bottom line: Custom makes sense when you need something truly yours._
+
+    <img id="meme-captain-owner" src="/images/memes/meme-captain-owner.png" alt="I am the platform owner now meme" class="img-small-center" />
   </div>
 
 </ComparisonColumns>
@@ -395,22 +426,32 @@ Still not sure? Use this framework.
 
 The smart strategy: Use both.
 
-**iPaaS for:**
-- Quick prototypes and experiments
-- Non-critical alerts and notifications
-- Simple glue between standard SaaS tools
+<img id="meme-db-distracted" src="/images/memes/meme-db-distracted.png" alt="Distracted by custom automation meme" class="img-small-center" />
 
-**Custom for:**
-- High-volume, mission-critical business logic
-- Anything involving sensitive or regulated data
-- Core competitive advantage workflows
-- Integrations with legacy or custom systems
+<FeatureGrid columns={2}>
+  <FeatureCard title="🔧 iPaaS Is Best For">
+    - Quick prototypes and experiments
+    - Non-critical alerts and notifications
+    - Simple glue between standard SaaS tools
+  </FeatureCard>
+  
+  <FeatureCard title="🚀 Custom Is Best For">
+    - High-volume, mission-critical business logic
+    - Anything involving sensitive or regulated data
+    - Core competitive advantage workflows
+    - Integrations with legacy or custom systems
+  </FeatureCard>
+</FeatureGrid>
 
-**Example:**
-- Use Zapier to send a Slack notification when someone fills out a website form (simple, low stakes).
-- Use custom automation to route and process leads, sync with your CRM, check for duplicates, and trigger sales sequences (complex, high stakes).
+<Callout variant="tip" title="Real-World Hybrid Example">
+**Use Zapier** to send a Slack notification when someone fills out a website form (simple, low stakes).
 
-Best of both worlds.
+**Use custom automation** to route and process leads, sync with your CRM, check for duplicates, and trigger sales sequences (complex, high stakes).
+
+<mark>Best of both worlds.</mark>
+</Callout>
+
+<img id="meme-both-hybrid" src="/images/memes/meme-both-hybrid.png" alt="Why not both Zapier and Custom meme" class="img-small-center" />
 
 ---
 
@@ -502,11 +543,15 @@ Let's look at real examples of what businesses achieve with custom automation.
 
 </Accordion>
 
+<img id="meme-happening-deployed" src="/images/memes/meme-happening-deployed.png" alt="Custom automation deployed - it's happening meme" class="img-small-center" />
+
 ---
 
 ## What Custom Automation Actually Costs
 
 Let's talk real numbers.
+
+<img id="meme-boat-buy-custom" src="/images/memes/meme-boat-buy-custom.png" alt="I should buy custom automation meme" class="img-small-center" />
 
 ### Pricing Ranges (2025 Market Rates)
 
@@ -562,7 +607,9 @@ Let's talk real numbers.
 3.  **Third-Party API Fees:** Some platforms charge for API access (e.g., Salesforce, Shopify Plus).
 4.  **Training:** Time investment for your team to learn the new system.
 
-**Budget Rule:** Plan for **15-20% of development cost annually** for maintenance and hosting.
+<Callout variant="note" title="Budget Rule">
+Plan for **15-20% of development cost annually** for maintenance and hosting.
+</Callout>
 
 ---
 

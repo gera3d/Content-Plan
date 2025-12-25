@@ -165,34 +165,23 @@ const testimonials = [
   <section class="section">
     <div class="container">
       <h2 class="section-title mb-8">Latest Strategy</h2>
-      <div class="featured">
-        <div class="featured__main">
-          <h3 class="featured__main-title">
-            <a href="/custom-business-software-guide">Custom Business Software: The Complete Guide</a>
-          </h3>
-          <p class="featured__main-description">
-            Your team is drowning in spreadsheets. What if there was another way? 
-            Here's everything I've learned building custom software for 15+ years.
-          </p>
-          <a href="/custom-business-software-guide" class="btn btn--primary">Read the guide →</a>
-        </div>
-        
-        <div class="featured__secondary">
+      <div class="featured-grid">
           <BlogCard 
-            title="5 Signs You Need Custom Software" 
-            href="/5-signs-you-need-custom-software"
+            title="Custom Business Software: The Complete Guide" 
+            href="/custom-business-software-guide"
             topic="Software Development"
+            image="/images/memes/meme-morpheus-excel.png"
           />
           <BlogCard 
-            title="ROI Calculator: Build vs Buy" 
-            href="/roi-calculator-build-vs-buy"
-            topic="Business"
+            title="Custom Workflow Automation: When You've Outgrown Zapier" 
+            href="/custom-workflow-automation-guide"
+            topic="Workflow Automation"
+            image="/images/memes/meme-afraid-zap-failed.png"
           />
-        </div>
       </div>
       
       <p class="text-center mb-4" style="margin-top: var(--space-8);">
-        <a href="/topic/software-development">Browse all posts →</a>
+        <a href="/">Browse all posts →</a>
       </p>
     </div>
   </section>
@@ -418,6 +407,13 @@ const testimonials = [
         color: var(--color-accent);
     }
 
+    /* Featured Blog Grid */
+    .featured-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-8);
+    }
+
     @media (max-width: 768px) {
         .hero {
              padding: var(--space-12) 0;
@@ -460,6 +456,10 @@ const testimonials = [
 
         .logos-grid {
             gap: var(--space-4);
+        }
+
+        .featured-grid {
+            grid-template-columns: 1fr;
         }
     }
 </style>

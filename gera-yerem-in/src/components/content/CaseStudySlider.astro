@@ -1,0 +1,192 @@
+---
+/**
+ * CaseStudySlider - Shows case studies 2 at a time with navigation
+ * Displays a horizontal slider with left/right navigation arrows
+ */
+---
+
+<div class="case-slider-container">
+    <div class="case-slider-header">
+        <h2 class="case-slider-title">Selected Case Studies</h2>
+        <div class="case-slider-nav">
+            <button class="slider-btn slider-prev" aria-label="Previous case studies">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M15 18l-6-6 6-6"/>
+                </svg>
+            </button>
+            <span class="slider-counter">
+                <span class="current-page">1</span> / <span class="total-pages">4</span>
+            </span>
+            <button class="slider-btn slider-next" aria-label="Next case studies">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M9 18l6-6-6-6"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+    <div class="case-slider-track">
+        <div class="case-slider-slides">
+            <slot />
+        </div>
+    </div>
+</div>
+
+<style>
+    .case-slider-container {
+        position: relative;
+        width: 100%;
+    }
+
+    .case-slider-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: var(--space-6, 1.5rem);
+    }
+
+    .case-slider-title {
+        margin: 0;
+        font-size: 1.5rem;
+        color: var(--color-text);
+    }
+
+    .case-slider-nav {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+    }
+
+    .slider-btn {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: 1px solid #e2e8f0;
+        background: white;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.2s ease;
+    }
+
+    .slider-btn:hover:not(:disabled) {
+        border-color: #0d9488;
+        color: #0d9488;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .slider-btn:disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+    }
+
+    .slider-btn svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    .slider-counter {
+        font-size: 0.875rem;
+        color: #64748b;
+        min-width: 50px;
+        text-align: center;
+    }
+
+    .slider-counter .current-page {
+        font-weight: 600;
+        color: #0d9488;
+    }
+
+    .case-slider-track {
+        overflow: hidden;
+    }
+
+    .case-slider-slides {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-6, 1.5rem);
+        transition: transform 0.4s ease;
+    }
+
+    /* Hide all but first 2 initially */
+    .case-slider-slides :global(article.case-study) {
+        display: none;
+        margin: 0; /* Override default margin */
+    }
+
+    .case-slider-slides :global(article.case-study.visible) {
+        display: block;
+    }
+
+    /* Mobile: 1 column */
+    @media (max-width: 900px) {
+        .case-slider-slides {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const container = document.querySelector('.case-slider-container');
+        if (!container) return;
+
+        const slides = container.querySelectorAll('.case-slider-slides article.case-study');
+        const prevBtn = container.querySelector('.slider-prev') as HTMLButtonElement;
+        const nextBtn = container.querySelector('.slider-next') as HTMLButtonElement;
+        const currentPageEl = container.querySelector('.current-page');
+        const totalPagesEl = container.querySelector('.total-pages');
+
+        if (!slides.length) return;
+
+        const perPage = window.innerWidth > 900 ? 2 : 1;
+        const totalPages = Math.ceil(slides.length / perPage);
+        let currentPage = 1;
+
+        // Update counter
+        if (totalPagesEl) totalPagesEl.textContent = String(totalPages);
+
+        function showPage(page: number) {
+            const startIdx = (page - 1) * perPage;
+            const endIdx = startIdx + perPage;
+
+            slides.forEach((slide, idx) => {
+                if (idx >= startIdx && idx < endIdx) {
+                    slide.classList.add('visible');
+                } else {
+                    slide.classList.remove('visible');
+                }
+            });
+
+            if (currentPageEl) currentPageEl.textContent = String(page);
+            if (prevBtn) prevBtn.disabled = page === 1;
+            if (nextBtn) nextBtn.disabled = page === totalPages;
+        }
+
+        // Initialize
+        showPage(1);
+
+        // Event listeners
+        prevBtn?.addEventListener('click', () => {
+            if (currentPage > 1) {
+                currentPage--;
+                showPage(currentPage);
+            }
+        });
+
+        nextBtn?.addEventListener('click', () => {
+            if (currentPage < totalPages) {
+                currentPage++;
+                showPage(currentPage);
+            }
+        });
+
+        // Handle resize
+        window.addEventListener('resize', () => {
+            const newPerPage = window.innerWidth > 900 ? 2 : 1;
+            if (newPerPage !== perPage) {
+                location.reload(); // Simple solution for responsive
+            }
+        });
+    });
+</script>
