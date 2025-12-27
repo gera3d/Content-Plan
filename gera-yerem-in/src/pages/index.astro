@@ -2,29 +2,21 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import FeatureGrid from '../components/content/FeatureGrid.astro';
 import FeatureCard from '../components/content/FeatureCard.astro';
-import CaseStudyCard from '../components/content/CaseStudyCard.astro';
 import BlogCard from '../components/BlogCard.astro';
 import CtaRow from '../components/content/CtaRow.astro';
+import TestimonialSlider from '../components/content/TestimonialSlider.astro';
+import LogoBar from '../components/content/LogoBar.astro';
+import FeaturedCaseStudies from '../components/content/FeaturedCaseStudies.astro';
+import WhoIWorkWith from '../components/content/WhoIWorkWith.astro';
+import AboutBio from '../components/content/AboutBio.astro';
+import BentoGrid from '../components/content/BentoGrid.astro';
+import BentoCard from '../components/content/BentoCard.astro';
+import MockupDashboard from '../components/visuals/MockupDashboard.astro';
+import MockupPortal from '../components/visuals/MockupPortal.astro';
+import MockupPipeline from '../components/visuals/MockupPipeline.astro';
+import HeroImage from '../components/visuals/HeroImage.astro';
+import StatsBar from '../components/content/StatsBar.astro';
 
-// Testimonial Data
-const testimonials = [
-    {
-        quote: "Gera is a strategist. While he has all the capability in development and coding, what makes him such a leader is his high-level mindset and ability to see the larger picture.",
-        author: "Tom Hakel | Client & Collaborator"
-    },
-    {
-        quote: "I would say the single greatest thing about Gera is his integrity. Being able to build a large cache of reviews for your brand or business will help your growth.",
-        author: "Nuvolum Colleague"
-    },
-    {
-        quote: "Gera is a truly innovative thinker. His fresh approach and careful product testing make a massive difference for his clients.",
-        author: "Client Recommendation"
-    },
-    {
-        quote: "Gera's positive attitude is infectious. He is so talented at inspiring others to do their best and reach for the stars.",
-        author: "Nuvolum Colleague"
-    }
-];
 ---
 
 <BaseLayout 
@@ -36,48 +28,163 @@ const testimonials = [
     <div class="container">
       <div class="hero__content">
           <h1 class="hero__title">
-            Stop manually copying data.<br />
-            <span class="text-gradient">Start building assets.</span>
+            Stop running your business on<br />
+            <span class="text-gradient">spreadsheets.</span>
           </h1>
           <p class="hero__subtitle">
-            You've outgrown spreadsheets. You need a partner who speaks both "Code" and "Business" to build the tools that will scale your operations.
+            You've outgrown manual workarounds.<br />I build custom software that helps you scale—without the chaos.
           </p>
           
           <CtaRow>
-            <a href="/work" class="btn btn--primary">View My Work</a>
-            <a href="/contact" class="btn btn--secondary">Let's Talk Strategy</a>
+            <a href="/contact" class="btn btn--primary">Book a Discovery Call</a>
+            <a href="/work" class="btn btn--secondary">View My Work</a>
           </CtaRow>
       </div>
       <div class="hero__visual">
-        <img src="/images/never-meeting-obama.webp" alt="Gera shaking hands with Barack Obama" />
+        <img src="/images/drake-meme.jpg" alt="Drake meme: No to manual data entry, Yes to custom software" />
       </div>
     </div>
   </section>
 
-  <!-- Value Props: The "Hybrid" Advantage -->
-  <section class="section section--alt">
+
+  <!-- Cost of Chaos -->
+  <section class="cost-of-chaos section">
     <div class="container">
-      <h2 class="section-title text-center mb-12">The "Hybrid" Advantage</h2>
+      <h2 class="section-title text-center">The Cost of Chaos</h2>
+      <p class="section-subtitle text-center">These problems are costing you money every week you don't fix them.</p>
+      
       <FeatureGrid columns={3}>
-        <FeatureCard 
-            icon="zap"
-            title="Workflow Automation"
-        >
-            Stop doing the same task 50 times. I connect your isolated systems (CRM, Email, Billing) to eliminate manual data entry.
+        <FeatureCard title="Scattered Data">
+          <span slot="icon" class="chaos-icon">📊</span>
+          <p>Sales in one spreadsheet, customers in another, inventory in your head. You can't answer basic questions without digging for 20 minutes.</p>
         </FeatureCard>
-        <FeatureCard 
-            icon="trending-up"
-            title="Growth Engines"
-        >
-            Tools that actually make money. From automated review generation to lead scoring systems that prioritize your sales team.
+
+        <FeatureCard title="Expensive Busywork">
+          <span slot="icon" class="chaos-icon">⏱️</span>
+          <p>You're paying skilled people to copy-paste between systems. That's $50/hour labor doing $10/hour work.</p>
         </FeatureCard>
-        <FeatureCard 
-            icon="code"
-            title="Custom Architecture"
-        >
-            When "off-the-shelf" doesn't fit. I build software wrapped around <em>your</em> unique process, not the other way around.
+
+        <FeatureCard title="The Sarah Problem">
+          <span slot="icon" class="chaos-icon">🔑</span>
+          <p>Only one person knows how things really work. If they're sick, on vacation, or quit—you're screwed.</p>
+        </FeatureCard>
+
+        <FeatureCard title="Death by 1,000 Tools">
+          <span slot="icon" class="chaos-icon">🔧</span>
+          <p>You're paying for 8 different apps that don't talk to each other. None of them do exactly what you need.</p>
+        </FeatureCard>
+
+        <FeatureCard title="Bottleneck Central">
+          <span slot="icon" class="chaos-icon">🔌</span>
+          <p>Orders pile up. Approvals wait on you. Nothing moves unless you push it. You wanted a business, not a job.</p>
+        </FeatureCard>
+
+        <FeatureCard title="Gut Decisions">
+          <span slot="icon" class="chaos-icon">🎯</span>
+          <p>You're making $50K decisions based on instinct because pulling real numbers takes too long. That's gambling, not strategy.</p>
         </FeatureCard>
       </FeatureGrid>
+    </div>
+  </section>
+
+  <!-- The Guide: Who I Work With (Qualifier) -->
+  <WhoIWorkWith />
+
+  <!-- The Plan: What I Build -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title text-center mb-12">What I Build</h2>
+      <BentoGrid>
+          <!-- Card 1: Operations Platform (Large) -->
+          <BentoCard 
+              title="Custom Operations Platforms" 
+              subtitle="Stop reacting. Start orchestrating."
+              colSpan={2}
+              visualPosition="right"
+          >
+              <div slot="visual" style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
+                  <MockupDashboard />
+              </div>
+              <p>Replace 20 scattered spreadsheets with one dashboard that tells you the truth about your business in real-time. Connects Sales, Ops, and Finance.</p>
+          </BentoCard>
+
+          <!-- Card 2: Client Portals (Tall) -->
+          <BentoCard 
+              title="Client Portals" 
+              subtitle="Premium experience."
+              rowSpan={2}
+              visualPosition="top"
+          >
+              <div slot="visual" style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; padding: 2rem;">
+                  <MockupPortal />
+              </div>
+              <p>Give your customers a white-labeled login to check project status, approve quotes, and view assets. Establish instant professional trust.</p>
+          </BentoCard>
+
+          <!-- Card 3: Workflow Automation (Small) -->
+          <BentoCard 
+              title="Workflow Automation" 
+              subtitle="Zero human error."
+              visualPosition="bottom"
+          >
+              <div slot="visual">
+                  <MockupPipeline />
+              </div>
+              <p>Automate the boring stuff. Lead routing, invoice generation, and status updates happen while you sleep.</p>
+          </BentoCard>
+      </BentoGrid>
+    </div>
+  </section>
+
+  <!-- The Guide: About Bio -->
+  <AboutBio />
+
+  <!-- The Guide: Credibility (Stats + LogoBar) -->
+  <section class="section">
+    <div class="container skin-guide">
+        <div class="guide-content text-center" style="max-width: 800px; margin: 0 auto;">
+             <!-- Quick Stats -->
+            <div class="stats-grid mb-12">
+                <div class="stat-item">
+                    <span class="stat-number">15+</span>
+                    <span class="stat-label">Years Exp</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">50+</span>
+                    <span class="stat-label">Happy Clients</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">10x</span>
+                    <span class="stat-label">Avg ROI</span>
+                </div>
+            </div>
+            
+             <LogoBar />
+        </div>
+    </div>
+  </section>
+
+  <!-- The Process: Simple 3-Step -->
+  <section class="section section--alt">
+    <div class="container text-center">
+        <h2 class="section-title mb-12">Simple Process. Tangible Results.</h2>
+        <div class="process-grid">
+            <div class="process-step">
+                <div class="step-number">01</div>
+                <h3 class="step-title">Discovery</h3>
+                <p class="text-muted">We map out your exact workflow and identify the bottlenecks. No sales pitch, just strategy.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-number">02</div>
+                <h3 class="step-title">Build</h3>
+                <p class="text-muted">I deliver a custom solution designed for your specific needs. No bloat, no unnecessary features.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-number">03</div>
+                <h3 class="step-title">Launch</h3>
+                <p class="text-muted">You get a system that works from day one. Your team gets their time back, and your business scales.</p>
+            </div>
+        </div>
     </div>
   </section>
 
@@ -86,45 +193,10 @@ const testimonials = [
     <div class="container">
       <h2 class="section-title text-center mb-12">Trusted by Leaders</h2>
       
-       <div class="carousel-container">
-            <button class="nav-arrow prev" aria-label="Previous testimonials">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
-            </button>
-            
-            <div class="post__content carousel-track">
-                {/* Slot 1 */}
-                <div class="testimonial-slot" id="slot-1">
-                    <blockquote>
-                        <p id="quote-1"></p>
-                        <cite id="author-1"></cite>
-                    </blockquote>
-                </div>
+      <TestimonialSlider count={6} />
 
-                {/* Slot 2 */}
-                <div class="testimonial-slot" id="slot-2">
-                    <blockquote>
-                        <p id="quote-2"></p>
-                        <cite id="author-2"></cite>
-                    </blockquote>
-                </div>
-            </div>
-
-            <button class="nav-arrow next" aria-label="Next testimonials">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
-            </button>
-        </div>
-
-        {/* Integration Logos */}
-        <div class="logos-container">
-            <p class="logos-label">Integrations & Tools</p>
-            <div class="logos-grid">
-                <div class="logo-item">Salesforce</div>
-                <div class="logo-item">Google API</div>
-                <div class="logo-item">HealthGrades</div>
-                <div class="logo-item">HubSpot</div>
-                <div class="logo-item">Stripe</div>
-            </div>
-        </div>
+    </div>
+  </section>
 
     </div>
   </section>
@@ -132,26 +204,12 @@ const testimonials = [
   <!-- Recent Work Teaser -->
   <section class="section section--alt">
     <div class="container">
-        <h2 class="section-title text-center mb-8">Measure Results, Not Hours</h2>
+        <h2 class="section-title text-center mb-8">Selected Work</h2>
         <p class="text-center text-muted mb-12" style="max-width: 600px; margin: 0 auto;">
-            I don't sell code. I sell outcomes. Here is just one example of how custom software transforms a business.
+            Recent projects delivering measurable operational efficiency. From replacing spreadsheets to building full-scale operations platforms.
         </p>
 
-        <CaseStudyCard
-            title="The 'Agency OS' Platform"
-            subtitle="Client: Nuvolum"
-            investment="Internal Platform"
-            timeline="3 Month Rollout"
-            roi="Saved 570 Hours/Mo"
-            breakEven="Month 1"
-        >
-            <p><strong>The Problem:</strong> Growing fast with 60+ clients, the agency was drowning in manual reporting. Account managers spent 10 hours/month per client just gathering data.</p>
-            <p><strong>The Solution:</strong> I architected a centralized "Agency OS" that aggregates data from all marketing channels into a single real-time dashboard.</p>
-            <ul>
-                <li><strong>Result:</strong> Reporting time dropped to &lt;30 mins per client.</li>
-                <li><strong>Impact:</strong> The agency doubled its client load without hiring additional account managers.</li>
-            </ul>
-        </CaseStudyCard>
+        <FeaturedCaseStudies />
 
         <div class="text-center mt-12">
             <CtaRow>
@@ -186,224 +244,155 @@ const testimonials = [
     </div>
   </section>
 
-  {/* Script for Testimonials */}
-  <script is:inline define:vars={{ testimonials }}>
-        let currentIndex = 0;
-
-        const updateCarousel = () => {
-             const q1 = document.getElementById('quote-1');
-             const a1 = document.getElementById('author-1');
-             const q2 = document.getElementById('quote-2');
-             const a2 = document.getElementById('author-2');
-
-             if(!q1 || !q2) return;
-
-             const idx1 = currentIndex % testimonials.length;
-             const idx2 = (currentIndex + 1) % testimonials.length;
-
-             const track = document.querySelector('.carousel-track');
-             if(track) track.style.opacity = '0';
-             
-             setTimeout(() => {
-                q1.textContent = `"${testimonials[idx1].quote}"`;
-                a1.textContent = `— ${testimonials[idx1].author}`;
-                
-                q2.textContent = `"${testimonials[idx2].quote}"`;
-                a2.textContent = `— ${testimonials[idx2].author}`;
-                
-                if(track) track.style.opacity = '1';
-             }, 200);
-        };
-
-        document.addEventListener('DOMContentLoaded', () => {
-            updateCarousel(); 
-
-            const nextBtn = document.querySelector('.nav-arrow.next');
-            const prevBtn = document.querySelector('.nav-arrow.prev');
-
-            if (nextBtn) {
-                nextBtn.addEventListener('click', () => {
-                    currentIndex = (currentIndex + 2) % testimonials.length;
-                    updateCarousel();
-                });
-            }
-
-            if (prevBtn) {
-                prevBtn.addEventListener('click', () => {
-                    currentIndex = (currentIndex - 2 + testimonials.length) % testimonials.length;
-                    updateCarousel();
-                });
-            }
-        });
-  </script>
-</BaseLayout>
+  <!-- Final CTA -->
+  <section class="section section--alt text-center">
+    <div class="container" style="max-width: 600px;">
+        <h2 class="section-title mb-6">Ready to build something better?</h2>
+        <p class="text-xl text-muted mb-8">
+            Let's talk about your situation. No sales pressure, just honest advice on whether custom software is the right move for you.
+        </p>
+        <a href="/contact" class="btn btn--primary">Book a 30-Minute Chat</a>
+    </div>
+  </section>
 
 <style>
     /* Hero Styles */
     .hero {
-        padding: var(--space-24) 0 var(--space-20);
+        min-height: 100vh;
+        padding: 10vh 0 8vh;
         display: flex;
         align-items: center;
+        background: radial-gradient(ellipse at 70% 30%, rgba(99,102,241,0.05) 0%, transparent 60%);
     }
 
     .hero .container {
         display: grid;
-        grid-template-columns: 1fr 0.8fr; /* More space for text */
-        gap: var(--space-16);
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 4rem;
         align-items: center;
+        max-width: 1400px;
     }
 
     .hero__content {
-        max-width: 600px;
+        text-align: left;
     }
 
     .hero__title {
-        font-size: var(--font-size-5xl);
-        font-weight: 800;
-        line-height: 1.1;
+        font-size: clamp(2.5rem, 5vw, 4.5rem);
+        font-weight: 900;
+        line-height: 1.05;
         margin-bottom: var(--space-6);
         color: var(--color-text);
-        letter-spacing: -0.02em;
+        letter-spacing: -0.04em;
+        text-shadow: 0 4px 8px rgba(0,0,0,0.08);
+        animation: fadeUp 0.6s ease-out both;
     }
 
     .text-gradient {
-        color: var(--color-accent); /* Fallback */
+        color: var(--color-accent);
         background: linear-gradient(135deg, var(--color-accent) 0%, #3b82f6 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
+        filter: drop-shadow(0 2px 8px rgba(99,102,241,0.25));
     }
 
     .hero__subtitle {
-        font-size: var(--font-size-xl);
+        font-size: 1.25rem;
         color: var(--color-text-muted);
-        margin-bottom: var(--space-10);
-        line-height: 1.6;
+        margin-bottom: var(--space-8);
+        margin-left: 0;
+        line-height: 1.7;
         font-weight: 400;
+        max-width: 540px;
+        animation: fadeUp 0.6s ease-out 0.1s both;
+    }
+
+    .hero__trust {
+        margin-top: 3rem;
+        width: 100%;
+        grid-column: 1 / -1;
+        animation: fadeUp 0.6s ease-out 0.3s both;
+    }
+
+    .hero__visual {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        animation: fadeUp 0.8s ease-out 0.2s both;
     }
 
     .hero__visual img {
+        max-width: 100%;
         width: 100%;
-        border-radius: var(--border-radius);
-        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        transform: rotate(2deg); /* Subtle playful tilt */
-        transition: transform 0.3s ease;
+        margin: 0 auto;
+        border-radius: 1.5rem;
+        filter: drop-shadow(0 24px 48px rgba(0,0,0,0.18));
+        transition: transform 0.4s ease;
     }
-    
+
     .hero__visual img:hover {
-        transform: rotate(0deg) scale(1.02);
+        transform: scale(1.02);
     }
 
-    /* Carousel Styles (Scoped) */
-    .carousel-container {
-        display: flex;
-        align-items: center;
-        gap: var(--space-6);
-        margin-bottom: var(--space-16);
+    /* Entrance Animation */
+    @keyframes fadeUp {
+        from {
+            opacity: 0;
+            transform: translateY(24px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
 
-    .carousel-track {
-        flex: 1;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 2rem;
-        transition: opacity 0.2s ease-in-out;
+    /* Cost of Chaos Section */
+    .cost-of-chaos {
+        padding: var(--space-16) 0;
+        background: linear-gradient(180deg, rgba(248,250,252,0.5) 0%, transparent 100%);
     }
 
-    /* Polished Testimonial Slots */
-    .testimonial-slot {
-        height: 100%;
+    .cost-of-chaos .section-title {
+        margin-bottom: var(--space-3);
     }
 
-    .testimonial-slot > :global(blockquote) {
-        margin: 0 !important;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between; /* Space out quote and author */
-        background: #ffffff;
-        padding: 2.5rem;
-        border-radius: var(--border-radius);
-        border: 1px solid var(--color-border);
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); /* Card-like shadow */
-    }
-
-    .testimonial-slot :global(p) {
+    .cost-of-chaos .section-subtitle {
+        color: var(--color-text-muted);
         font-size: 1.125rem;
-        line-height: 1.7;
-        color: var(--color-text);
-        font-style: italic;
-    }
-    
-    .testimonial-slot :global(cite) {
-        display: block; 
-        margin-top: 1.5rem; 
-        font-size: 0.875rem; 
-        font-weight: 700; 
-        font-style: normal; 
-        color: var(--color-accent);
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
+        margin-bottom: var(--space-10);
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
     }
 
-    .nav-arrow {
-        background: #ffffff;
-        border: 1px solid var(--color-border);
-        color: var(--color-text-muted);
-        width: 48px;
-        height: 48px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        transition: all 0.2s ease;
-        flex-shrink: 0;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    .chaos-icon {
+        font-size: 2rem;
+        line-height: 1;
     }
 
-    .nav-arrow:hover {
-        background: var(--color-accent);
-        color: #ffffff;
+    /* CTA Button Polish */
+    .cta-row {
+        animation: fadeUp 0.6s ease-out 0.2s both;
+    }
+    .btn {
+        min-width: 200px;
+        padding: 1rem 2rem;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .btn--primary {
+        box-shadow: 0 4px 20px rgba(99,102,241,0.35), 0 0 0 0 rgba(99,102,241,0);
+    }
+    .btn--primary:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 28px rgba(99,102,241,0.45), 0 0 20px rgba(99,102,241,0.2);
+    }
+    .btn--secondary {
+        background: transparent;
+        border: 2px solid var(--color-border);
+    }
+    .btn--secondary:hover {
+        background: rgba(99,102,241,0.1);
         border-color: var(--color-accent);
-        transform: translateY(-2px);
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    }
-
-    /* Logos Bar */
-    .logos-container {
-        border-top: 1px solid var(--color-border);
-        padding-top: var(--space-12);
-        text-align: center;
-    }
-    
-    .logos-label {
-        color: var(--color-text-muted);
-        font-size: 0.875rem;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        margin-bottom: var(--space-6);
-        font-weight: 600;
-    }
-
-    .logos-grid {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: var(--space-8);
-        align-items: center;
-        opacity: 0.7;
-    }
-
-    .logo-item {
-        font-size: var(--font-size-xl);
-        font-family: var(--font-family-mono);
-        color: var(--color-text-muted);
-        font-weight: 700;
-        transition: opacity 0.2s;
-    }
-    
-    .logo-item:hover {
-        opacity: 1;
         color: var(--color-accent);
     }
 
@@ -416,50 +405,113 @@ const testimonials = [
 
     @media (max-width: 768px) {
         .hero {
-             padding: var(--space-12) 0;
+             min-height: auto;
+             padding: 6rem 0 4rem;
         }
 
         .hero .container {
             grid-template-columns: 1fr;
-            text-align: center;
+            text-align: left;
+            gap: 2rem;
         }
         
         .hero__content {
             margin: 0 auto;
         }
 
+        .hero__title {
+            font-size: clamp(2rem, 6vw, 3rem);
+        }
+
+        .hero__subtitle {
+            max-width: 100%;
+        }
+
         .hero__visual {
-            margin-top: var(--space-8);
+            margin-top: var(--space-4);
+            order: 2;
         }
         
         .hero__visual img {
-             transform: none;
-        }
-
-        .carousel-track {
-            grid-template-columns: 1fr;
-        }
-        
-        .carousel-container {
-            position: relative;
-            padding-bottom: 70px; /* Space for arrows */
-        }
-
-        .nav-arrow {
-            position: absolute;
-            bottom: 0;
-            z-index: 10;
-        }
-
-        .nav-arrow.prev { left: calc(50% - 60px); }
-        .nav-arrow.next { right: calc(50% - 60px); }
-
-        .logos-grid {
-            gap: var(--space-4);
+            max-width: 320px;
         }
 
         .featured-grid {
             grid-template-columns: 1fr;
         }
+
+        .cta-row {
+            flex-direction: column;
+            gap: 1rem;
+        }
+    }
+
+    /* Skin: Problem Section (Visual Distinctiveness) */
+    .skin-problem {
+        background-color: var(--color-surface-alt, #f8fafc);
+        border: 1px solid var(--color-border);
+        border-radius: var(--border-radius);
+        padding: var(--space-8);
+        margin-top: var(--space-4);
+    }
+    
+    /* Stats Grid */
+    .stats-grid {
+        display: flex;
+        justify-content: center;
+        gap: var(--space-12);
+        margin-top: var(--space-8);
+    }
+    .stat-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .stat-number {
+        font-size: var(--font-size-3xl);
+        font-weight: 800;
+        color: var(--color-accent);
+    }
+    .stat-label {
+        font-size: 0.875rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: var(--color-text-muted);
+        font-weight: 600;
+    }
+
+    /* Process Grid */
+    .process-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--space-8);
+        margin-top: var(--space-12);
+    }
+    .process-step {
+        text-align: center;
+        padding: var(--space-6);
+        background: var(--color-surface);
+        border: 1px solid var(--color-border);
+        border-radius: var(--border-radius);
+    }
+    /* Number styling refinement */
+    .step-number {
+        font-size: 3rem;
+        font-weight: 900;
+        color: var(--color-surface-alt, #f1f5f9);
+        line-height: 1;
+        margin-bottom: var(--space-2);
+        -webkit-text-stroke: 1px var(--color-border);
+    }
+    .step-title {
+        font-size: var(--font-size-lg);
+        font-weight: 700;
+        margin-bottom: var(--space-4);
+    }
+
+    @media (max-width: 768px) {
+        .stats-grid { gap: var(--space-6); }
+        .stat-number { font-size: var(--font-size-2xl); }
+        .process-grid { grid-template-columns: 1fr; }
     }
 </style>

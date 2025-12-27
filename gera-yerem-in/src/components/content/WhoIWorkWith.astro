@@ -1,0 +1,164 @@
+---
+---
+<section class="section section--alt who-i-work-with">
+  <div class="container">
+    <div class="split-layout">
+      <div class="content-side">
+        <h2 class="section-title">For Owners Who Want Assets, Not Just Code</h2>
+        <p class="section-intro">
+          I don't work with everyone. I work best with business owners who have traction but are stuck in the "Founder's Trap."
+        </p>
+        
+        <ul class="qualifier-list">
+            <li class="qualifier-item">
+                <div class="check-icon">
+                    <svg viewBox="0 0 24 24" fill="none" class="icon"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div class="text">
+                    <strong>Revenue: $500k – $5M</strong>
+                    <p>You have a proven business model, not just an idea. You have cash flow to invest in efficiency.</p>
+                </div>
+            </li>
+            <li class="qualifier-item">
+                <div class="check-icon">
+                    <svg viewBox="0 0 24 24" fill="none" class="icon"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div class="text">
+                    <strong>Problem: "I'm the bottleneck"</strong>
+                    <p>You are the only one who knows how the "secret sauce" works. If you take a vacation, the business stalls.</p>
+                </div>
+            </li>
+            <li class="qualifier-item">
+                <div class="check-icon">
+                    <svg viewBox="0 0 24 24" fill="none" class="icon"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div class="text">
+                    <strong>Goal: A system that runs without you</strong>
+                    <p>You want to move from "Operator" to "Owner." You need software assets that execute your process automatically.</p>
+                </div>
+            </li>
+        </ul>
+      </div>
+      
+      <div class="visual-side">
+        <div class="quote-card">
+            <blockquote>
+                "Projects typically run $15k – $150k. If we're not a good fit, I'll tell you upfront. No sales pitch, just strategy."
+            </blockquote>
+            <div class="author">- Gera Yeremin</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+    .who-i-work-with {
+        background-color: var(--color-surface-alt);
+    }
+
+    .split-layout {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: var(--space-12);
+        align-items: center;
+    }
+
+    .section-intro {
+        font-size: var(--font-size-lg);
+        color: var(--color-text-muted);
+        margin-bottom: var(--space-8);
+        max-width: 540px;
+    }
+
+    .qualifier-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .qualifier-item {
+        display: flex;
+        gap: var(--space-4);
+        margin-bottom: var(--space-6);
+        align-items: flex-start;
+        padding: var(--space-2);
+        border-radius: var(--border-radius);
+        transition: background-color 0.2s ease;
+    }
+
+    .qualifier-item:hover {
+        background-color: rgba(13, 148, 136, 0.05); /* very light accent */
+    }
+
+    .check-icon {
+        flex-shrink: 0;
+        width: 32px;
+        height: 32px;
+        background: var(--color-accent-light);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--color-accent);
+        margin-top: 2px;
+        transition: transform 0.2s ease;
+    }
+
+    .qualifier-item:hover .check-icon {
+        transform: scale(1.1);
+    }
+
+    .check-icon .icon {
+        width: 18px;
+        height: 18px;
+    }
+
+    .text strong {
+        display: block;
+        font-size: 1.125rem;
+        color: var(--color-text);
+        margin-bottom: var(--space-1);
+    }
+
+    .text p {
+        font-size: 0.95rem;
+        color: var(--color-text-muted);
+        margin: 0;
+        line-height: 1.5;
+    }
+
+    .quote-card {
+        background: #ffffff;
+        padding: var(--space-8);
+        border-radius: var(--border-radius);
+        border: 1px solid var(--color-border);
+        box-shadow: var(--box-shadow-md);
+        position: relative;
+    }
+    
+    .quote-card blockquote {
+        font-size: 1.25rem;
+        font-weight: 500;
+        color: var(--color-text);
+        font-style: italic;
+        line-height: 1.6;
+        margin-bottom: var(--space-4);
+    }
+
+    .quote-card .author {
+        font-weight: 700;
+        color: var(--color-accent);
+    }
+
+    @media (max-width: 900px) {
+        .split-layout {
+            grid-template-columns: 1fr;
+            gap: var(--space-8);
+        }
+        
+        .section-intro {
+            margin-bottom: var(--space-6);
+        }
+    }
+</style>

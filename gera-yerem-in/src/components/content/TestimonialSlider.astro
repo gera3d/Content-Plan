@@ -1,0 +1,214 @@
+---
+import { Image } from 'astro:assets';
+import testimonialData from '../../data/testimonials.json';
+
+// Props: allow passing specific testimonials or use default ranking
+interface Props {
+  count?: number;
+  filter?: (t: any) => boolean;
+}
+
+const { count = 10, filter } = Astro.props;
+
+// Filter and sort testimonials
+const testimonials = testimonialData
+  .filter(t => t.photo && (filter ? filter(t) : true)) // Only show ones with photos
+  .sort((a, b) => b.rank - a.rank) // Best ranking first
+  .slice(0, count);
+---
+
+<div class="testimonials-section">
+  <div class="slider-with-arrows">
+    <button class="slider-btn slider-prev" aria-label="Previous testimonial">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+    </button>
+    
+    <div class="slider-track">
+      <blockquote class="testimonial-card single" id="testimonial-quote-box">
+        <p id="quote-text"></p>
+        <div class="testimonial-footer">
+          <img id="quote-photo" src="" alt="" class="testimonial-photo" />
+          <div class="testimonial-meta">
+            <cite id="quote-author"></cite>
+            <span id="quote-role" class="testimonial-role"></span>
+          </div>
+        </div>
+      </blockquote>
+    </div>
+    
+    <button class="slider-btn slider-next" aria-label="Next testimonial">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+    </button>
+  </div>
+  <div class="slider-counter-below" id="testimonials-counter"></div>
+</div>
+
+<script define:vars={{ testimonials }}>
+  let currentIndex = 0;
+
+  function highlightQuote(quote, highlight) {
+    if (!highlight) return `"${quote}"`;
+    const highlighted = quote.replace(
+      new RegExp(`(${highlight.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'i'),
+      '<mark>$1</mark>'
+    );
+    return `"${highlighted}"`;
+  }
+
+  function updateTestimonial() {
+    const qText = document.getElementById('quote-text');
+    const qAuthor = document.getElementById('quote-author');
+    const qRole = document.getElementById('quote-role');
+    const qPhoto = document.getElementById('quote-photo');
+    const counter = document.getElementById('testimonials-counter');
+    const track = document.querySelector('.testimonials-section .slider-track');
+
+    if (!qText) return;
+
+    const t = testimonials[currentIndex];
+
+    track.style.opacity = '0';
+    setTimeout(() => {
+      qText.innerHTML = highlightQuote(t.quote, t.highlight);
+      qAuthor.textContent = t.name;
+      qRole.textContent = t.role;
+      qPhoto.src = t.photo;
+      qPhoto.alt = t.name;
+      if(counter) counter.textContent = `${currentIndex + 1} / ${testimonials.length}`;
+      track.style.opacity = '1';
+    }, 150);
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    updateTestimonial();
+
+    document.querySelector('.testimonials-section .slider-next')?.addEventListener('click', () => {
+      currentIndex = (currentIndex + 1) % testimonials.length;
+      updateTestimonial();
+    });
+
+    document.querySelector('.testimonials-section .slider-prev')?.addEventListener('click', () => {
+      currentIndex = (currentIndex - 1 + testimonials.length) % testimonials.length;
+      updateTestimonial();
+    });
+  });
+</script>
+
+<style>
+  .slider-with-arrows {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+  }
+
+  .slider-track {
+    flex: 1;
+    transition: opacity 0.2s ease;
+  }
+
+  .testimonial-card.single {
+    background: #ffffff;
+    border: 1px solid var(--color-border);
+    border-left: 4px solid var(--color-accent);
+    border-radius: var(--border-radius);
+    padding: var(--space-8);
+    margin: 0;
+  }
+
+  .testimonial-card.single p {
+    font-size: 1.25rem;
+    line-height: 1.6;
+    color: var(--color-text);
+    font-style: italic;
+    margin-bottom: var(--space-6);
+  }
+  
+  /* Highlight style */
+  .testimonial-card.single :global(mark) {
+      background: linear-gradient(120deg, #fef08a 0%, #fde047 100%);
+      padding: 0.1em 0.3em;
+      border-radius: 4px;
+      font-weight: 500;
+      color: inherit;
+  }
+
+  .testimonial-footer {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+  }
+
+  .testimonial-photo {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--color-accent);
+  }
+
+  .testimonial-meta {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .testimonial-meta cite {
+    font-style: normal;
+    font-weight: 700;
+    color: var(--color-text);
+    font-size: 1.1rem;
+  }
+
+  .testimonial-role {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+  }
+
+  .slider-btn {
+    background: #ffffff;
+    border: 1px solid var(--color-border);
+    color: var(--color-text-muted);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+  }
+
+  .slider-btn:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+    transform: translateY(-2px);
+  }
+
+  .slider-counter-below {
+    text-align: center;
+    margin-top: var(--space-4);
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+  }
+
+  @media (max-width: 768px) {
+    .slider-with-arrows {
+        position: relative;
+        padding-bottom: 60px;
+    }
+    .slider-btn {
+        position: absolute;
+        bottom: 0px;
+        z-index: 10;
+    }
+    .slider-prev { left: calc(50% - 60px); }
+    .slider-next { right: calc(50% - 60px); }
+    
+    .testimonial-card.single {
+        padding: var(--space-6);
+    }
+    .testimonial-card.single p {
+        font-size: 1.1rem;
+    }
+  }
+</style>

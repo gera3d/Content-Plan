@@ -1,0 +1,55 @@
+---
+// Reusable logo bar component
+---
+<div class="logo-bar-container">
+    <div class="logo-bar__logos">
+      <img src="/images/logos/health-for-california.png" alt="Health for California" loading="lazy" />
+      <img src="/images/logos/nuvolum_logo.jpg" alt="Nuvolum" loading="lazy" />
+      <img src="/images/logos/drivesavers_data_recovery_logo.jpg" alt="DriveSavers" loading="lazy" />
+      <img src="/images/logos/goldmail.png" alt="GoldMail" loading="lazy" />
+      <img src="/images/logos/SSU.jpg" alt="Sonoma State University" loading="lazy" />
+      <img src="/images/logos/College-Marin.jpg" alt="College of Marin" loading="lazy" />
+    </div>
+</div>
+
+<style>
+    .logo-bar-container {
+        display: flex;
+        justify-content: center;
+    }
+
+    .logo-bar__logos {
+        display: flex;
+        align-items: center;
+        gap: var(--space-8);
+        flex-wrap: wrap;
+        justify-content: center;
+        opacity: 0.7;
+    }
+
+    .logo-bar__logos img {
+        height: 32px;
+        width: auto;
+        max-width: 120px;
+        object-fit: contain;
+        filter: grayscale(100%);
+        opacity: 0.6;
+        transition: all 0.2s ease;
+        border-radius: 4px;
+        mix-blend-mode: multiply; /* Helps integrate logos with white backgrounds */
+    }
+
+    .logo-bar__logos img:hover {
+        filter: grayscale(0%);
+        opacity: 1;
+    }
+
+    @media (max-width: 768px) {
+        .logo-bar__logos {
+            gap: var(--space-6);
+        }
+        .logo-bar__logos img {
+            height: 24px;
+        }
+    }
+</style>

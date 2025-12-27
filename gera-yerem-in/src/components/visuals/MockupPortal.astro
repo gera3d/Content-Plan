@@ -1,0 +1,96 @@
+<div class="mockup-portal">
+    <div class="portal-card">
+        <div class="avatar-circle"></div>
+        <div class="input-line"></div>
+        <div class="input-line short"></div>
+        <div class="login-btn">
+            <span class="btn-text"></span>
+        </div>
+        
+        <!-- Verified Badge Overlay -->
+        <div class="verified-badge">
+            <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                <path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </div>
+    </div>
+</div>
+
+<style>
+    .mockup-portal {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    }
+
+    .portal-card {
+        width: 120px;
+        background: white;
+        padding: 16px;
+        border-radius: 12px;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        position: relative;
+    }
+
+    .avatar-circle {
+        width: 32px;
+        height: 32px;
+        background: #e2e8f0;
+        border-radius: 50%;
+        margin-bottom: 4px;
+    }
+
+    .input-line {
+        width: 100%;
+        height: 6px;
+        background: #f1f5f9;
+        border-radius: 3px;
+    }
+    .input-line.short {
+        width: 70%;
+    }
+
+    .login-btn {
+        width: 100%;
+        height: 20px;
+        background: var(--color-accent);
+        border-radius: 4px;
+        margin-top: 4px;
+        opacity: 0.1; /* Placeholder look */
+    }
+
+    .verified-badge {
+        position: absolute;
+        top: -8px;
+        right: -8px;
+        width: 24px;
+        height: 24px;
+        background: #10b981; /* Success Green */
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        border: 2px solid white;
+        animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        transform: scale(0);
+        animation-delay: 0.5s;
+    }
+
+    .check-icon {
+        width: 14px;
+        height: 14px;
+        color: white;
+    }
+
+    @keyframes popIn {
+        to { transform: scale(1); }
+    }
+</style>

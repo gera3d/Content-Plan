@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import '../components/SliderNav.astro';
 ---
 
 <BaseLayout 
@@ -82,17 +83,17 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <div class="testimonials-section">
         <h2 style="text-align: center; margin-bottom: var(--space-12);">What People Say</h2>
         
-        <div class="carousel-container">
-            <button class="nav-arrow prev" aria-label="Previous testimonials">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+        <div class="slider-with-arrows">
+            <button class="slider-btn slider-prev" aria-label="Previous testimonials">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
             </button>
             
-            <div class="post__content carousel-track">
+            <div class="slider-track carousel-track">
                 {/* Slot 1 */}
                 <div class="testimonial-slot" id="slot-1">
                     <blockquote>
                         <p id="quote-1"></p>
-                        <cite id="author-1" style="display: block; margin-top: 1rem; font-size: 0.9em; font-weight: bold; font-style: normal; color: var(--color-accent);"></cite>
+                        <cite id="author-1"></cite>
                     </blockquote>
                 </div>
 
@@ -100,13 +101,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                 <div class="testimonial-slot" id="slot-2">
                     <blockquote>
                         <p id="quote-2"></p>
-                        <cite id="author-2" style="display: block; margin-top: 1rem; font-size: 0.9em; font-weight: bold; font-style: normal; color: var(--color-accent);"></cite>
+                        <cite id="author-2"></cite>
                     </blockquote>
                 </div>
             </div>
 
-            <button class="nav-arrow next" aria-label="Next testimonials">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+            <button class="slider-btn slider-next" aria-label="Next testimonials">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
             </button>
         </div>
       </div>

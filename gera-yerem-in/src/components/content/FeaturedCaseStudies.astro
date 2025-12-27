@@ -1,0 +1,40 @@
+---
+import CaseStudyCard from './CaseStudyCard.astro';
+import CaseStudySlider from './CaseStudySlider.astro';
+---
+
+<CaseStudySlider>
+    <CaseStudyCard
+        title="Agent Review Growth System"
+        subtitle="Health for California"
+        investment="Full System Build"
+        timeline="4 Years"
+        roi="900x Review Growth"
+        breakEven="Month 2"
+        logo="/images/logos/health-for-california.png"
+    >
+        <p><strong>The Problem:</strong> Agents had almost no online presence (~10 reviews total). They were losing clients to competitors with better visibility.</p>
+        <p><strong>The Solution:</strong> Built an automated review engine with SMS workflows. Each agent got a custom landing page to showcase their diverse reputation.</p>
+        <ul>
+            <li><strong>Result:</strong> Scaled to <mark>9,000+</mark> verified Google reviews.</li>
+            <li><strong>Impact:</strong> Agents now compete on reputation, not price.</li>
+        </ul>
+</CaseStudyCard>
+
+    <CaseStudyCard
+        title="200+ Sites in < 4 Hours"
+        subtitle="Client: Nuvolum"
+        investment="Internal Platform"
+        timeline="3 Month Rollout"
+        roi="Weeks → Hours"
+        breakEven="Month 1"
+        logo="/images/logos/nuvolum_logo.jpg"
+    >
+        <p><strong>The Problem:</strong> Building custom websites for oral surgeons was taking weeks per client. The agency couldn't scale to meet demand.</p>
+        <p><strong>The Solution:</strong> I built a deployment system that launches fully branded sites with custom 4K video content in under 4 hours.</p>
+        <ul>
+            <li><strong>Result:</strong> Launched 200+ unique sites in record time.</li>
+            <li><strong>Impact:</strong> Agency doubled its client roster and grew from 7 to 50 employees.</li>
+        </ul>
+    </CaseStudyCard>
+</CaseStudySlider>

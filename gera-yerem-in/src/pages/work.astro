@@ -2,6 +2,9 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CaseStudyCard from '../components/content/CaseStudyCard.astro';
 import CaseStudySlider from '../components/content/CaseStudySlider.astro';
+import '../components/SliderNav.astro';
+import LogoBar from '../components/content/LogoBar.astro';
+import TestimonialSlider from '../components/content/TestimonialSlider.astro';
 ---
 
 <BaseLayout 
@@ -12,7 +15,7 @@ import CaseStudySlider from '../components/content/CaseStudySlider.astro';
     <div class="container">
       
       {/* Hero Section */}
-      <div class="work-hero mb-12">
+      <div class="work-hero mb-8">
         <div class="work-hero__content">
           <h1 class="page__title">Software is an <br/><span style="color: var(--color-accent);">Investment.</span></h1>
           <p class="page__description">
@@ -21,6 +24,30 @@ import CaseStudySlider from '../components/content/CaseStudySlider.astro';
         </div>
         <div class="work-hero__image">
             <img src="/images/professional/speaker-presentation.png" alt="Speaking to an audience" />
+            {/* Logo Bar - Overlay on image */}
+            <div class="logo-bar-overlay">
+              <span class="logo-bar__label">Trusted by teams at</span>
+              <LogoBar />
+            </div>
+        </div>
+      </div>
+      {/* Impact Stats Bar */}
+      <div class="stats-bar mb-12">
+        <div class="stat-item">
+          <span class="stat-number">15+</span>
+          <span class="stat-label">Years Experience</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">50+</span>
+          <span class="stat-label">Happy Clients</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">200+</span>
+          <span class="stat-label">Sites Deployed</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">10x</span>
+          <span class="stat-label">Avg. ROI</span>
         </div>
       </div>
 
@@ -174,13 +201,22 @@ import CaseStudySlider from '../components/content/CaseStudySlider.astro';
 
 
       </CaseStudySlider>
+      {/* Testimonial Carousel */}
+      <div class="testimonials-section">
+        <h2 class="section-title">What Clients Say</h2>
+        <TestimonialSlider count={22} />
+      </div>
 
-       <div style="margin-top: var(--space-12); padding: var(--space-8); background: var(--color-background-alt); border-radius: var(--border-radius); text-align: center;">
-        <h2 class="mb-4">Want results like this?</h2>
-        <p class="text-muted mb-8" style="max-width: 600px; margin-left: auto; margin-right: auto;">
-           Stop buying "hours" of coding. Start investing in business outcomes.
-        </p>
-        <a href="/contact" class="btn btn--primary">Let's Discuss Your ROI</a>
+      {/* Final CTA */}
+      <div class="final-cta">
+        <div class="final-cta__content">
+          <h2>Let's Build Something That Pays For Itself</h2>
+          <p>Stop buying "hours" of coding. Start investing in business outcomes that compound over time.</p>
+          <div class="final-cta__buttons">
+            <a href="/contact" class="btn btn--primary">Book a Discovery Call</a>
+            <a href="/about" class="btn btn--secondary">Learn My Process</a>
+          </div>
+        </div>
       </div>
 
     </div>
@@ -188,6 +224,7 @@ import CaseStudySlider from '../components/content/CaseStudySlider.astro';
 </BaseLayout>
 
 <style>
+    /* Hero */
     .work-hero {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -201,16 +238,179 @@ import CaseStudySlider from '../components/content/CaseStudySlider.astro';
 
     .work-hero__image {
         order: 2;
+        position: relative;
     }
 
-    .work-hero__image img {
+    .work-hero__image > img {
         width: 100%;
         height: auto;
         border-radius: var(--border-radius);
         box-shadow: var(--box-shadow-lg);
     }
+
+    /* Logo Bar Overlay - Specific override for Work Hero */
+    .logo-bar-overlay {
+        position: absolute;
+        bottom: var(--space-4);
+        left: var(--space-4);
+        backdrop-filter: blur(8px);
+        padding: var(--space-3) var(--space-4);
+        border-radius: var(--border-radius);
+        display: flex;
+        align-items: center;
+        gap: var(--space-4);
+        /* Force container within overlay to row */
+    }
     
+    .logo-bar-overlay :global(.logo-bar-container) {
+        margin: 0;
+    }
+    
+    .logo-bar-overlay :global(.logo-bar__logos) {
+        gap: var(--space-4);
+    }
+    
+    .logo-bar-overlay :global(.logo-bar__logos img) {
+         filter: grayscale(100%) brightness(200%); /* Make white for overlay */
+         opacity: 0.9;
+    }
+    .logo-bar-overlay :global(.logo-bar__logos img:hover) {
+         filter: grayscale(0%);
+         opacity: 1;
+    }
+
+    .logo-bar-overlay .logo-bar__label {
+        font-size: 0.6875rem;
+        font-weight: 600;
+        color: #ffffff;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        white-space: nowrap;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    }
+
+    @media (max-width: 768px) {
+        .logo-bar-overlay {
+            position: static;
+            margin-top: var(--space-4);
+            flex-wrap: wrap;
+            backdrop-filter: none;
+        }
+        .logo-bar-overlay .logo-bar__label {
+            color: #374151;
+            text-shadow: none;
+        }
+        .logo-bar-overlay :global(.logo-bar__logos img) {
+             filter: grayscale(100%); /* Reset on mobile/light bg */
+        }
+    }
+    
+    .mb-8 { margin-bottom: var(--space-8); }
     .mb-12 { margin-bottom: var(--space-12); }
+
+    /* Stats Bar */
+    .stats-bar {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: var(--space-4);
+        padding: var(--space-6) var(--space-4);
+        background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+        border: 1px solid #e2e8f0;
+        border-radius: var(--border-radius);
+    }
+
+    .stat-item {
+        text-align: center;
+        padding: var(--space-2) 0;
+    }
+
+    .stat-number {
+        display: block;
+        font-size: 2rem;
+        font-weight: 800;
+        color: var(--color-accent);
+        line-height: 1.2;
+    }
+
+    .stat-label {
+        display: block;
+        font-size: 0.75rem;
+        color: #64748b;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin-top: var(--space-1);
+    }
+
+    /* Testimonials Carousel */
+    .testimonials-section {
+        margin-top: var(--space-16);
+        padding: var(--space-12) 0;
+        border-top: 1px solid #e2e8f0;
+    }
+
+    .testimonials-section .section-title {
+        text-align: center;
+        margin-bottom: var(--space-8);
+        font-size: 1.5rem;
+    }
+
+    /* Final CTA */
+    .final-cta {
+        margin-top: var(--space-12);
+        padding: var(--space-12) var(--space-8);
+        background: linear-gradient(135deg, var(--color-accent) 0%, #0891b2 50%, #3b82f6 100%);
+        border-radius: var(--border-radius);
+        text-align: center;
+    }
+
+    .final-cta__content h2 {
+        color: #ffffff;
+        font-size: 1.75rem;
+        margin-bottom: var(--space-4);
+    }
+
+    .final-cta__content p {
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 1.125rem;
+        margin-bottom: var(--space-8);
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .final-cta__buttons {
+        display: flex;
+        justify-content: center;
+        gap: var(--space-4);
+        flex-wrap: wrap;
+    }
+
+    .final-cta .btn--primary {
+        background: #ffffff;
+        color: var(--color-accent);
+    }
+
+    .final-cta .btn--primary:hover {
+        background: #f8fafc;
+        transform: translateY(-2px);
+    }
+
+    .final-cta .btn--secondary {
+        background: transparent;
+        border: 2px solid #ffffff;
+        color: #ffffff;
+    }
+
+    .final-cta .btn--secondary:hover {
+        background: rgba(255, 255, 255, 0.1);
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+        .stats-bar {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
 
     @media (max-width: 768px) {
         .work-hero {
@@ -223,6 +423,24 @@ import CaseStudySlider from '../components/content/CaseStudySlider.astro';
         .work-hero__image {
             order: 1;
             margin-bottom: var(--space-4);
+        }
+
+        .stats-bar {
+            gap: var(--space-2);
+        }
+
+        .stat-number {
+            font-size: 1.5rem;
+        }
+
+        .final-cta__buttons {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .final-cta .btn {
+            width: 100%;
+            max-width: 280px;
         }
     }
 </style>

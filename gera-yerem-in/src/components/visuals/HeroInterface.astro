@@ -1,0 +1,256 @@
+<div class="hero-interface" id="hero-interface">
+    <div class="interface-container">
+        <!-- Main Dashboard Card -->
+        <div class="dashboard-card">
+            <div class="dashboard-header">
+                <div class="header-title"></div>
+                <div class="header-tools">
+                    <div class="tool-icon"></div>
+                    <div class="tool-icon"></div>
+                </div>
+            </div>
+            
+            <div class="dashboard-grid">
+                <!-- Large Chart Area -->
+                <div class="grid-item large-chart">
+                    <div class="chart-line"></div>
+                    <div class="chart-bars">
+                        <div class="bar" style="height: 40%"></div>
+                        <div class="bar" style="height: 70%"></div>
+                        <div class="bar" style="height: 55%"></div>
+                        <div class="bar" style="height: 85%"></div>
+                        <div class="bar" style="height: 60%"></div>
+                        <div class="bar" style="height: 90%"></div>
+                    </div>
+                </div>
+                
+                <!-- Side Stats -->
+                <div class="grid-item stat-box">
+                    <div class="stat-label"></div>
+                    <div class="stat-value"></div>
+                </div>
+                <div class="grid-item stat-box">
+                    <div class="stat-label"></div>
+                    <div class="stat-value"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Floating Glass Status Card -->
+        <div class="glass-status">
+            <div class="status-indicator">
+                <span class="pulse-dot"></span>
+                <span class="status-text">All Systems Operational</span>
+            </div>
+            <div class="metric-row">
+                <span class="metric-label">Uptime</span>
+                <span class="metric-value">99.9%</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const container = document.getElementById('hero-interface');
+    const card = container.querySelector('.interface-container');
+
+    // Subtle 3D Tilt Effect
+    container.addEventListener('mousemove', (e) => {
+        const { width, height, left, top } = container.getBoundingClientRect();
+        const mouseX = e.clientX - left;
+        const mouseY = e.clientY - top;
+        
+        // Calculate rotation (limited range for subtlety)
+        const rotateX = ((mouseY / height) - 0.5) * -10; // -5 to +5 deg
+        const rotateY = ((mouseX / width) - 0.5) * 10;   // -5 to +5 deg
+
+        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    });
+
+    // Reset on mouse leave
+    container.addEventListener('mouseleave', () => {
+        card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg)`;
+    });
+</script>
+
+<style>
+    .hero-interface {
+        width: 100%;
+        max-width: 500px;
+        aspect-ratio: 4/3;
+        position: relative;
+        margin: 0 auto;
+        /* Ensure the container has depth */
+        perspective: 1000px; 
+    }
+
+    .interface-container {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        transition: transform 0.1s ease-out; /* Smooth follow */
+        transform-style: preserve-3d;
+    }
+
+    /* Main Dashboard Base */
+    .dashboard-card {
+        width: 100%;
+        height: 100%;
+        background: white;
+        border-radius: 16px;
+        box-shadow: 
+            0 20px 25px -5px rgba(0, 0, 0, 0.1), 
+            0 10px 10px -5px rgba(0, 0, 0, 0.04),
+            0 0 0 1px rgba(0,0,0,0.05); /* Subtle border */
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        /* Depth level 1 */
+        transform: translateZ(0px);
+    }
+
+    .dashboard-header {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 8px;
+    }
+    .header-title { width: 120px; height: 12px; background: #e2e8f0; border-radius: 6px; }
+    .header-tools { display: flex; gap: 8px; }
+    .tool-icon { width: 24px; height: 24px; background: #f1f5f9; border-radius: 6px; }
+
+    .dashboard-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        grid-template-rows: repeat(2, 1fr);
+        gap: 16px;
+        height: 100%;
+    }
+
+    .grid-item {
+        background: #f8fafc;
+        border-radius: 12px;
+        padding: 16px;
+    }
+
+    .large-chart {
+        grid-row: span 2;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: center;
+        position: relative;
+    }
+
+    .chart-bars {
+        display: flex;
+        align-items: flex-end;
+        gap: 8px;
+        height: 60%;
+        width: 100%;
+        padding: 0 10px;
+    }
+    .bar {
+        flex: 1;
+        background: #cbd5e1;
+        border-radius: 4px 4px 0 0;
+        transition: height 1s ease-out;
+    }
+    
+    /* Simulate Chart Animation on load */
+    .bar:nth-child(even) { background: var(--color-accent); opacity: 0.8; }
+    .bar:nth-child(odd) { background: #cbd5e1; }
+
+    .stat-box {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 8px;
+    }
+    .stat-label { width: 60%; height: 8px; background: #e2e8f0; border-radius: 4px; }
+    .stat-value { width: 40%; height: 16px; background: var(--color-accent); border-radius: 4px; opacity: 0.2; }
+
+
+    /* Glass Overlay Card */
+    .glass-status {
+        position: absolute;
+        bottom: 40px;
+        right: -20px;
+        width: 220px;
+        padding: 16px;
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        border-radius: 12px;
+        box-shadow: 
+            0 10px 15px -3px rgba(0, 0, 0, 0.1),
+            0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        
+        /* Depth Level 2 - Floats above */
+        transform: translateZ(50px);
+    }
+
+    .status-indicator {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 12px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .pulse-dot {
+        width: 8px;
+        height: 8px;
+        background: #10b981;
+        border-radius: 50%;
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+        animation: pulse 2s infinite;
+    }
+
+    .status-text {
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: #1e293b;
+    }
+
+    .metric-row {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.75rem;
+    }
+    .metric-label { color: #64748b; }
+    .metric-value { font-weight: 700; color: #1e293b; font-family: monospace; }
+
+
+    @keyframes pulse {
+        0% {
+            transform: scale(0.95);
+            box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+        }
+        70% {
+            transform: scale(1);
+            box-shadow: 0 0 0 6px rgba(16, 185, 129, 0);
+        }
+        100% {
+            transform: scale(0.95);
+            box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+        }
+    }
+
+    /* Mobile Reset */
+    @media (max-width: 768px) {
+        .hero-interface {
+            transform: none !important; /* Disable perspective on mobile */
+            margin-top: 2rem;
+        }
+        .interface-container {
+            transform: none !important; /* Disable tilt on mobile */
+        }
+        .glass-status {
+            right: 10px; /* Adjust positioning */
+            bottom: 20px;
+        }
+    }
+</style>

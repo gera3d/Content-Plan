@@ -1,0 +1,124 @@
+---
+/**
+ * SliderNav - Unified navigation for all carousels/sliders
+ * Provides consistent prev/next buttons with counter
+ */
+interface Props {
+  position?: 'header' | 'sides';
+  showCounter?: boolean;
+}
+
+const { position = 'sides', showCounter = true } = Astro.props;
+---
+
+{position === 'header' ? (
+  <div class="slider-nav-header">
+    <slot name="title" />
+    <div class="slider-controls">
+      <button class="slider-btn slider-prev" aria-label="Previous">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M15 18l-6-6 6-6"/>
+        </svg>
+      </button>
+      {showCounter && (
+        <span class="slider-counter">
+          <span class="slider-current">1</span> / <span class="slider-total">1</span>
+        </span>
+      )}
+      <button class="slider-btn slider-next" aria-label="Next">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M9 18l6-6-6-6"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+) : (
+  <button class="slider-btn slider-prev" aria-label="Previous">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M15 18l-6-6 6-6"/>
+    </svg>
+  </button>
+)}
+
+<style is:global>
+  /* Unified Slider/Carousel Styles */
+  
+  /* Navigation Buttons - Consistent across all sliders */
+  .slider-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid #e2e8f0;
+    background: #ffffff;
+    color: #64748b;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+  }
+
+  .slider-btn:hover:not(:disabled) {
+    background: var(--color-accent, #0d9488);
+    color: #ffffff;
+    border-color: var(--color-accent, #0d9488);
+  }
+
+  .slider-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+  .slider-btn svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  /* Counter */
+  .slider-counter {
+    font-size: 0.875rem;
+    color: #94a3b8;
+    min-width: 50px;
+    text-align: center;
+  }
+
+  .slider-counter .slider-current {
+    font-weight: 600;
+    color: var(--color-accent, #0d9488);
+  }
+
+  /* Header Layout (title + controls in row) */
+  .slider-nav-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-6, 1.5rem);
+  }
+
+  .slider-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  /* Sides Layout (arrows on left and right of content) */
+  .slider-with-arrows {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4, 1rem);
+  }
+
+  .slider-track {
+    flex: 1;
+    overflow: hidden;
+  }
+
+  /* Below Counter */
+  .slider-counter-below {
+    text-align: center;
+    margin-top: var(--space-4, 1rem);
+    font-size: 0.875rem;
+    color: #94a3b8;
+  }
+</style>

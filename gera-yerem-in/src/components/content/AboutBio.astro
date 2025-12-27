@@ -1,0 +1,99 @@
+---
+---
+<section class="section about-bio">
+  <div class="container">
+    <div class="bio-layout">
+        <div class="bio-image">
+            <img src="/images/gera-headshot.jpg" alt="Gera Yeremin" class="headshot" />
+        </div>
+        <div class="bio-content">
+            <h2 class="section-title">Developer + Marketer + Business Owner</h2>
+            <p class="text-xl">
+                Most developers don't understand P&L. Most marketers can't build product. I do both.
+            </p>
+            <p>
+                I've been building software for 15+ years and running marketing for almost as long. I co-founded 57 Seconds, a digital agency, where I build the tools we use to help clients.
+            </p>
+            <p>
+                <strong>I eat my own dog food.</strong> The booking system, the reporting dashboards, the automation—I build them for my own business first. If it doesn't make money or save time, I don't write the code.
+            </p>
+            <p class="signature">- Gera</p>
+        </div>
+    </div>
+  </div>
+</section>
+
+<style>
+    .bio-layout {
+        display: flex;
+        align-items: center;
+        gap: var(--space-12);
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    .bio-image {
+        flex-shrink: 0;
+        width: 300px;
+        position: relative;
+    }
+
+    .headshot {
+        width: 100%;
+        height: auto;
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow-lg);
+        transform: rotate(-2deg);
+        transition: transform 0.3s ease;
+    }
+
+    .headshot:hover {
+        transform: rotate(0deg) scale(1.02);
+    }
+
+    .bio-content {
+        flex: 1;
+    }
+
+    .bio-content .section-title {
+        margin-top: 0;
+        font-size: 2rem;
+        margin-bottom: var(--space-4);
+    }
+
+    .text-xl {
+        font-size: 1.25rem;
+        color: var(--color-text);
+        font-weight: 500;
+        margin-bottom: var(--space-6);
+        line-height: 1.5;
+    }
+
+    .bio-content p {
+        color: var(--color-text-muted);
+        margin-bottom: var(--space-4);
+    }
+
+    .signature {
+        font-family: 'Nothing You Could Do', cursive, sans-serif; /* Fallback */
+        font-size: 1.5rem;
+        color: var(--color-accent);
+        margin-top: var(--space-4);
+    }
+
+    @media (max-width: 768px) {
+        .bio-layout {
+            flex-direction: column;
+            text-align: center;
+            gap: var(--space-8);
+        }
+
+        .bio-image {
+            width: 200px;
+        }
+
+        .bio-content .section-title {
+            font-size: 1.75rem;
+        }
+    }
+</style>

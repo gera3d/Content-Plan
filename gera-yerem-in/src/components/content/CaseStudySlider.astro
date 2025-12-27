@@ -56,45 +56,22 @@
         gap: 0.75rem;
     }
 
-    .slider-btn {
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        border: 1px solid #e2e8f0;
-        background: white;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: all 0.2s ease;
-    }
-
-    .slider-btn:hover:not(:disabled) {
-        border-color: #0d9488;
-        color: #0d9488;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-
-    .slider-btn:disabled {
-        opacity: 0.4;
-        cursor: not-allowed;
-    }
-
-    .slider-btn svg {
-        width: 20px;
-        height: 20px;
+    /* Use global .slider-btn styles from SliderNav.astro */
+    .case-slider-nav .slider-btn {
+        width: 44px;
+        height: 44px;
     }
 
     .slider-counter {
         font-size: 0.875rem;
-        color: #64748b;
+        color: #94a3b8;
         min-width: 50px;
         text-align: center;
     }
 
     .slider-counter .current-page {
         font-weight: 600;
-        color: #0d9488;
+        color: var(--color-accent, #0d9488);
     }
 
     .case-slider-track {

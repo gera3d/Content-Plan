@@ -1,0 +1,135 @@
+<div class="hero-image-wrapper">
+    <!-- Ambient Backdrop -->
+    <div class="ambient-glow"></div>
+    
+    <!-- Main Image Container -->
+    <div class="image-container">
+        <img src="/images/gera-suit.jpg" alt="Gera Yeremin - Systems Architect" class="profile-img" />
+    </div>
+
+    <!-- Floating Badge -->
+    <div class="glass-badge">
+        <div class="badge-icon">
+            <svg viewBox="0 0 24 24" fill="none" class="icon" stroke="currentColor" stroke-width="2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </div>
+        <div class="badge-content">
+            <span class="badge-title">Systems Architect</span>
+            <span class="badge-sub">Verified Partner</span>
+        </div>
+    </div>
+</div>
+
+<style>
+    .hero-image-wrapper {
+        position: relative;
+        width: 100%;
+        max-width: 450px;
+        margin: 0 auto;
+        /* Tilt perspective setup */
+        perspective: 1000px;
+    }
+
+    .ambient-glow {
+        position: absolute;
+        top: 20%;
+        left: 20%;
+        width: 60%;
+        height: 60%;
+        background: radial-gradient(circle, var(--color-accent-light) 0%, transparent 70%);
+        opacity: 0.5;
+        filter: blur(60px);
+        z-index: 0;
+        animation: pulseGlow 4s infinite alternate;
+    }
+
+    .image-container {
+        position: relative;
+        z-index: 1;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 
+            0 20px 25px -5px rgba(0, 0, 0, 0.1), 
+            0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        transform: rotate(-2deg); /* Subtle playful tilt */
+        transition: transform 0.3s ease;
+        border: 4px solid white;
+    }
+
+    .hero-image-wrapper:hover .image-container {
+        transform: rotate(0deg) scale(1.02);
+    }
+
+    .profile-img {
+        width: 100%;
+        height: auto;
+        display: block;
+        object-fit: cover;
+    }
+
+    /* Floating Glass Badge */
+    .glass-badge {
+        position: absolute;
+        bottom: 30px;
+        right: -10px;
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.6);
+        padding: 12px 16px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        z-index: 2;
+        transform: translateZ(20px); /* 3D lift */
+        animation: floatBadge 3s ease-in-out infinite;
+    }
+
+    .badge-icon {
+        width: 32px;
+        height: 32px;
+        background: var(--color-accent);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+    }
+    
+    .icon { width: 18px; height: 18px; }
+
+    .badge-content {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .badge-title {
+        font-size: 0.875rem;
+        font-weight: 700;
+        color: #1e293b;
+    }
+
+    .badge-sub {
+        font-size: 0.75rem;
+        color: #64748b;
+        font-weight: 500;
+    }
+
+    @keyframes pulseGlow {
+        from { opacity: 0.3; transform: scale(0.95); }
+        to { opacity: 0.6; transform: scale(1.05); }
+    }
+
+    @keyframes floatBadge {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-5px); }
+    }
+
+    @media (max-width: 768px) {
+        .image-container { transform: rotate(0deg); }
+        .glass-badge { right: 0; bottom: 20px; }
+    }
+</style>

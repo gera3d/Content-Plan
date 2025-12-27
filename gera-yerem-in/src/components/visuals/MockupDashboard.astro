@@ -1,0 +1,116 @@
+<div class="mockup-dashboard">
+    <div class="mockup-header">
+        <div class="mockup-title"></div>
+        <div class="mockup-actions">
+            <div class="action-circle"></div>
+            <div class="action-circle"></div>
+        </div>
+    </div>
+    <div class="mockup-body">
+        <div class="table-header">
+            <div class="th th-1"></div>
+            <div class="th th-2"></div>
+            <div class="th th-3"></div>
+        </div>
+        <!-- Simulated Rows -->
+        {Array.from({ length: 4 }).map((_, i) => (
+            <div class="table-row" style={`animation-delay: ${i * 0.15 + 0.5}s`}>
+                <div class="td td-1"></div>
+                <div class="td td-2"></div>
+                <div class="td td-status"></div>
+            </div>
+        ))}
+    </div>
+</div>
+
+<style>
+    .mockup-dashboard {
+        width: 100%;
+        max-width: 90%;
+        background: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        border: 1px solid #e2e8f0;
+        overflow: hidden;
+        padding: 12px;
+        position: relative;
+    }
+
+    .mockup-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 12px;
+        border-bottom: 1px solid #f1f5f9;
+        padding-bottom: 8px;
+    }
+
+    .mockup-title {
+        height: 8px;
+        width: 30%;
+        background: #cbd5e1;
+        border-radius: 4px;
+    }
+
+    .mockup-actions {
+        display: flex;
+        gap: 4px;
+    }
+
+    .action-circle {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: #e2e8f0;
+    }
+
+    .table-header {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 8px;
+    }
+
+    .th {
+        height: 6px;
+        background: #e2e8f0;
+        border-radius: 3px;
+    }
+    .th-1 { width: 40%; }
+    .th-2 { width: 30%; }
+    .th-3 { width: 20%; }
+
+    .table-row {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 8px;
+        align-items: center;
+        opacity: 0;
+        animation: slideFadeIn 0.5s ease forwards;
+    }
+
+    .td {
+        height: 6px;
+        border-radius: 3px;
+        background: #f1f5f9;
+    }
+    .td-1 { width: 40%; height: 8px; background: #cbd5e1; }
+    .td-2 { width: 30%; }
+    
+    .td-status { 
+        width: 20px; 
+        height: 12px; 
+        border-radius: 12px; 
+        background: #bbf7d0; /* Success Green Light */
+    }
+
+    @keyframes slideFadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(4px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
