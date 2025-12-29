@@ -1,73 +1,100 @@
 /* ==========================================================================
    Global Styles for Gera.Yere.in
-   Design: Clean, minimal, fast - per homepage_design.md
+   Design: Apple-inspired dark theme
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
-   CSS Variables (Design Tokens)
+   CSS Variables (Design Tokens) — Apple Dark Theme
    -------------------------------------------------------------------------- */
 :root {
-  /* Colors */
-  /* Executive Clarity Palette */
-  --color-bg: #f8fafc;
-  /* Slate-50 */
-  --color-surface: #ffffff;
-  --color-surface-alt: #f1f5f9;
-  /* Slate-100 */
+  /* Colors — Apple Dark */
+  --color-bg: #000000;
+  --color-surface: #1d1d1f;
+  --color-surface-alt: #2d2d2d;
+  --color-text: #f5f5f7;
+  --color-text-muted: #86868b;
+  --color-text-tertiary: #6e6e73;
+  --color-border: rgba(255, 255, 255, 0.08);
 
-  --color-text: #0f172a;
-  /* Slate-900 */
-  --color-text-muted: #475569;
-  /* Slate-600 */
-  --color-border: #e2e8f0;
-  /* Slate-200 */
+  /* Accent Colors — Apple Blue */
+  --color-accent: #2997ff;
+  --color-accent-hover: #0077ed;
+  --color-accent-light: rgba(41, 151, 255, 0.15);
+  --color-accent-purple: #bf5af2;
+  --color-accent-pink: #ff375f;
 
-  --color-accent: #4f46e5;
-  /* Electric Indigo */
-  --color-accent-hover: #4338ca;
-  --color-accent-light: #e0e7ff;
-  /* Indigo-100 */
+  /* Typography — SF Pro System Stack */
+  --font-body: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
+  --font-heading: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif;
+  --font-mono: "SF Mono", "Fira Code", monospace;
 
-  /* Typography */
-  --font-body: 'Inter', sans-serif;
-  --font-heading: 'Inter Tight', sans-serif;
-  --font-mono: 'Fira Code', monospace;
+  --font-size-sm: 14px;
+  --font-size-base: 17px;
+  --font-size-lg: 21px;
+  --font-size-xl: 24px;
+  --font-size-2xl: 32px;
+  --font-size-3xl: 40px;
+  --font-size-4xl: 56px;
+  --font-size-5xl: 64px;
+  --font-size-hero: clamp(56px, 10vw, 96px);
 
-  --font-size-sm: 0.875rem;
-  --font-size-base: 1rem;
-  --font-size-lg: 1.125rem;
-  --font-size-xl: 1.25rem;
-  --font-size-2xl: 1.5rem;
-  --font-size-3xl: 1.875rem;
-  --font-size-4xl: 2.25rem;
-  --font-size-5xl: 3rem;
-
-  --line-height-tight: 1.15;
+  --line-height-tight: 1.05;
   --line-height-normal: 1.5;
   --line-height-relaxed: 1.6;
 
-  /* Spacing - HALVED for tighter layout */
-  --space-1: 0.125rem;
-  --space-2: 0.25rem;
-  --space-3: 0.375rem;
-  --space-4: 0.5rem;
-  --space-6: 0.75rem;
-  --space-8: 1rem;
-  --space-12: 1.5rem;
-  --space-16: 2rem;
-  --space-20: 2.5rem;
-  --space-24: 3rem;
+  /* Spacing — Apple Scale */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 40px;
+  --space-2xl: 64px;
+  --space-3xl: 100px;
+  --space-4xl: 150px;
+
+  /* Legacy spacing aliases */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
 
   /* Layout */
-  --max-width-content: 860px;
-  /* Widened for better spacing */
-  --max-width-page: 1400px;
-  /* Widened to allow more breathing room */
+  --max-width-content: 980px;
+  --max-width-page: 1200px;
   --border-radius: 8px;
+  --border-radius-lg: 16px;
+  --border-radius-xl: 24px;
+  --border-radius-pill: 980px;
 
   /* Transitions */
   --transition-fast: 150ms ease;
   --transition-normal: 250ms ease;
+  --transition-spring: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Light Theme Overrides (for Blog Posts) */
+.theme-light {
+  --color-bg: #ffffff;
+  --color-surface: #f5f5f7;
+  --color-surface-alt: #ffffff;
+  /* Make surface alt white for contrast */
+  --color-text: #1d1d1f;
+  --color-text-muted: #6e6e73;
+  --color-text-tertiary: #86868b;
+  --color-border: rgba(0, 0, 0, 0.1);
+  --color-accent-light: rgba(41, 151, 255, 0.1);
+
+  /* Invert glass effect for light mode */
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(0, 0, 0, 0.05);
+
+  --header-bg: rgba(255, 255, 255, 0.8);
 }
 
 /* --------------------------------------------------------------------------
@@ -79,6 +106,10 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+:root {
+  --header-bg: rgba(0, 0, 0, 0.8);
 }
 
 html {
@@ -207,258 +238,67 @@ i {
 }
 
 /* --------------------------------------------------------------------------
-   Header
-   -------------------------------------------------------------------------- */
-.header {
-  padding: var(--space-6) 0;
-  border-bottom: 1px solid var(--color-border);
-}
-
-.header__inner {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.header__logo {
-  position: relative;
-  font-family: 'Space Grotesk', var(--font-family-mono);
-  font-size: var(--font-size-xl);
-  font-weight: 700;
-  color: var(--color-text);
-  text-decoration: none;
-  letter-spacing: -0.04em;
-  transition: opacity var(--transition-fast);
-}
-
-@keyframes bubbleGreet {
-  0% {
-    opacity: 0;
-    transform: translateY(-50%) scale(0);
-  }
-
-  5% {
-    opacity: 1;
-    transform: translateY(-50%) scale(1.1);
-  }
-
-  /* Overshoot */
-  8% {
-    opacity: 1;
-    transform: translateY(-50%) scale(1);
-  }
-
-  /* Settle */
-  90% {
-    opacity: 1;
-    transform: translateY(-50%) scale(1);
-  }
-
-  95% {
-    opacity: 0;
-    transform: translateY(-50%) scale(1.1);
-  }
-
-  /* Anticipation */
-  100% {
-    opacity: 0;
-    transform: translateY(-50%) scale(0);
-  }
-}
-
-.header__logo-bubble {
-  position: absolute;
-  top: 50%;
-  left: 100%;
-  transform: translateY(-50%);
-  margin-left: 12px;
-  background-color: var(--color-accent);
-  color: white;
-  font-size: 0.75rem;
-  font-weight: 700;
-  padding: 4px 8px;
-  border-radius: 6px;
-  opacity: 0;
-  /* Hidden by default, shown via animation */
-  pointer-events: none;
-  font-family: var(--font-family);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  white-space: nowrap;
-
-  /* Animate in with Spring Physics */
-  animation: bubbleGreet 6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-  animation-delay: 1s;
-  /* Stagger start */
-
-  z-index: 10;
-  transform-origin: center left;
-  will-change: transform, opacity;
-  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.header__logo-bubble::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  bottom: auto;
-  left: -5px;
-  width: 0;
-  height: 0;
-  transform: translateY(-50%);
-  border-right: 6px solid var(--color-accent);
-  border-top: 5px solid transparent;
-  border-bottom: 5px solid transparent;
-}
-
-/* Hover Effect: Text Switch & Persist */
-.header__logo:hover .header__logo-bubble {
-  animation: none;
-  /* Stop the disappearance */
-  opacity: 1;
-  font-size: 0;
-  /* Hide original text */
-  padding: 6px 12px;
-  transform: translateY(-50%) scale(1);
-  /* Maintain centering */
-}
-
-.header__logo:hover .header__logo-bubble::before {
-  content: attr(data-hover);
-  font-size: 0.75rem;
-}
-
-/* Update tail color on hover if background changes */
-.header__logo:hover .header__logo-bubble::after {
-  border-right-color: var(--color-accent);
-}
-
-.header__logo-tld {
-  font-weight: 500;
-  color: var(--color-text-muted);
-}
-
-.header__logo:hover {
-  opacity: 1;
-  color: var(--color-accent);
-  text-decoration: none;
-}
-
-.header__nav {
-  display: flex;
-  gap: var(--space-8);
-}
-
-.header__link {
-  font-size: var(--font-size-sm);
-  color: var(--color-text-muted);
-  text-decoration: none;
-  transition: color var(--transition-fast);
-}
-
-.header__link:hover {
-  color: var(--color-text);
-  text-decoration: none;
-}
-
-.header__link--active {
-  color: var(--color-text);
-}
-
-/* Mobile nav */
-@media (max-width: 640px) {
-  .header__nav {
-    gap: var(--space-4);
-  }
-
-  .header__link {
-    font-size: var(--font-size-sm);
-  }
-}
-
-/* --------------------------------------------------------------------------
-   Hero Section
-   -------------------------------------------------------------------------- */
-.hero {
-  padding: var(--space-24) 0;
-  text-align: center;
-}
-
-.hero__title {
-  font-size: var(--font-size-5xl);
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  margin-bottom: var(--space-6);
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.hero__subtitle {
-  font-size: var(--font-size-xl);
-  color: var(--color-text-muted);
-  max-width: 600px;
-  margin: 0 auto var(--space-8);
-  line-height: var(--line-height-relaxed);
-}
-
-.hero__actions {
-  display: flex;
-  gap: var(--space-4);
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-@media (max-width: 640px) {
-  .hero {
-    padding: var(--space-16) 0;
-  }
-
-  .hero__title {
-    font-size: var(--font-size-3xl);
-  }
-
-  .hero__subtitle {
-    font-size: var(--font-size-lg);
-  }
-}
-
-/* --------------------------------------------------------------------------
-   Buttons
+   Buttons (Global)
    -------------------------------------------------------------------------- */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: var(--space-3) var(--space-6);
-  font-size: var(--font-size-base);
-  font-weight: 500;
-  border-radius: var(--border-radius);
+  height: 44px;
+  /* Fixed height for perfect alignment */
+  padding: 0 24px;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 980px;
   text-decoration: none;
-  transition: all var(--transition-fast);
+  transition: all 0.2s ease;
   cursor: pointer;
   border: none;
-  margin: var(--space-2) 0;
+  line-height: 1;
+  /* Reset line-height to force centering */
+  box-sizing: border-box;
+  font-family: var(--font-body);
+  gap: 8px;
 }
 
+/* Primary: Apple Blue */
+.btn-primary,
 .btn--primary {
   background-color: var(--color-accent);
   color: white;
+  box-shadow: 0 0 15px rgba(41, 151, 255, 0.3);
 }
 
+.btn-primary:hover,
 .btn--primary:hover {
   background-color: var(--color-accent-hover);
-  color: white;
+  transform: translateY(-1px);
+  box-shadow: 0 0 20px rgba(41, 151, 255, 0.5);
   text-decoration: none;
+  color: white;
 }
 
-.btn--secondary {
-  background-color: transparent;
-  color: var(--color-text);
-  border: 1px solid var(--color-border);
+/* Secondary: Glass/Bordered (Visible!) */
+.btn-secondary,
+.btn--secondary,
+.btn-ghost {
+  background-color: rgba(255, 255, 255, 0.08);
+  /* More visible base */
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  /* Distinct border */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
-.btn--secondary:hover {
-  border-color: var(--color-text-muted);
+.btn-secondary:hover,
+.btn--secondary:hover,
+.btn-ghost:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.5);
+  /* Bright border on hover */
+  color: white;
+  transform: translateY(-1px);
   text-decoration: none;
 }
 
@@ -680,9 +520,9 @@ i {
 }
 
 .footer__title {
-  font-size: var(--font-size-sm);
+  font-size: 12px;
   font-weight: 600;
-  color: var(--color-text);
+  color: var(--color-text-muted);
   margin-bottom: var(--space-3);
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -1159,4 +999,336 @@ mark {
   font-weight: 700;
   position: absolute;
   left: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Apple-Style Buttons
+   -------------------------------------------------------------------------- */
+/* CTA Button */
+.btn-primary {
+  background: var(--accent-blue);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 980px;
+  font-size: 17px;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-primary:hover {
+  background: #0077ed;
+  transform: scale(1.02);
+  box-shadow: 0 4px 12px rgba(41, 151, 255, 0.3);
+}
+
+.btn-ghost {
+  color: var(--accent-blue);
+  background: transparent;
+  font-size: 17px;
+  font-weight: 500;
+  padding: 12px 24px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-ghost:hover {
+  text-decoration: underline;
+}
+
+/* --------------------------------------------------------------------------
+   Gradient Text
+   -------------------------------------------------------------------------- */
+.gradient-text {
+  background: linear-gradient(90deg, var(--color-accent) 0%, var(--color-accent-purple) 50%, var(--color-accent-pink) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* --------------------------------------------------------------------------
+   Glassmorphism Cards
+   -------------------------------------------------------------------------- */
+.glass-card {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-xl);
+  transition: all var(--transition-spring);
+}
+
+.glass-card:hover {
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateY(-4px);
+  box-shadow:
+    0 0 1px rgba(255, 255, 255, 0.15),
+    0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* --------------------------------------------------------------------------
+   Scroll-Driven Animations
+   -------------------------------------------------------------------------- */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-on-scroll {
+  animation: fadeInUp 0.8s ease-out both;
+  animation-timeline: view();
+  animation-range: entry 0% entry 25%;
+}
+
+@supports not (animation-timeline: view()) {
+  .animate-on-scroll {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Stagger Animation Delays */
+.stagger>*:nth-child(1) {
+  --delay: 0s;
+}
+
+.stagger>*:nth-child(2) {
+  --delay: 0.1s;
+}
+
+.stagger>*:nth-child(3) {
+  --delay: 0.2s;
+}
+
+.stagger>*:nth-child(4) {
+  --delay: 0.3s;
+}
+
+.stagger>*:nth-child(5) {
+  --delay: 0.4s;
+}
+
+.stagger>* {
+  animation-delay: var(--delay);
+}
+
+/* --------------------------------------------------------------------------
+   Section Eyebrow & Headlines
+   -------------------------------------------------------------------------- */
+.section-eyebrow {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-accent);
+  text-align: center;
+  margin-bottom: var(--space-sm);
+}
+
+.section-headline {
+  font-size: clamp(40px, 6vw, 64px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  text-align: center;
+  color: var(--color-text);
+  margin-bottom: var(--space-3xl);
+  line-height: var(--line-height-tight);
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-muted {
+  color: var(--color-text-muted);
+}
+
+.text-tertiary {
+  color: var(--color-text-tertiary);
+}
+
+/* --------------------------------------------------------------------------
+   Hero Section (Left Aligned Fix)
+   -------------------------------------------------------------------------- */
+.hero {
+  padding: 180px 0 120px;
+  /* More breathing room */
+  text-align: left;
+  /* Strict Left Align */
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* Space content and visual */
+  gap: var(--space-12);
+}
+
+.hero__content {
+  max-width: 650px;
+  /* Reduced to make room for image */
+  width: 100%;
+  flex: 1;
+}
+
+.hero__visual {
+  flex: 0 0 450px;
+  /* Fixed width for visual */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeUp 0.8s ease-out 0.2s both;
+}
+
+.hero__visual img {
+  width: 100%;
+  height: auto;
+  border-radius: 24px;
+  /* Rounded edges as requested */
+  box-shadow:
+    0 20px 40px -10px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(255, 255, 255, 0.1);
+  /* Inner stroke */
+  transform: rotate(2deg);
+  /* Jaunty angle */
+  transition: transform 0.3s ease;
+}
+
+.hero__visual img:hover {
+  transform: rotate(0deg) scale(1.02);
+}
+
+.hero__title {
+  font-size: var(--font-size-5xl);
+  /* 64px+ */
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin-bottom: var(--space-6);
+  max-width: 900px;
+  color: var(--color-text);
+  /* Removed auto margins to enforce left align */
+}
+
+.hero__subtitle {
+  font-size: var(--font-size-xl);
+  /* 24px */
+  color: var(--color-text-muted);
+  max-width: 600px;
+  margin-bottom: var(--space-8);
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+.hero__actions {
+  display: flex;
+  gap: var(--space-4);
+  justify-content: flex-start;
+  /* Left align buttons */
+  flex-wrap: wrap;
+}
+
+@media (max-width: 960px) {
+  .hero {
+    flex-direction: column;
+    padding: 140px var(--space-6) 80px;
+    text-align: left;
+    min-height: auto;
+    gap: var(--space-8);
+  }
+
+  .hero__content {
+    max-width: 100%;
+  }
+
+  .hero__visual {
+    flex: auto;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  .hero__visual img {
+    transform: rotate(0deg);
+    /* No rotation on mobile */
+  }
+
+  .hero__title {
+    font-size: 42px;
+    line-height: 1.1;
+  }
+
+  .hero__subtitle {
+    font-size: 19px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Apple Dark Utilities (Standardized)
+   -------------------------------------------------------------------------- */
+
+/* Glass Base */
+.glass-panel,
+.glass-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--border-radius-xl);
+  /* 24px */
+  transition: all var(--transition-normal);
+}
+
+.glass-panel:hover,
+.glass-card:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
+}
+
+/* Typography Highlights */
+.text-gradient {
+  background: linear-gradient(135deg, #2997ff 0%, #bf5af2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+}
+
+.text-white,
+.text-high-contrast {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+/* Section Standard Spacing */
+.pt-hero {
+  padding-top: var(--space-3xl);
+  /* ~100px */
+}
+
+/* Stagger Entry Animation */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.animate-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
 }

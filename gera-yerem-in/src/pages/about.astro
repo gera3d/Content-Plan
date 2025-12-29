@@ -1,7 +1,9 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import TestimonialSlider from '../components/content/TestimonialSlider.astro';
 import '../components/SliderNav.astro';
 ---
+
 
 <BaseLayout 
   title="About Gera Yeremin" 
@@ -79,144 +81,19 @@ import '../components/SliderNav.astro';
 
       <div class="section-divider"></div>
 
-      {/* Wall of Love / Testimonials Carousel */}
+      {/* Testimonials Carousel (Standard Component) */}
       <div class="testimonials-section">
-        <h2 style="text-align: center; margin-bottom: var(--space-12);">What People Say</h2>
-        
-        <div class="slider-with-arrows">
-            <button class="slider-btn slider-prev" aria-label="Previous testimonials">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
-            </button>
-            
-            <div class="slider-track carousel-track">
-                {/* Slot 1 */}
-                <div class="testimonial-slot" id="slot-1">
-                    <blockquote>
-                        <p id="quote-1"></p>
-                        <cite id="author-1"></cite>
-                    </blockquote>
-                </div>
-
-                {/* Slot 2 */}
-                <div class="testimonial-slot" id="slot-2">
-                    <blockquote>
-                        <p id="quote-2"></p>
-                        <cite id="author-2"></cite>
-                    </blockquote>
-                </div>
-            </div>
-
-            <button class="slider-btn slider-next" aria-label="Next testimonials">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
-            </button>
-        </div>
+        <h2 class="section-title">What People Say</h2>
+        <TestimonialSlider count={22} />
       </div>
-
-      <script>
-        const testimonials = [
-            // Top 2 (Sticky/First)
-            {
-                quote: "Gera is a strategist. While he has all the capability in development and coding, what makes him such a leader is his high-level mindset and ability to see the larger picture.",
-                author: "Tom Hakel | Client & Collaborator"
-            },
-            {
-                quote: "I would say the single greatest thing about Gera is his integrity. Being able to build a large cache of reviews for your brand or business will help your growth.",
-                author: "Nuvolum Colleague"
-            },
-            // Rotating
-            {
-                quote: "Gera is a truly innovative thinker. His fresh approach and careful product testing make a massive difference for his clients.",
-                author: "Client Recommendation"
-            },
-            {
-                quote: "Gera's positive attitude is infectious. He is so talented at inspiring others to do their best and reach for the stars.",
-                author: "Nuvolum Colleague"
-            },
-            {
-                quote: "Gera is an end-to-end developer that absolutely checks all the boxes... The collection of his skills are remarkable and rare.",
-                author: "Development Partner"
-            },
-            {
-                quote: "I had the opportunity to work with Gera on numerous projects... He is easy and fun to collaborate with, has an upbeat and responsive personality, and always exceeds expectations.",
-                author: "Nuvolum Colleague"
-            },
-            {
-                quote: "Gera created a campaign for our North Bay Networking Group... reached the highest response yet for our Eventbrite customers.",
-                author: "North Bay Networking Group"
-            },
-            {
-                quote: "It's a joy and honor to recommend Gera. Not only is he an extremely nice man, not only is he excellent at his craft... Gera is just a wonderful energy to have around the office.",
-                author: "Colleague"
-            },
-            {
-                quote: "If you're looking for a talented, intelligent, dedicated developer, Gera's your guy! He's a true team player and always looking out for the best interest of the whole.",
-                author: "Team Member"
-            },
-            {
-                quote: "Gera is genuinely a great pleasure to work with on any day. His positivity and willingness to find solutions to any challenges big or small is impressive.",
-                author: "Client"
-            },
-            {
-                quote: "Gera was a great employee and mentor for me... He is definitely a WordPress wizard and his creativity with the platform makes him a powerful developer.",
-                author: "Mentee / Colleague"
-            },
-            {
-                quote: "Gera is an INCREDIBLE collection of technologist, designer and innovator... I would highly recommend Gera.",
-                author: "Business Partner"
-            }
-        ];
-
-        let currentIndex = 0;
-
-        const updateCarousel = () => {
-             // Get slots
-             const q1 = document.getElementById('quote-1');
-             const a1 = document.getElementById('author-1');
-             const q2 = document.getElementById('quote-2');
-             const a2 = document.getElementById('author-2');
-
-             // Calculate indices (wrapping)
-             const idx1 = currentIndex % testimonials.length;
-             const idx2 = (currentIndex + 1) % testimonials.length;
-
-             // Update Content with fade effect
-             const track = document.querySelector('.carousel-track');
-             track.style.opacity = '0';
-             
-             setTimeout(() => {
-                q1.textContent = `"${testimonials[idx1].quote}"`;
-                a1.textContent = `— ${testimonials[idx1].author}`;
-                
-                q2.textContent = `"${testimonials[idx2].quote}"`;
-                a2.textContent = `— ${testimonials[idx2].author}`;
-                
-                track.style.opacity = '1';
-             }, 200);
-        };
-
-        // Initialize
-        document.addEventListener('DOMContentLoaded', () => {
-            updateCarousel(); // Initial load
-
-            document.querySelector('.nav-arrow.next').addEventListener('click', () => {
-                currentIndex = (currentIndex + 2) % testimonials.length; // Jump 2 to show a fresh pair
-                updateCarousel();
-            });
-
-            document.querySelector('.nav-arrow.prev').addEventListener('click', () => {
-                currentIndex = (currentIndex - 2 + testimonials.length) % testimonials.length;
-                updateCarousel();
-            });
-        });
-      </script>
 
       <div class="section-divider"></div>
 
-      {/* Values / Conclusion */}
-      <div class="values-section">
+      {/* Values / Conclusion (Glass Container) */}
+      <div class="glass-panel values-section">
         <div class="values-section__content">
             <h2>Integrity & Results</h2>
-            <blockquote>
+            <blockquote class="text-gradient">
                 "The single greatest thing about Gera is his integrity."
             </blockquote>
             <p>
@@ -247,8 +124,14 @@ import '../components/SliderNav.astro';
 
   .about-hero__image img {
     width: 100%;
-    border-radius: var(--border-radius);
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    border-radius: var(--border-radius-xl);
+    box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.5);
+    transform: rotate(2deg); /* Standard "Hero" rotation */
+    transition: transform 0.3s ease;
+  }
+  
+  .about-hero__image img:hover {
+      transform: rotate(0deg) scale(1.02);
   }
 
   .section-divider {
@@ -260,37 +143,13 @@ import '../components/SliderNav.astro';
     margin-right: auto;
   }
 
-  .feature-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space-12);
-    align-items: center;
-  }
-
-  .feature-row--reverse {
-    direction: rtl; /* simple way to reverse visual order for grid, text handling needs care or just allow visual swap */
-  }
-
-  .feature-row--reverse > * {
-    direction: ltr; /* reset text direction */
-  }
-
-  .feature-row__image img {
-    width: 100%;
-    border-radius: var(--border-radius);
-    transition: transform var(--transition-normal);
-  }
-
-  .feature-row__image img:hover {
-    transform: scale(1.02);
-  }
-
   .values-section {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
     gap: var(--space-12);
+    padding: var(--space-12); /* Glass padding */
   }
 
   .values-section__image {
@@ -300,99 +159,66 @@ import '../components/SliderNav.astro';
 
   .values-section__image img {
     width: 100%;
-    border-radius: var(--border-radius);
+    border-radius: var(--border-radius-lg);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+  }
+
+  .feature-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-12);
+    align-items: center;
+  }
+
+  .feature-row--reverse {
+    direction: rtl; 
+  }
+
+  .feature-row--reverse > * {
+    direction: ltr; 
+  }
+
+  .feature-row__image img {
+    width: 100%;
+    border-radius: var(--border-radius-xl);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    transition: transform var(--transition-normal);
+  }
+
+  .feature-row__image img:hover {
+    transform: scale(1.02);
   }
 
   blockquote {
     font-size: var(--font-size-2xl);
     font-weight: 700;
-    color: var(--color-accent);
     margin: var(--space-6) 0;
-    font-family: var(--font-family-mono); /* stylistic choice */
+    font-family: var(--font-family-mono); 
+    border: none;
+    padding: 0;
+  }
+  
+  .testimonials-section {
+      text-align: center;
+      padding: var(--space-12) 0;
+  }
+  .testimonials-section .section-title {
+      margin-bottom: var(--space-12);
   }
 
   @media (max-width: 768px) {
     .about-hero, .feature-row, .feature-row--reverse {
       grid-template-columns: 1fr;
       gap: var(--space-8);
-      direction: ltr; /* Reset direction for mobile stacking */
+      direction: ltr; 
     }
 
     .about-hero__image {
-      order: -1; /* Image first on mobile for hero */
+      order: -1; 
     }
 
-    /* For feature rows, usually image first or text first? Let's keep natural order or enforce image top */
     .feature-row__image {
         order: -1;
-    }
-  }
-
-
-  /* Carousel Styles */
-  .carousel-container {
-    display: flex;
-    align-items: center;
-    gap: var(--space-4);
-  }
-
-  .carousel-track {
-    flex: 1;
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* Always 2 columns */
-    gap: 2rem;
-    transition: opacity 0.2s ease-in-out;
-  }
-
-  /* Override specific global styles for the carousel context */
-  .carousel-track > :global(blockquote) {
-      margin: 0 !important; /* Remove vertical margin so they align */
-      height: 100%; /* Equal height */
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-  }
-
-  .nav-arrow {
-    background: var(--color-background-alt);
-    border: 1px solid var(--color-border);
-    color: var(--color-text-muted);
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    flex-shrink: 0;
-  }
-
-  .nav-arrow:hover {
-    background: var(--color-accent);
-    color: #ffffff;
-    border-color: var(--color-accent);
-    transform: scale(1.1);
-  }
-
-  @media (max-width: 768px) {
-    .carousel-track {
-        grid-template-columns: 1fr; /* Stack on mobile */
-    }
-    .carousel-container {
-        position: relative;
-        padding-bottom: 60px; /* Space for arrows */
-    }
-    .nav-arrow {
-        position: absolute;
-        bottom: 0;
-        z-index: 10;
-    }
-    .nav-arrow.prev {
-        left: calc(50% - 60px);
-    }
-    .nav-arrow.next {
-        right: calc(50% - 60px);
     }
   }
 </style>

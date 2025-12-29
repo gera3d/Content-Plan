@@ -24,15 +24,18 @@
 </div>
 
 <style>
+    /* Dark Mode Dashboard Mockup */
     .mockup-dashboard {
         width: 100%;
         max-width: 90%;
-        background: #ffffff;
-        border-radius: 8px;
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-        border: 1px solid #e2e8f0;
+        background: linear-gradient(180deg, #2c2c2e 0%, #1c1c1e 100%);
+        border-radius: 12px;
+        box-shadow: 
+            0 8px 32px rgba(0, 0, 0, 0.5),
+            0 0 0 1px rgba(255, 255, 255, 0.1),
+            inset 0 1px 0 rgba(255, 255, 255, 0.1);
         overflow: hidden;
-        padding: 12px;
+        padding: 16px;
         position: relative;
     }
 
@@ -40,15 +43,15 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin-bottom: 12px;
-        border-bottom: 1px solid #f1f5f9;
-        padding-bottom: 8px;
+        margin-bottom: 16px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        padding-bottom: 12px;
     }
 
     .mockup-title {
         height: 8px;
         width: 30%;
-        background: #cbd5e1;
+        background: rgba(255, 255, 255, 0.2); /* Muted white */
         border-radius: 4px;
     }
 
@@ -61,7 +64,7 @@
         width: 6px;
         height: 6px;
         border-radius: 50%;
-        background: #e2e8f0;
+        background: rgba(255, 255, 255, 0.2);
     }
 
     .table-header {
@@ -72,7 +75,7 @@
 
     .th {
         height: 6px;
-        background: #e2e8f0;
+        background: rgba(255, 255, 255, 0.1);
         border-radius: 3px;
     }
     .th-1 { width: 40%; }
@@ -91,16 +94,17 @@
     .td {
         height: 6px;
         border-radius: 3px;
-        background: #f1f5f9;
+        background: rgba(255, 255, 255, 0.05);
     }
-    .td-1 { width: 40%; height: 8px; background: #cbd5e1; }
+    .td-1 { width: 40%; height: 8px; background: rgba(255, 255, 255, 0.15); }
     .td-2 { width: 30%; }
     
     .td-status { 
         width: 20px; 
         height: 12px; 
         border-radius: 12px; 
-        background: #bbf7d0; /* Success Green Light */
+        background: rgba(41, 151, 255, 0.3); /* Blue accent opacity */
+        border: 1px solid rgba(41, 151, 255, 0.5);
     }
 
     @keyframes slideFadeIn {

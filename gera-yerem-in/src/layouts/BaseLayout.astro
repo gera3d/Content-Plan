@@ -22,7 +22,8 @@ const {
   publishedTime,
   modifiedTime,
   author = "Gera Yeremin",
-  showHeader = true
+  showHeader = true,
+  theme = "dark"
 } = Astro.props;
 
 const siteUrl = "https://gera.yere.in";
@@ -104,9 +105,9 @@ const websiteSchema = {
       <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
     )}
   </head>
-  <body>
+  <body class={`theme-${theme}`}>
     {showHeader && <Header />}
-    <main>
+    <main style="padding-top: 60px;">
       <slot />
     </main>
     <Footer />

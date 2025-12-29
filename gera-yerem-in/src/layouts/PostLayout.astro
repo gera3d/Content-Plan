@@ -72,6 +72,7 @@ const showToc = headings.length > 2;
   modifiedTime={(updatedDate || publishDate).toISOString()}
   author={author}
   showHeader={false}
+  theme="light"
 >
   <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} slot="head" />
   

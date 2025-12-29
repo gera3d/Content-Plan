@@ -31,22 +31,22 @@ import TestimonialSlider from '../components/content/TestimonialSlider.astro';
             </div>
         </div>
       </div>
-      {/* Impact Stats Bar */}
-      <div class="stats-bar mb-12">
-        <div class="stat-item">
-          <span class="stat-number">15+</span>
+      {/* Impact Stats Grid (Bento Style) */}
+      <div class="stats-bento mb-12">
+        <div class="stat-card glass-panel">
+          <span class="stat-number text-white">15+</span>
           <span class="stat-label">Years Experience</span>
         </div>
-        <div class="stat-item">
-          <span class="stat-number">50+</span>
+        <div class="stat-card glass-panel">
+          <span class="stat-number text-white">50+</span>
           <span class="stat-label">Happy Clients</span>
         </div>
-        <div class="stat-item">
-          <span class="stat-number">200+</span>
+        <div class="stat-card glass-panel">
+          <span class="stat-number text-gradient">200+</span>
           <span class="stat-label">Sites Deployed</span>
         </div>
-        <div class="stat-item">
-          <span class="stat-number">10x</span>
+        <div class="stat-card glass-panel">
+          <span class="stat-number text-gradient">10x</span>
           <span class="stat-label">Avg. ROI</span>
         </div>
       </div>
@@ -244,22 +244,27 @@ import TestimonialSlider from '../components/content/TestimonialSlider.astro';
     .work-hero__image > img {
         width: 100%;
         height: auto;
-        border-radius: var(--border-radius);
-        box-shadow: var(--box-shadow-lg);
+        border-radius: var(--border-radius-xl);
+        box-shadow: 0 20px 40px -10px rgba(0,0,0,0.5);
     }
 
-    /* Logo Bar Overlay - Specific override for Work Hero */
+    /* Logo Bar Overlay */
     .logo-bar-overlay {
         position: absolute;
         bottom: var(--space-4);
         left: var(--space-4);
-        backdrop-filter: blur(8px);
+        /* Glass Panel styles */
+        background: rgba(255, 255, 255, 0.03);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        
         padding: var(--space-3) var(--space-4);
-        border-radius: var(--border-radius);
+        border-radius: var(--border-radius-lg);
         display: flex;
         align-items: center;
         gap: var(--space-4);
-        /* Force container within overlay to row */
+        box-shadow: 0 10px 20px rgba(0,0,0,0.3);
     }
     
     .logo-bar-overlay :global(.logo-bar-container) {
@@ -295,9 +300,11 @@ import TestimonialSlider from '../components/content/TestimonialSlider.astro';
             margin-top: var(--space-4);
             flex-wrap: wrap;
             backdrop-filter: none;
+            background: none;
+            border: none;
         }
         .logo-bar-overlay .logo-bar__label {
-            color: #374151;
+            color: var(--color-text-muted);
             text-shadow: none;
         }
         .logo-bar-overlay :global(.logo-bar__logos img) {
@@ -308,44 +315,55 @@ import TestimonialSlider from '../components/content/TestimonialSlider.astro';
     .mb-8 { margin-bottom: var(--space-8); }
     .mb-12 { margin-bottom: var(--space-12); }
 
-    /* Stats Bar */
-    .stats-bar {
+    /* Stats Bento Grid */
+    .stats-bento {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         gap: var(--space-4);
-        padding: var(--space-6) var(--space-4);
-        background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
-        border: 1px solid #e2e8f0;
-        border-radius: var(--border-radius);
+        width: 100%;
     }
 
-    .stat-item {
+    .stat-card {
+        padding: var(--space-6) var(--space-4);
         text-align: center;
-        padding: var(--space-2) 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        min-height: 140px; /* Ensure consistent height */
     }
 
     .stat-number {
-        display: block;
-        font-size: 2rem;
+        font-size: 3.5rem; /* Larger for impact */
         font-weight: 800;
-        color: var(--color-accent);
-        line-height: 1.2;
+        line-height: 1;
+        letter-spacing: -0.02em;
+        color: #ffffff; /* Default to white for contrast */
+    }
+    
+    /* Specific overrides for gradient */
+    .stat-number.text-gradient {
+        background: linear-gradient(135deg, #60a5fa 0%, #c084fc 100%); /* Brighter Blue-Purple */
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        color: transparent; /* Fallback */
     }
 
     .stat-label {
-        display: block;
-        font-size: 0.75rem;
-        color: #64748b;
+        font-size: 0.875rem;
+        color: rgba(255, 255, 255, 0.7); /* Brighter muted text */
         text-transform: uppercase;
-        letter-spacing: 0.05em;
-        margin-top: var(--space-1);
+        letter-spacing: 0.1em;
+        font-weight: 600;
     }
 
     /* Testimonials Carousel */
     .testimonials-section {
         margin-top: var(--space-16);
         padding: var(--space-12) 0;
-        border-top: 1px solid #e2e8f0;
+        border-top: 1px solid var(--color-border);
     }
 
     .testimonials-section .section-title {
@@ -359,19 +377,21 @@ import TestimonialSlider from '../components/content/TestimonialSlider.astro';
         margin-top: var(--space-12);
         padding: var(--space-12) var(--space-8);
         background: linear-gradient(135deg, var(--color-accent) 0%, #0891b2 50%, #3b82f6 100%);
-        border-radius: var(--border-radius);
+        border-radius: var(--border-radius-xl);
         text-align: center;
+        box-shadow: 0 20px 40px rgba(41, 151, 255, 0.3);
     }
 
     .final-cta__content h2 {
         color: #ffffff;
-        font-size: 1.75rem;
+        font-size: 2rem;
         margin-bottom: var(--space-4);
+        letter-spacing: -0.02em;
     }
 
     .final-cta__content p {
         color: rgba(255, 255, 255, 0.9);
-        font-size: 1.125rem;
+        font-size: 1.25rem;
         margin-bottom: var(--space-8);
         max-width: 500px;
         margin-left: auto;
@@ -407,7 +427,7 @@ import TestimonialSlider from '../components/content/TestimonialSlider.astro';
 
     /* Responsive */
     @media (max-width: 900px) {
-        .stats-bar {
+        .stats-bento {
             grid-template-columns: repeat(2, 1fr);
         }
     }
@@ -425,12 +445,12 @@ import TestimonialSlider from '../components/content/TestimonialSlider.astro';
             margin-bottom: var(--space-4);
         }
 
-        .stats-bar {
-            gap: var(--space-2);
-        }
-
         .stat-number {
-            font-size: 1.5rem;
+            font-size: 2.5rem;
+        }
+        
+        .stat-card {
+            padding: var(--space-4);
         }
 
         .final-cta__buttons {

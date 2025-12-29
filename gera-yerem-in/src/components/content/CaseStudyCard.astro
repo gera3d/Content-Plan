@@ -12,7 +12,7 @@ interface Props {
 const { title, subtitle, investment, timeline, roi, breakEven, logo } = Astro.props;
 ---
 
-<article class="case-study">
+<article class="glass-card case-study">
   <div class="case-study-header">
     <div class="header-content">
       <h3>{title}</h3>
@@ -28,19 +28,19 @@ const { title, subtitle, investment, timeline, roi, breakEven, logo } = Astro.pr
   <div class="stats-grid">
     <div class="stat-box">
       <span class="stat-label">Investment</span>
-      <span class="stat-value">{investment}</span>
+      <span class="stat-value text-white">{investment}</span>
     </div>
     <div class="stat-box">
       <span class="stat-label">Timeline</span>
-      <span class="stat-value">{timeline}</span>
+      <span class="stat-value text-white">{timeline}</span>
     </div>
-    <div class="stat-box highlight">
+    <div class="stat-box">
       <span class="stat-label">ROI</span>
-      <span class="stat-value">{roi}</span>
+      <span class="stat-value text-gradient">{roi}</span>
     </div>
-    <div class="stat-box highlight">
+    <div class="stat-box">
       <span class="stat-label">Break-even</span>
-      <span class="stat-value">{breakEven}</span>
+      <span class="stat-value text-white">{breakEven}</span>
     </div>
   </div>
 
@@ -51,23 +51,22 @@ const { title, subtitle, investment, timeline, roi, breakEven, logo } = Astro.pr
 
 <style>
   .case-study {
-    border: 1px solid #e2e8f0;
-    border-radius: 12px;
-    background: #ffffff;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-    margin: 0;
+    /* Glass card handled by global utility, ensuring local overrides if needed */
     overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
   }
 
   /* Header */
   .case-study-header {
-    background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
-    padding: 1.25rem 1.5rem;
-    border-bottom: 1px solid #e2e8f0;
+    background: rgba(255, 255, 255, 0.02);
+    padding: var(--space-6);
+    border-bottom: 1px solid var(--color-border);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 1rem;
+    gap: var(--space-4);
   }
 
   .header-content {
@@ -79,27 +78,32 @@ const { title, subtitle, investment, timeline, roi, breakEven, logo } = Astro.pr
   }
 
   .company-logo {
-    max-height: 36px;
-    max-width: 100px;
+    max-height: 48px;
+    max-width: 120px;
     width: auto;
     height: auto;
     object-fit: contain;
-    opacity: 0.9;
     border-radius: 6px;
+    /* In dark mode, logos often need a white background or inversion.
+       For now, we add a subtle white BG to ensure visibility */
+    background: rgba(255,255,255,0.9);
+    padding: 4px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
   }
 
   .case-study-header h3 {
     margin: 0;
-    color: var(--color-accent, #0d9488);
-    font-size: 1.1rem;
+    color: var(--color-text);
+    font-size: 1.25rem;
     font-weight: 700;
-    line-height: 1.3;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
   }
 
   .subtitle {
     margin: 0.35rem 0 0 0;
-    color: #64748b;
-    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
     font-weight: 500;
   }
 
@@ -107,14 +111,18 @@ const { title, subtitle, investment, timeline, roi, breakEven, logo } = Astro.pr
   .stats-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    border-bottom: 1px solid #e2e8f0;
-    background: #fafbfc;
+    border-bottom: 1px solid var(--color-border);
+    /* background: rgba(0,0,0,0.2); Removed to keep it clean */
   }
 
   .stat-box {
-    padding: 0.75rem 0.5rem;
+    padding: var(--space-4) var(--space-2);
     text-align: center;
-    border-right: 1px solid #e2e8f0;
+    border-right: 1px solid var(--color-border);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 4px;
   }
 
   .stat-box:last-child {
@@ -123,36 +131,26 @@ const { title, subtitle, investment, timeline, roi, breakEven, logo } = Astro.pr
 
   .stat-label {
     display: block;
-    font-size: 0.65rem;
+    font-size: 0.7rem;
     text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: #94a3b8;
-    margin-bottom: 0.2rem;
-    font-weight: 500;
+    letter-spacing: 0.05em;
+    color: var(--color-text-tertiary);
+    font-weight: 600;
   }
 
   .stat-value {
     display: block;
-    font-weight: 700;
-    color: #334155;
-    font-size: 0.85rem;
+    font-size: 0.95rem;
     line-height: 1.2;
-  }
-
-  .stat-box.highlight {
-    background: #ffffff;
-  }
-
-  .stat-box.highlight .stat-value {
-    color: var(--color-accent, #0d9488);
   }
 
   /* Content Area */
   .case-content {
-    padding: 1.25rem 1.5rem;
-    font-size: 0.875rem;
-    line-height: 1.65;
-    color: #475569;
+    padding: var(--space-8) var(--space-6);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--color-text-muted); /* Muted by default, white highlights handled in global */
+    flex: 1;
   }
 
   /* Responsive */
@@ -167,21 +165,23 @@ const { title, subtitle, investment, timeline, roi, breakEven, logo } = Astro.pr
     
     .stat-box:nth-child(1),
     .stat-box:nth-child(2) {
-      border-bottom: 1px solid #e2e8f0;
+      border-bottom: 1px solid var(--color-border);
     }
   }
 
   @media (max-width: 640px) {
     .case-study-header {
-      padding: 1rem;
+      padding: var(--space-4);
+      flex-direction: column-reverse;
+      align-items: flex-start;
+    }
+
+    .logo-container {
+        margin-bottom: var(--space-2);
     }
 
     .case-content {
-      padding: 1rem;
-    }
-
-    .case-study-header h3 {
-      font-size: 1rem;
+      padding: var(--space-4);
     }
   }
 </style>
@@ -190,42 +190,42 @@ const { title, subtitle, investment, timeline, roi, breakEven, logo } = Astro.pr
 <style is:global>
   /* Typography for case study content */
   .case-content p {
-    margin: 0 0 0.875rem 0;
+    margin-bottom: 1rem;
   }
 
   .case-content p:last-of-type {
     margin-bottom: 0;
   }
 
-  /* Section labels with accent highlight */
+  /* Section labels */
   .case-content p strong:first-child {
-    color: #0d9488;
-    font-size: 0.7rem;
+    color: var(--color-text); /* White */
+    font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     display: block;
-    margin-bottom: 0.35rem;
+    margin-bottom: 0.5rem;
     font-weight: 700;
   }
 
   /* Body text in paragraphs */
   .case-content p {
-    color: #475569;
+    color: var(--color-text-muted);
   }
 
   /* Results list - styled as cards */
   .case-content ul {
-    margin: 1rem 0 0 0;
+    margin: 1.5rem 0 0 0;
     padding: 0;
     list-style: none;
-    background: #f8fafc;
-    border-radius: 8px;
-    border: 1px solid #e2e8f0;
+    background: rgba(255,255,255,0.03); /* Subtle glass */
+    border-radius: 12px;
+    border: 1px solid var(--color-border);
   }
 
   .case-content li {
-    padding: 0.75rem 1rem 0.75rem 2.25rem;
-    border-bottom: 1px solid #e2e8f0;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--color-border);
     position: relative;
     line-height: 1.5;
   }
@@ -234,32 +234,22 @@ const { title, subtitle, investment, timeline, roi, breakEven, logo } = Astro.pr
     border-bottom: none;
   }
 
-  /* Arrow icons before list items */
-  .case-content li::before {
-    content: "→";
-    position: absolute;
-    left: 1rem;
-    color: #0d9488;
-    font-weight: 600;
-  }
-
   /* Result/Impact labels in list items */
   .case-content li strong {
-    color: #0d9488;
-    font-weight: 700;
-    font-size: 0.7rem;
+    color: var(--color-accent);
+    font-weight: 600;
+    font-size: 0.8rem;
     text-transform: uppercase;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.05em;
+    display: block;
+    margin-bottom: 4px;
   }
 
-  /* Yellow Highlighter Effect for key numbers/stats */
+  /* White highlights */
   .case-content mark {
-    background: linear-gradient(120deg, #FFF59D 0%, #FFEB3B 100%);
-    padding: 0.1em 0.25em;
-    border-radius: 3px;
-    color: #1a1a1a;
-    font-weight: 600;
-    box-decoration-break: clone;
-    -webkit-box-decoration-break: clone;
+      background: none;
+      color: #ffffff;
+      font-weight: 700;
+      padding: 0;
   }
 </style>

@@ -12,7 +12,7 @@ const { number, title, duration } = Astro.props;
   <div class="process-step__marker">
     {number}
   </div>
-  <div class="process-step__body">
+  <div class="process-step__body glass-card">
     <div class="process-step__header">
       <h3 class="process-step__title">{title}</h3>
       {duration && <span class="process-step__duration">{duration}</span>}
@@ -40,7 +40,7 @@ const { number, title, duration } = Astro.props;
     flex-shrink: 0;
     width: 3rem;
     height: 3rem;
-    background-color: var(--color-accent);
+    background: linear-gradient(135deg, var(--color-accent) 0%, #bf5af2 100%);
     color: white;
     border-radius: 50%;
     display: flex;
@@ -48,14 +48,16 @@ const { number, title, duration } = Astro.props;
     justify-content: center;
     font-weight: 700;
     font-size: 1.25rem;
-    box-shadow: 0 0 0 4px var(--color-background); /* white ring to separate from line */
+    box-shadow: 0 0 0 4px #09090b; /* Match page bg color for cutout */
+    position: relative;
+    z-index: 2;
   }
 
+  /* Target the body for Glass Style */
   .process-step__body {
     flex: 1;
-    background-color: var(--color-background);
-    border: 1px solid var(--color-border);
-    border-radius: var(--border-radius);
+    /* Glass Panel Mixin via Class in HTML, but here we enforce specificity if needed */
+    /* The HTML class will handle it, just removing conflicting styles */
     padding: 1.5rem;
     margin-top: -0.25rem; /* Optical alignment with marker */
   }
@@ -67,23 +69,31 @@ const { number, title, duration } = Astro.props;
     flex-wrap: wrap;
     gap: 0.5rem;
     margin-bottom: 1rem;
-    border-bottom: 1px solid var(--color-border);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     padding-bottom: 0.75rem;
   }
 
   .process-step__title {
     margin: 0;
     font-size: 1.25rem;
-    color: var(--color-accent);
+    color: #ffffff;
+    font-weight: 700;
   }
 
   .process-step__duration {
-    font-size: 0.875rem;
+    font-size: 0.75rem;
     font-weight: 600;
-    color: var(--color-text-muted);
-    background-color: var(--color-background-alt);
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.1);
     padding: 0.25rem 0.75rem;
     border-radius: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .process-step__content {
+      color: rgba(255, 255, 255, 0.8);
+      line-height: 1.6;
   }
 
   .process-step__content :global(ul) {
@@ -95,6 +105,7 @@ const { number, title, duration } = Astro.props;
       font-size: 1rem;
       margin-top: 1rem;
       margin-bottom: 0.5rem;
+      color: #ffffff;
   }
   
   @media (max-width: 640px) {

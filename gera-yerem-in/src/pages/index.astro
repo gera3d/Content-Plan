@@ -14,8 +14,10 @@ import BentoCard from '../components/content/BentoCard.astro';
 import MockupDashboard from '../components/visuals/MockupDashboard.astro';
 import MockupPortal from '../components/visuals/MockupPortal.astro';
 import MockupPipeline from '../components/visuals/MockupPipeline.astro';
+import MockupContentPool from '../components/visuals/MockupContentPool.astro';
 import HeroImage from '../components/visuals/HeroImage.astro';
 import StatsBar from '../components/content/StatsBar.astro';
+import ScrollIndicator from '../components/visuals/ScrollIndicator.astro';
 
 ---
 
@@ -23,67 +25,77 @@ import StatsBar from '../components/content/StatsBar.astro';
   title="Home" 
   description="Stop manually copying data. Start building assets. I build custom software for businesses that have outgrown spreadsheets."
 >
-  <!-- Hero Section: Problem Focused -->
+  <!-- Hero Section: Apple Style -->
   <section class="hero">
-    <div class="container">
-      <div class="hero__content">
-          <h1 class="hero__title">
-            Stop running your business on<br />
-            <span class="text-gradient">spreadsheets.</span>
-          </h1>
-          <p class="hero__subtitle">
-            You've outgrown manual workarounds.<br />I build custom software that helps you scale—without the chaos.
-          </p>
-          
-          <CtaRow>
-            <a href="/contact" class="btn btn--primary">Book a Discovery Call</a>
-            <a href="/work" class="btn btn--secondary">View My Work</a>
-          </CtaRow>
-      </div>
-      <div class="hero__visual">
-        <img src="/images/drake-meme.jpg" alt="Drake meme: No to manual data entry, Yes to custom software" />
+    <div class="hero__content">
+      <p class="hero__eyebrow">Custom Business Software</p>
+      <h1 class="hero__headline">
+        Stop manually copying data.<br/>
+        Start building <span class="gradient-text">assets</span>.
+      </h1>
+      <p class="hero__subhead">
+        Custom software for businesses that have outgrown spreadsheets.
+      </p>
+      <div class="hero__actions">
+        <a href="/contact" class="btn btn-primary">See How It Works</a>
+        <a href="/work" class="btn btn-ghost">View Case Studies</a>
       </div>
     </div>
+
+    <div class="hero__visual">
+      <img src="/images/memes/meme-drake-build.png" alt="Drake pointing to custom software" />
+    </div>
+    
+    <ScrollIndicator />
   </section>
 
 
-  <!-- Cost of Chaos -->
-  <section class="cost-of-chaos section">
-    <div class="container">
-      <h2 class="section-title text-center">The Cost of Chaos</h2>
-      <p class="section-subtitle text-center">These problems are costing you money every week you don't fix them.</p>
+  <!-- Cost of Chaos: Apple Bento -->
+  <section class="chaos-section">
+    <div class="container animate-on-scroll">
+      <p class="section-eyebrow">The Cost of Chaos</p>
+      <h2 class="section-headline">
+        These problems cost you <span class="text-gradient">money</span>.<br/>
+        <span class="text-muted">Every. Single. Week.</span>
+      </h2>
       
-      <FeatureGrid columns={3}>
-        <FeatureCard title="Scattered Data">
-          <span slot="icon" class="chaos-icon">📊</span>
-          <p>Sales in one spreadsheet, customers in another, inventory in your head. You can't answer basic questions without digging for 20 minutes.</p>
-        </FeatureCard>
-
-        <FeatureCard title="Expensive Busywork">
-          <span slot="icon" class="chaos-icon">⏱️</span>
-          <p>You're paying skilled people to copy-paste between systems. That's $50/hour labor doing $10/hour work.</p>
-        </FeatureCard>
-
-        <FeatureCard title="The Sarah Problem">
-          <span slot="icon" class="chaos-icon">🔑</span>
-          <p>Only one person knows how things really work. If they're sick, on vacation, or quit—you're screwed.</p>
-        </FeatureCard>
-
-        <FeatureCard title="Death by 1,000 Tools">
-          <span slot="icon" class="chaos-icon">🔧</span>
-          <p>You're paying for 8 different apps that don't talk to each other. None of them do exactly what you need.</p>
-        </FeatureCard>
-
-        <FeatureCard title="Bottleneck Central">
-          <span slot="icon" class="chaos-icon">🔌</span>
-          <p>Orders pile up. Approvals wait on you. Nothing moves unless you push it. You wanted a business, not a job.</p>
-        </FeatureCard>
-
-        <FeatureCard title="Gut Decisions">
-          <span slot="icon" class="chaos-icon">🎯</span>
-          <p>You're making $50K decisions based on instinct because pulling real numbers takes too long. That's gambling, not strategy.</p>
-        </FeatureCard>
-      </FeatureGrid>
+      <div class="chaos-grid stagger">
+        <div class="chaos-card chaos-card--tall">
+          <div class="chaos-card__icon">📊</div>
+          <h3>Scattered Data</h3>
+          <p>Sales in one place, customers in another. You can't answer basic questions without <span class="text-white">digging for 20 minutes</span>.</p>
+        </div>
+        
+        <div class="chaos-card">
+          <div class="chaos-card__icon">⏱️</div>
+          <h3>Expensive Busywork</h3>
+          <p>$50/hour labor doing <span class="text-white">$10/hour work</span>.</p>
+        </div>
+        
+        <div class="chaos-card">
+          <div class="chaos-card__icon">🔑</div>
+          <h3>The Sarah Problem</h3>
+          <p>Only <span class="text-white">one person</span> knows the system.</p>
+        </div>
+        
+        <div class="chaos-card">
+          <div class="chaos-card__icon">🔧</div>
+          <h3>Death by 1,000 Tools</h3>
+          <p>8 apps that <span class="text-white">don't talk</span> to each other.</p>
+        </div>
+        
+        <div class="chaos-card">
+          <div class="chaos-card__icon">🔌</div>
+          <h3>Bottleneck Central</h3>
+          <p>Nothing moves unless <span class="text-white">you push it</span>.</p>
+        </div>
+        
+        <div class="chaos-card chaos-card--wide">
+          <div class="chaos-card__icon">🎯</div>
+          <h3>Gut Decisions</h3>
+          <p>You're making $50K decisions based on instinct. That's <span class="text-white">gambling</span>, not strategy.</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -92,8 +104,8 @@ import StatsBar from '../components/content/StatsBar.astro';
 
   <!-- The Plan: What I Build -->
   <section class="section">
-    <div class="container">
-      <h2 class="section-title text-center mb-12">What I Build</h2>
+    <div class="container animate-on-scroll">
+      <h2 class="section-title text-center mb-12">What I <span class="text-gradient">Do</span></h2>
       <BentoGrid>
           <!-- Card 1: Operations Platform (Large) -->
           <BentoCard 
@@ -105,7 +117,7 @@ import StatsBar from '../components/content/StatsBar.astro';
               <div slot="visual" style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
                   <MockupDashboard />
               </div>
-              <p>Replace 20 scattered spreadsheets with one dashboard that tells you the truth about your business in real-time. Connects Sales, Ops, and Finance.</p>
+              <p>Replace 20 scattered spreadsheets with <span class="text-white">one dashboard</span> that tells you the truth about your business.</p>
           </BentoCard>
 
           <!-- Card 2: Client Portals (Tall) -->
@@ -118,7 +130,7 @@ import StatsBar from '../components/content/StatsBar.astro';
               <div slot="visual" style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; padding: 2rem;">
                   <MockupPortal />
               </div>
-              <p>Give your customers a white-labeled login to check project status, approve quotes, and view assets. Establish instant professional trust.</p>
+              <p>Give your customers a white-labeled login to check status and approve quotes. Establish <span class="text-white">instant trust</span>.</p>
           </BentoCard>
 
           <!-- Card 3: Workflow Automation (Small) -->
@@ -130,7 +142,20 @@ import StatsBar from '../components/content/StatsBar.astro';
               <div slot="visual">
                   <MockupPipeline />
               </div>
-              <p>Automate the boring stuff. Lead routing, invoice generation, and status updates happen while you sleep.</p>
+              <p>Lead routing, invoice generation, and status updates happen <span class="text-white">while you sleep</span>.</p>
+          </BentoCard>
+
+          <!-- Card 4: Content Pool Creation -->
+          <BentoCard 
+              title="Content Pool Creation" 
+              subtitle="Never run out of ideas."
+              colSpan={1}
+              visualPosition="bottom"
+          >
+              <div slot="visual" style="width: 100%; height: 100%;">
+                  <MockupContentPool />
+              </div>
+              <p>Turn raw ideas and assets into an <span class="text-white">infinite well</span> of content ready for distribution.</p>
           </BentoCard>
       </BentoGrid>
     </div>
@@ -141,7 +166,7 @@ import StatsBar from '../components/content/StatsBar.astro';
 
   <!-- The Guide: Credibility (Stats + LogoBar) -->
   <section class="section">
-    <div class="container skin-guide">
+    <div class="container skin-guide animate-on-scroll">
         <div class="guide-content text-center" style="max-width: 800px; margin: 0 auto;">
              <!-- Quick Stats -->
             <div class="stats-grid mb-12">
@@ -166,23 +191,23 @@ import StatsBar from '../components/content/StatsBar.astro';
 
   <!-- The Process: Simple 3-Step -->
   <section class="section section--alt">
-    <div class="container text-center">
-        <h2 class="section-title mb-12">Simple Process. Tangible Results.</h2>
+    <div class="container text-center animate-on-scroll">
+        <h2 class="section-title mb-12">Simple Process. <span class="text-gradient">Tangible Results.</span></h2>
         <div class="process-grid">
             <div class="process-step">
                 <div class="step-number">01</div>
                 <h3 class="step-title">Discovery</h3>
-                <p class="text-muted">We map out your exact workflow and identify the bottlenecks. No sales pitch, just strategy.</p>
+                <p class="text-muted">We map out your exact workflow. <span class="text-white">No sales pitch</span>, just strategy.</p>
             </div>
             <div class="process-step">
                 <div class="step-number">02</div>
                 <h3 class="step-title">Build</h3>
-                <p class="text-muted">I deliver a custom solution designed for your specific needs. No bloat, no unnecessary features.</p>
+                <p class="text-muted">I deliver a custom solution designed for your specific needs. <span class="text-white">No bloat</span>.</p>
             </div>
             <div class="process-step">
                 <div class="step-number">03</div>
                 <h3 class="step-title">Launch</h3>
-                <p class="text-muted">You get a system that works from day one. Your team gets their time back, and your business scales.</p>
+                <p class="text-muted">You get a system that works from day one. Your team gets their <span class="text-white">time back</span>.</p>
             </div>
         </div>
     </div>
@@ -190,8 +215,8 @@ import StatsBar from '../components/content/StatsBar.astro';
 
   <!-- Social Proof: Carousel -->
   <section class="section">
-    <div class="container">
-      <h2 class="section-title text-center mb-12">Trusted by Leaders</h2>
+    <div class="container animate-on-scroll">
+      <h2 class="section-title text-center mb-12">Trusted by <span class="text-gradient">Leaders</span></h2>
       
       <TestimonialSlider count={6} />
 
@@ -203,8 +228,8 @@ import StatsBar from '../components/content/StatsBar.astro';
 
   <!-- Recent Work Teaser -->
   <section class="section section--alt">
-    <div class="container">
-        <h2 class="section-title text-center mb-8">Selected Work</h2>
+    <div class="container animate-on-scroll">
+        <h2 class="section-title text-center mb-8">Selected <span class="text-gradient">Work</span></h2>
         <p class="text-center text-muted mb-12" style="max-width: 600px; margin: 0 auto;">
             Recent projects delivering measurable operational efficiency. From replacing spreadsheets to building full-scale operations platforms.
         </p>
@@ -221,8 +246,8 @@ import StatsBar from '../components/content/StatsBar.astro';
 
   <!-- Latest Writing -->
   <section class="section">
-    <div class="container">
-      <h2 class="section-title mb-8">Latest Strategy</h2>
+    <div class="container animate-on-scroll">
+      <h2 class="section-title mb-8">Latest <span class="text-gradient">Strategy</span></h2>
       <div class="featured-grid">
           <BlogCard 
             title="Custom Business Software: The Complete Guide" 
@@ -246,8 +271,8 @@ import StatsBar from '../components/content/StatsBar.astro';
 
   <!-- Final CTA -->
   <section class="section section--alt text-center">
-    <div class="container" style="max-width: 600px;">
-        <h2 class="section-title mb-6">Ready to build something better?</h2>
+    <div class="container animate-on-scroll" style="max-width: 600px;">
+        <h2 class="section-title mb-6">Ready to build something <span class="text-gradient">better</span>?</h2>
         <p class="text-xl text-muted mb-8">
             Let's talk about your situation. No sales pressure, just honest advice on whether custom software is the right move for you.
         </p>
@@ -296,42 +321,74 @@ import StatsBar from '../components/content/StatsBar.astro';
         filter: drop-shadow(0 2px 8px rgba(99,102,241,0.25));
     }
 
-    .hero__subtitle {
-        font-size: 1.25rem;
-        color: var(--color-text-muted);
-        margin-bottom: var(--space-8);
-        margin-left: 0;
-        line-height: 1.7;
-        font-weight: 400;
-        max-width: 540px;
+    /* Apple Hero Styles */
+    .hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: left; /* Changed from center */
+        background: var(--color-bg);
+        padding: 0 var(--space-lg);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .hero::before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(
+            ellipse 80% 60% at 50% 40%,
+            rgba(41, 151, 255, 0.12) 0%,
+            transparent 60%
+        );
+        pointer-events: none;
+    }
+
+    .hero__content {
+        position: relative;
+        z-index: 1;
+        max-width: 900px;
+        width: 100%; /* Ensure full width for left align */
+    }
+
+    .hero__eyebrow {
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--color-text-tertiary);
+        margin-bottom: var(--space-md);
+        animation: fadeUp 0.6s ease-out both;
+    }
+
+    .hero__headline {
+        font-size: var(--font-size-hero);
+        font-weight: 700;
+        letter-spacing: -0.03em;
+        line-height: var(--line-height-tight);
+        color: var(--color-text);
+        margin-bottom: var(--space-lg);
         animation: fadeUp 0.6s ease-out 0.1s both;
     }
 
-    .hero__trust {
-        margin-top: 3rem;
-        width: 100%;
-        grid-column: 1 / -1;
-        animation: fadeUp 0.6s ease-out 0.3s both;
+    .hero__subhead {
+        font-size: clamp(18px, 2.5vw, 24px);
+        color: var(--color-text-muted);
+        max-width: 600px;
+        margin: 0 0 var(--space-xl) 0; /* Left align margin */
+        line-height: 1.5;
+        animation: fadeUp 0.6s ease-out 0.2s both;
     }
 
-    .hero__visual {
+    .hero__actions {
         display: flex;
-        justify-content: center;
-        align-items: center;
-        animation: fadeUp 0.8s ease-out 0.2s both;
-    }
-
-    .hero__visual img {
-        max-width: 100%;
-        width: 100%;
-        margin: 0 auto;
-        border-radius: 1.5rem;
-        filter: drop-shadow(0 24px 48px rgba(0,0,0,0.18));
-        transition: transform 0.4s ease;
-    }
-
-    .hero__visual img:hover {
-        transform: scale(1.02);
+        gap: var(--space-lg);
+        justify-content: flex-start; /* Left align */
+        flex-wrap: wrap;
+        animation: fadeUp 0.6s ease-out 0.3s both;
     }
 
     /* Entrance Animation */
@@ -346,55 +403,82 @@ import StatsBar from '../components/content/StatsBar.astro';
         }
     }
 
-    /* Cost of Chaos Section */
-    .cost-of-chaos {
-        padding: var(--space-16) 0;
-        background: linear-gradient(180deg, rgba(248,250,252,0.5) 0%, transparent 100%);
+    /* Chaos Section — Apple Bento Grid */
+    .chaos-section {
+        padding: var(--space-4xl) 0;
+        background: var(--color-bg);
     }
 
-    .cost-of-chaos .section-title {
-        margin-bottom: var(--space-3);
+    .chaos-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-auto-rows: minmax(180px, auto);
+        gap: var(--space-md);
+        max-width: 1200px;
+        margin: 0 auto;
     }
 
-    .cost-of-chaos .section-subtitle {
+    .chaos-card {
+        background: rgba(255, 255, 255, 0.04);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid var(--color-border);
+        border-radius: var(--border-radius-xl);
+        padding: var(--space-xl);
+        transition: all var(--transition-spring);
+    }
+
+    .chaos-card:hover {
+        background: rgba(255, 255, 255, 0.08);
+        transform: translateY(-4px);
+        box-shadow: 
+            0 0 1px rgba(255, 255, 255, 0.15),
+            0 20px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    .chaos-card--tall {
+        grid-row: span 2;
+    }
+
+    .chaos-card--wide {
+        grid-column: span 3;
+    }
+
+    .chaos-card__icon {
+        font-size: 40px;
+        margin-bottom: var(--space-md);
+    }
+
+    .chaos-card h3 {
+        font-size: var(--font-size-xl);
+        font-weight: 700;
+        color: var(--color-text);
+        margin-bottom: var(--space-sm);
+    }
+
+    .chaos-card p {
+        font-size: var(--font-size-base);
         color: var(--color-text-muted);
-        font-size: 1.125rem;
-        margin-bottom: var(--space-10);
-        max-width: 600px;
-        margin-left: auto;
-        margin-right: auto;
+        line-height: 1.5;
     }
 
-    .chaos-icon {
-        font-size: 2rem;
-        line-height: 1;
+    @media (max-width: 768px) {
+        .chaos-grid {
+            grid-template-columns: 1fr;
+        }
+        .chaos-card--tall,
+        .chaos-card--wide {
+            grid-row: auto;
+            grid-column: auto;
+        }
     }
 
     /* CTA Button Polish */
     .cta-row {
         animation: fadeUp 0.6s ease-out 0.2s both;
     }
-    .btn {
-        min-width: 200px;
-        padding: 1rem 2rem;
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-    .btn--primary {
-        box-shadow: 0 4px 20px rgba(99,102,241,0.35), 0 0 0 0 rgba(99,102,241,0);
-    }
-    .btn--primary:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 8px 28px rgba(99,102,241,0.45), 0 0 20px rgba(99,102,241,0.2);
-    }
-    .btn--secondary {
-        background: transparent;
-        border: 2px solid var(--color-border);
-    }
-    .btn--secondary:hover {
-        background: rgba(99,102,241,0.1);
-        border-color: var(--color-accent);
-        color: var(--color-accent);
-    }
+    
+    /* Removed duplicative local button styles - using Global CSS .btn classes */
 
     /* Featured Blog Grid */
     .featured-grid {
@@ -406,17 +490,12 @@ import StatsBar from '../components/content/StatsBar.astro';
     @media (max-width: 768px) {
         .hero {
              min-height: auto;
-             padding: 6rem 0 4rem;
+             padding: 8rem var(--space-6) 4rem; /* Added horizontal padding */
         }
 
-        .hero .container {
-            grid-template-columns: 1fr;
-            text-align: left;
-            gap: 2rem;
-        }
-        
         .hero__content {
-            margin: 0 auto;
+            margin: 0;
+            text-align: left;
         }
 
         .hero__title {
@@ -425,15 +504,6 @@ import StatsBar from '../components/content/StatsBar.astro';
 
         .hero__subtitle {
             max-width: 100%;
-        }
-
-        .hero__visual {
-            margin-top: var(--space-4);
-            order: 2;
-        }
-        
-        .hero__visual img {
-            max-width: 320px;
         }
 
         .featured-grid {
@@ -480,33 +550,41 @@ import StatsBar from '../components/content/StatsBar.astro';
         font-weight: 600;
     }
 
-    /* Process Grid */
+    /* Process Grid - Apple Style */
     .process-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        gap: var(--space-8);
-        margin-top: var(--space-12);
+        gap: var(--space-md);
+        margin-top: var(--space-xl);
     }
     .process-step {
         text-align: center;
-        padding: var(--space-6);
-        background: var(--color-surface);
+        padding: var(--space-xl);
+        background: rgba(255, 255, 255, 0.04);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
         border: 1px solid var(--color-border);
-        border-radius: var(--border-radius);
+        border-radius: var(--border-radius-xl);
+        transition: all var(--transition-spring);
     }
-    /* Number styling refinement */
+    .process-step:hover {
+        background: rgba(255, 255, 255, 0.08);
+        transform: translateY(-4px);
+    }
+    /* Number styling - Apple blue accent */
     .step-number {
         font-size: 3rem;
         font-weight: 900;
-        color: var(--color-surface-alt, #f1f5f9);
+        color: var(--color-accent);
         line-height: 1;
-        margin-bottom: var(--space-2);
-        -webkit-text-stroke: 1px var(--color-border);
+        margin-bottom: var(--space-md);
+        letter-spacing: -0.02em;
     }
     .step-title {
         font-size: var(--font-size-lg);
         font-weight: 700;
-        margin-bottom: var(--space-4);
+        margin-bottom: var(--space-sm);
+        color: var(--color-text);
     }
 
     @media (max-width: 768px) {

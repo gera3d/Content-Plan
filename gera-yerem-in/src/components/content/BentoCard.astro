@@ -40,26 +40,30 @@ const {
 
 <style>
     .bento-card {
-        background: var(--color-surface); /* Will need to be refined for light/slate theme */
-        border: 1px solid var(--color-border);
-        border-radius: var(--border-radius-lg, 16px);
+        background: rgba(255, 255, 255, 0.03);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--border-radius-xl);
         overflow: hidden;
         position: relative;
         display: flex;
         flex-direction: column;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+        transition: all var(--transition-spring);
     }
 
     /* Premium Hover State */
     .bento-card:hover {
+        background: rgba(255, 255, 255, 0.08);
         transform: translateY(-4px);
-        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
-        border-color: var(--color-accent-light);
+        box-shadow: 
+            0 0 1px rgba(255, 255, 255, 0.2),
+            0 24px 48px rgba(0, 0, 0, 0.6);
+        border-color: rgba(255, 255, 255, 0.15);
     }
 
     .bento-card__content {
-        padding: var(--space-8);
+        padding: var(--space-xl);
         flex: 1;
         display: flex;
         flex-direction: column;
@@ -67,23 +71,30 @@ const {
     }
 
     .bento-card__title {
-        font-family: var(--font-heading); /* Fallback until inter-tight is loaded */
-        font-size: var(--font-size-xl);
+        font-family: var(--font-heading);
+        font-size: var(--font-size-2xl);
         font-weight: 700;
-        margin-bottom: var(--space-2);
+        margin-bottom: var(--space-xs);
         color: var(--color-text);
-        letter-spacing: -0.01em;
+        letter-spacing: -0.02em;
     }
 
     .bento-card__subtitle {
-        color: var(--color-text-muted);
-        font-size: var(--font-size-sm);
-        margin-bottom: var(--space-4);
+        color: var(--color-text); /* High contrast white */
+        font-size: var(--font-size-lg);
+        margin-bottom: var(--space-md);
         font-weight: 500;
+        opacity: 0.9;
+    }
+
+    .bento-card__body {
+        color: var(--color-text-muted);
+        font-size: var(--font-size-base);
+        line-height: 1.5;
     }
 
     .bento-card__visual {
-        background: var(--color-surface-alt, #f8fafc);
+        background: linear-gradient(135deg, #1d1d1f, #2d2d2d);
         position: relative;
         overflow: hidden;
         min-height: 200px;

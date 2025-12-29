@@ -3,14 +3,14 @@ const { titleLeft, titleRight } = Astro.props;
 ---
 
 <div class="comparison-columns">
-  <div class="column">
-    {titleLeft && <h3 class="column-title">{titleLeft}</h3>}
+  <div class="column glass-card">
+    {titleLeft && <h3 class="column-title text-gradient">{titleLeft}</h3>}
     <div class="column-content">
       <slot name="left" />
     </div>
   </div>
-  <div class="column">
-    {titleRight && <h3 class="column-title">{titleRight}</h3>}
+  <div class="column glass-card">
+    {titleRight && <h3 class="column-title text-white">{titleRight}</h3>}
     <div class="column-content">
       <slot name="right" />
     </div>
@@ -26,18 +26,16 @@ const { titleLeft, titleRight } = Astro.props;
   }
 
   .column {
-    background: #f8fafc;
-    padding: 2rem;
-    border-radius: 8px;
-    border: 1px solid #e2e8f0;
+    padding: 2.5rem; /* Increased padding */
+    height: 100%;
   }
 
   .column-title {
     margin-top: 0;
     margin-bottom: 1.5rem;
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     padding-bottom: 1rem;
-    border-bottom: 2px solid #e2e8f0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
 
   @media (max-width: 768px) {
@@ -56,11 +54,24 @@ const { titleLeft, titleRight } = Astro.props;
   .column-content :global(li) {
     position: relative;
     padding-left: 1.75rem;
-    margin-bottom: 0.75rem;
+    margin-bottom: 1rem;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.1rem;
+  }
+  
+  .column-content :global(strong) {
+      color: #ffffff;
   }
 
+  /* Custom bullet points */
   .column-content :global(li::before) {
-    content: "Check"; /* Handled by emoji in content usually, but we can enforce if needed */
-    display: none; /* Let markdown emojis handle it */
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--color-accent);
+    font-weight: bold;
+    font-size: 1.5rem;
+    line-height: 1;
+    top: -2px;
   }
 </style>

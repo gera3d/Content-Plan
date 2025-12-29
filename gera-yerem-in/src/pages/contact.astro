@@ -56,7 +56,7 @@ import Callout from '../components/content/Callout.astro';
                 </ul>
             </div>
             <div slot="right">
-                <ul style="opacity: 0.7;">
+                <ul>
                     <li><strong>Lowest Bidder:</strong> You are looking for the cheapest possible option.</li>
                     <li><strong>Micromanager:</strong> You want someone to just "type the code" without asking questions.</li>
                     <li><strong>Quick Fixes:</strong> You want a "band-aid" solution for a fundamental business problem.</li>
@@ -142,9 +142,14 @@ import Callout from '../components/content/Callout.astro';
     .contact-hero__image img {
         width: 100%;
         height: auto;
-        border-radius: var(--border-radius);
-        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        transform: rotate(1deg); /* Slight playful tilt */
+        border-radius: var(--border-radius-xl);
+        box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.5);
+        transform: rotate(2deg); /* Standard "Hero" rotation */
+        transition: transform 0.3s ease;
+    }
+
+    .contact-hero__image img:hover {
+        transform: rotate(0deg) scale(1.02);
     }
 
     .contact-options-primary {

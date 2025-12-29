@@ -23,34 +23,38 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        /* Removed background gradient to let BentoCard background show through or use transparency */
     }
 
     .portal-card {
         width: 120px;
-        background: white;
-        padding: 16px;
-        border-radius: 12px;
-        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        background: linear-gradient(145deg, #2c2c2e, #1c1c1e);
+        padding: 20px;
+        border-radius: 16px;
+        box-shadow: 
+            0 14px 34px -8px rgba(0, 0, 0, 0.6),
+            0 0 0 1px rgba(255, 255, 255, 0.1),
+            inset 0 1px 0 rgba(255, 255, 255, 0.05);
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 8px;
+        gap: 10px;
         position: relative;
     }
 
     .avatar-circle {
         width: 32px;
         height: 32px;
-        background: #e2e8f0;
+        background: rgba(255, 255, 255, 0.1);
         border-radius: 50%;
         margin-bottom: 4px;
+        border: 1px solid rgba(255, 255, 255, 0.05);
     }
 
     .input-line {
         width: 100%;
         height: 6px;
-        background: #f1f5f9;
+        background: rgba(255, 255, 255, 0.05); /* Very subtle input bg */
         border-radius: 3px;
     }
     .input-line.short {
@@ -63,7 +67,7 @@
         background: var(--color-accent);
         border-radius: 4px;
         margin-top: 4px;
-        opacity: 0.1; /* Placeholder look */
+        opacity: 0.8; 
     }
 
     .verified-badge {
@@ -72,13 +76,13 @@
         right: -8px;
         width: 24px;
         height: 24px;
-        background: #10b981; /* Success Green */
+        background: #34c759; /* Apple Success Green */
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        border: 2px solid white;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        border: 2px solid #1c1c1e; /* Match card bg */
         animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
         transform: scale(0);
         animation-delay: 0.5s;
