@@ -48,7 +48,7 @@ const { number, title, duration } = Astro.props;
     justify-content: center;
     font-weight: 700;
     font-size: 1.25rem;
-    box-shadow: 0 0 0 4px #09090b; /* Match page bg color for cutout */
+    box-shadow: 0 0 0 4px var(--color-bg);
     position: relative;
     z-index: 2;
   }
@@ -69,22 +69,22 @@ const { number, title, duration } = Astro.props;
     flex-wrap: wrap;
     gap: 0.5rem;
     margin-bottom: 1rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid var(--color-border);
     padding-bottom: 0.75rem;
   }
 
   .process-step__title {
     margin: 0;
     font-size: 1.25rem;
-    color: #ffffff;
+    color: var(--color-text);
     font-weight: 700;
   }
 
   .process-step__duration {
     font-size: 0.75rem;
     font-weight: 600;
-    color: #ffffff;
-    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--color-text);
+    background-color: var(--color-border);
     padding: 0.25rem 0.75rem;
     border-radius: 1rem;
     text-transform: uppercase;
@@ -92,7 +92,7 @@ const { number, title, duration } = Astro.props;
   }
 
   .process-step__content {
-      color: rgba(255, 255, 255, 0.8);
+      color: var(--color-text);
       line-height: 1.6;
   }
 
@@ -105,7 +105,7 @@ const { number, title, duration } = Astro.props;
       font-size: 1rem;
       margin-top: 1rem;
       margin-bottom: 0.5rem;
-      color: #ffffff;
+      color: var(--color-text);
   }
   
   @media (max-width: 640px) {
