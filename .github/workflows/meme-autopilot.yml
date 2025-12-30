@@ -1,0 +1,93 @@
+name: Meme Autopilot
+
+on:
+  # Triggered by Contentful webhook
+  repository_dispatch:
+    types: [contentful-meme-published]
+  
+  # Manual trigger for testing
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Dry run (no actual posting)'
+        required: false
+        default: 'true'
+
+env:
+  AYRSHARE_API_KEY: ${{ secrets.AYRSHARE_API_KEY }}
+  CONTENTFUL_DELIVERY_TOKEN: ${{ secrets.CONTENTFUL_DELIVERY_TOKEN }}
+
+jobs:
+  schedule-meme:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      
+      - name: Install dependencies
+        run: pip install requests
+      
+      - name: Get next posting slot
+        id: slot
+        run: |
+          # Calculate next available slot (check Ayrshare for last scheduled)
+          # For now, use tomorrow + 2 days buffer
+          NEXT_DATE=$(date -d "+3 days" +%Y-%m-%d)
+          echo "next_date=$NEXT_DATE" >> $GITHUB_OUTPUT
+      
+      - name: Schedule new meme (from webhook)
+        if: github.event_name == 'repository_dispatch'
+        run: |
+          python - << 'EOF'
+          import os
+          import json
+          import requests
+          
+          # Get webhook payload
+          payload = ${{ toJson(github.event.client_payload) }}
+          
+          # Extract meme data
+          meme_title = payload.get('title', 'Untitled')
+          meme_image = payload.get('image_url', '')
+          
+          if not meme_image:
+              print("No image URL in payload, skipping")
+              exit(0)
+          
+          # Import caption generator from main script
+          # (simplified version here)
+          caption = f"New meme just dropped. Stay tuned for more tech humor.\n\n#customsoftware #automation #smallbusiness #techhumor"
+          
+          # Post to Ayrshare
+          headers = {
+              "Authorization": f"Bearer {os.environ['AYRSHARE_API_KEY']}",
+              "Content-Type": "application/json"
+          }
+          
+          data = {
+              "post": caption,
+              "platforms": ["instagram"],
+              "mediaUrls": [meme_image],
+              "scheduleDate": f"${{ steps.slot.outputs.next_date }}T20:00:00.000Z"
+          }
+          
+          response = requests.post(
+              "https://app.ayrshare.com/api/post",
+              headers=headers,
+              json=data
+          )
+          
+          print(f"Response: {response.json()}")
+          EOF
+      
+      - name: Dry run test
+        if: github.event_name == 'workflow_dispatch' && github.event.inputs.dry_run == 'true'
+        run: |
+          echo "Dry run - would schedule meme for ${{ steps.slot.outputs.next_date }}"
+          python post_memes_to_instagram.py --dry-run --limit 1
