@@ -2,6 +2,29 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import TestimonialSlider from '../components/content/TestimonialSlider.astro';
 import '../components/SliderNav.astro';
+
+const siteUrl = "https://gera.yerem.in";
+
+// ProfilePage schema for enhanced author visibility
+const profilePageSchema = {
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  "mainEntity": {
+    "@type": "Person",
+    "name": "Gera Yeremin",
+    "alternateName": "gera3d",
+    "url": siteUrl,
+    "image": `${siteUrl}/images/gera-headshot.jpg`,
+    "jobTitle": "Software Developer & Digital Marketer",
+    "description": "I build custom software for businesses that have outgrown spreadsheets. Developer + Marketer with 15+ years experience.",
+    "knowsAbout": ["Custom Software Development", "Digital Marketing", "Business Automation", "Workflow Optimization"],
+    "sameAs": [
+      "https://www.linkedin.com/in/gera3d",
+      "https://github.com/gera3d",
+      "https://twitter.com/gera3d"
+    ]
+  }
+};
 ---
 
 
@@ -9,6 +32,7 @@ import '../components/SliderNav.astro';
   title="About Gera Yeremin" 
   description="Technologist. Marketer. Innovator. I bridge the gap between custom software and business growth."
 >
+  <script type="application/ld+json" set:html={JSON.stringify(profilePageSchema)} slot="head" />
   <div class="page">
     <div class="container">
       
