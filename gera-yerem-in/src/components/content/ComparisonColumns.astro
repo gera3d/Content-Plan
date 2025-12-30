@@ -35,7 +35,7 @@ const { titleLeft, titleRight } = Astro.props;
     margin-bottom: 1.5rem;
     font-size: 1.5rem;
     padding-bottom: 1rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid var(--color-border);
   }
 
   @media (max-width: 768px) {
@@ -55,12 +55,12 @@ const { titleLeft, titleRight } = Astro.props;
     position: relative;
     padding-left: 1.75rem;
     margin-bottom: 1rem;
-    color: rgba(255, 255, 255, 0.8);
+    color: var(--color-text);
     font-size: 1.1rem;
   }
   
   .column-content :global(strong) {
-      color: #ffffff;
+      color: var(--color-text);
   }
 
   /* Custom bullet points */
