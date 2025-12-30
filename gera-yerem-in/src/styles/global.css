@@ -91,10 +91,37 @@
   --color-accent-light: rgba(41, 151, 255, 0.1);
 
   /* Invert glass effect for light mode */
-  --glass-bg: rgba(255, 255, 255, 0.7);
-  --glass-border: rgba(0, 0, 0, 0.05);
+  --glass-bg: rgba(0, 0, 0, 0.03);
+  --glass-border: rgba(0, 0, 0, 0.08);
 
   --header-bg: rgba(255, 255, 255, 0.8);
+}
+
+/* Light Theme - Override utility classes that use hardcoded white */
+.theme-light .text-white,
+.theme-light .text-high-contrast {
+  color: #1d1d1f !important;
+}
+
+.theme-light .text-gradient {
+  background: linear-gradient(135deg, #0071e3 0%, #9b4dca 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Light Theme - Glass cards need darker backgrounds for contrast */
+.theme-light .glass-card,
+.theme-light .glass-panel {
+  background: rgba(0, 0, 0, 0.02);
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+.theme-light .glass-card:hover,
+.theme-light .glass-panel:hover {
+  background: rgba(0, 0, 0, 0.04);
+  border-color: rgba(0, 0, 0, 0.12);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
 }
 
 /* --------------------------------------------------------------------------

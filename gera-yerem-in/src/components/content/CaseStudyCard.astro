@@ -213,25 +213,22 @@ const { title, subtitle, investment, timeline, roi, breakEven, logo } = Astro.pr
     color: var(--color-text-muted);
   }
 
-  /* Results list - styled as cards */
+  /* Results list - compact bullet style */
   .case-content ul {
-    margin: 1.5rem 0 0 0;
-    padding: 0;
-    list-style: none;
-    background: rgba(255,255,255,0.03); /* Subtle glass */
-    border-radius: 12px;
-    border: 1px solid var(--color-border);
+    margin: 0.75rem 0 0 0;
+    padding: 0 0 0 1.25rem;
+    list-style: disc;
   }
 
   .case-content li {
-    padding: 1rem 1.5rem;
-    border-bottom: 1px solid var(--color-border);
+    padding: 0.25rem 0;
     position: relative;
     line-height: 1.5;
+    color: var(--color-text-muted);
   }
 
-  .case-content li:last-child {
-    border-bottom: none;
+  .case-content li::marker {
+    color: var(--color-accent);
   }
 
   /* Result/Impact labels in list items */
@@ -248,7 +245,7 @@ const { title, subtitle, investment, timeline, roi, breakEven, logo } = Astro.pr
   /* White highlights */
   .case-content mark {
       background: none;
-      color: #ffffff;
+      color: var(--color-text);
       font-weight: 700;
       padding: 0;
   }
